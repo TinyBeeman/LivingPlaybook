@@ -122,7 +122,7 @@
                             // The link is the current page, including existing parameters,
                             // but with the gameId query parameter set to the anchor name.
                             const url = new URL(window.location);
-                            url.searchParams.set('gameId', gameDetails.anchorName);
+                            url.searchParams.set('gameId', playbook.getAnchorName(related));
                             link.href = url;
                             link.classList.add('game-related-link');
                             link.textContent = related;
