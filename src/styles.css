@@ -1,0 +1,133 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+.h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.italic {
+    font-style: italic;
+}
+
+.tag-list {
+    margin-bottom: 20px;
+}
+.tag-button {
+    padding: 5px 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.tag-button.checked {
+    background-color: #4caf50;
+    color: white;
+}
+.tag-button.unchecked {
+    background-color: #f44336;
+    color: white;
+}
+.game-list {
+    margin-top: 20px;
+}
+.game {
+    display: flex;
+    flex-direction: column;
+    border: black;
+    border-width: 1px;
+    border-style: solid;
+    padding: 2pt;
+    margin-bottom: 12pt;
+    break-inside: avoid;
+}
+
+.game-row {
+    font-size: small;
+    padding: 2pt;
+}
+
+.game-row-header {
+    font-size: x-small;
+    padding: 2pt 0pt 0pt 0pt;
+    display: flex;
+ }
+
+.game-row-name {
+    font-weight: bold;
+    font-size: large;
+    border-bottom: 1px dashed black;
+    padding-bottom: 2pt;
+}
+.game-row-desc {
+    font-size: small;
+    padding: 2pt;
+}
+
+.game-row-tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2pt;
+}
+
+.game-tag {
+    display: inline-block;
+    font-size: smaller;
+    padding: 1pt;
+    margin: 1pt;
+    border: 1px solid #7eaa92;
+    background-color: #cdeedc;
+    border-radius: 5px;
+}
+
+.game-row-aliases-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2pt;
+}
+
+.game-alias {
+    display: inline-block;
+    font-size: smaller;
+    padding: 1pt;
+    margin: 1pt;
+    background-color: #ffffff;
+    border: 1px solid #efbfee;
+    border-radius: 5px;
+}
+
+.game-row-related-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 2pt;
+}
+
+.game-related-link {
+    display: inline-block;
+    text-decoration: none;;
+    font-size: smaller;
+    padding: 1pt;
+    margin: 1pt;
+    background-color: #ffffff;
+    border: 1px solid #888eba;
+    border-radius: 5px;
+}
+
+.game-related-link:hover {
+    background-color: #a1b7e7;
+}
+
+.include-only {
+    color: #4caf50;
+}
+.exclude-only {
+    color: #f44336;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Living Playbook</title>
+    <link rel="stylesheet" href="styles.css?v=<%= Date.now() %>">
+</head>
+<body>
+    <h1>The Living Playbook</h1>
+    <div id="search-section">
+        <input type="text" id="search-box" placeholder="Search games...">
+        <button id="clear-search" style="display: none;">x</button>
+    </div>
+    <div id="tag-section" class="tag-list">
+        <p><span class="h2">Tags</span><span> <span class="include-only">Green to include only games with this tag</span>, <span class="exclude-only">Red to exclude games with this tag.</span></span></p>
+        <div id="tags-container"></div>
+    </div>
+    
+    <div class="game-list">
+        <h2>Games</h2>
+        <ul id="games-container"></ul>
+    </div>
+
+    <script src="playbook.js" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const gameId = urlParams.get('gameId');
+            const filter = new TagFilter();
+            const playbook = new Playbook();
+            let searchTerm = gameId ? `id:${gameId}` : "";
+
+            const searchBox = document.getElementById('search-box');
+            const clearSearchButton = document.getElementById('clear-search');
+
+            function createGameRow(class_name, header="", textContent="")
+            {
+                const divRow = document.createElement('div');
+                divRow.classList.add("game-row");
+                divRow.classList.add("game-row-" + class_name);
+                if (header) {
+                    const divHeader = document.createElement('div');
+                    divHeader.classList.add("game-row-header");
+                    divHeader.textContent = header;
+                    divRow.appendChild(divHeader);
+                }
+
+                if (textContent) {
+                    const divText = document.createElement('span');
+                    divText.classList.add("game-row-text-" + class_name);
+                    divText.textContent = textContent;
+                    divRow.appendChild(divText);
+                }
+                return divRow;
+            }
+
+            function populateGameList() {
+                const games = playbook.searchGames(searchTerm, filter);
+                const gamesContainer = document.getElementById('games-container');
+                gamesContainer.innerHTML = '';
+
+                games.forEach(gameName => {
+                    const gameDetails = playbook.getGameDetailsByName(gameName);
+                    const divGame = document.createElement('div');
+                    divGame.classList.add("game");
+                    divGame.id = `${gameDetails.anchorName}`;
+
+                    const divTitle = createGameRow("name", "", gameDetails.gameName);
+                    const divDesc = createGameRow("desc", "description", gameDetails.gameDetails);
+                    
+                    divGame.appendChild(divTitle);
+                    divGame.appendChild(divDesc);
+                    
+                    if (gameDetails.tags) {
+                        const divTagsRow = createGameRow("tags", "tags");
+                        const divTags = document.createElement('div');
+                        divTags.classList.add('game-row-tags-container');
+                        gameDetails.tags.forEach(tag => {
+                            const divTag = document.createElement('div');
+                            divTag.classList.add('game-tag');
+                            divTag.textContent = tag;
+                            divTags.appendChild(divTag);
+                        });
+                        divTagsRow.appendChild(divTags);
+                        divGame.appendChild(divTagsRow);
+                    }
+
+                    if (gameDetails.aliases) {
+                        const divAliasesRow = createGameRow("aliases", "aliases");
+                        const divAliases = document.createElement('div');
+                        divAliases.classList.add('game-row-aliases-container');
+                        gameDetails.aliases.forEach(alias => {
+                            const divAlias = document.createElement('div');
+                            divAlias.classList.add('game-alias');
+                            divAlias.textContent = alias;
+                            divAliases.appendChild(divAlias);
+                        });
+                        divAliasesRow.appendChild(divAliases);
+                        divGame.appendChild(divAliasesRow);
+                    }
+
+                    if (gameDetails.related) {
+                        const divRelatedRow = createGameRow("related", "related games");
+                        const divRelated = document.createElement('div');
+                        divRelated.classList.add('game-row-related-container');
+                        gameDetails.related.forEach(related => {
+                            const link = document.createElement('a');
+                            // The link is the current page, but with the gameId as a query parameter
+                            link.href = `?gameId=${playbook.getAnchorName(related)}`;
+                            link.classList.add('game-related-link');
+                            link.textContent = related;
+                            divRelated.appendChild(link);
+                        });
+                        divRelatedRow.appendChild(divRelated);
+                        divGame.appendChild(divRelatedRow);
+                    }
+
+                    gamesContainer.appendChild(divGame);
+                });
+            }
+
+            async function initialize() {
+                await playbook.loadFromURL('/playbook.json');
+                const tags = playbook.getTags();
+                const tagsContainer = document.getElementById('tags-container');
+                if (searchTerm)
+                {
+                    document.getElementById('search-box').value = searchTerm;
+                    clearSearchButton.style.display = 'inline';
+                }
+
+                tags.forEach(tag => {
+                    const button = document.createElement('button');
+                    button.className = 'tag-button';
+                    button.textContent = tag;
+                    button.dataset.state = 'empty';
+                    button.addEventListener('click', () => {
+                        toggleTagState(button, tag);
+                        populateGameList();
+                    });
+                    tagsContainer.appendChild(button);
+                });
+
+                populateGameList();
+            }
+
+            function toggleTagState(button, tag) {
+                if (button.dataset.state === 'empty') {
+                    button.dataset.state = 'checked';
+                    button.classList.add('checked');
+                    button.classList.remove('unchecked');
+                    filter.addYesTag(tag);
+                    filter.noTags.delete(tag);
+                } else if (button.dataset.state === 'checked') {
+                    button.dataset.state = 'unchecked';
+                    button.classList.add('unchecked');
+                    button.classList.remove('checked');
+                    filter.addNoTag(tag);
+                    filter.yesTags.delete(tag);
+                } else {
+                    button.dataset.state = 'empty';
+                    button.classList.remove('checked', 'unchecked');
+                    filter.yesTags.delete(tag);
+                    filter.noTags.delete(tag);
+                }
+            }
+
+            searchBox.addEventListener('input', (event) => {
+                searchTerm = event.target.value;
+                populateGameList();
+                clearSearchButton.style.display = searchTerm ? 'inline' : 'none';
+            });
+
+            clearSearchButton.addEventListener('click', () => {
+                // if there is a url parameter, we want to clear it.
+                if (gameId) {
+                    window.history.pushState({}, document.title, window.location.pathname);
+                }
+                searchBox.value = '';
+                searchTerm = '';
+                clearSearchButton.style.display = 'none';
+                populateGameList();
+            });
+
+            initialize();
+        });
+    </script>
+</body>
+<footer>
+    <p><span class="bold">License and Copyright Information</span></p>
+    <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
+    <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
+</footer>
+</html>
