@@ -80,6 +80,11 @@
                     divGame.appendChild(divTitle);
                     divGame.appendChild(divDesc);
                     
+                    if (gameDetails.notes) {
+                        const divNotesRow = createGameRow("notes", "notes", gameDetails.notes);
+                        divGame.appendChild(divNotesRow);
+                    }
+
                     if (gameDetails.tags) {
                         const divTagsRow = createGameRow("tags", "tags");
                         const divTags = document.createElement('div');
