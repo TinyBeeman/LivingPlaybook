@@ -15,6 +15,14 @@ body {
     font-style: italic;
 }
 
+.page-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 6pt;
+}
+
 .tag-list {
     margin-bottom: 20px;
 }
