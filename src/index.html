@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="styles.css?v=<%= Date.now() %>">
 </head>
 <body>
-    <h1>The Living Playbook</h1>
+    <h1 id="page-title">The Online Living Playbook</h1>
     <div id="search-section">
         <input type="text" id="search-box" placeholder="Search games...">
         <button id="clear-search" style="display: none;">x</button>
@@ -27,9 +27,14 @@
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
             const gameId = urlParams.get('gameId');
+            const dbId = urlParams.get('dbId');
             const filter = new TagFilter();
             const playbook = new Playbook();
             let searchTerm = gameId ? `id:${gameId}` : "";
+
+            if (dbId === "2001") {
+                document.getElementById('page-title').textContent = "The Online Living Playbook: Original 2001 Edition";
+            }
 
             const searchBox = document.getElementById('search-box');
             const clearSearchButton = document.getElementById('clear-search');
@@ -106,8 +111,11 @@
                         divRelated.classList.add('game-row-related-container');
                         gameDetails.related.forEach(related => {
                             const link = document.createElement('a');
-                            // The link is the current page, but with the gameId as a query parameter
-                            link.href = `?gameId=${playbook.getAnchorName(related)}`;
+                            // The link is the current page, including existing parameters,
+                            // but with the gameId query parameter set to the anchor name.
+                            const url = new URL(window.location);
+                            url.searchParams.set('gameId', gameDetails.anchorName);
+                            link.href = url;
                             link.classList.add('game-related-link');
                             link.textContent = related;
                             divRelated.appendChild(link);
@@ -121,7 +129,8 @@
             }
 
             async function initialize() {
-                await playbook.loadFromURL('/playbook.json');
+                await playbook.loadFromURL(dbId === "2001" ? '/living_playbook_2001.json' : '/living_playbook.json');
+                
                 const tags = playbook.getTags();
                 const tagsContainer = document.getElementById('tags-container');
                 if (searchTerm)
@@ -173,9 +182,13 @@
             });
 
             clearSearchButton.addEventListener('click', () => {
-                // if there is a url parameter, we want to clear it.
+                // if there is a gameId url parameter, we want to clear it,
+                // but keep any other parameters
                 if (gameId) {
-                    window.history.pushState({}, document.title, window.location.pathname);
+                    const url = new URL(window.location);
+                    url.searchParams.delete('gameId');
+                    // update the url without reloading the page
+                    window.history.pushState({}, '', url);
                 }
                 searchBox.value = '';
                 searchTerm = '';
@@ -191,5 +204,6 @@
     <p><span class="bold">License and Copyright Information</span></p>
     <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
     <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
+    <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
 </footer>
 </html>
