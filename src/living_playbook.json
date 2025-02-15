@@ -130,7 +130,7 @@
                 "A different improviser plays each arm of the third improviser."
             ],
             "related": [
-                "Expert"
+                "Experts"
             ],
             "tags": [
                 "shortform",
@@ -2402,8 +2402,7 @@
             "gameName": "Speaking In One Voice",
             "gameDetails": "A scene suggestion is given. Two or more improvisers combine to speak (and move) as one character. Can also be used to narrate or tell a story to the audience.",
             "gameVariations": [
-                "Two-Headed Expert",
-                "Scene where an interview is conducted with an expert comprised of two people that speak in a single voice."
+                "Two-Headed Expert: Scene where an interview is conducted with an expert comprised of two people that speak in a single voice."
             ],
             "aliases": [
                 "Multiple People Person"
