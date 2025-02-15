@@ -1,10 +1,24 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
     margin: 20px;
+    background-color: #e9eef8;
+    
+    /* Constants */
+    --game-row-indent: 10pt;
 }
+
+.inner-body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
 .h2 {
     font-size: 1.5em;
-    font-weight: bold;
 }
 
 .bold {
@@ -19,8 +33,107 @@ body {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin-bottom: 20px;
-    gap: 6pt;
+    justify-content: space-between;
+    margin-bottom: 12pt;
+}
+
+.page-title {
+    font-family: "Fondamento", serif;
+    font-size: 24pt;
+    font-weight: 400;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+}
+
+.logo-counterbalance {
+    width: 64px;
+    height: 64px;
+}
+
+.search-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.search-textbox {
+    padding: 6px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 400px;
+    max-width: 100%;
+}
+
+.collapsible-header {
+    order: 1;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    border: solid 1px black;
+    display: flex;
+    width: fit-content;
+    border-radius: 10px;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 2pt 0pt 0pt 10pt;
+    position: relative;
+    top: 1px;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.collapsible-header:hover {
+    background-color: #f0f0f0;
+}
+
+.collapsible-header.active {
+    border-radius: 10px 10px 0 0;
+    border-width: 1px 1px 0 1px;
+}
+
+.collapsible-header:after {
+    content: '+';
+    font-size: larger;
+    font-weight: bold;
+    color: black;
+    margin-left: 0px;
+    width: 1em;
+    position: relative;
+    top: -1px;
+}
+  
+.collapsible-header.active:after {
+    content: '–'; /* em dash */
+    top: -3px;
+}
+
+.collapsible-content {
+    order: 99;
+    padding: 0 18px;
+    border: solid 1px black;
+    display: none;
+    overflow: hidden;
+    background-color: white;
+    border-radius: 0 10px 10px 10px;
+}
+
+.collapsible-content.active {
+    display: block;
+}
+
+
+.hidden {
+    display: none;
+}
+
+.block {
+    display: block;
 }
 
 .tag-list {
@@ -44,15 +157,42 @@ body {
 .game-list {
     margin-top: 20px;
 }
-.game {
+.game-card {
     display: flex;
     flex-direction: column;
-    border: black;
-    border-width: 1px;
-    border-style: solid;
-    padding: 2pt;
-    margin-bottom: 12pt;
     break-inside: avoid;
+    padding-bottom: 12pt;
+}
+
+.game-card-title {
+    display: inline-block;
+    font-weight: bold;
+    font-size: large;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 5px 5px 0px 0px;
+    border-width: 1px 1px 0px 1px;
+    padding: 2pt 5pt;
+    order: 1;
+    position: relative;
+    top: 1px;
+    /* fit width to content */
+    width: max-content;
+}
+
+.game-card-content {
+    order: 99;
+    border: 1px solid black;
+    border-radius: 0px 5px 5px 5px;
+    background-color: white;
+}
+
+.game-card:hover .game-card-title {
+    background-color: #f0f0f0;
+}
+
+.game-card:hover .game-card-content {
+    background-color: #f0f0f0;
 }
 
 .game-row {
@@ -66,22 +206,26 @@ body {
     display: flex;
  }
 
-.game-row-name {
-    font-weight: bold;
-    font-size: large;
-    border-bottom: 1px dashed black;
-    padding-bottom: 2pt;
-}
+
 .game-row-desc {
     font-size: small;
     padding: 2pt;
 }
 
-.game-row-tags-container {
+.game-row-content {
+    padding-left: var(--game-row-indent);
+}
+
+.game-row-text {
+    font-size: small;
+}
+
+.game-row-container {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 2pt;
+    padding-left: var(--game-row-indent);
 }
 
 .game-tag {
@@ -94,13 +238,6 @@ body {
     border-radius: 5px;
 }
 
-.game-row-aliases-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 2pt;
-}
-
 .game-alias {
     display: inline-block;
     font-size: smaller;
@@ -109,13 +246,6 @@ body {
     background-color: #ffffff;
     border: 1px solid #efbfee;
     border-radius: 5px;
-}
-
-.game-row-related-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    gap: 2pt;
 }
 
 .game-related-link {
@@ -134,8 +264,10 @@ body {
 }
 
 .include-only {
+    font-size: smaller;
     color: #4caf50;
 }
 .exclude-only {
+    font-size: smaller;
     color: #f44336;
 }

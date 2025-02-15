@@ -4,43 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Living Playbook</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="page-header">
-        <img src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo" style="vertical-align: middle; width: 64pt; height: 64pt;">
-        <h1 id="page-title" style="display: inline;">The Online Living Playbook</h1>
-    </div>
-    <div id="search-section">
-        <input type="text" id="search-box" placeholder="Search games...">
-        <button id="clear-search" style="display: none;">x</button>
-    </div>
-    <div id="tag-section" class="tag-list">
-        <p><span class="h2">Tags</span><span> <span class="include-only">Green to include only games with this tag</span>, <span class="exclude-only">Red to exclude games with this tag.</span></span></p>
-        <div id="tags-container"></div>
-    </div>
-    
-    <div class="game-list">
-        <h2>Games</h2>
-        <ul id="games-container"></ul>
-    </div>
+    <div class="inner-body">
+        <div class="page-header">
+            <img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
+            <div id="page-title" class="page-title">The Online Living Playbook</div>
+            <div class="logo-counterbalance"></div>
+        </div>
+        <div id="search-section" class="search-container">
+            <input type="search" id="search-box" class="search-textbox" placeholder="Search games...">
+        </div>
+        <div class="collapsible-header">Filter By Tags</div>
+        <div class="collapsible-content" class="tag-list">
+            <p>
+                <div id="tags-container"></div>
+                <span>
+                    <span class="include-only">Green to include only games with this tag.</span> 
+                    <span class="exclude-only">Red to exclude games with this tag.</span>
+                </span>
+            </p>
+        </div>
+        
+        <div class="game-list">
+            <div id="games-container"/>
+        </div>
+    </body>
+    <footer>
+        <p><span class="bold">License and Copyright Information</span></p>
+        <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
+        <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
+        <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
+    </footer>
 
     <script src="playbook.js" defer></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            const gameId = urlParams.get('gameId');
             const dbId = urlParams.get('dbId');
             const filter = new TagFilter();
             const playbook = new Playbook();
-            let searchTerm = gameId ? `id:${gameId}` : "";
+            let searchTerm = urlParams.get('search');
+            let lazyTimer = null;
 
             if (dbId === "2001") {
                 document.getElementById('page-title').textContent = "The Online Living Playbook: Original 2001 Edition";
             }
 
             const searchBox = document.getElementById('search-box');
-            const clearSearchButton = document.getElementById('clear-search');
+            const tagsContainer = document.getElementById('tags-container');
 
             function createGameRow(class_name, header="", textContent="")
             {
@@ -55,7 +72,9 @@
                 }
 
                 if (textContent) {
-                    const divText = document.createElement('span');
+                    const divText = document.createElement('div');
+                    divText.classList.add("game-row-content");
+                    divText.classList.add("game-row-text");
                     divText.classList.add("game-row-text-" + class_name);
                     divText.textContent = textContent;
                     divRow.appendChild(divText);
@@ -63,46 +82,81 @@
                 return divRow;
             }
 
+            function createGameRowContainer(class_name)
+            {
+                const divRowContainer = document.createElement('div');
+                divRowContainer.classList.add(`game-row-${class_name}-container`);
+                divRowContainer.classList.add("game-row-container");        
+                return divRowContainer;
+            }
+
+            function lazyUpdateUrlFromState()
+            {
+                if (!lazyTimer) {
+                    lazyTimer = setTimeout(() => {
+                        updateUrlFromState();
+                        lazyTimer = null;
+                    }, 1000);
+                }
+            }
+
+            function updateUrlFromState()
+            {
+                const url = new URL(window.location);
+                if (searchTerm) {
+                    url.searchParams.set('search', searchTerm.trim().toLowerCase());
+                } else {
+                    url.searchParams.delete('search');
+                }
+                
+                const yesTags = Array.from(filter.yesTags).join(',');
+                if (yesTags && yesTags.length > 0) {
+                    url.searchParams.set('yesTags', yesTags);
+                } else {
+                    url.searchParams.delete('yesTags');
+                }
+
+                const noTags = Array.from(filter.noTags).join(',');
+                if (noTags && noTags.length > 0) {
+                    url.searchParams.set('noTags', noTags);
+                } else {
+                    url.searchParams.delete('noTags');
+                }
+
+                window.history.pushState({}, '', url);
+            }
+
             function populateGameList() {
                 const games = playbook.searchGames(searchTerm, filter);
-                const gamesContainer = document.getElementById('games-container');
+                const gamesContainer = document.getElementById('games-container');                
                 gamesContainer.innerHTML = '';
 
                 games.forEach(gameName => {
                     const gameDetails = playbook.getGameDetailsByName(gameName);
                     const divGame = document.createElement('div');
-                    divGame.classList.add("game");
+                    divGame.classList.add("game-card");
                     divGame.id = `${gameDetails.anchorName}`;
 
-                    const divTitle = createGameRow("name", "", gameDetails.gameName);
-                    const divDesc = createGameRow("desc", "description", gameDetails.gameDetails);
-                    
+                    const divTitle = document.createElement('div');
+                    divTitle.classList.add('game-card-title');
+                    divTitle.textContent = gameDetails.gameName;
+                    const divCardContent = document.createElement('div');
+                    divCardContent.classList.add('game-card-content');
                     divGame.appendChild(divTitle);
-                    divGame.appendChild(divDesc);
+                    divGame.appendChild(divCardContent);
+
+                    createGameRow("name", "", gameDetails.gameName);
+                    const divDesc = createGameRow("desc", "description", gameDetails.gameDetails);
+                    divCardContent.appendChild(divDesc);
                     
                     if (gameDetails.notes) {
                         const divNotesRow = createGameRow("notes", "notes", gameDetails.notes);
-                        divGame.appendChild(divNotesRow);
-                    }
-
-                    if (gameDetails.tags) {
-                        const divTagsRow = createGameRow("tags", "tags");
-                        const divTags = document.createElement('div');
-                        divTags.classList.add('game-row-tags-container');
-                        gameDetails.tags.forEach(tag => {
-                            const divTag = document.createElement('div');
-                            divTag.classList.add('game-tag');
-                            divTag.textContent = tag;
-                            divTags.appendChild(divTag);
-                        });
-                        divTagsRow.appendChild(divTags);
-                        divGame.appendChild(divTagsRow);
+                        divCardContent.appendChild(divNotesRow);
                     }
 
                     if (gameDetails.aliases) {
                         const divAliasesRow = createGameRow("aliases", "aliases");
-                        const divAliases = document.createElement('div');
-                        divAliases.classList.add('game-row-aliases-container');
+                        const divAliases = createGameRowContainer("aliases");
                         gameDetails.aliases.forEach(alias => {
                             const divAlias = document.createElement('div');
                             divAlias.classList.add('game-alias');
@@ -110,26 +164,39 @@
                             divAliases.appendChild(divAlias);
                         });
                         divAliasesRow.appendChild(divAliases);
-                        divGame.appendChild(divAliasesRow);
+                        divCardContent.appendChild(divAliasesRow);
+                    }
+
+
+                    if (gameDetails.tags) {
+                        const divTagsRow = createGameRow("tags", "tags");
+                        const divTags = createGameRowContainer("tags");
+                        gameDetails.tags.forEach(tag => {
+                            const divTag = document.createElement('div');
+                            divTag.classList.add('game-tag');
+                            divTag.textContent = tag;
+                            divTags.appendChild(divTag);
+                        });
+                        divTagsRow.appendChild(divTags);
+                        divCardContent.appendChild(divTagsRow);
                     }
 
                     if (gameDetails.related) {
                         const divRelatedRow = createGameRow("related", "related games");
-                        const divRelated = document.createElement('div');
-                        divRelated.classList.add('game-row-related-container');
+                        const divRelated = createGameRowContainer("related");
                         gameDetails.related.forEach(related => {
                             const link = document.createElement('a');
                             // The link is the current page, including existing parameters,
                             // but with the gameId query parameter set to the anchor name.
                             const url = new URL(window.location);
-                            url.searchParams.set('gameId', playbook.getAnchorName(related));
+                            url.searchParams.set('search', `id:${playbook.getAnchorName(related)}`);
                             link.href = url;
                             link.classList.add('game-related-link');
                             link.textContent = related;
                             divRelated.appendChild(link);
                         });
                         divRelatedRow.appendChild(divRelated);
-                        divGame.appendChild(divRelatedRow);
+                        divCardContent.appendChild(divRelatedRow);
                     }
 
                     gamesContainer.appendChild(divGame);
@@ -144,7 +211,6 @@
                 if (searchTerm)
                 {
                     document.getElementById('search-box').value = searchTerm;
-                    clearSearchButton.style.display = 'inline';
                 }
 
                 tags.forEach(tag => {
@@ -159,6 +225,7 @@
                     tagsContainer.appendChild(button);
                 });
 
+                tagsContainer.style.display = 'block'; // Ensure tags are visible on load
                 populateGameList();
             }
 
@@ -181,37 +248,38 @@
                     filter.yesTags.delete(tag);
                     filter.noTags.delete(tag);
                 }
+                updateUrlFromState(searchTerm, filter);
+            }
+
+
+            var collapsibles = document.getElementsByClassName("collapsible-header");
+            var i;
+
+            for (i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
             }
 
             searchBox.addEventListener('input', (event) => {
                 searchTerm = event.target.value;
+                lazyUpdateUrlFromState();
                 populateGameList();
-                clearSearchButton.style.display = searchTerm ? 'inline' : 'none';
             });
 
-            clearSearchButton.addEventListener('click', () => {
-                // if there is a gameId url parameter, we want to clear it,
-                // but keep any other parameters
-                if (gameId) {
-                    const url = new URL(window.location);
-                    url.searchParams.delete('gameId');
-                    // update the url without reloading the page
-                    window.history.pushState({}, '', url);
-                }
-                searchBox.value = '';
-                searchTerm = '';
-                clearSearchButton.style.display = 'none';
-                populateGameList();
+            // Add event listener to search box when focus is lost
+            searchBox.addEventListener('blur', (event) => {
+                updateUrlFromState();
             });
 
             initialize();
         });
     </script>
-</body>
-<footer>
-    <p><span class="bold">License and Copyright Information</span></p>
-    <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
-    <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
-    <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
-</footer>
+
 </html>

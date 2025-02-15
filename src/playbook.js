@@ -79,7 +79,21 @@ class Playbook {
 
     getAnchorName(gameName) {
         // // Remove spaces and any non-letter/number characters from name
-        return gameName.replace(/[^A-Za-z0-9]+/g, '');
+        return gameName.replace(/[^A-Za-z0-9]+/g, '').toLowerCase();
+    }
+
+    getGameIdFromSearchTerm(term) {
+        if (!this.data || !this.data.games || !term) {
+            return null;
+        }
+
+        let lowerTerm = term.toLowerCase();
+        if (lowerTerm.startsWith("id:")) {
+            lowerTerm = lowerTerm.slice(3);
+        }
+
+        const game = this.data.games.find(game => game.anchorName.toLowerCase() === lowerTerm);
+        return game ? lowerTerm : null;
     }
 
     searchGames(term, tagFilter = null) {
@@ -87,18 +101,13 @@ class Playbook {
             return [];
         }
 
-        let lowerTerm = term.toLowerCase();
-        let searchById = false;
-
-        if (lowerTerm.startsWith("id:")) {
-            lowerTerm = lowerTerm.slice(3);
-            searchById = true;
-        }
-
+        let lowerTerm = term?.toLowerCase();
+        let gameId = this.getGameIdFromSearchTerm(lowerTerm);
+       
         return this.data.games
             .filter(game => {
-                if (searchById) {
-                    return game.anchorName.toLowerCase().includes(lowerTerm);
+                if (gameId) {
+                    return game.anchorName.includes(gameId);
                 }
 
                 const matchesTerm = Object.entries(game).some(([key, value]) => {
