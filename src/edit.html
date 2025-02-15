@@ -4,56 +4,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Playbook Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fondamento:ital@0;1&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="playbook.js" defer></script>
 </head>
 <body>
-    <div class="container">
-        <div class="inner-body">
-            <div class="page-header">
-                <img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
-                <div id="page-title" class="page-title"><span>Playbook Editor</span></div>
-                <div class="logo-counterbalance"><span class="page-subtitle">The Unexpected Productions Improv Game List</span></div>
-            </div>
-
-            <div>
-                <label for="game-select">Select Game:</label>
-                <select id="game-select"></select>
-            </div>
-            <div>
-                <label for="game-name">Name:</label>
-                <input type="text" class="field_edit field_short" id="game-name">
-            </div>
-            <div>
-                <label for="game-description">Description:</label>
-                <textarea class="field_edit field_long" id="game-description"></textarea>
-            </div>
-            <div>
-                <label for="game-notes">Notes:</label>
-                <textarea id="game-notes" class="field_edit field_long" ></textarea>
-            </div>
-            <div>
-                <label for="game-variations">Variations (one per line):</label>
-                <textarea class="field_edit field_long" id="game-variations"></textarea>
-            </div>
-            <div>
-                <label for="game-aliases">Aliases (comma-separated):</label>
-                <input type="text" class="field_edit field_short" id="game-aliases">
-            </div>
-            <div>
-                <label for="game-related">Related Games (comma-separated):</label>
-                <input type="text" class="field_edit field_short" id="game-related">
-            </div>
-            <div>
-                <label for="game-tags">Tags (comma-separated):</label>
-                <input type="text" class="field_edit field_short" id="game-tags">
-            </div>
-            <button id="save-button">Save Changes</button>
-            <button id="download-button">Download JSON</button>
+    <div class="inner-body">
+        <div class="page-header">
+            <img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
+            <div id="page-title" class="page-title"><span>Playbook Editor</span></div>
+            <div class="logo-counterbalance"><span class="page-subtitle">The Unexpected Productions Improv Game List</span></div>
         </div>
-    </div>
 
+        <div>
+            <label for="game-select">Select Game:</label>
+            <select id="game-select"></select>
+        </div>
+        <div>
+            <label for="game-name">Name:</label>
+            <input type="text" class="field_edit field_short" id="game-name">
+        </div>
+        <div>
+            <label for="game-description">Description:</label>
+            <textarea class="field_edit field_long" id="game-description"></textarea>
+        </div>
+        <div>
+            <label for="game-notes">Notes:</label>
+            <textarea id="game-notes" class="field_edit field_long" ></textarea>
+        </div>
+        <div>
+            <label for="game-variations">Variations (one per line):</label>
+            <textarea class="field_edit field_long" id="game-variations"></textarea>
+        </div>
+        <div>
+            <label for="game-aliases">Aliases (comma-separated):</label>
+            <input type="text" class="field_edit field_short" id="game-aliases">
+        </div>
+        <div>
+            <label for="game-related">Related Games (comma-separated):</label>
+            <input type="text" class="field_edit field_short" id="game-related">
+        </div>
+        <div>
+            <label for="game-tags">Tags (comma-separated):</label>
+            <input type="text" class="field_edit field_short" id="game-tags">
+        </div>
+        <button id="save-button">Save Changes</button>
+        <button id="download-button">Download JSON</button> 
+        <div id="overlay" class="overlay hidden">
+            <div class="overlay-content">
+                <h2>Confirm Changes</h2>
+                <div id="old-details">
+                    <h3>Old Details</h3>
+                    <div id="old-details-content"></div>
+                </div>
+                <div id="new-details">
+                    <h3>New Details</h3>
+                    <div id="new-details-content"></div>
+                </div>
+                <button id="confirm-button">Confirm</button>
+                <button id="cancel-button">Cancel</button>
+            </div>
+        </div>
+    </div>    
     <script>
     document.addEventListener('DOMContentLoaded', async () => {
         await globals.playbook.loadFromURL('living_playbook.json');
@@ -71,6 +88,7 @@
         });
 
         gameSelect.addEventListener('change', loadGameDetails);
+        loadGameDetails();
     }
 
     function loadGameDetails() {
@@ -95,6 +113,31 @@
             return value ? value : null;
         };
 
+        const newDetails = {
+            gameName: getValue('game-name'),
+            gameDetails: getValue('game-description'),
+            notes: getValue('game-notes'),
+            variations: getValue('game-variations') ? getValue('game-variations').split('\n').map(v => v.trim()) : [],
+            aliases: getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [],
+            related: getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [],
+            tags: getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [],
+        };
+        document.getElementById('old-details-content').innerHTML = '';
+        document.getElementById('new-details-content').innerHTML = '';
+        document.getElementById('old-details-content').appendChild(CreateGameCardDiv(gameDetails));
+        document.getElementById('new-details-content').appendChild(CreateGameCardDiv(newDetails));
+        document.getElementById('overlay').classList.remove('hidden');
+    });
+
+    document.getElementById('confirm-button').addEventListener('click', () => {
+        const gameName = document.getElementById('game-select').value;
+        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
+
+        const getValue = (id) => {
+            const value = document.getElementById(id).value.trim();
+            return value ? value : null;
+        };
+
         gameDetails.gameName = getValue('game-name');
         gameDetails.gameDetails = getValue('game-description');
         gameDetails.notes = getValue('game-notes');
@@ -102,8 +145,14 @@
         gameDetails.aliases = getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [];
         gameDetails.related = getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [];
         gameDetails.tags = getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [];
+        gameDetails.anchorname = globals.playbook.getAnchorName(gameDetails.gameName);
 
+        document.getElementById('overlay').classList.add("hidden");
         alert('Game details updated!');
+    });
+
+    document.getElementById('cancel-button').addEventListener('click', () => {
+        document.getElementById('overlay').classList.add("hidden");
     });
 
     document.getElementById('download-button').addEventListener('click', () => {

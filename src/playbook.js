@@ -303,6 +303,84 @@ function toggleTagState(button, tag) {
     updateUrlFromState();
 }
 
+function CreateGameCardDiv(gameDetails) {
+    const divGameCard = document.createElement('div');
+    divGameCard.classList.add("game-card");
+    divGameCard.id = `${gameDetails.anchorName}`;
+
+    const divTitle = document.createElement('div');
+    divTitle.classList.add('game-card-title');
+    divTitle.textContent = gameDetails.gameName;
+    const divCardContent = document.createElement('div');
+    divCardContent.classList.add('game-card-content');
+    divGameCard.appendChild(divTitle);
+    divGameCard.appendChild(divCardContent);
+
+    createGameRow("name", "", gameDetails.gameName);
+    const divDesc = createGameRow("desc", "description", mdToHtml(gameDetails.gameDetails));
+    divCardContent.appendChild(divDesc);
+    
+    if (gameDetails.notes) {
+        const divNotesRow = createGameRow("notes", "notes", mdToHtml(gameDetails.notes));
+        divCardContent.appendChild(divNotesRow);
+    }
+
+    if (gameDetails.variations) {
+        const divVariationsRow = createGameRow("variations", "variations");
+        gameDetails.variations.forEach(variation => {
+            divVariationsRow.appendChild(createGameRowText("variation", mdToHtml(variation)));
+        });
+        divCardContent.appendChild(divVariationsRow);
+    }
+
+    if (gameDetails.aliases) {
+        const divAliasesRow = createGameRow("aliases", "aliases");
+        const divAliases = createGameRowContainer("aliases");
+        gameDetails.aliases.forEach(alias => {
+            const divAlias = document.createElement('div');
+            divAlias.classList.add('game-alias');
+            divAlias.textContent = alias;
+            divAliases.appendChild(divAlias);
+        });
+        divAliasesRow.appendChild(divAliases);
+        divCardContent.appendChild(divAliasesRow);
+    }
+
+
+    if (gameDetails.tags) {
+        const divTagsRow = createGameRow("tags", "tags");
+        const divTags = createGameRowContainer("tags");
+        gameDetails.tags.forEach(tag => {
+            const divTag = document.createElement('div');
+            divTag.classList.add('game-tag');
+            divTag.textContent = tag;
+            divTags.appendChild(divTag);
+        });
+        divTagsRow.appendChild(divTags);
+        divCardContent.appendChild(divTagsRow);
+    }
+
+    if (gameDetails.related) {
+        const divRelatedRow = createGameRow("related", "related games");
+        const divRelated = createGameRowContainer("related");
+        gameDetails.related.forEach(related => {
+            const link = document.createElement('a');
+            // The link is the current page, including existing parameters,
+            // but with the gameId query parameter set to the anchor name.
+            const url = new URL(window.location);
+            url.searchParams.set('search', `id:${globals.playbook.getAnchorName(related)}`);
+            link.href = url;
+            link.classList.add('game-related-link');
+            link.textContent = related;
+            divRelated.appendChild(link);
+        });
+        divRelatedRow.appendChild(divRelated);
+        divCardContent.appendChild(divRelatedRow);
+    }
+
+    return divGameCard;
+}
+
 
 function populateGameList() {
     const games = globals.playbook.searchGames(globals.searchTerm, globals.filter);
@@ -311,81 +389,7 @@ function populateGameList() {
 
     games.forEach(gameName => {
         const gameDetails = globals.playbook.getGameDetailsByName(gameName);
-        const divGame = document.createElement('div');
-        divGame.classList.add("game-card");
-        divGame.id = `${gameDetails.anchorName}`;
-
-        const divTitle = document.createElement('div');
-        divTitle.classList.add('game-card-title');
-        divTitle.textContent = gameDetails.gameName;
-        const divCardContent = document.createElement('div');
-        divCardContent.classList.add('game-card-content');
-        divGame.appendChild(divTitle);
-        divGame.appendChild(divCardContent);
-
-        createGameRow("name", "", gameDetails.gameName);
-        const divDesc = createGameRow("desc", "description", mdToHtml(gameDetails.gameDetails));
-        divCardContent.appendChild(divDesc);
-        
-        if (gameDetails.notes) {
-            const divNotesRow = createGameRow("notes", "notes", mdToHtml(gameDetails.notes));
-            divCardContent.appendChild(divNotesRow);
-        }
-
-        if (gameDetails.variations) {
-            const divVariationsRow = createGameRow("variations", "variations");
-            gameDetails.variations.forEach(variation => {
-                divVariationsRow.appendChild(createGameRowText("variation", mdToHtml(variation)));
-            });
-            divCardContent.appendChild(divVariationsRow);
-        }
-
-        if (gameDetails.aliases) {
-            const divAliasesRow = createGameRow("aliases", "aliases");
-            const divAliases = createGameRowContainer("aliases");
-            gameDetails.aliases.forEach(alias => {
-                const divAlias = document.createElement('div');
-                divAlias.classList.add('game-alias');
-                divAlias.textContent = alias;
-                divAliases.appendChild(divAlias);
-            });
-            divAliasesRow.appendChild(divAliases);
-            divCardContent.appendChild(divAliasesRow);
-        }
-
-
-        if (gameDetails.tags) {
-            const divTagsRow = createGameRow("tags", "tags");
-            const divTags = createGameRowContainer("tags");
-            gameDetails.tags.forEach(tag => {
-                const divTag = document.createElement('div');
-                divTag.classList.add('game-tag');
-                divTag.textContent = tag;
-                divTags.appendChild(divTag);
-            });
-            divTagsRow.appendChild(divTags);
-            divCardContent.appendChild(divTagsRow);
-        }
-
-        if (gameDetails.related) {
-            const divRelatedRow = createGameRow("related", "related games");
-            const divRelated = createGameRowContainer("related");
-            gameDetails.related.forEach(related => {
-                const link = document.createElement('a');
-                // The link is the current page, including existing parameters,
-                // but with the gameId query parameter set to the anchor name.
-                const url = new URL(window.location);
-                url.searchParams.set('search', `id:${globals.playbook.getAnchorName(related)}`);
-                link.href = url;
-                link.classList.add('game-related-link');
-                link.textContent = related;
-                divRelated.appendChild(link);
-            });
-            divRelatedRow.appendChild(divRelated);
-            divCardContent.appendChild(divRelatedRow);
-        }
-
-        gamesContainer.appendChild(divGame);
+        gamesContainer.appendChild(CreateGameCardDiv(gameDetails));
     });
 }
 
@@ -447,7 +451,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports = { OnPlaybookPageLoad };
+    module.exports = { OnPlaybookPageLoad, CreateGameCardDiv };
 } else {
     window.OnPlaybookPageLoad = OnPlaybookPageLoad;
+    window.CreateGameCardDiv = CreateGameCardDiv;
 }
