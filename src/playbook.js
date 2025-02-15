@@ -39,6 +39,9 @@ class Playbook {
             // Walk through games and add anchorName
             this.data.games.forEach(game => {
                 game.anchorName = this.getAnchorName(game.gameName);
+                if (game.aliases) {
+                    game.anchorAliases = game.aliases.map(alias => this.getAnchorName(alias));
+                }
             });
 
         } catch (error) {
@@ -92,8 +95,11 @@ class Playbook {
             lowerTerm = lowerTerm.slice(3);
         }
 
-        const game = this.data.games.find(game => game.anchorName.toLowerCase() === lowerTerm);
-        return game ? lowerTerm : null;
+        const game = this.data.games.find(game => 
+            game.anchorName === lowerTerm || 
+            (game.anchorAliases && game.anchorAliases.includes(lowerTerm))
+        );
+        return game ? game.anchorName : null;
     }
 
     searchGames(term, tagFilter = null) {
@@ -147,7 +153,7 @@ class Playbook {
 
     exportJson() {
         const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
-            if (key === 'anchorName') {
+            if (key === 'anchorName' || key === 'anchorAliases') {
                 return undefined;
             }
             return value;
