@@ -1,24 +1,61 @@
-body {
-    font-family: "Montserrat", serif;
-    font-optical-sizing: auto;
-    margin: 20px;
-    background-color: #e9eef8;
-    
-    /* Constants */
+/* Constants */
+:root {
+    --font-family-title: "Fondamento", serif;
+    --font-family-main: "Montserrat", serif;
+
+    --page-border-bg: #e9eef8;
+    --default-bg: white;
+
+    --page-border-radius: 10px;
+    --page-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);    
+    --padding-page: 20px;
+
+    --font-size-page-title: 24pt;
+    --font-size-game-card-title: large;
+    --font-size-game-row: small;
+    --font-size-game-row-header: x-small;
+    --font-size-game-tag: smaller;
+    --font-size-game-alias: smaller;
+    --font-size-game-related-link: smaller;
+
+    --card-border-color: black;
+    --card-border-width: 1px;
+    --card-border-radius: 5px;
+
+    --color-game-tag-border: #7eaa92;
+    --color-game-tag-bg: #cdeedc;
+
+    --unsel-tag-bg: #cccccc;
+    --include-tag-bg: #4caf50;
+    --exclude-tag-bg: #f44336;
+
+    --color-game-alias-border: #efbfee;
+
+    --color-game-related-link-border: #888eba;
+    --color-game-related-link-hover-bg: #a1b7e7;
+
+    --padding-small: 2pt;
+    --padding-medium: 5px;
+    --padding-large: 10px;
+
+    --tag-border-width: 1px;
     --game-row-indent: 10pt;
+}
+
+body {
+    font-family: var(--font-family-main);
+    font-optical-sizing: auto;
+    margin: var(--padding-page);
+    background-color: var(--page-border-bg);
 }
 
 .inner-body {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.h2 {
-    font-size: 1.5em;
+    padding: var(--padding-page);
+    background-color: var(--default-bg);
+    border-radius: var(--page-border-radius);
+    box-shadow: var(--page-box-shadow);
 }
 
 .bold {
@@ -42,8 +79,8 @@ body {
 }
 
 .page-title {
-    font-family: "Fondamento", serif;
-    font-size: 24pt;
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-page-title);
     font-weight: 400;
 }
 
@@ -61,8 +98,6 @@ body {
     display: flex;
     flex-direction: column;
 }
-
-
 
 .search-container {
     display: flex;
@@ -138,7 +173,6 @@ body {
     display: block;
 }
 
-
 .hidden {
     display: none;
 }
@@ -153,16 +187,16 @@ body {
 .tag-button {
     padding: 5px 10px;
     margin: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--unsel-tag-bg);
     cursor: pointer;
     border-radius: 5px;
 }
 .tag-button.checked {
-    background-color: #4caf50;
+    background-color: var(--include-tag-bg);
     color: white;
 }
 .tag-button.unchecked {
-    background-color: #f44336;
+    background-color: var(--exclude-tag-bg);
     color: white;
 }
 .game-list {
@@ -176,18 +210,16 @@ body {
 }
 
 .game-card-title {
-    display: inline-block;
     font-weight: bold;
-    font-size: large;
-    border: 1px solid black;
-    background-color: white;
-    border-radius: 5px 5px 0px 0px;
-    border-width: 1px 1px 0px 1px;
-    padding: 2pt 5pt;
+    font-size: var(--font-size-game-card-title);
+    border: var(--card-border-width) solid var(--card-border-color);
+    background-color: var(--default-bg);
+    border-radius: var(--card-border-radius) var(--card-border-radius) 0px 0px;
+    border-width: var(--card-border-width) var(--card-border-width) 0 var(--card-border-width);
+    padding: var(--padding-small) var(--padding-medium);
     order: 1;
     position: relative;
     top: 1px;
-    /* fit width to content */
     width: max-content;
 }
 
@@ -207,16 +239,15 @@ body {
 }
 
 .game-row {
-    font-size: small;
-    padding: 2pt;
+    font-size: var(--font-size-game-row);
+    padding: var(--padding-small);
 }
 
 .game-row-header {
-    font-size: x-small;
-    padding: 2pt 0pt 0pt 0pt;
+    font-size: var(--font-size-game-row-header);
+    padding: var(--padding-small) 0 0 0;
     display: flex;
  }
-
 
 .game-row-desc {
     font-size: small;
@@ -240,47 +271,44 @@ body {
 }
 
 .game-tag {
-    display: inline-block;
-    font-size: smaller;
-    padding: 1pt;
-    margin: 1pt;
-    border: 1px solid #7eaa92;
-    background-color: #cdeedc;
+    font-size: var(--font-size-game-tag);
+    padding: var(--padding-small);
+    margin: var(--padding-small);
+    border: var(--tag-border-width) solid var(--color-game-tag-border);
+    background-color: var(--color-game-tag-bg);
     border-radius: 5px;
 }
 
 .game-alias {
-    display: inline-block;
-    font-size: smaller;
-    padding: 1pt;
-    margin: 1pt;
-    background-color: #ffffff;
-    border: 1px solid #efbfee;
+    font-size: var(--font-size-game-alias);
+    padding: var(--padding-small);
+    margin: var(--padding-small);
+    background-color: var(--default-bg);
+    border: var(--tag-border-width) solid var(--color-game-alias-border);
     border-radius: 5px;
 }
 
 .game-related-link {
-    display: inline-block;
-    text-decoration: none;;
-    font-size: smaller;
-    padding: 1pt;
-    margin: 1pt;
-    background-color: #ffffff;
-    border: 1px solid #888eba;
+    font-size: var(--font-size-game-related-link);
+    padding: var(--padding-small);
+    margin: var(--padding-small);
+    background-color: var(--default-bg);
+    border: var(--tag-border-width) solid var(--color-game-related-link-border);
     border-radius: 5px;
 }
 
 .game-related-link:hover {
-    background-color: #a1b7e7;
+    background-color: var(--color-game-related-link-hover-bg);
 }
 
 .include-only {
-    font-size: smaller;
-    color: #4caf50;
+    font-size: var(--font-size-game-tag);
+    color: var(----padding-page);
 }
+
 .exclude-only {
-    font-size: smaller;
-    color: #f44336;
+    font-size: var(--font-size-game-tag);
+    color: var(--exclude-tag-bg);
 }
 
 @media print {
