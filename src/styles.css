@@ -330,6 +330,15 @@ body {
     color: var(--exclude-tag-bg);
 }
 
+.field_edit {
+    width: 100%;
+}
+
+.field_long {
+    /* textarea should be 10 lines tall */
+    height: 10em;
+}
+
 @media print {
     .inner-body {
         margin: 0px;

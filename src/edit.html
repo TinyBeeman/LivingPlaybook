@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Playbook Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="playbook.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-body">
+            <div class="page-header">
+                <img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
+                <div id="page-title" class="page-title"><span>Playbook Editor</span></div>
+                <div class="logo-counterbalance"><span class="page-subtitle">The Unexpected Productions Improv Game List</span></div>
+            </div>
+
+            <div>
+                <label for="game-select">Select Game:</label>
+                <select id="game-select"></select>
+            </div>
+            <div>
+                <label for="game-name">Name:</label>
+                <input type="text" class="field_edit field_short" id="game-name">
+            </div>
+            <div>
+                <label for="game-description">Description:</label>
+                <textarea class="field_edit field_long" id="game-description"></textarea>
+            </div>
+            <div>
+                <label for="game-notes">Notes:</label>
+                <textarea id="game-notes" class="field_edit field_long" ></textarea>
+            </div>
+            <div>
+                <label for="game-variations">Variations (one per line):</label>
+                <textarea class="field_edit field_long" id="game-variations"></textarea>
+            </div>
+            <div>
+                <label for="game-aliases">Aliases (comma-separated):</label>
+                <input type="text" class="field_edit field_short" id="game-aliases">
+            </div>
+            <div>
+                <label for="game-related">Related Games (comma-separated):</label>
+                <input type="text" class="field_edit field_short" id="game-related">
+            </div>
+            <div>
+                <label for="game-tags">Tags (comma-separated):</label>
+                <input type="text" class="field_edit field_short" id="game-tags">
+            </div>
+            <button id="save-button">Save Changes</button>
+            <button id="download-button">Download JSON</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        await globals.playbook.loadFromURL('living_playbook.json');
+        populateGameSelect();
+    });
+
+    function populateGameSelect() {
+        const gameSelect = document.getElementById('game-select');
+        const games = globals.playbook.getGamesAlphabetized();
+        games.forEach(gameName => {
+            const option = document.createElement('option');
+            option.value = gameName;
+            option.textContent = gameName;
+            gameSelect.appendChild(option);
+        });
+
+        gameSelect.addEventListener('change', loadGameDetails);
+    }
+
+    function loadGameDetails() {
+        const gameName = document.getElementById('game-select').value;
+        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
+
+        document.getElementById('game-name').value = gameDetails.gameName;
+        document.getElementById('game-description').value = gameDetails.gameDetails;
+        document.getElementById('game-notes').value = gameDetails.notes || '';
+        document.getElementById('game-variations').value = (gameDetails.variations || []).join('\n');
+        document.getElementById('game-aliases').value = (gameDetails.aliases || []).join(', ');
+        document.getElementById('game-related').value = (gameDetails.related || []).join(', ');
+        document.getElementById('game-tags').value = (gameDetails.tags || []).join(', ');
+    }
+
+    document.getElementById('save-button').addEventListener('click', () => {
+        const gameName = document.getElementById('game-select').value;
+        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
+
+        const getValue = (id) => {
+            const value = document.getElementById(id).value.trim();
+            return value ? value : null;
+        };
+
+        gameDetails.gameName = getValue('game-name');
+        gameDetails.gameDetails = getValue('game-description');
+        gameDetails.notes = getValue('game-notes');
+        gameDetails.variations = getValue('game-variations') ? getValue('game-variations').split('\n').map(v => v.trim()) : [];
+        gameDetails.aliases = getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [];
+        gameDetails.related = getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [];
+        gameDetails.tags = getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [];
+
+        alert('Game details updated!');
+    });
+
+    document.getElementById('download-button').addEventListener('click', () => {
+        globals.playbook.downloadJson();
+    });
+    </script>
+</body>
+</html>
