@@ -158,7 +158,7 @@ class PlaybookGlobals {
 
 const globals = new PlaybookGlobals();
 
-function createGameRow(class_name, header="", textContent="")
+function createGameRow(class_name, header="", innerHTML="")
 {
     const divRow = document.createElement('div');
     divRow.classList.add("game-row");
@@ -170,20 +170,20 @@ function createGameRow(class_name, header="", textContent="")
         divRow.appendChild(divHeader);
     }
 
-    if (textContent) {
-        const divText = createGameRowText(class_name, textContent);
+    if (innerHTML) {
+        const divText = createGameRowText(class_name, innerHTML);
         divRow.appendChild(divText);
     }
     return divRow;
 }
 
-function createGameRowText(class_name, textContent="")
+function createGameRowText(class_name, innerHTML="")
 {
     const divText = document.createElement('div');
     divText.classList.add("game-row-content");
     divText.classList.add("game-row-text");
     divText.classList.add("game-row-text-" + class_name);
-    divText.textContent = textContent;
+    divText.innerHTML = innerHTML;
     return divText;
 }
 
@@ -225,10 +225,10 @@ function updateUrlFromState()
 
 function lazyUpdateUrlFromState()
 {
-    if (!lazyTimer) {
-        lazyTimer = setTimeout(() => {
+    if (!globals.lazyTimer) {
+        globals.lazyTimer = setTimeout(() => {
             updateUrlFromState();
-            lazyTimer = null;
+            globals.lazyTimer = null;
         }, 1000);
     }
 }
@@ -301,18 +301,18 @@ function populateGameList() {
         divGame.appendChild(divCardContent);
 
         createGameRow("name", "", gameDetails.gameName);
-        const divDesc = createGameRow("desc", "description", gameDetails.gameDetails);
+        const divDesc = createGameRow("desc", "description", mdToHtml(gameDetails.gameDetails));
         divCardContent.appendChild(divDesc);
         
         if (gameDetails.notes) {
-            const divNotesRow = createGameRow("notes", "notes", gameDetails.notes);
+            const divNotesRow = createGameRow("notes", "notes", mdToHtml(gameDetails.notes));
             divCardContent.appendChild(divNotesRow);
         }
 
         if (gameDetails.variations) {
             const divVariationsRow = createGameRow("variations", "variations");
             gameDetails.variations.forEach(variation => {
-                divVariationsRow.appendChild(createGameRowText("variation", variation));
+                divVariationsRow.appendChild(createGameRowText("variation", mdToHtml(variation)));
             });
             divCardContent.appendChild(divVariationsRow);
         }
@@ -401,7 +401,28 @@ async function OnPlaybookPageLoad() {
     });
 
     initializeContent();
+    console.log(mdToHtml('## Hello *world*!'));
 };
+
+
+function mdToHtml(markdown) {
+    if (typeof marked !== 'undefined') {
+        // Determine if markdown contains a newline
+        if (markdown.indexOf('\n') === -1) {
+            return marked.parseInline(markdown);
+        }
+        else {
+            return marked.parse(markdown);
+        }
+    } else {
+        console.error('Marked library is not loaded.');
+        return '';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    console.log(mdToHtml('## Hello *world*!'));
+});
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports = { OnPlaybookPageLoad };

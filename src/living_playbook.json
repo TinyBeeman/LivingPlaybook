@@ -4,7 +4,8 @@
     "games": [
         {
             "gameName": "Accepting Game",
-            "gameDetails": "Two improvisers play a scene where one of them is limited in dialogue. The limited improviser can only say one of the following three lines, \"Sounds good to me!\", \"I'll go along with that!\", and \"O.K., great!\". The unlimited improviser makes offers and the limited improviser replies. The choices made should be active ones allowing for limited responses. This game is excellent if you are not in the mood to improvise. You can be active in the scene without blocking or wimping on an idea.",
+            "gameDetails": "Two improvisers play a scene, bute one of them is can only respond with one of the following three lines:\n- *Sounds good to me!*\n- *I'll go along with that!*\n- *O.K., great!*\n\nThe unlimited improviser makes offers and the limited improviser replies. The choices made should be active ones allowing for limited responses.",
+            "notes": "This game is excellent if you are not in the mood to improvise. You can be active in the scene without blocking or wimping on an idea.",
             "variations": [
                 "This game can be easily played with an audience member in the role with only three lines."
             ],
