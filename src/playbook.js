@@ -144,6 +144,30 @@ class Playbook {
         .map(game => game.gameName)
         .sort((a, b) => a.localeCompare(b));
     }
+
+    exportJson() {
+        const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
+            if (key === 'anchorName') {
+                return undefined;
+            }
+            return value;
+        }, 2);
+        return dataWithoutAnchorNames;
+    }
+
+    downloadJson() {
+        const data = this.exportJson();
+        // console log the first 1000 characters of the JSON data
+        console.log(data.substring(0, 1000));
+
+        const blob = new Blob([data], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'living_playbook.json';
+        a.click();
+        URL.revokeObjectURL(url);
+    }
 }
 
 class PlaybookGlobals {
@@ -194,7 +218,6 @@ function createGameRowContainer(class_name)
     divRowContainer.classList.add("game-row-container");        
     return divRowContainer;
 }
-
 
 function updateUrlFromState()
 {
@@ -400,8 +423,7 @@ async function OnPlaybookPageLoad() {
         updateUrlFromState();
     });
 
-    initializeContent();
-    console.log(mdToHtml('## Hello *world*!'));
+    await initializeContent();
 };
 
 
