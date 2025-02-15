@@ -262,6 +262,12 @@ body {
     font-size: small;
 }
 
+/* Put a bullet before the game-row-text-variation */
+.game-row-text-variation:before {
+    content: "\2023   ";
+    color: black;
+    font-size: normal;
+}
 .game-row-container {
     display: flex;
     flex-wrap: wrap;

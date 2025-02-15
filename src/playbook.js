@@ -171,14 +171,20 @@ function createGameRow(class_name, header="", textContent="")
     }
 
     if (textContent) {
-        const divText = document.createElement('div');
-        divText.classList.add("game-row-content");
-        divText.classList.add("game-row-text");
-        divText.classList.add("game-row-text-" + class_name);
-        divText.textContent = textContent;
+        const divText = createGameRowText(class_name, textContent);
         divRow.appendChild(divText);
     }
     return divRow;
+}
+
+function createGameRowText(class_name, textContent="")
+{
+    const divText = document.createElement('div');
+    divText.classList.add("game-row-content");
+    divText.classList.add("game-row-text");
+    divText.classList.add("game-row-text-" + class_name);
+    divText.textContent = textContent;
+    return divText;
 }
 
 function createGameRowContainer(class_name)
@@ -301,6 +307,14 @@ function populateGameList() {
         if (gameDetails.notes) {
             const divNotesRow = createGameRow("notes", "notes", gameDetails.notes);
             divCardContent.appendChild(divNotesRow);
+        }
+
+        if (gameDetails.variations) {
+            const divVariationsRow = createGameRow("variations", "variations");
+            gameDetails.variations.forEach(variation => {
+                divVariationsRow.appendChild(createGameRowText("variation", variation));
+            });
+            divCardContent.appendChild(divVariationsRow);
         }
 
         if (gameDetails.aliases) {
