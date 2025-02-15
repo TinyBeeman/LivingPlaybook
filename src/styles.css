@@ -29,6 +29,10 @@ body {
     font-style: italic;
 }
 
+.underline {
+    text-decoration: underline;
+}
+
 .page-header {
     display: flex;
     flex-direction: row;
@@ -52,6 +56,13 @@ body {
     width: 64px;
     height: 64px;
 }
+
+.search-tools {
+    display: flex;
+    flex-direction: column;
+}
+
+
 
 .search-container {
     display: flex;
@@ -270,4 +281,17 @@ body {
 .exclude-only {
     font-size: smaller;
     color: #f44336;
+}
+
+@media print {
+    .inner-body {
+        margin: 0px;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .search-tools {
+        display: none;
+    }
 }
