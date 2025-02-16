@@ -27,7 +27,7 @@
         </div>
         <div>
             <label for="game-name">Name:</label>
-            <input type="text" class="field_edit field_short" id="game-name">
+            <input type="text" class="field_edit" id="game-name">
         </div>
         <div>
             <label for="game-description">Description:</label>
@@ -35,11 +35,11 @@
         </div>
         <div>
             <label for="game-notes">Notes:</label>
-            <textarea id="game-notes" class="field_edit field_long" ></textarea>
+            <textarea id="game-notes" class="field_edit field_short" ></textarea>
         </div>
         <div>
             <label for="game-variations">Variations (one per line):</label>
-            <textarea class="field_edit field_long" id="game-variations"></textarea>
+            <textarea class="field_edit field_short" id="game-variations"></textarea>
         </div>
         <div>
             <label for="game-aliases">Aliases (comma-separated):</label>
@@ -53,7 +53,8 @@
             <label for="game-tags">Tags (comma-separated):</label>
             <input type="text" class="field_edit field_short" id="game-tags">
         </div>
-        <button id="save-button">Save Changes</button>
+        <button id="preview-button">Preview Changes</button>
+        <button id="reset-button">Reset Changes</button>
         <button id="download-button">Download JSON</button> 
         <div id="overlay" class="overlay hidden">
             <div class="overlay-content">
@@ -67,7 +68,7 @@
                     <div id="new-details-content"></div>
                 </div>
                 <button id="confirm-button">Confirm</button>
-                <button id="cancel-button">Cancel</button>
+                <button id="cancel-button">Return to Edit</button>
             </div>
         </div>
     </div>    
@@ -102,9 +103,21 @@
         document.getElementById('game-aliases').value = (gameDetails.aliases || []).join(', ');
         document.getElementById('game-related').value = (gameDetails.related || []).join(', ');
         document.getElementById('game-tags').value = (gameDetails.tags || []).join(', ');
+
+        adjustAllTextAreas();
     }
 
-    document.getElementById('save-button').addEventListener('click', () => {
+    function adjustTextAreaSize(textArea) {
+        textArea.style.height = 'auto';
+        textArea.style.height = (textArea.scrollHeight) + 'px';
+    }
+
+    function adjustAllTextAreas() {
+        const textareas = document.querySelectorAll('.field_edit');
+        textareas.forEach(textarea => { adjustTextAreaSize(textarea); }); 
+    }
+
+    document.getElementById('preview-button').addEventListener('click', () => {
         const gameName = document.getElementById('game-select').value;
         const gameDetails = globals.playbook.getGameDetailsByName(gameName);
 
@@ -127,6 +140,10 @@
         document.getElementById('old-details-content').appendChild(CreateGameCardDiv(gameDetails));
         document.getElementById('new-details-content').appendChild(CreateGameCardDiv(newDetails));
         document.getElementById('overlay').classList.remove('hidden');
+    });
+
+    document.getElementById('reset-button').addEventListener('click', () => {
+        loadGameDetails();
     });
 
     document.getElementById('confirm-button').addEventListener('click', () => {
@@ -157,6 +174,10 @@
 
     document.getElementById('download-button').addEventListener('click', () => {
         globals.playbook.downloadJson();
+    });
+
+    document.querySelectorAll('.field_edit').forEach(textarea => {
+        textarea.addEventListener('input', () => adjustTextAreaSize(textarea));
     });
     </script>
 </body>

@@ -58,6 +58,8 @@ body {
     box-shadow: var(--page-box-shadow);
 }
 
+.inner-body 
+
 .bold {
     font-weight: bold;
 }
@@ -333,11 +335,8 @@ body {
 
 .field_edit {
     width: 100%;
-}
-
-.field_long {
-    /* textarea should be 10 lines tall */
-    height: 10em;
+    resize: none;
+    font-size: var(--font-size-game-row)
 }
 
 .overlay {
