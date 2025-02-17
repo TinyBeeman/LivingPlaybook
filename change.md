@@ -1,0 +1,85 @@
+## Version 2001.0000.0002 -> 2025.0000.0001
+**Games Added**
+- List Endowment
+- Oscar Winning Moment
+- Panel Expert Endowments
+- Paper Chase
+- Soap Opera
+- Song in a Style
+- Step-Word
+- Word Ball
+- Word-at-a-Time Expert
+- Word-at-a-Time Story
+
+**Games Removed**
+- 50's Song
+- Lists
+- One Word Story
+- Oscar� Winning Moment
+- Panel Experts Endowments
+- Paper
+- Step Word
+
+**Games Updated**
+- Accepting Game
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+  - Tags Updated
+- Actor Switch
+  - Description Updated
+  - Variations Updated
+  - Tags Updated
+  - Notes Added
+- Adjective Scene
+  - Tags Updated
+  - Notes Added
+  - Aliases Added
+- Advance and Expand
+  - Description Updated
+  - Notes Added
+  - Variations Added
+- Airplane
+  - Variations Added
+- Alliances
+  - Description Updated
+  - Notes Added
+- Alliteration
+  - Description Updated
+  - Notes Added
+- Alphabet Game
+  - Description Updated
+  - Variations Updated
+  - Tags Updated
+  - Notes Added
+- Animal People
+  - Description Updated
+  - Tags Updated
+  - Notes Added
+  - Variations Added
+  - Related Added
+- Arms
+  - Description Updated
+  - Variations Updated
+  - Notes Added
+  - Aliases Added
+- Asides
+  - Description Updated
+  - Related Updated
+  - Tags Updated
+- Directed Movie
+  - Description Updated
+- Experts
+  - Related Updated
+- In A _____, With A ____, While _____
+  - Description Updated
+- Madrigal
+  - Related Added
+- Moving Bodies
+  - Related Updated
+- Nightmare
+  - Related Updated
+- Oratorio
+  - Related Added
+- Standing, Sitting, Kneeling, Lying Down
+  - Related Added

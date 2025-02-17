@@ -1,8 +1,8 @@
 {
   "version": {
     "year": "2025",
-    "major": "00",
-    "minor": "0001"
+    "major": "0000",
+    "minor": "0002"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -67,6 +67,7 @@
         "Advancing Game"
       ],
       "tags": [
+        "bell",
         "directed",
         "exercise",
         "scene",
@@ -74,7 +75,8 @@
       ],
       "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
       "variations": [
-        "Pair two people: one tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
+        "Bell Game: This game can be played with a bell alternating between advance and expand.",
+        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
       ]
     },
     {
@@ -361,6 +363,24 @@
       ]
     },
     {
+      "name": "Called Movie",
+      "description": "Scene is played with one or multiple players calling out film shots that must be created by the onstage performers. Any type of film technique can be called out such as “Long shot, extreme close up, medium establishing shot, slow cross fade”.",
+      "notes": "A common problem is that improvisers forget to continue the dialog: The dialog should continue as shots change, even when the characters speaking are no longer visible.\n\nAt UP, we use these shot conventions:\n- Close-Up (on her eyes): The performer continues from where they are, other improvisers use their hands and arms to frame her eyes.\n- Extreme Close-Up (on her mouth): The performer joins the other performers in pantomiming a mouth with their hands.\n- Establishing Shot: Returning to the standard framing of the scene.\n- Far-Away Shot: Improvisers use hand-puppets and pantomime to illustrate the characters and settings.\n- Overhead Shot or Crane Shot: Improvisers \"stand\" on the wall or \"lay\" against it.\n- Reverse Shot: Improvisers rotate 180 degrees. Front is back, left is right, etc.\n- Over-the-Shoulder Shot of X: If X and Y are talking, we are looking at Y over X's shoulder, who's back is to the audience. Often followed by a reverse shot.\n- Rotating Shot: The camera \"spins\" around the scene, meaning the performers must rotate the scene, trying to keep their relative positions the same.",
+      "aliases": [
+        "Directed Movie"
+      ],
+      "related": [
+        "Meanwhile"
+      ],
+      "tags": [
+        "directed",
+        "physical, group game",
+        "scene",
+        "shortform",
+        "styles"
+      ]
+    },
+    {
       "name": "Chain Murder Endowment",
       "description": "The scene is played in Gibberish. One improviser remains on stage; the rest of the team leaves the playing area. The on stage improviser asks for 1) an occupation, 2) a room in a house or building, 3) an object, not considered dangerous which will be used in the scene as a murder weapon. The actors are brought back into the playing area. In gibberish, the on stage improviser endows off stage improviser #1 with the three pieces of information. When the endowing improviser is convinced that the endowed improviser knows what the weapon is, he should be killed by it. Then improviser 2 communicates the information to improviser 3 and finally, 3 to 4. The MC then asks the final improviser what the three pieces of information were. Score is not effected by correct or incorrect answers. Remember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser. The audience is encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted.",
       "variations": [
@@ -537,7 +557,7 @@
     },
     {
       "name": "Director",
-      "description": "Title is given for the scene. \"Actors\" begin a \"rehearsal\" of the piece. Periodically, they are stopped by the \"director\", who gives new emphasis or emotional focus to the scene. This game can also be played with the audience playing the character of \"Chris\". When the \"director\" needs an emotion, a physical direction, etc. he consults \"Chris\" to fill in the blanks.",
+      "description": "Title is given for the scene. \"Actors\" begin a \"rehearsal\" of the piece. Periodically, they are stopped by the \"director\", who gives new emphasis or emotional focus to the scene.",
       "tags": [
         "audience",
         "directed",
@@ -545,7 +565,8 @@
         "pimping",
         "scene",
         "shortform"
-      ]
+      ],
+      "notes": "The director can go to the audience as a consultant or producer: When the \"director\" needs an emotion, a physical direction, etc. they consult the audience to fill in the blanks."
     },
     {
       "name": "Documentary",
@@ -705,6 +726,7 @@
       "description": "Audience member is brought to he stage. The Improvisers ask them to describe their family or workplace and then play a scene with those characters. When the audience member feels the offer made by a character is accurate, they ring a bell. If the action is inaccurate, they ring a buzzer and the improviser must continue to make new offers until the bell is rung.",
       "tags": [
         "audience",
+        "bell",
         "directed",
         "justification",
         "scene",
@@ -818,9 +840,10 @@
       "name": "Foreign Vacation",
       "description": "The improvisers get a foreign country from the audience, like \"Spain\". A scene is played where an English-speaking visitor is incorporated. But the \"English Speaker\" speaks in gibberish and the \"Foreigners”, in the example, the Spaniards, speak understandable English.",
       "variations": [
-        "Someone offstage can say, \"switch\", and the one speaking gibberish can then be understood, while the others begin speaking in gibberish."
+        "Someone offstage can say, \"switch\" or ring a bell, and the one speaking gibberish can then be understood, while the others begin speaking in gibberish."
       ],
       "tags": [
+        "bell",
         "directed",
         "gibberish",
         "scene",
@@ -1237,7 +1260,7 @@
     },
     {
       "name": "Kick It",
-      "description": "A normal scene begins. When an offstage improviser says “Kick it!”, the scene continues with the characters rapping their dialogue. The offstage improviser can then restore the scene to normal. The scene can go back and forth as called.",
+      "description": "A normal scene begins. When an offstage improviser says “Kick it!”, the scene continues with the characters rapping their dialogue. The offstage improviser can then restore the scene to normal dialog by shouting \"Word\". The scene can go back and forth as called.",
       "tags": [
         "cultural",
         "directed",
@@ -1906,8 +1929,9 @@
     },
     {
       "name": "Poetic Speak",
-      "description": "Scene begins with regular speaking. A bell is rung and the players then continue in Poetic language. The bell is rung again and they return to regular speak. The scene continues going back and forth between these two states.",
+      "description": "Scene begins with regular speaking. A bell is rung and the players then continue in heighten or rhyming poetic language. The bell is rung again and they return to regular speak. The scene continues going back and forth between these two states.",
       "tags": [
+        "bell",
         "directed",
         "gibberish",
         "scene",
@@ -2017,7 +2041,7 @@
     },
     {
       "name": "Radio Stations",
-      "description": "4 players stand in a line as in story story die or storyline. The audience gives each person a radio station style such as “talk radio,” “heavy metal,” “jazz,” “alternative,” “easy listening,” etc. Another player points to them and they must say or sing what is on that station at that time. If it is a talk radio station, then they can talk, if it is a music station they need to sing a song in that style.",
+      "description": "Players stand in a line as in story story die or storyline. The audience gives each person a radio station style such as “talk radio,” “heavy metal,” “jazz,” “alternative,” “easy listening,” etc. Another player points to them and they must say or sing what is on that station at that time. If it is a talk radio station, then they can talk, if it is a music station they need to sing a song in that style.",
       "tags": [
         "directed",
         "musical",
@@ -2265,15 +2289,17 @@
     },
     {
       "name": "Should Have Said",
-      "description": "A scene is played and when an offstage improviser calls “Should have said.” The last improviser to speak must make a substitute for the last offer they made.",
-      "variations": [
-        "The should have said offers sound like the original offer. “The pizza's ready.” May become “A piece of bread please!”"
-      ],
+      "description": "A scene is played and when an offstage improviser calls “Should have said” or rings a bell.  The last improviser to speak must make a substitute for the last offer they made.",
       "tags": [
+        "bell",
         "directed",
         "justification",
         "scene",
         "shortform"
+      ],
+      "notes": "Improvisers should not be allowed to get away with variations on the original line. \"I'd like a pizza\" should not be followed with \"I'd like spaghetti\".\n\nThis game is often misunderstood as a game of \"clever ideas\". At Unexpected Productions, we like to use it to get through all those ideas until the improviser is out of ideas, and their honest or unplanned offers start to emerge.",
+      "aliases": [
+        "New Choice"
       ]
     },
     {
@@ -2937,11 +2963,14 @@
     },
     {
       "name": "Wallpaper Drama",
-      "description": "Improvisers begin a scene. At the discretion of an off stage improviser, \"Positive\", \"Negative\", or \"Neutral\" are called and slowly effect the emotional content of the scene on stage accordingly. Variation: no off stage caller, the improvisers on stage move through levels of neutral, positive, and negative by there own silent discretion.",
+      "description": "Improvisers begin a scene. At the discretion of an off stage improviser, \"Positive\", \"Negative\", or \"Neutral\" are called and slowly effect the emotional content of the scene on stage accordingly.",
       "tags": [
         "directed",
         "scene",
         "shortform"
+      ],
+      "variations": [
+        "No off stage caller, the improvisers on stage move through levels of neutral, positive, and negative at their own discretion."
       ]
     },
     {
@@ -2962,7 +2991,9 @@
         "This game can also be played with a committee of four or five giving the suggestions. The committee will usually feel pressured and make wimpy choices. If the audience feels the committee has failed, the committee may be replaced. The committee should take their time and try to get into trouble. Demand that the first eight or nine suggestions be positive and advance the story. They want to set a routine and then break it, not delay it."
       ],
       "tags": [
+        "beginner",
         "directed",
+        "exercise",
         "scene",
         "shortform"
       ]

@@ -200,7 +200,9 @@ class Playbook {
 
     exportJson() {
         this.sanitizeDatabase();
-        this.data.version.minor = this.data.version.minor + 1;
+        // Increment minor version number, maintaining leading zeros
+        const minorVersion = parseInt(this.data.version.minor, 10) + 1;
+        this.data.version.minor = minorVersion.toString().padStart(4, '0');
 
         const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
             if (key.toLowerCase() === 'anchorname' || key.toLowerCase() === 'anchoraliases') {
