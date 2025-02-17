@@ -151,7 +151,37 @@ class Playbook {
         .sort((a, b) => a.localeCompare(b));
     }
 
+    sanitizeDatabase() {
+        if (!this.data || !this.data.games) {
+            return;
+        }
+
+        function sanitizeArray(arrayValue) {
+            if (arrayValue == null || !Array.isArray(arrayValue))
+                return undefined;
+    
+            return arrayValue.filter(value => value.trim() !== '').sort((a, b) => a.localeCompare(b));
+        }
+
+        function sanitizeString(stringValue) {
+            return stringValue? stringValue.trim() : undefined;
+        }
+    
+        this.data.games.forEach(game => {
+            game.gameName = sanitizeString(game.gameName);
+            game.description = sanitizeString(game.description);
+            game.notes = sanitizeString(game.notes);
+            game.variations = sanitizeArray(game.variations);
+            game.aliases = sanitizeArray(game.aliases);
+            game.related = sanitizeArray(game.related);
+            game.tags = sanitizeArray(game.tags);
+        });
+
+        this.data.games = this.data.games.sort((a, b) => a.gameName.localeCompare(b.gameName));
+    }
+
     exportJson() {
+        this.sanitizeDatabase();
         const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
             if (key.toLowerCase() === 'anchorname' || key.toLowerCase === 'anchoraliases') {
                 return undefined;
@@ -387,7 +417,7 @@ class PlaybookPage {
         divGameCard.appendChild(divCardContent);
 
         this.createGameRow("name", "", gameDetails.gameName);
-        const divDesc = this.createGameRow("desc", "description", this.mdToHtml(gameDetails.gameDetails));
+        const divDesc = this.createGameRow("desc", "description", this.mdToHtml(gameDetails.description));
         divCardContent.appendChild(divDesc);
 
         if (gameDetails.notes) {
@@ -564,7 +594,7 @@ class PlaybookPage {
 
         const newDetails = {
             gameName: getValue(this.getEditId(gameId, GameField.Name)),
-            gameDetails: getValue(this.getEditId(gameId, GameField.Description)),
+            description: getValue(this.getEditId(gameId, GameField.Description)),
             notes: getValue(this.getEditId(gameId, GameField.Notes)),
             variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
             aliases: getValue(this.getEditId(gameId, GameField.Aliases), ','),
@@ -594,7 +624,7 @@ class PlaybookPage {
         divEditGame.classList.add('game-edit');
         divEditGame.id = `game-edit-${gameId}`;
         divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.gameName));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.gameDetails));
+        divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.description));
         divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
         divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
         divEditGame.appendChild(this.createEditRow('text', 'Aliases (comma-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join(', ')));
@@ -692,7 +722,7 @@ class PlaybookPage {
             }
 
             gameDetails.gameName = fieldAssign(newDetails.gameName);
-            gameDetails.gameDetails = fieldAssign(newDetails.gameDetails);
+            gameDetails.description = fieldAssign(newDetails.description);
             gameDetails.notes = fieldAssign(newDetails.notes);
             gameDetails.variations = fieldAssign(newDetails.variations);
             gameDetails.aliases = fieldAssign(newDetails.aliases);
