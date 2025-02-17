@@ -5,7 +5,7 @@ def sort_playbook(file_path):
     with open(file_path, 'r', encoding='utf-8') as file:
         data = json.load(file)
     
-    sorted_games = sorted(data['games'], key=lambda x: x['gameName'])
+    sorted_games = sorted(data['games'], key=lambda x: x['name'])
     data['games'] = sorted_games
     
     with open(file_path, 'w', encoding='utf-8') as file:

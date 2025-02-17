@@ -9,9 +9,9 @@ def save_json(filepath, data, encoding='utf-8'):
         json.dump(data, file, indent=4)
 
 def update_game_variations(old_data, new_data):
-    old_games = {game['gameName']: game for game in old_data['games']}
+    old_games = {game['name']: game for game in old_data['games']}
     for game in new_data['games']:
-        game_name = game['gameName']
+        game_name = game['name']
         if game_name in old_games and 'gameVariations' in old_games[game_name]:
             game['gameVariations'] = old_games[game_name]['gameVariations']
     return new_data

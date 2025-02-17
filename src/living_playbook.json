@@ -3,7 +3,7 @@
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
   "games": [
     {
-      "gameName": "Accepting Game",
+      "name": "Accepting Game",
       "description": "Two improvisers play a scene, but one of them is can only respond with one of the following three lines:\n- *Sounds good to me!*\n- *I'll go along with that!*\n- *O.K., great!*\n\nThe unlimited improviser makes offers and the limited improviser replies. The choices made should be active ones allowing for limited responses.",
       "notes": "This exercise can help a player who is not in the mood to improvise. They can be active in the scene without blocking or wimping on an idea.",
       "variations": [
@@ -17,7 +17,7 @@
       ]
     },
     {
-      "gameName": "Actor Switch",
+      "name": "Actor Switch",
       "description": "The improvisers begin a scene from a suggestion. Whenever an offstage improviser rings a bell, all of the improvisers switch characters while continuing the scene. The rotation can include any offstage improvisers.",
       "variations": [
         "Blind Switch: One \"offstage\" actor turns around and covers their ears/hums. They must switch in when the bell rings and catch up."
@@ -41,7 +41,7 @@
       "notes": "This game benefits from strong character choices, especially with physical traits. It is recommended to allow the scene to establish itself before escalating into faster switches."
     },
     {
-      "gameName": "Adjective Scene",
+      "name": "Adjective Scene",
       "description": "Improvisers ask for an adjective (eg: 'sad'). Must play the scene with as much 'sadness' as possible, or each player may ask for a different adjective.",
       "tags": [
         "emotions",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "gameName": "Advance and Expand",
+      "name": "Advance and Expand",
       "description": "An improviser tells a monologue or performs a scene. A director calls \"Advance,\" at which point the improviser may advance the story, or \"Expand,\" at which point the improviser stops advancing and explores the current action or moment.\n\nIf a performer is scratching their nose and asked to expand, they should find ways to make that activity more interesting. They can't blow their nose, because that would change the action. They might slow down, speed up, change angles, etc.\n\nIf a monologist is telling a story about their morning, and they are asked to expand as they say, \"I made some coffee,\" they may describe their coffee cup, explain where they got it, talk about why they like coffee, etc. They may not advance in the story.",
       "aliases": [
         "Advancing Game"
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "gameName": "Airplane",
+      "name": "Airplane",
       "description": "A rectangular area is marked off with chairs or tape, etc. Two improvisers stand at opposite ends of the area. One is blindfolded. An obstacle course of improvisers, chairs, and props is assembled in the area. The sighted improviser guides the other through the course without touching any of the obstacles. Three touches and the game is over. It is good to have a time limit on this exercise.",
       "tags": [
         "exercise",
@@ -85,7 +85,7 @@
       ]
     },
     {
-      "gameName": "Alliances",
+      "name": "Alliances",
       "description": "A two-minute, four-person scene. At the end of the two minutes, one person needs to have been excluded from the rest of the group.",
       "aliases": [
         "Exclusion"
@@ -98,7 +98,7 @@
       "notes": "This game used to be called Exclusion, but Alliances is a better fit. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded--don't fight it--be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific."
     },
     {
-      "gameName": "Alliteration",
+      "name": "Alliteration",
       "description": "Improvisers ask for a letter of the alphabet and incorporate as many words beginning with the sound of that letter into the scene as possible.",
       "variations": [
         "Each improviser asks for their \"own\" letter.",
@@ -113,7 +113,7 @@
       "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words."
     },
     {
-      "gameName": "Alphabet Game",
+      "name": "Alphabet Game",
       "description": "Improvisers play a scene in which each *sentence* they speak begins with the next sequential letter of the alphabet from A to Z.\n\nPerson A: Anyone home? Best to say so, if you are! Candy for the first kid downstairs!\nPerson B: Daddy! Edmund has been hitting me!\nPerson C: Francis is a tattletale!",
       "variations": [
         "Audience: Include an audience member: they must speak three lines during the scene.",
@@ -132,7 +132,7 @@
       "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends."
     },
     {
-      "gameName": "Animal People",
+      "name": "Animal People",
       "description": "The improvisers ask for animals and play the scene as a human with that animal's characteristics.",
       "aliases": [
         "Animal Characters"
@@ -154,7 +154,7 @@
       ]
     },
     {
-      "gameName": "Arms",
+      "name": "Arms",
       "description": "One improviser stands in front of another improviser. The improviser in front wraps their arms around the improviser behind. The improviser behind then uses their own arms as the front improvisers arms.",
       "variations": [
         "Arms Debate: Four improvisers perform a debate. A fifth improviser is the moderator.",
@@ -176,7 +176,7 @@
       ]
     },
     {
-      "gameName": "Asides",
+      "name": "Asides",
       "description": "A scene from an audience suggestion. Improvisers turn to the audience from time to time and declare their true feelings or inner dialogue.\n\nThe asides are not \"heard\" by the other characters on-stage. The others maintain their positions in a \"soft freeze\" (holding position without becoming rigid). Similar to Consciences and Inner Dialogue.",
       "variations": [
         "Detective Soliloquy: Play as a Film Noir scene."
@@ -194,7 +194,7 @@
       ]
     },
     {
-      "gameName": "At The Movies",
+      "name": "At The Movies",
       "description": "Two critics review either a single film or multiple films. As they review, clips from the fictitious movie are acted out onstage.",
       "variations": [
         "Can be done as a “tribute” to a fictitious actor or director.",
@@ -207,7 +207,7 @@
       ]
     },
     {
-      "gameName": "Attitude Scene",
+      "name": "Attitude Scene",
       "description": "Improvisers ask for attitudes.  For instance, attitudes to have for each other, or a particular topic. Example: if 3 people are initially in the scene, you might get 2 attitudes from the audience (\"impressed\" and \"indignant\"). Then, each improviser plays the scene \"in neutral\" - endowing the other actors with one of the attitudes. Each actor will react indignantly towards one person's comments and impressed with the other. Each actor may assign different attitudes to different characters.",
       "related": [
         "Adjective Scene"
@@ -219,7 +219,7 @@
       ]
     },
     {
-      "gameName": "Ballet",
+      "name": "Ballet",
       "description": "Scene is performed in the style of a ballet, often with a narrator. May choose to use music, but its not necessary. Performed without speaking, except for the narrator's part.",
       "tags": [
         "cultural",
@@ -231,7 +231,7 @@
       ]
     },
     {
-      "gameName": "Before or After",
+      "name": "Before or After",
       "description": "A short scene is played. The improvisers then ask the audience if they want to see the scene that came before the scene they saw, or after. The improvisers then play that scene. Once again, the audience is asked and the third scene is played. If the audience choice leads to the improviser repeating a scene, they can add something or inform the scene with something from the earlier scene.",
       "variations": [
         "Play this as a long form."
@@ -245,7 +245,7 @@
       ]
     },
     {
-      "gameName": "Beyond Words",
+      "name": "Beyond Words",
       "description": "Scene in which the emotions are so profound words cannot express the emotions and therefore, are not used.",
       "tags": [
         "scene",
@@ -254,7 +254,7 @@
       ]
     },
     {
-      "gameName": "Black Box",
+      "name": "Black Box",
       "description": "Person 1 is sitting on a chair, in a location to be determined. He holds a small, black box on his lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc. Person 2 enters, notices the box and asks to use it. Person 1 says, \"OK, but be sure you don't press the RED button.\" Person 2 plays with it, controlling person 1. Starting slowly, person 2 gets more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
       "tags": [
         "physical",
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "gameName": "Blank Family",
+      "name": "Blank Family",
       "description": "Improvisers ask for a verb or adjective and then play a family of characters who are that verb or adjective.",
       "tags": [
         "endowment",
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "gameName": "Blank Scene",
+      "name": "Blank Scene",
       "description": "Any scene based on suggestion that fills in a blank such as “I opened the closet and found a ______?”",
       "tags": [
         "scene",
@@ -281,7 +281,7 @@
       ]
     },
     {
-      "gameName": "Blind Hunt",
+      "name": "Blind Hunt",
       "description": "Improvisers form a large circle. Six improvisers sit in the middle of the circle with their eyes closed. One is tapped to be the \"murderer\", a person who kills the others by squeezing their arms. \"Go\" is given, and the six improvisers roam around the circle keeping their eyes closed. When a victim is killed they let out a scream and open their eyes, joining the outer circle. The people in the outer circle should act as \"spotters\" for the six improvisers, making sure they remain safe.",
       "variations": [
         "Death and Retriever: As in Blind Hunt, with the addition of a retriever. A person who can \"revive\" the victims by rubbing them with a scarf or patting them on the head. When the victims are killed, instead of joining the outer circle, they should remain where they are in hopes of being healed. The retriever may be killed, so the players should feel the dead bodies to see if one has the scarf, whoever finds it becomes the new retriever. (The murderer cannot take the scarf)."
@@ -292,14 +292,14 @@
       ]
     },
     {
-      "gameName": "Blind Offers",
+      "name": "Blind Offers",
       "description": "Improviser A makes a physical gesture, Improviser B looks at the gesture for a three count, then justifies the gesture if they can. If not, Improviser B puts Improviser A back into a neutral position, and Improviser A says \"Thank You.\" Don't force the justifications; let them come. The idea is to build up a visual vocabulary. It's not abstract. You want to train the eye to “see”, not to come up with clever justifications. The more you do this exercise, the easier it will be to justify the positions.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Blindfold Scene",
+      "name": "Blindfold Scene",
       "description": "All onstage improvisers wear blindfolds while playing the scene. They act as though they were sighted and the scene was a normal scene. For the sake of safety, the stage should be lined with spotters to make sure the onstage players do not walk off the edge of the stage.",
       "tags": [
         "scene",
@@ -308,14 +308,14 @@
       ]
     },
     {
-      "gameName": "Blocking Game",
+      "name": "Blocking Game",
       "description": "Improviser A accepts all offers, while Improviser B blocks all offers. Both should want to tell a story so a general location should be accepted by both. A's offers will gradually move the story forward.\n\nEventually, A can create action from presenting B with a \"negative offer\", an offer that in order to be blocked forces B to do an action. Example; A: \"Too bad you don't have the ability to fly!\" or, \"Too bad, your gun is out of bullets.\" Take your time with this exercise and try it a lot.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Body Parts",
+      "name": "Body Parts",
       "description": "Any scene where a body part is endowed with something, or is a focal point. Scenes such as Emotional Body Parts, where a part has an emotion (Sad elbows). Body Leads, where a characters movement (or center) is led by a particular part of the body; and Body Wire, where your body is suspended by a body part while the rest of your body is relaxed, all fit into this category.",
       "aliases": [
         "Body Leads, Body Wire"
@@ -328,7 +328,7 @@
       ]
     },
     {
-      "gameName": "Body Reversal",
+      "name": "Body Reversal",
       "description": "Improvisers play the scene as though the back of their body is the front.",
       "tags": [
         "physical",
@@ -337,7 +337,7 @@
       ]
     },
     {
-      "gameName": "Boris",
+      "name": "Boris",
       "description": "Scene in which an improviser is interrogated. The improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris). Whenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the Interrogator is a cruel one. TELL A STORY.",
       "tags": [
         "active",
@@ -348,7 +348,7 @@
       ]
     },
     {
-      "gameName": "Call From Ray",
+      "name": "Call From Ray",
       "description": "A scene is begun in a given location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene. The \"call\" may come in any form (smoke signal, Morse code, etc.), and Ray may not appear in the scene.",
       "tags": [
         "scene",
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "gameName": "Chain Murder Endowment",
+      "name": "Chain Murder Endowment",
       "description": "The scene is played in Gibberish. One improviser remains on stage; the rest of the team leaves the playing area. The on stage improviser asks for 1) an occupation, 2) a room in a house or building, 3) an object, not considered dangerous which will be used in the scene as a murder weapon. The actors are brought back into the playing area. In gibberish, the on stage improviser endows off stage improviser #1 with the three pieces of information. When the endowing improviser is convinced that the endowed improviser knows what the weapon is, he should be killed by it. Then improviser 2 communicates the information to improviser 3 and finally, 3 to 4. The MC then asks the final improviser what the three pieces of information were. Score is not effected by correct or incorrect answers. Remember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser. The audience is encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted.",
       "variations": [
         "Personality Murder Endowments: Same as Chain Murder, except instead of a location, the team gets a famous personality."
@@ -370,7 +370,7 @@
       ]
     },
     {
-      "gameName": "Chance of a Lifetime",
+      "name": "Chance of a Lifetime",
       "description": "A person is picked from the audience and questioned about something he has always wanted to do. He is then brought on-stage where he gets to live that Chance of A Lifetime.",
       "tags": [
         "audience",
@@ -379,7 +379,7 @@
       ]
     },
     {
-      "gameName": "Characters from the Audience",
+      "name": "Characters from the Audience",
       "description": "Audience provides character traits or types for the improvisers to use during the scene.",
       "tags": [
         "endowment",
@@ -388,7 +388,7 @@
       ]
     },
     {
-      "gameName": "Chase",
+      "name": "Chase",
       "description": "Two improvisers face each other, one begins a story, the other asks related, but surprising questions about what is being seen. If in a house one may ask, \"The rocker speaks to you, what does it say?\" You want to prevent the person telling the story from thinking ahead about the answers. You want to derail their train of thought.",
       "tags": [
         "exercise",
@@ -396,7 +396,7 @@
       ]
     },
     {
-      "gameName": "Clashing Environments",
+      "name": "Clashing Environments",
       "description": "Improvisers ask for two environments (unrelated). Environments merge during the scene (e.g. Invent the lightbulb during the fall of Troy).",
       "tags": [
         "environment",
@@ -406,7 +406,7 @@
       ]
     },
     {
-      "gameName": "Commercial",
+      "name": "Commercial",
       "description": "Improvisers ask the audience for a fictitious product. The team then acts as a Production company writing a slogan, jingle, or commercial - demonstrating what the product does. Similar to Yes, And... May also simply be presented as the actual commercial.",
       "tags": [
         "game",
@@ -414,7 +414,7 @@
       ]
     },
     {
-      "gameName": "Confession",
+      "name": "Confession",
       "description": "The improviser sent offstage must return and take confession, confessing to sins with the help of a priest.",
       "tags": [
         "endowment",
@@ -424,7 +424,7 @@
       ]
     },
     {
-      "gameName": "Consciences",
+      "name": "Consciences",
       "description": "Scene where the thoughts of any or all characters are revealed by on-stage beings (angels and devils) or offstage voice.",
       "related": [
         "Inner Dialogue",
@@ -436,7 +436,7 @@
       ]
     },
     {
-      "gameName": "Continuation",
+      "name": "Continuation",
       "description": "The opposing team begins a scene. After 30 sec., the MC stops the scene. The offstage team assumes the positions and characters of the onstage team, playing the rest of the scene.",
       "variations": [
         "Continuation Circle: Play a scene in the center of a circle. Improvisers tag in, while maintaining the same initial characters and story throughout the scene.",
@@ -450,14 +450,14 @@
       ]
     },
     {
-      "gameName": "Corridors",
+      "name": "Corridors",
       "description": "Two playing spaces are defined with a \"neutral corridor\" between them. Improviser A walks from the neutral corridor into one of the spaces, Improviser B, already in the area makes an offer. A and B have three lines to define who, what, and where they are before B has to find a justified reason to leave. Improviser B leaves, passing through the corridor to the other space, where Improviser C waits to make an offer. You can do this with two lines of improvisers feeding each playing space. Example: A steps into scene. B says,\"Young man, do you know what time it is?\" A replies, \"I'm sorry Dad, I won't come home this late again.\" B Says, \"I think your Mother should hear that, I'll go get her.\" B leaves to go to the other playing area through the corridor.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Creation Myth",
+      "name": "Creation Myth",
       "description": "A scene explaining the creation or discovery of something in mythological terms.",
       "tags": [
         "scene",
@@ -465,7 +465,7 @@
       ]
     },
     {
-      "gameName": "Crime Endowments",
+      "name": "Crime Endowments",
       "description": "The offstage improviser is endowed as the head of a criminal organization and gathers with the others to plan or act out the crime. He is endowed with “something to steal”, “a method”, and some wild card such as a code word or a disguise.",
       "tags": [
         "endowment",
@@ -475,7 +475,7 @@
       ]
     },
     {
-      "gameName": "Crosstalk",
+      "name": "Crosstalk",
       "description": "Improvisers A, B and C start a scene, A speaks (dubs) for B, B for C and C for A.",
       "aliases": [
         "Three-Way Dub, Cross Dubbing"
@@ -487,7 +487,7 @@
       ]
     },
     {
-      "gameName": "Culture",
+      "name": "Culture",
       "description": "As if seen on PBS - may use Opera, Ballet, Shakespeare, Masterpiece Theater, etc.",
       "tags": [
         "cultural",
@@ -497,7 +497,7 @@
       ]
     },
     {
-      "gameName": "Cutting Room",
+      "name": "Cutting Room",
       "description": "The scene is interrupted by an off stage \"cutter\" who directs the action to points in time and locations before or after what is being played on stage. Actors make offers in their dialogue, like, \"Do you remember the first time we talked like this...\" Can also be played with the time changing anytime a character looks at a timepiece or with an offstage improviser calling out the time.",
       "related": [
         "Remote Control"
@@ -510,7 +510,7 @@
       ]
     },
     {
-      "gameName": "Day in the Life",
+      "name": "Day in the Life",
       "description": "Improvisers ask an audience member for an actual day in his life. Improvisers recreate the day as they see fit. Can be an average day, or a first day at work or a rite of passage or a family vacation experience or…",
       "aliases": [
         "Experience"
@@ -521,7 +521,7 @@
       ]
     },
     {
-      "gameName": "Directed Movie",
+      "name": "Directed Movie",
       "description": "Scene is played with one or multiple players calling out film shots that must be created by the onstage performers. Any type of film technique can be called out such as “Long shot, extreme close up, medium establishing shot, slow cross fade”.",
       "tags": [
         "directed",
@@ -531,7 +531,7 @@
       ]
     },
     {
-      "gameName": "Director",
+      "name": "Director",
       "description": "Title is given for the scene. \"Actors\" begin a \"rehearsal\" of the piece. Periodically, they are stopped by the \"director\", who gives new emphasis or emotional focus to the scene. This game can also be played with the audience playing the character of \"Chris\". When the \"director\" needs an emotion, a physical direction, etc. he consults \"Chris\" to fill in the blanks.",
       "tags": [
         "audience",
@@ -543,7 +543,7 @@
       ]
     },
     {
-      "gameName": "Documentary",
+      "name": "Documentary",
       "description": "Scene is played in Documentary style with a narrator.",
       "tags": [
         "game",
@@ -553,7 +553,7 @@
       ]
     },
     {
-      "gameName": "Dramatic Situations",
+      "name": "Dramatic Situations",
       "description": "The improvisers draw a card from the \"36 Dramatic Situations\" Cards, and then base their scene on the elements of plot and character given on the card.",
       "tags": [
         "props",
@@ -562,7 +562,7 @@
       ]
     },
     {
-      "gameName": "Dramatis Personae",
+      "name": "Dramatis Personae",
       "description": "Each person is assigned a famous personality from history or current affairs, and a location in which their scene is played.",
       "variations": [
         "Strange Bedfellows: Each actor is assigned a famous person. The scene begins with them in bed"
@@ -576,7 +576,7 @@
       ]
     },
     {
-      "gameName": "Drawing Game",
+      "name": "Drawing Game",
       "description": "Two people sit at a large drawing surface with two different colored pens. They start to draw a line at a time beginning with the eyes, to avoid the abstract. Nobody is in charge, just draw, you are sharing the drawing and bypassing your personality. When the drawing is finished title it one letter at a time.",
       "variations": [
         "Automatic Writing: Take a blank piece of paper and a pen. Look in the upper left hand corner of the paper and write down the letter you \"see\" there, then the next, and the next, and so on. Always “look” for the letter in the blank next the letter you just wrote. When you're done read the page. This allows things to come out you, you don't need to \"think\" about the letters, just write them down. Think of it as being given the letter, as opposed to creating the letter."
@@ -587,7 +587,7 @@
       ]
     },
     {
-      "gameName": "Driver's License",
+      "name": "Driver's License",
       "description": "Improvisers base their characters on identification photos they acquire from the audience.",
       "tags": [
         "endowment",
@@ -596,7 +596,7 @@
       ]
     },
     {
-      "gameName": "Dubbing",
+      "name": "Dubbing",
       "description": "Offstage improvisers provide the voices for the onstage characters and action. May be played as a Foreign Film.",
       "variations": [
         "Doublespeak: One improviser on stage speaks for all the other improvisers in the scene, as well as for themselves. Can also be played as MUTUAL DUBBING, with two improvisers providing each others voices"
@@ -614,7 +614,7 @@
       ]
     },
     {
-      "gameName": "Emotional Party",
+      "name": "Emotional Party",
       "description": "Each improviser gets an emotion. As they enter the party, the emotion of the party changes. As each person leaves, the emotion returns to the previous improvisers (kind of an emotional Growing and Shrinking Machine). People can enter and leave as many times as is justifiable. Emotions may be played as \"instantly transforming\" the scene, or more subtly.",
       "related": [
         "Growing and Shrinking Machine"
@@ -626,7 +626,7 @@
       ]
     },
     {
-      "gameName": "Ending in \"Blank\"",
+      "name": "Ending in \"Blank\"",
       "description": "Scene must end with a specific event or phrase.",
       "tags": [
         "scene",
@@ -634,7 +634,7 @@
       ]
     },
     {
-      "gameName": "English/Gibberish",
+      "name": "English/Gibberish",
       "description": "A scene begins in English until a bell is rung and the improvisers continue the scene in gibberish. The bell is sounded again and the improvisers return to English. This back and forth continues until the scene ends.",
       "tags": [
         "directed",
@@ -644,7 +644,7 @@
       ]
     },
     {
-      "gameName": "Entirely in the Audience",
+      "name": "Entirely in the Audience",
       "description": "Stage lights are turned off, House lights are turned on. The scene is played entirely in the audience. Often this is played by getting a room in the house such as kitchen. The improvisers then play a scene in which their kitchen is the size of the theater.",
       "tags": [
         "scene",
@@ -652,7 +652,7 @@
       ]
     },
     {
-      "gameName": "Environment Endowments",
+      "name": "Environment Endowments",
       "description": "An environment is taken from the audience as a suggestion, then all the improvisers except one leave. The remaining improviser gets from three to five activities associated with the environment. The improvisers enter together and a scene is played with one improviser attempting to endow the others with the activities.",
       "tags": [
         "endowment",
@@ -662,7 +662,7 @@
       ]
     },
     {
-      "gameName": "Environment in a Minute",
+      "name": "Environment in a Minute",
       "description": "Improvisers create as complete an environment as possible in one minute. Variation is to play the scene Without Words, in Gibberish.",
       "tags": [
         "environment",
@@ -673,7 +673,7 @@
       ]
     },
     {
-      "gameName": "Experts",
+      "name": "Experts",
       "description": "At least one improviser is an expert on a topic of the audiences choosing. Talk shows, lectures, debates, or interviews have been used.",
       "related": [
         "Panel Expert Endowments",
@@ -686,7 +686,7 @@
       ]
     },
     {
-      "gameName": "Fairy Tale",
+      "name": "Fairy Tale",
       "description": "Improvise on a familiar fairy tale, or make up a new one. May be a timed scene.",
       "tags": [
         "narrative",
@@ -696,7 +696,7 @@
       ]
     },
     {
-      "gameName": "Family Dinner",
+      "name": "Family Dinner",
       "description": "Audience member is brought to he stage. The Improvisers ask them to describe their family or workplace and then play a scene with those characters. When the audience member feels the offer made by a character is accurate, they ring a bell. If the action is inaccurate, they ring a buzzer and the improviser must continue to make new offers until the bell is rung.",
       "tags": [
         "audience",
@@ -707,7 +707,7 @@
       ]
     },
     {
-      "gameName": "Famous Last Words",
+      "name": "Famous Last Words",
       "description": "Famous last words are given, either real or imagined. The scene is played accounting for those words.",
       "tags": [
         "scene",
@@ -715,7 +715,7 @@
       ]
     },
     {
-      "gameName": "Famous Person Endowments",
+      "name": "Famous Person Endowments",
       "description": "Two improvisers leave the stage area. 3rd improviser gets 2 famous people. The 2 improvisers are called back to the playing area. Whispering, Improviser 3 arbitrarily assigns to each improviser who the OTHER improviser is (eg: improviser 1 has to endow improviser 2 with being Mickey Mantle, Improviser 2 endows improviser 1 with being Marie Antoinette). This scene is played in the vernacular. Like all endowment scenes, this is not a charades scene.",
       "tags": [
         "endowment",
@@ -727,7 +727,7 @@
       ]
     },
     {
-      "gameName": "Film Rollback",
+      "name": "Film Rollback",
       "description": "Scene begins. At some point, the scene is stopped and returned to a designated event. The scene then proceeds in a different direction from that point.",
       "related": [
         "Cutting Room"
@@ -739,7 +739,7 @@
       ]
     },
     {
-      "gameName": "Finger Puppets",
+      "name": "Finger Puppets",
       "description": "A scene is played with the improvisers using their hands as “finger puppets”.",
       "tags": [
         "scene",
@@ -747,7 +747,7 @@
       ]
     },
     {
-      "gameName": "First Line, Last Line",
+      "name": "First Line, Last Line",
       "description": "Improvisers are given a first line and an unrelated last line of dialogue. Scene begins and ends with these lines.",
       "variations": [
         "Each improviser can get a first line and a last line that they must use in the scene.",
@@ -760,7 +760,7 @@
       ]
     },
     {
-      "gameName": "Fish Out of Water",
+      "name": "Fish Out of Water",
       "description": "Onstage improvisers change places with the tech booth. The technical improvisers then play a scene with tech support from the onstage improvisers.",
       "tags": [
         "scene",
@@ -769,7 +769,7 @@
       ]
     },
     {
-      "gameName": "Five Things",
+      "name": "Five Things",
       "description": "One improviser leaves the playing area while his partners get 5 activities from the audience. Improviser is then brought back to the stage where he is endowed to perform the 5 activities. The activities should be unrelated BUT the improvisers should attempt to incorporate the activities into a linear narrative. The scene is most successful if the person trying to guess the activities does whatever comes to mind. It is up to the improvisers \"in the know\" to guide the one guessing. Again, this is not a game of charades. Never forget narrative.",
       "tags": [
         "endowment",
@@ -779,7 +779,7 @@
       ]
     },
     {
-      "gameName": "Foley Room",
+      "name": "Foley Room",
       "description": "In the Film World, the Foley Room is the room in which the soundtrack is enhanced. To play Foley Room, someone must bring in a collection of noisemakers. One team plays the scene; the other team uses the noisemakers to enhance the scene. Both teams should justify the sounds. A one minute 'familiarization' period with the noisemakers can be helpful.",
       "variations": [
         "If you have technical improvisers the offers can come from the sound improviser."
@@ -794,7 +794,7 @@
       ]
     },
     {
-      "gameName": "Foreign Poet",
+      "name": "Foreign Poet",
       "description": "A poem or opera or...is translated by an interpreter for the audience and/or other improvisers.",
       "variations": [
         "Another improviser provides interpretive dance."
@@ -810,7 +810,7 @@
       ]
     },
     {
-      "gameName": "Foreign Vacation",
+      "name": "Foreign Vacation",
       "description": "The improvisers get a foreign country from the audience, like \"Spain\". A scene is played where an English-speaking visitor is incorporated. But the \"English Speaker\" speaks in gibberish and the \"Foreigners”, in the example, the Spaniards, speak understandable English.",
       "variations": [
         "Someone offstage can say, \"switch\", and the one speaking gibberish can then be understood, while the others begin speaking in gibberish."
@@ -823,7 +823,7 @@
       ]
     },
     {
-      "gameName": "Fortune Cookie",
+      "name": "Fortune Cookie",
       "description": "A fortune cookie is opened and read aloud. Scene must use the fortune in some fashion (eg: philosophical base, an event that takes place during the scene). Each improviser may open a fortune cookie, basing their character on the fortune.",
       "tags": [
         "props",
@@ -832,7 +832,7 @@
       ]
     },
     {
-      "gameName": "Fortune Teller",
+      "name": "Fortune Teller",
       "description": "One improviser leaves the playing area while his partners get predictions (usually one per player onstage) from the audience about events to happen to the customers. Improviser is then brought back to the stage where they play a fortune teller predicting the future events. They can be endowed by the customers or by being given clues from offstage improvisers who “possess” the fortune teller.",
       "tags": [
         "endowment",
@@ -842,7 +842,7 @@
       ]
     },
     {
-      "gameName": "Free Association/Reincorporation",
+      "name": "Free Association/Reincorporation",
       "description": "An improviser free associates for 30 seconds. Opposing team plays a scene or tells a story based on the free association, using as many of the images as possible. Stress narrative.",
       "tags": [
         "narrative",
@@ -851,7 +851,7 @@
       ]
     },
     {
-      "gameName": "Freeze Tag",
+      "name": "Freeze Tag",
       "description": "Two improvisers begin a scene. An off stager improviser, at some point, shouts out \"Freeze.\" The on stage improvisers freeze. The off stage caller then jumps on stage, taps one of the improvisers out of the scene, assumes that persons EXACT PHYSICAL POSITION, and begins a new scene based on the physical positions. Improvisers may freeze in and out as much as they like. In order to make this game work, the on stage improvisers should be as physical as possible. This gives the off stage improvisers a greater number of possible Freeze moments.",
       "variations": [
         "Blind Freeze: Improvisers have their backs to the action and their ears plugged, an improviser shouts freeze, the next person in line jumps on stage, then, the same as above.",
@@ -867,7 +867,7 @@
       ]
     },
     {
-      "gameName": "Gibberish Conversation",
+      "name": "Gibberish Conversation",
       "description": "Three improvisers sit onstage. Two of the improvisers conduct a gibberish conversation with both sides translated by the third improviser.",
       "tags": [
         "gibberish",
@@ -876,7 +876,7 @@
       ]
     },
     {
-      "gameName": "Gibberish Dictionary",
+      "name": "Gibberish Dictionary",
       "description": "Improvisers stand in a circle. An improviser turns to the person next to them and says a gibberish word. The receiving improviser repeats the word and then offers a definition to the next person. The third improviser uses the word correctly in a sentence. The next person says a gibberish word, etc. around the circle.",
       "tags": [
         "exercise",
@@ -884,7 +884,7 @@
       ]
     },
     {
-      "gameName": "Gibberish Joke",
+      "name": "Gibberish Joke",
       "description": "A (very funny) joke is told to the audience by a single comedian. The joke teller is constantly interrupted by an assistant, forcing the jokester to retell the joke from the beginning.",
       "variations": [
         "A joke is told, alternating between gibberish and the vernacular."
@@ -896,7 +896,7 @@
       ]
     },
     {
-      "gameName": "Gibberish Reunion",
+      "name": "Gibberish Reunion",
       "description": "A group of improvisers enter a playing area speaking gibberish. They are at a reunion, not having seen each other for quite some time. After a few minutes of catching up in their native language, they gather in a circle and begin to sing gibberish songs they all know. Each person, or small groups, may step into the circle and sing a verse or dance a native dance. When the songs end, they all say good-bye, then leave.",
       "tags": [
         "gibberish",
@@ -906,7 +906,7 @@
       ]
     },
     {
-      "gameName": "Give and Take",
+      "name": "Give and Take",
       "description": "Step 1: Improvisers spread out through a playing space then freeze in a position. One improviser begins to move about the room in any fashion they wish. They then give the momentum to another improviser who takes it immediately and begins to move about the room. When the second person begins to move, the first person freezes. Remember to \"give\" focus.\n\nStep 2: Same as above, but in addition, the momentum may be \"taken\" by anyone who decides to move. If an improviser begins to move, the present \"mover\" freezes. If two people begin to move at the same time, they should mirror each other, or one of them has to give focus. It is very important to be aware of the people around you and if someone is in a difficult position give them the focus.",
       "tags": [
         "exercise",
@@ -914,7 +914,7 @@
       ]
     },
     {
-      "gameName": "Group Mirror",
+      "name": "Group Mirror",
       "description": "One Player leaves the room, the remaining players choose one person to be the lead. The player returns and everyone stands in a circle, as the leader moves everyone else in the circle slowly imitates or “mirrors” his movements without indicating who they are following. The player tries to guess who is the lead.",
       "variations": [
         "Mirror Bodies: Same as above, except that it is a body shape being provided by the other team or audience member."
@@ -928,7 +928,7 @@
       ]
     },
     {
-      "gameName": "Growing and Shrinking Machine",
+      "name": "Growing and Shrinking Machine",
       "description": "Like Freeze Tag. Start with Improviser 1 on stage. Improviser 2 freezes the scene, jumps on stage and begins a new scene with Improviser 1. Same for Improvisers 3 and 4. Unlike Freeze Tag, improvisers do not tag out of the scenes. Eventually, the entire team will be on stage (let's say 4 for example). Then!!! Improviser 4 must find a justifiable reason to leave the stage and the scene reverts back to the original 3-person scene, but time has passed, the improvisers are in new positions WHICH MUST BE JUSTIFIED. Then Improviser 3 finds a justifiable reason to leave the stage - back to the 2-person scene. Finally, Improviser 2 leaves - back to the solo scene. It is important to justify the new positions during the Shrinking phase of the game, not to simply jump into the original scene at the next moment.",
       "variations": [
         "Shrink then Grow by beginning with 5 improvisers then one leaves and thus begins a 4-person scene all the way down to one. Then the machine grows by having the improvisers enter the scene in order again up to the 5-person scene.",
@@ -945,7 +945,7 @@
       ]
     },
     {
-      "gameName": "Half Life",
+      "name": "Half Life",
       "description": "A thirty-second scene is played. It is then repeated in fifteen seconds. It is then repeated in seven seconds, then three seconds, and finally in one second.",
       "tags": [
         "active",
@@ -956,7 +956,7 @@
       ]
     },
     {
-      "gameName": "Hall of Justice",
+      "name": "Hall of Justice",
       "description": "A fill in the blank scene involving super heroes and sinister villains.  BLANK Man/Woman is the main hero. Dr. BLANK is the main villain. BLANK is the sidekick to the hero and Mr./Ms BLANK is the sidekick to the villain. The VICTIMS are the rest of the players who set up the environment that soon becomes villain-ized. The players are strongly urged to get the full benefit of their given blank-name by incorporating all of the associations justifiably in the scene. FOR EXAMPLE, if the suggestions are, \"pancake, oven, wax, tree, and Starbucks\" then, Pancake Man and his sidekick Oven may fight against Dr. Wax and his sidekick Mr. Tree as they plot to turn all the coffee beans of the world to wax.  Pancake Man battles using his special flipping and flattening abilities as Oven melts off the wax.... etc... you get the idea.\n\nThis fun game was developed by Jay Hitt as a way to get improvisers to know their parts in a scene. To play it successfully, players must focus on the RELATIONSHIPS between their fellow improvisers.",
       "tags": [
         "endowment",
@@ -965,7 +965,7 @@
       ]
     },
     {
-      "gameName": "Hand Slap",
+      "name": "Hand Slap",
       "description": "Players get down on the floor in a circle.  They cross arms with the players next to them and then place their our palms down on the ground keeping the circle.  Each hand takes a turn patting the ground once around the  circle in order. Direction is changed when a player pats one hand twice and the order must go in the opposite direction. If a player makes a mistake, then the offending hand is eliminated from the circle. The game is over when one player remains.",
       "tags": [
         "exercise",
@@ -973,7 +973,7 @@
       ]
     },
     {
-      "gameName": "Hats",
+      "name": "Hats",
       "description": "Two improvisers from opposing teams put on hats of approximately equal dimensions. Scene ends when one improviser (a) grabs the hat off his opponents head or (b) tries to grab the opponents hat and misses. Play the scene for reality. A Hat grab, the move to grab a hat or defend a hat, needs to be justifiable within the scene. The scene is often played with a 15 second \"window\" at the beginning in which improvisers cannot go for the hats.",
       "tags": [
         "justification",
@@ -983,7 +983,7 @@
       ]
     },
     {
-      "gameName": "He Said, She Said",
+      "name": "He Said, She Said",
       "description": "A scene for two improvisers. Each improviser describes the action of their partner. Example: Improviser 1, \"I'd like to talk to you, Mabel. Improviser 2, \"He said, standing up and putting his hands on his hips.\" Improviser 1 carries out that physical action as improviser 2 continues, \"All right.\" Then Improviser 1 responds, \"She said, pulling out her bullwhip and snapping it over his head.\" Improvisers refer to each other in third person, to keep the narrative strong. The idea, like every other improv scene, is to endow your partner with do-able action. It gives the improvisers an excellent view on how to endow.",
       "tags": [
         "narrated",
@@ -993,7 +993,7 @@
       ]
     },
     {
-      "gameName": "Headline",
+      "name": "Headline",
       "description": "A headline, real or imagined, is asked of the audience. The scene is played illustrating the headline.",
       "tags": [
         "news",
@@ -1003,14 +1003,14 @@
       ]
     },
     {
-      "gameName": "Healthy and Fit",
+      "name": "Healthy and Fit",
       "description": "Have several improvisers play a simple family scene together. When finished give them the instructions, \"You feel healthy and fit. You have all the space and air you need, and have a great interest in what people have to say. Have the improvisers replay the scene and watch the results. The scene will generally be much more interesting to watch. This exercise is a good mantra to use when you are on stage as well.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Hidden Word Endowments",
+      "name": "Hidden Word Endowments",
       "description": "All members of the team leave the playing area. The MC asks the audience for an environment and for three words which may be used in that place. The MC then coaches the audience to respond to the teams to let them know when they are getting \"warmer\" vis a vis the three words. The improvisers are given the environment when they return to the stage.",
       "tags": [
         "endowment",
@@ -1020,7 +1020,7 @@
       ]
     },
     {
-      "gameName": "Hitchhiker",
+      "name": "Hitchhiker",
       "description": "Get a list of characteristics, habits, emotions or attitudes for the audience. Two chairs are placed onstage and one player takes a chair as if driving a car. They pick up a hitchhiker played by another player. The hitchhiker plays one of the  strong character traits, habits or quirks. The driver takes on the characteristic and they continue the scene.\n\nAfter a while, the hitchhiker is dropped off and a new hitchhiker is picked up with a new characteristic.",
       "variations": [
         "The driver makes an excuse to leave and the hitchhiker becomes the driver who then picks up another hitchhiker. This is a rotating players through the scene."
@@ -1033,7 +1033,7 @@
       ]
     },
     {
-      "gameName": "Honestly",
+      "name": "Honestly",
       "description": "Improviser(s) play a scene speaking their true feelings (as opposed to socially accepted verbal interactions).",
       "tags": [
         "scene",
@@ -1042,14 +1042,14 @@
       ]
     },
     {
-      "gameName": "Honeymoon",
+      "name": "Honeymoon",
       "description": "A hotelkeeper shows a couple into a room and leaves. They grab long knifes (imaginary) and cut their bodies open. Another creature emerges, moving around the space gleefully. The hotelkeeper knocks, the creatures freak and climb back into their old bodies (in a hurry, they put them on wrong, or put on each others bodies, etc). Hotelkeeper enters, says, \"I know what you've been doing,\" and proceeds to cut himself in the same manner.",
       "tags": [
         "wtf"
       ]
     },
     {
-      "gameName": "Horoscope",
+      "name": "Horoscope",
       "description": "A situation is given and a scene played out during which a horoscope from a magazine is read out in parts. The central character in the scene plays his part according to the horoscope.",
       "tags": [
         "props",
@@ -1058,7 +1058,7 @@
       ]
     },
     {
-      "gameName": "Human Environment",
+      "name": "Human Environment",
       "description": "The onstage environment is provided completely by improvisers.",
       "variations": [
         "The environment can speak or perform monologues."
@@ -1071,7 +1071,7 @@
       ]
     },
     {
-      "gameName": "Human Prop",
+      "name": "Human Prop",
       "description": "One improviser runs around playing all of the props in a scene.",
       "tags": [
         "active",
@@ -1081,7 +1081,7 @@
       ]
     },
     {
-      "gameName": "I Love You",
+      "name": "I Love You",
       "description": "The words \"I love you\" are played as either the subtext for the entire scene, without ever being stated, or in some cases, as the final words of the scene.",
       "tags": [
         "scene",
@@ -1089,7 +1089,7 @@
       ]
     },
     {
-      "gameName": "I Me Mine",
+      "name": "I Me Mine",
       "description": "Scene without using the words “I”, “Me”, or “Mine.”",
       "tags": [
         "scene",
@@ -1098,7 +1098,7 @@
       ]
     },
     {
-      "gameName": "In A _____, With A ____, While _____",
+      "name": "In A _____, With A ____, While _____",
       "description": "Improvisers get audience suggestions to fill in the blanks IN A toaster WITH A Marine WHILE a hurricane is approaching. Scene does not necessarily have to begin with the suggestions but may move toward that moment. Or it may begin at the suggestion and proceed wherever it might. variations of the game are single blanks or combining two of the three.",
       "tags": [
         "scene",
@@ -1109,7 +1109,7 @@
       ]
     },
     {
-      "gameName": "In/Out",
+      "name": "In/Out",
       "description": "Improvisers each get a “trigger” word before the scene. If any improviser in the scene speaks the word and they are onstage, they must justify an exit. If the word is said and they are offstage, they must justify an entrance.",
       "variations": [
         "Play that the “trigger” word has no effect if spoken by the improviser with that trigger word. The entrances and exits can only be caused by other players."
@@ -1121,7 +1121,7 @@
       ]
     },
     {
-      "gameName": "Inner Dialogue",
+      "name": "Inner Dialogue",
       "description": "Improvisers perform the scene while off stage \"voices\" create the inner dialogue - what they are REALLY thinking. May be played with just one character having an inner dialogue, or with the actors giving their own inner dialogue directly to the audience in the style of an aside.",
       "related": [
         "Asides",
@@ -1134,7 +1134,7 @@
       ]
     },
     {
-      "gameName": "Inner Song-alogue",
+      "name": "Inner Song-alogue",
       "description": "A scene begins with spoken dialogue. At any given point or at a signal from a offstage improviser, one of the characters sings his thoughts as a \"Inner/Mono Song\". None of the onstage characters can hear the song. When the character is done, they step back into the scene and continue with the dialogue.",
       "tags": [
         "monologue",
@@ -1144,7 +1144,7 @@
       ]
     },
     {
-      "gameName": "Innuendo",
+      "name": "Innuendo",
       "description": "Scene is played with as much innuendo, double entendre, or suggestive dialogue as possible. Can be one on one or played as a tag team scene.",
       "variations": [
         "Every line must end with \"if you know what I mean\"."
@@ -1155,7 +1155,7 @@
       ]
     },
     {
-      "gameName": "Instant Exit",
+      "name": "Instant Exit",
       "description": "A scene is played with a number of improvisers onstage. Each improviser tries to play the scene straight and has to justifiably exit if the audience laughs at either their action or dialogue. All players must contribute to the scene.",
       "variations": [
         "Can be used as a toss up with equal numbers from each team."
@@ -1170,14 +1170,14 @@
       ]
     },
     {
-      "gameName": "Insult Relay",
+      "name": "Insult Relay",
       "description": "Tag team insults. Get it? Some get it, others don't...we fall into that latter category! Ouch.",
       "tags": [
         "wtf"
       ]
     },
     {
-      "gameName": "Interference",
+      "name": "Interference",
       "description": "Team begins a scene. Opposing team attempts to take focus without speaking, making noise, or touching the \"on stage\" team. You can also play this where the opposing team MAY touch the \"onstage\" team.",
       "tags": [
         "justification",
@@ -1186,7 +1186,7 @@
       ]
     },
     {
-      "gameName": "Internal Narrative",
+      "name": "Internal Narrative",
       "description": "One improviser narrates the story, usually in the 1st person. The other improvisers interact with the narrator providing environment, supporting characters, etc. More than one improviser may supply the internal narration.",
       "tags": [
         "narrated",
@@ -1196,7 +1196,7 @@
       ]
     },
     {
-      "gameName": "Invisibility",
+      "name": "Invisibility",
       "description": "One or more characters in the scene are invisible to each other. The other improvisers respond 1) as if they are visible (with no actor, like in Harvey) 2) as if they are invisible, but audible (voice provided by miked improviser off stage), or 3) as if they are invisible and inaudible (with an actor playing a ghost as in Blythe Spirit).",
       "tags": [
         "scene",
@@ -1204,7 +1204,7 @@
       ]
     },
     {
-      "gameName": "Jeepers/Peepers",
+      "name": "Jeepers/Peepers",
       "description": "Everyone sits in a circle with their heads down and eyes closed. On the count of three, everyone looks up at either the person on their right, left, or directly across from them. If eye contact is made both people scream and step out of the circle. The circle is then closed and the exercise is repeated until there are only three players left.",
       "tags": [
         "exercise",
@@ -1212,7 +1212,7 @@
       ]
     },
     {
-      "gameName": "Jumping to Conclusions",
+      "name": "Jumping to Conclusions",
       "description": "Improvisers play a scene in which all of their sentences are completed by a fellow improviser.",
       "tags": [
         "scene",
@@ -1221,7 +1221,7 @@
       ]
     },
     {
-      "gameName": "Just a Minute",
+      "name": "Just a Minute",
       "description": "This scene begins with a group of improvisers (usually four) standing in a line. Facing them is another improviser who acts as the Judge. The improvisers select a general topic of discussion, a one-minute timer is started, and the judge picks one person to start talking about that topic. The person talking can speak of an actual experience in that topic, they can make up a story around the theme, they can state facts about that topic; anything they want. The other improvisers try to challenge the speaker on ANY grounds. Challenges can be for repetition, boredom, off the topic, anything at all. The clock stops and the Judge decides if the challenge is valid or not. If the challenge is not valid, the clock and the speaker continue. However if the challenge is upheld, the challenger gets the floor, and begins speaking on the same topic. The challenging continues, if someone who has started their story, gets the floor back, they must continue with the same story they were telling when they lost the floor. The improviser talking at the end of the one minute time limit wins. This game is not a narrative game and should be played for fun.",
       "tags": [
         "directed",
@@ -1231,7 +1231,7 @@
       ]
     },
     {
-      "gameName": "Kick It",
+      "name": "Kick It",
       "description": "A normal scene begins. When an offstage improviser says “Kick it!”, the scene continues with the characters rapping their dialogue. The offstage improviser can then restore the scene to normal. The scene can go back and forth as called.",
       "tags": [
         "cultural",
@@ -1241,7 +1241,7 @@
       ]
     },
     {
-      "gameName": "Kiddy Show",
+      "name": "Kiddy Show",
       "description": "Scene is played in the style of a Children's Show.",
       "tags": [
         "scene",
@@ -1250,7 +1250,7 @@
       ]
     },
     {
-      "gameName": "King Game",
+      "name": "King Game",
       "description": "One improviser is the King and one improviser is the Servant. The two play a scene; if at any time the King is dissatisfied with the Servant, he claps his hands and the Servant instantly dies, replaced by a new Servant. You may wish to time the Servants to see how long they last. This game is for learning how to be a good servant. You assume most people will put up with you, but being a servant is an acquired skill. If as servant you make mistakes, but the king enjoys being on stage with you, then you're learning good servant skills. If you can keep the person onstage involved, then you can keep the audience involved as well. Kings are annoyed by open ended offers like, \"What shall we do now?\" They like specific things to do, \"Time for your tea, just the way you like it, Sir,\" is a more solid offer. Kings will sometimes kill for no reason at all, but the game is still worthwhile.",
       "tags": [
         "exercise",
@@ -1259,7 +1259,7 @@
       ]
     },
     {
-      "gameName": "Kitty Wants a Corner",
+      "name": "Kitty Wants a Corner",
       "description": "Players stand in a circle, one player stands in the center and is “it”. The player goes to someone in the circle and says, “Kitty wants a corner,” and the player responds, “Go see my neighbor.” Indicating one direction or another. The player then moves to the next person in the circle and the direction and asks the question again to the receive the same response, etc.  While this is taking place, players standing in the circle establish eye contact with each other and then quickly change places. The “Kitty” in the center tries to get to someone's spot before  it is filled. If he succeeds, then the person who didn't make it becomes it.",
       "tags": [
         "exercise",
@@ -1267,7 +1267,7 @@
       ]
     },
     {
-      "gameName": "Language Barrier",
+      "name": "Language Barrier",
       "description": "Two improvisers meet on stage who speak different languages. They both speak in gibberish as far as the audience is concerned.",
       "tags": [
         "cultural",
@@ -1276,7 +1276,7 @@
       ]
     },
     {
-      "gameName": "Last Letter/First Letter",
+      "name": "Last Letter/First Letter",
       "description": "Last letter of Improviser 1's dialogue becomes first letter of Improviser 2's dialogue. Improviser 1: \"Love those pants.\" Improviser 2: \"Stop, you're just saying that. Improviser 1: \"Trust me, those pants are YOU.\" Improviser 2: Unfortunately, they have a big hole in the knee.\" As always, the idea is to challenge your partner. The audience appreciates a good struggle. They sit there wondering, \"What word would I use that starts with the letter U.\"",
       "variations": [
         "Play as Last Word/First Word",
@@ -1289,7 +1289,7 @@
       ]
     },
     {
-      "gameName": "Lecture Endowments",
+      "name": "Lecture Endowments",
       "description": "Improviser is sent out and the remaining players get a college course topic and something not associated with that subject, for instance “biology” and “presidents”. The offstage improviser returns and begins a lecture. They are endowed with the subject “Presidential Biology” through questions from fellow players and the audience playing students.",
       "tags": [
         "endowment",
@@ -1299,7 +1299,7 @@
       ]
     },
     {
-      "gameName": "Light Booth",
+      "name": "Light Booth",
       "description": "Scene is driven by changing the lights. Light changes are made at the light board operators discretion. Improvisers must keep up with - and justify - the changes.",
       "related": [
         "Spotlight"
@@ -1312,7 +1312,7 @@
       ]
     },
     {
-      "gameName": "List Endowment",
+      "name": "List Endowment",
       "description": "A list of endowments in a category is gathered from the audience before the scene starts. The director calls out different endowments through the game. They may assign an endowment to one improviser, multiple improvisers, or all the improvisers.\n\nCommon Categories: Animals, Attitudes/Emotions, Genres/Styles, Isms (Commun-ism, Vegetarian-ism, etc).",
       "variations": [
         "Double Lists: A list scene where two lists are used to change the improvisers in a single scene. For instance, Emotions and Film Styles, a scene begins neutral, then the emotion \"Happy\" is called. The scene becomes \"Happy\", after awhile, the film style \"Sci-Fi\" is called. The scene becomes a \"Happy, Sci-Fi\" scene, if the emotion changes to \"Sad\", then the scene becomes a \"Sad Sci-Fi\" scene. If the film style changes to \"Film Noir\", it becomes a \"Sad, Film Noir\", etc. Take your time with this game and make the transitions slowly.",
@@ -1344,7 +1344,7 @@
       ]
     },
     {
-      "gameName": "Lotus",
+      "name": "Lotus",
       "description": "A series of scenes in which each scene develops out of the \"dynamics\" of the previous scene. An audience suggestion is not used. Three playing areas are established on stage, usually with a pair of actors in each area. One couple begins a scene from nothing. When the second group feels that they have determined the dynamic of the first scene, they begin their own scene with different characters in a different place using their interpreted dynamic from the first group. Then group three repeats the process.\n\nThe rotation is then completed two more times, for a total of 9 \"scenes\". Each time the cycle begins again, the groups use the characters they established in their own first scene, but the scenes need not be chronologically correct.",
       "variations": [
         "Solo: Three individuals take the stage doing monologues. Again, it starts as a scene from nothing - the second improviser determines the dynamic and each actor gets 3 shots at his character.",
@@ -1355,7 +1355,7 @@
       ]
     },
     {
-      "gameName": "Lounge Lizards",
+      "name": "Lounge Lizards",
       "description": "Several improvisers stand onstage and an actual song title is taken from the audience. An improviser begins to sing that song. They can stop on any word. Once they stop, another improviser has five seconds to begin another actual song that has that word in the title. They can bluff and try to make up a song with that word in it. If they take too long, or the audience doesn't believe the made up song they yell, “Die” and the improviser is eliminated. However, if the song actually exists then another improviser (from the other team, etc.) is eliminated. Best played if the song has to start on the word: Improviser 1“You are my sunshine…….” Improviser 2“….sunshine of my life and I'll always….”",
       "tags": [
         "game",
@@ -1366,7 +1366,7 @@
       ]
     },
     {
-      "gameName": "Lyric Speak",
+      "name": "Lyric Speak",
       "description": "All the characters onstage speak in song lyrics from actual songs.",
       "tags": [
         "pop-culture",
@@ -1376,7 +1376,7 @@
       ]
     },
     {
-      "gameName": "Machine",
+      "name": "Machine",
       "description": "Improvisers form parts of a machine using their bodies in repetitive movements and sounds. The machine may make an object, an emotion, a genre of art, etc. Use an audience suggestion for the machine.",
       "variations": [
         "Machine-Monster-Slow Motion Riot-Monster-Machine: Improvisers begin a machine in the regular fashion, the machine then evolves into a single monster that roams the stage. The monster transforms into a slow motion riot, then back into a monster, then back into a machine. Take your time with the transitions in this game as they are the most important part.",
@@ -1391,7 +1391,7 @@
       ]
     },
     {
-      "gameName": "Madrigal",
+      "name": "Madrigal",
       "description": "Three singers to begin. Person 1 may ask for a \"Simple phrase from the Bible or Shakespeare.\" Person 2 may get a \"Common Advertising Slogan\". Person 3 gets a \"Fictitious Headline from The Enquirer.\" Person 1 sings their phrase through twice. Then Person 2, then Person 3. After all three lines have been heard, the singers weave words and phrases in and out of each other's lines, creating new lines. Similar to Phone Bank. Singers trade focus, harmonies, tempos, words, etc.",
       "related": [
         "Oratorio"
@@ -1404,7 +1404,7 @@
       ]
     },
     {
-      "gameName": "Making Faces",
+      "name": "Making Faces",
       "description": "Three Improvisers sit shoulder to shoulder, the one in the middle is the master, the outer two are the servants. The master is planning a gathering and is giving the servants orders.  He may only speak to one servant at a time. When the master is not looking at them the servants make faces behind his back, trying not to get caught. If the master catches them, he fires them instantly and they are replaced with another servant. The idea is for the servants to take bigger and bigger risks with making faces. If they play it safe the audience will lose interest. They want to see the servants misbehave. The master should play this strictly, showing no mercy, to create a sense of danger.",
       "variations": [
         "Add chairs to the outer servants and continue to play the game that when the person next to you is not looking, you should make faces. You may keep adding people to the outer edge."
@@ -1416,7 +1416,7 @@
       ]
     },
     {
-      "gameName": "Mantra Scene",
+      "name": "Mantra Scene",
       "description": "Play a scene in which the improvisers have a hidden mantra that they keep repeating to themselves and try to embody during the scene. If the mantra is \"I love you\", the character should try to play \"I love you\" with everything they do. Everything is played with the hidden objective. To teach this scene, have two improvisers play a neutral scene. Ask them to recite, to themselves, the first line of a familiar nursery rhyme. Ask them to respond to questions as they keep the rhyme running in their heads. They should have problems responding to the questions. Next, have them play their neutral scene again, this time with a \"I love you\" or \"I hate you\" mantra. The key to the mantra scene is to play the mantra truthfully within the context of the scene. If your mantra is \"I love you\", you should show your love in actions and what you say, you should always TRY to say \"I love you\" in everything you say, but only say \"I love you\" if you can do it truthfully in the context of the scene. Some basic mantras are; \"I love you\", \"I hate you\", \"I want to sleep with you\", \" I want nothing\", \"I'm better than you.\", etc. The list of possibilities is endless. After some time, you may want to work with more complex mantras, such as \"I love you, but I want you to go\", \"I hate you, but I want to sleep with you\", etc. Again the possibilities are endless. Eventually, you may play a mantra combined with an objective, such as, \"I hate you, but I'm pregnant\", or \"I love you, but I'm going to kill you\", etc. Try to avoid falling into a \"talking heads\" scene.",
       "tags": [
         "scene",
@@ -1424,7 +1424,7 @@
       ]
     },
     {
-      "gameName": "Marriage Counselor Endowments",
+      "name": "Marriage Counselor Endowments",
       "description": "An improviser leaves the playing area. Two “relationship problems” are gotten from the audience. The offstage improviser returns as a counselor and two fellow players try to endow him to guess at the problems in the relationship by playing a couple in a therapy session.",
       "tags": [
         "endowment",
@@ -1434,7 +1434,7 @@
       ]
     },
     {
-      "gameName": "Masterpiece Theater",
+      "name": "Masterpiece Theater",
       "description": "Scene is played in the style of Masterpiece Theater.",
       "related": [
         "Culture"
@@ -1447,7 +1447,7 @@
       ]
     },
     {
-      "gameName": "Media Challenges",
+      "name": "Media Challenges",
       "description": "Scene is based on some kind of published material. Maybe in the form of a newspaper headline (real or imagined), personal ad, letter to Dear Abby, TV Guide Synopsis, Movie or Video Guide Synopsis, entry from Ripley's Believe it or Not, Guiness Book of World Records, etc. The internet is another great resource for this game. The shorter the original source, the better.",
       "tags": [
         "news",
@@ -1458,7 +1458,7 @@
       ]
     },
     {
-      "gameName": "Minute Long Scene",
+      "name": "Minute Long Scene",
       "description": "Scenes that take place in one minute. The may include: Death in a Minute, Epic in a Minute, Most Justifiable Entrances and Exits in a Minute, Most Complete Scenes in a Minute, _______ In a Minute, Most Scenes Using the Same Inanimate Object, etc.",
       "tags": [
         "scene",
@@ -1467,7 +1467,7 @@
       ]
     },
     {
-      "gameName": "Mirror Faces",
+      "name": "Mirror Faces",
       "description": "A situation is given and members of the opposing team (or audience members) adopt a facial expression, then turn to each member of the playing team. Then playing team members adopt any one of the faces. This becomes a character or plot offer for the scene played.",
       "related": [
         "Group Mirror"
@@ -1478,7 +1478,7 @@
       ]
     },
     {
-      "gameName": "Motivational Exit",
+      "name": "Motivational Exit",
       "description": "Three improvisers are onstage. Without speaking, they leave together for the same reason. Go with the first simple offer - don't try to be original. A twitch or throat clearing can evolve into a reason to leave. Beginners will always try to be clever, instead of letting the reason evolve. Don't reject anything, use it to develop a reason to leave. After playing this for a while, introduce dialogue. Improvisers may talk, but can't leave for the reason they're discussing.",
       "tags": [
         "exercise",
@@ -1486,14 +1486,14 @@
       ]
     },
     {
-      "gameName": "Mouth",
+      "name": "Mouth",
       "description": "Simple exercise. Play a scene, as you open your mouth to say something, pause, and say something else. If you are thinking of saying, \"Hello John, Can I help you?\", grab onto that thought, open your mouth to say it but don't say it; say whatever comes out of your mouth. It helps to open your mouth wide before you say your line.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Move On",
+      "name": "Move On",
       "description": "A scene begins and at anytime an offstage improviser can yell, “Move On!” forcing the story to immediately move forward in time. Location and characters may also change when a story moves on.",
       "tags": [
         "scene",
@@ -1502,7 +1502,7 @@
       ]
     },
     {
-      "gameName": "Moving Bodies",
+      "name": "Moving Bodies",
       "description": "Audience members or teammates provide the locomotion for the improvisers on stage. Improvisers may not move any part of their own bodies (except to provide dialogue by moving their mouths). Movers should put the \"puppets\" in challenging positions and puppets should challenge the puppeteers with their verbal endowments.",
       "variations": [
         "Moving Boxes: The stage chairs, which are often black boxes, become the \"floor\" and a player moves the floor as the improviser walks on it. The mover's ultimate job is to take care of the improviser above and keep him from falling.",
@@ -1521,7 +1521,7 @@
       ]
     },
     {
-      "gameName": "Murder Endowments",
+      "name": "Murder Endowments",
       "description": "The audience chooses a murderer from the playing team. The murderer then leaves the playing area. The remaining improvisers then get a location, a murder weapon, and a victim. The off stage improviser returns and the scene is played with the partners endowing the murderer with information so that he kills the right person, in the right place, with the right weapon.",
       "tags": [
         "endowment",
@@ -1531,7 +1531,7 @@
       ]
     },
     {
-      "gameName": "Musical",
+      "name": "Musical",
       "description": "As in the style of a musical ala Andrew Lloyd Webber, Rodgers and Hammerstein, Fosse, etc.",
       "tags": [
         "cultural",
@@ -1541,7 +1541,7 @@
       ]
     },
     {
-      "gameName": "Musical Chair",
+      "name": "Musical Chair",
       "description": "A single improviser sits in a chair. The other improvisers make offers in a scene to get the person out of the chair. Another improviser must find a justifiable way to sit in the chair in the context of the scene and then the process begins again. As a toss up game, the last improviser in the chair at the scenes end wins.",
       "tags": [
         "physical",
@@ -1551,14 +1551,14 @@
       ]
     },
     {
-      "gameName": "Name Game",
+      "name": "Name Game",
       "description": "Improvisers roam around the room pointing at different objects, calling them by a name other than what they actually are. Example: An improviser points at a cat and declares, \"A Walnut!\", then points at a chair and says, “A hat!\", etc. Best played at a fast pace with everyone speaking at once.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Narrated Scene",
+      "name": "Narrated Scene",
       "description": "One improviser adopts a style of narrative, title of a story, etc. Narrator tells the story which he may or may not be a part of. Such scenes may be Tall tales, bedtime stories, courtroom testimonies, or any other situation where a story may be narrated.",
       "tags": [
         "narrated",
@@ -1567,7 +1567,7 @@
       ]
     },
     {
-      "gameName": "Narrative Collage",
+      "name": "Narrative Collage",
       "description": "Improvisers perform a scene through a collage of monologues that eventually connect in some form to a central narrative. Different points of view can be used, time can move forwards or backwards, and even the point of view of an inanimate object may be used.",
       "aliases": [
         "Narrage"
@@ -1579,7 +1579,7 @@
       ]
     },
     {
-      "gameName": "Nightmare",
+      "name": "Nightmare",
       "description": "Similar to Day In The Life/Experience, except that the person's day or experience is played as a nightmare.",
       "variations": [
         "The improvisers have an audience member share what they did that day, then enact the nightmare they will have tonight."
@@ -1592,7 +1592,7 @@
       ]
     },
     {
-      "gameName": "Nine Line",
+      "name": "Nine Line",
       "description": "A scene that has only nine lines of dialogue, repeated with different Attitudes, Points of View or Genres. Try starting with three improvisers, three lines each.",
       "tags": [
         "endowment",
@@ -1604,7 +1604,7 @@
       ]
     },
     {
-      "gameName": "Number of Words",
+      "name": "Number of Words",
       "description": "Two improvisers begin a scene while an offstage improviser or MC calls out the number of words they must use in a sentence.",
       "variations": [
         "Numbers may be obtained for each individual player before the scene from audience members."
@@ -1617,7 +1617,7 @@
       ]
     },
     {
-      "gameName": "Object Endowments",
+      "name": "Object Endowments",
       "description": "One improviser is sent out of the room and a list of objects is gathered from the audience. The other improvisers try to endow the unknowing improviser to use the objects given.",
       "tags": [
         "endowment",
@@ -1627,7 +1627,7 @@
       ]
     },
     {
-      "gameName": "Object From the Audience",
+      "name": "Object From the Audience",
       "description": "An object is picked from a member of the audience. Scene is played using that object. It may or may not be used as what it really is (eg: credit card may be used as a pocket TV...).",
       "tags": [
         "props",
@@ -1636,7 +1636,7 @@
       ]
     },
     {
-      "gameName": "Obsession Party",
+      "name": "Obsession Party",
       "description": "Each improviser gets an obsession. Try to get more general obsessions as opposed to more specific ones (eg: late model Camaros). People tend to play obsessions at one level of intensity. Try to vary the intensity. Don't make the obsession the focus of the party and keep the narrative going.",
       "tags": [
         "endowment",
@@ -1645,7 +1645,7 @@
       ]
     },
     {
-      "gameName": "Occupation Endowments",
+      "name": "Occupation Endowments",
       "description": "Single occupation or a series of occupations is asked of the audience. The other improvisers try to endow the unknowing improviser with that occupation, or occupations.",
       "tags": [
         "endowment",
@@ -1655,7 +1655,7 @@
       ]
     },
     {
-      "gameName": "Ola/Reno",
+      "name": "Ola/Reno",
       "description": "Improvisers play a scene from a suggestion in which as many words as possible end with an added “-ola” or “reno” Example: Hellola, Let'sola goreno forola a walkareno. Get a mundane task or serious situation for the suggestion.",
       "tags": [
         "scene",
@@ -1665,7 +1665,7 @@
       ]
     },
     {
-      "gameName": "One Hit Wonders",
+      "name": "One Hit Wonders",
       "description": "Many games are primarily \"one hit wonders,\" gag scenes which are rarely as interesting the second time around in the same show or sometimes ever. The team performing second is usually at a disadvantage as the scene's novelty has worn off. Might try taking three of these wonders (eg: Boris, Arms, Sideways Scene, etc) writing them on a slip of paper and picking one from a hat.",
       "related": [
         "Arms",
@@ -1679,7 +1679,7 @@
       ]
     },
     {
-      "gameName": "One On One",
+      "name": "One On One",
       "description": "One member from each team is selected to play one on one with member of the other team. May play Status, Love, Sincere, Humble, etc. Usually played as a timed scene. Each improviser tries to be the most ________. Good for toss up challenge at top of show.",
       "tags": [
         "scene",
@@ -1689,7 +1689,7 @@
       ]
     },
     {
-      "gameName": "Open Scene",
+      "name": "Open Scene",
       "description": "A team gets to do any scene they like.",
       "aliases": [
         "Free Scene"
@@ -1700,7 +1700,7 @@
       ]
     },
     {
-      "gameName": "Opera",
+      "name": "Opera",
       "description": "Figaro! Figaro! Figaro!",
       "tags": [
         "cultural",
@@ -1710,7 +1710,7 @@
       ]
     },
     {
-      "gameName": "Oratorio",
+      "name": "Oratorio",
       "description": "Madrigal format, but rather than sing and play off the same few sentences, a singer can advance the story with each line they sing. As each advancing line is sung, the others combine the line with previous lines and sing in the regular madrigal format.",
       "related": [
         "Madrigal"
@@ -1723,7 +1723,7 @@
       ]
     },
     {
-      "gameName": "Order a Coke",
+      "name": "Order a Coke",
       "description": "Scene is played in whatever manner the improvisers choose, BUT at some point during the scene, one of the improvisers must, justifiably, order a coke.",
       "tags": [
         "justification",
@@ -1732,7 +1732,7 @@
       ]
     },
     {
-      "gameName": "Oscar Winning Moment",
+      "name": "Oscar Winning Moment",
       "description": "A scene is played in which each improviser gets an “Oscar™ Winning Moment” in the scene. You can ask for these from the audience if you like: A subject for an award winning monologue, or a physical habit that is well played, etc.",
       "tags": [
         "monologue",
@@ -1741,7 +1741,7 @@
       ]
     },
     {
-      "gameName": "Panel Expert Endowments",
+      "name": "Panel Expert Endowments",
       "description": "You have three experts on a given topic. Each expert is introduced by the expert before them. During the introduction, the upcoming expert is endowed with a particular trait. This may be a speech pattern, a nervous tick, a physical limitation, an obsession, etc. The upcoming expert then plays the endowment for the remainder of the scene and endows the next expert.",
       "tags": [
         "endowment",
@@ -1751,7 +1751,7 @@
       ]
     },
     {
-      "gameName": "Paper Chase",
+      "name": "Paper Chase",
       "description": "A situation is established. The stage is strewn with pieces of paper each containing single, unrelated lines of dialogue and/or stage directions. A scene is played, randomly incorporating these lines of dialogue and/or stage directions. The lines can come from plays, song titles or lyrics, the audience, clichés, etc",
       "aliases": [
         "Paper Scraps",
@@ -1765,7 +1765,7 @@
       ]
     },
     {
-      "gameName": "Parallel Parking",
+      "name": "Parallel Parking",
       "description": "Two or more improvisers stand center next to one another and begin walking away from the center till an audience member stops them. They then play a scene in which they must always justify being in the same relationship and distance to each other.",
       "tags": [
         "justification",
@@ -1774,7 +1774,7 @@
       ]
     },
     {
-      "gameName": "Parallel Universe",
+      "name": "Parallel Universe",
       "description": "The improvisers get two environments from the audience, which they play in the same space. In other words, two separate scenes in two separate environments occupy the same space. The scenes do not acknowledge each other. Give and Take is crucial for this game.",
       "variations": [
         "Each improviser gets a environment and plays the scene in that environment. Each improviser acknowledges the other improvisers in their environment."
@@ -1786,7 +1786,7 @@
       ]
     },
     {
-      "gameName": "Party Quirks",
+      "name": "Party Quirks",
       "description": "One improviser leaves the stage and the remaining improvisers get character traits, habits, etc. The offstage improviser returns and a party scene is played. The improviser tries to guess everyone's “party quirks”. When he guesses correctly he throws them out of the party.",
       "tags": [
         "endowment",
@@ -1796,7 +1796,7 @@
       ]
     },
     {
-      "gameName": "Pecking Order",
+      "name": "Pecking Order",
       "description": "Status game. Each improviser picks a number corresponding to the number of improvisers on stage (e.g. if there are three people on stage, all improvisers pick a number between 1 - 3). Improvisers don't tell each other what number they have chosen for themselves, so it is conceivable that all improvisers might choose the same number. #1 is considered the highest status. The highest number (going back to the previous example, would be \"3\") is considered the lowest status. Scene is played with improvisers projecting their own status - one does what one must to demonstrate to the others the status they have chosen. Scenes are most interesting when more than one person chooses the same number. One person may play \"1\" the way someone else plays \"3\". The status may also be given in secret to each improviser by an improviser not in the scene.",
       "variations": [
         "Pecking Order with Hats: Played as Pecking Order, except that the improvisers wear their numbers on hats. If a 2 is able to grab 1's hat then they switch pecking positions. So a 4 could work his way to the 1 position by the end of the scene. When playing this scene, don't worry about the hats, if it's going to be taken let it be taken. The fun is in trying to get it back."
@@ -1809,7 +1809,7 @@
       ]
     },
     {
-      "gameName": "Phone Bank",
+      "name": "Phone Bank",
       "description": "Improvisers begin the scene as if they are standing in front of a bank of pay telephones - at a public location. Each improviser may ask the audience for a professional problem, or an emotion, or an object, etc. The first improviser steps up to a phone, calls someone, and begins a conversation that relates to the suggestion from the audience. After the tone and rhythm of the conversation is established, improviser 2 does the same thing. Improviser 1 fades out of the conversation for a while. After improviser 2 is established, improviser 3 calls someone, etc. This process continues until all the improvisers are on the phone. At this point, improvisers trade the focus of the scene back and forth, using words, phrases, emotions, etc from each other's conversations in order to temporarily take the focus of the scene. Gradually, each improviser hangs up. The scene should be played like a chamber music piece: volume changes, speed of conversation changes, rapidity of people taking focus changes, etc.",
       "variations": [
         "Lecture: Two experts stand shoulder to shoulder on stage. They each get a topic to discuss. They both begin to lecture on their topic, speaking at the same time and ignoring the other expert. As the lecture continues they begin to pick up on each others words, etc, as in Phone Bank."
@@ -1820,7 +1820,7 @@
       ]
     },
     {
-      "gameName": "Physical Contact",
+      "name": "Physical Contact",
       "description": "Improvisers may only speak when they are in physical contact with each other. This is a one hit wonder (unless one improviser secretly chooses to endow himself with this quality in another scene).",
       "aliases": [
         "Electricity"
@@ -1834,7 +1834,7 @@
       ]
     },
     {
-      "gameName": "Physical Thermometer",
+      "name": "Physical Thermometer",
       "description": "Teammate holds hand in front of another improviser's forehead. Slowly, the hand is lowered toward the improviser's feet. At some part of the improvisers body, an audience member shouts \"Stop\". That becomes the part of the body that 'leads' the improviser's character. Each improviser gets a “leading” part.",
       "tags": [
         "physical",
@@ -1843,7 +1843,7 @@
       ]
     },
     {
-      "gameName": "Piano Bar",
+      "name": "Piano Bar",
       "description": "May be performed as a lounge act, or as a bunch of people sitting around the old piano singing old favorites.",
       "tags": [
         "game",
@@ -1852,7 +1852,7 @@
       ]
     },
     {
-      "gameName": "Pillars",
+      "name": "Pillars",
       "description": "Two audience volunteers are brought to the stage. Whenever an improviser points to one of the audience members (a Pillar) the audience member provides a missing word or line of dialogue for that character.",
       "tags": [
         "audience",
@@ -1862,7 +1862,7 @@
       ]
     },
     {
-      "gameName": "Pivot",
+      "name": "Pivot",
       "description": "Imagine that the stage is a large disk, balanced on a single point. As an improviser moves around on the stage, the balance of the stage is effected. Improvisers must compensate for each other's movements, making sure that the stage is always balanced.",
       "variations": [
         "Hero/Chorus: Improvisers stand in a circle (the disc). One of the improvisers steps onto the disc. He is now the HERO. He moves about the disc not speaking but playing his status. When he stops, someone else steps onto the disc to become the new HERO. The old HERO is now the CHORUS. When the New HERO stops, the CHORUS rushes to balance the disc opposite the HERO. At some point, the CHORUS decides not to move. When the CHORUS refuses to move, another HERO steps onto the disc, and the former HEROES join the CHORUS, moving to balance the HERO. Remember, the HERO and CHORUS cannot move at the same time, the chorus must wait for the HERO to stop. The CHORUS will decide not to move without consultation. They simply will not move. If one member of the CHORUS moves, then all must move. The CHORUS, when even in number can spilt into different combinations to balance the stage. For instance, a CHORUS of 6 could split into two groups 3, three groups of 2, six individuals, or remain as 6 person CHORUS. If the CHORUS is an odd number, they must stay whole. It is important to remember that the entire CHORUS is equal to one HERO. The game is about status being given, not taken. You can't be the HERO, if the CHORUS won't let you, and you can't be in the CHORUS till you've been the HERO."
@@ -1875,7 +1875,7 @@
       ]
     },
     {
-      "gameName": "Plagiarism",
+      "name": "Plagiarism",
       "description": "Scene played using characters, plots, and lines of dialogue from previous scenes. All must be justified.",
       "tags": [
         "justification",
@@ -1884,7 +1884,7 @@
       ]
     },
     {
-      "gameName": "Playbook",
+      "name": "Playbook",
       "description": "Using an anthology of plays, an improviser asks for a page number. The improviser \"holding book\" must take all of their dialogue from one character's consecutive lines of dialogue in the play, beginning on the assigned page. Teammates work to justify the dialogue. Keep the narrative moving. The tendency is to eventually treat the person holding book as if they are insane.",
       "variations": [
         "Person holding book reads the lines in reverse order"
@@ -1900,7 +1900,7 @@
       ]
     },
     {
-      "gameName": "Poetic Speak",
+      "name": "Poetic Speak",
       "description": "Scene begins with regular speaking. A bell is rung and the players then continue in Poetic language. The bell is rung again and they return to regular speak. The scene continues going back and forth between these two states.",
       "tags": [
         "directed",
@@ -1910,7 +1910,7 @@
       ]
     },
     {
-      "gameName": "Poetry Scene",
+      "name": "Poetry Scene",
       "description": "Tell a story (in a line) or play a scene using an actual poetry form such as limerick, haiku, sonnet, couplets, etc for all spoken lines.",
       "aliases": [
         "Scene in Verse"
@@ -1922,7 +1922,7 @@
       ]
     },
     {
-      "gameName": "Point of View",
+      "name": "Point of View",
       "description": "A short scene is played with neutral character. It is then replayed from the Point of View of each major character in the scene - the POV character remains neutral. It is NOT necessary to repeat the dialogue exactly. Try to endow your character with the 'biggest' emotions, actions, etc. relative to the neutral character.",
       "variations": [
         "Rashomon: Two people sit in chairs, facing the audience. Each does a monologue, alternating with the other. They talk about the same situation from their own points of view."
@@ -1934,7 +1934,7 @@
       ]
     },
     {
-      "gameName": "Poison Arm Samurai",
+      "name": "Poison Arm Samurai",
       "description": "The outer edge off your forearms, from elbow to pinky, is a poison sword which can be used to kill and to defend. Improvisers stand in a circle and move their arms up and down in slow motion. Once an even rate is established, the \"GO!\" is given. The improvisers go at each other trying to hit each other anywhere on the body with their poison sword. The only defense being that persons own sword. If hit anywhere other than the outer edge of the forearm, that person dies in slow motion. A dying samurai may continue to kill until their rump touches the ground. The point of this game is to be aware and in control of your body. Focus on keeping your body moving at the same rate. You want to follow through on your actions, you're not moving slowly, you're moving in slow motion. If you swing and miss, follow through with your arm movement, even if it means being killed. Once you've mastered this, try playing in teams of two, remembering that you can accidentally kill your partner.",
       "tags": [
         "exercise",
@@ -1942,7 +1942,7 @@
       ]
     },
     {
-      "gameName": "Pop Up Storybook",
+      "name": "Pop Up Storybook",
       "description": "As above, except the on stage actors \"pop up\" from a lying position and the narrator may manipulate one or more of the actors body parts in order to illustrate parts of the story.",
       "tags": [
         "justification",
@@ -1954,7 +1954,7 @@
       ]
     },
     {
-      "gameName": "Position Vacant",
+      "name": "Position Vacant",
       "description": "Interview situation, occupation is given. One or more people apply for the job. (Interviewer is also a member of the team). This can be played with a different endowment given to each applicant.",
       "tags": [
         "endowment",
@@ -1962,7 +1962,7 @@
       ]
     },
     {
-      "gameName": "Props",
+      "name": "Props",
       "description": "Each improviser is assigned a prop. The improviser must use the prop through the course of the scene. The prop may or may not be used to represent what it actually is.",
       "variations": [
         "Other improvisers or members of the audience are used as props.",
@@ -1979,7 +1979,7 @@
       ]
     },
     {
-      "gameName": "Proverbs/Word Endowments",
+      "name": "Proverbs/Word Endowments",
       "description": "One improviser leaves the stage area and a proverb or unusual word is given. Upon returning to the playing area, the improviser must use the proverb or word during the course of the scene. This game may be played with any number of improvisers endowing, perhaps as a warm up at the beginning of the match.",
       "tags": [
         "endowment",
@@ -1989,7 +1989,7 @@
       ]
     },
     {
-      "gameName": "Psychic Endowments",
+      "name": "Psychic Endowments",
       "description": "The offstage improviser is endowed as psychic reading the fortune of a fellow improviser taken from the audience. Fellow improvisers may “possess” the person being endowed and channel clues from beyond to help them guess.",
       "tags": [
         "endowment",
@@ -1999,7 +1999,7 @@
       ]
     },
     {
-      "gameName": "Radio Play",
+      "name": "Radio Play",
       "description": "This scene works best with working microphones. Voices and all sound effects are provided by the actors, like an old radio play. May be played with the lights off, but it's more interesting if the audience can see the actors working.",
       "tags": [
         "narrative",
@@ -2011,7 +2011,7 @@
       ]
     },
     {
-      "gameName": "Radio Stations",
+      "name": "Radio Stations",
       "description": "4 players stand in a line as in story story die or storyline. The audience gives each person a radio station style such as “talk radio,” “heavy metal,” “jazz,” “alternative,” “easy listening,” etc. Another player points to them and they must say or sing what is on that station at that time. If it is a talk radio station, then they can talk, if it is a music station they need to sing a song in that style.",
       "tags": [
         "directed",
@@ -2021,7 +2021,7 @@
       ]
     },
     {
-      "gameName": "Realistic Scene",
+      "name": "Realistic Scene",
       "description": "Improvisers play a scene for realism (fine line between \"being real\" and \"being maudlin\". We tend to over emote these scenes).",
       "tags": [
         "narrative",
@@ -2030,7 +2030,7 @@
       ]
     },
     {
-      "gameName": "Reminiscence",
+      "name": "Reminiscence",
       "description": "One or more improvisers reminisce about event/people from the past. Other improvisers create the scene. The person reminiscing may weave in and out of the flashback.",
       "tags": [
         "narrated",
@@ -2040,7 +2040,7 @@
       ]
     },
     {
-      "gameName": "Remote Control",
+      "name": "Remote Control",
       "description": "An imaginary movie title is given and the action begins. At the discretion of an off stage improviser, \"Fast Forward\", \"Rewind\", \"Slow Motion\" are called out. The actors react accordingly.",
       "variations": [
         "TV Remote Control: A scene begins. At some point, an off-stage voice \"changes the channel.\" Improvisers momentarily freeze, and then start a new TV show based on their positions. Scene plays a bit, then the channel changes again. Off stage improviser then changes channels periodically between the three established shows."
@@ -2053,7 +2053,7 @@
       ]
     },
     {
-      "gameName": "Replacement",
+      "name": "Replacement",
       "description": "Play a two-person scene. If an improviser wimps, blocks, waffles, or doesn't accept an offer, they are replaced in the scene. This game helps to train you to listen and accept offers.",
       "tags": [
         "exercise",
@@ -2062,7 +2062,7 @@
       ]
     },
     {
-      "gameName": "Research and Development",
+      "name": "Research and Development",
       "description": "The improvisers ask for the name of a yet to be invented scene format. One of the improvisers takes the stage and provides an improvised definition of the format. Then the improvisers play the scene as defined. Great for finding new formats!",
       "aliases": [
         "Game-O-Matic"
@@ -2073,7 +2073,7 @@
       ]
     },
     {
-      "gameName": "Return Department",
+      "name": "Return Department",
       "description": "A product and an unusual problem with the product are received from the audience. An unknowing improviser enters and is playing an employee in a return department of a store. An improviser then tries to endow them with the product and the problem.",
       "tags": [
         "endowment",
@@ -2083,7 +2083,7 @@
       ]
     },
     {
-      "gameName": "Ritual",
+      "name": "Ritual",
       "description": "Everyday activity or object is played as if part of a ritualistic ceremony.",
       "tags": [
         "cultural",
@@ -2092,7 +2092,7 @@
       ]
     },
     {
-      "gameName": "Scene By Numbers",
+      "name": "Scene By Numbers",
       "description": "An improviser gets a number from the audience. Scene is played using only numbers as dialogue, counting down from the number given by the audience. Scene ends at \"zero.\"",
       "tags": [
         "gibberish",
@@ -2102,7 +2102,7 @@
       ]
     },
     {
-      "gameName": "Scene from Music",
+      "name": "Scene from Music",
       "description": "Scene starts with music provided by music improviser. One or more improvisers dance to the music. After a short period of time, the MC blows the whistle, dancers freeze in position. They then begin a scene based on their physical positions.",
       "variations": [
         "Scene to Music: Improvisers perform a scene to music provided by a live musician or the music improviser. Can be played as a silent scene. Improvisers may choose to ask for a suggestion. Music may be played for the entire scene, cut off at some point, or changed during the course of the scene. If it changes, improvisers must justify the change."
@@ -2117,7 +2117,7 @@
       ]
     },
     {
-      "gameName": "Scene From Nothing",
+      "name": "Scene From Nothing",
       "description": "No suggestion is taken from the audience. There is no pre-planning of the scene. One improviser gets up on stage and the scene begins.",
       "related": [
         "Open Scene"
@@ -2128,7 +2128,7 @@
       ]
     },
     {
-      "gameName": "Scene From Something",
+      "name": "Scene From Something",
       "description": "Can't discuss on Bench what you are going to do. One person gets up, gets a suggestion from the audience, and begins.",
       "tags": [
         "scene",
@@ -2136,7 +2136,7 @@
       ]
     },
     {
-      "gameName": "Scene in Reverse",
+      "name": "Scene in Reverse",
       "description": "Scene starts at the end and moves to the beginning. Actions, conversations, all cause and effect relationships are reversed.",
       "variations": [
         "Use a story that is already known (eg. Folk Tale in Reverse). Dialogue is spoken in the understandable vernacular."
@@ -2151,7 +2151,7 @@
       ]
     },
     {
-      "gameName": "Scene in the Dark",
+      "name": "Scene in the Dark",
       "description": "Situation is given. At the lighting improvisers discretion, the lights go out on stage at some point.",
       "variations": [
         "Reverse Scene in the Dark: As above, except whenever the lights on stage are \"on\", the improvisers react as if they are in the dark. When on stage lights are \"off\", improvisers react as if the lights are on."
@@ -2163,7 +2163,7 @@
       ]
     },
     {
-      "gameName": "Scene Tag",
+      "name": "Scene Tag",
       "description": "Multiple playing areas (usually two) are established. A scene begins in one of the areas. When a player hears a line of dialogue they wish to use, they clap their hands and begin a scene in their area repeating that line as the first line of the scene. Once all the scenes have been established, then the scenes transition from one to another in any order by simply clapping and using the line of dialogue as their next line.",
       "variations": [
         "Rather than clapping, the improvisers simply say the line and allow the original scene to play to a beat before beginning the next scene with that line of dialogue."
@@ -2174,7 +2174,7 @@
       ]
     },
     {
-      "gameName": "Scene Using the MC",
+      "name": "Scene Using the MC",
       "description": "Teams play a scene in which they use the MC as an integral part of the team",
       "tags": [
         "scene",
@@ -2183,7 +2183,7 @@
       ]
     },
     {
-      "gameName": "Scene Without _______",
+      "name": "Scene Without _______",
       "description": "Possibilities are limitless. Scene is played, for reality, as if the world were without ____ (eg: words, emotions, contractions, gravity, a word, the letter \"h\", love, parents, food, etc.)",
       "tags": [
         "physical",
@@ -2193,7 +2193,7 @@
       ]
     },
     {
-      "gameName": "Scene Without Humans",
+      "name": "Scene Without Humans",
       "description": "Scene is played entirely without human characters appearing on stage.",
       "tags": [
         "scene",
@@ -2201,7 +2201,7 @@
       ]
     },
     {
-      "gameName": "Secret Word Endowments",
+      "name": "Secret Word Endowments",
       "description": "Team members face upstage, plugging their ears. MC asks the audience for a word for each of the improvisers. Using sheets of paper, a big marking pen, and tape, the MC tapes a word to each improvisers back. Scene is played as the improvisers attempt to get each other to say the word taped to their back.",
       "tags": [
         "endowment",
@@ -2211,7 +2211,7 @@
       ]
     },
     {
-      "gameName": "Secrets Endowments",
+      "name": "Secrets Endowments",
       "description": "Two improvisers in turn, face upstage plugging their ears. Improviser A asks the audience for a secret about Improviser B, and vice versa. In the course of the scene, each improviser has to endow the other with the appropriate secret.",
       "tags": [
         "endowment",
@@ -2221,7 +2221,7 @@
       ]
     },
     {
-      "gameName": "Seductions",
+      "name": "Seductions",
       "description": "In the course of the scene someone is seduced.",
       "tags": [
         "scene",
@@ -2229,7 +2229,7 @@
       ]
     },
     {
-      "gameName": "Serious Scene",
+      "name": "Serious Scene",
       "description": "Improvisers play a dramatic scene that is serious in nature or incorporates a serious theme. There may be laughs as life is funny but there may be no gags or deliberate jokes.",
       "tags": [
         "scene",
@@ -2237,7 +2237,7 @@
       ]
     },
     {
-      "gameName": "Sex Role Reversal",
+      "name": "Sex Role Reversal",
       "description": "Men play the women's roles, women play the men's roles.",
       "tags": [
         "scene",
@@ -2245,7 +2245,7 @@
       ]
     },
     {
-      "gameName": "Shared Story",
+      "name": "Shared Story",
       "description": "Like a regular Narrated Scene, Internal Narrative, or Typewriter, except that several characters narrate the story from their points of view.",
       "related": [
         "Internal Narrative",
@@ -2259,7 +2259,7 @@
       ]
     },
     {
-      "gameName": "Should Have Said",
+      "name": "Should Have Said",
       "description": "A scene is played and when an offstage improviser calls “Should have said.” The last improviser to speak must make a substitute for the last offer they made.",
       "variations": [
         "The should have said offers sound like the original offer. “The pizza's ready.” May become “A piece of bread please!”"
@@ -2272,7 +2272,7 @@
       ]
     },
     {
-      "gameName": "Sideways Scene",
+      "name": "Sideways Scene",
       "description": "The stage floor is used as a wall in the reality of the scene. The proscenium's \"4th wall\" becomes the floor of the stage reality. Allows the improvisers to defy gravity and fall to truly gruesome deaths.",
       "tags": [
         "physical",
@@ -2282,7 +2282,7 @@
       ]
     },
     {
-      "gameName": "Silent Scene",
+      "name": "Silent Scene",
       "description": "Playing a scene in which no words are spoken. Should be played realistically and the improvisers should not find themselves in a position where they might speak to each other.",
       "tags": [
         "scene",
@@ -2291,7 +2291,7 @@
       ]
     },
     {
-      "gameName": "Silly-Stinky-Sexy",
+      "name": "Silly-Stinky-Sexy",
       "description": "Four improvisers are on stage. You consider yourself neutral. Secretly endow each of the other improvisers with either being silly, sexy, or stinky. The scene is then played using the individual designations as your attitude toward the others. Play the scene for as much reality as possible.",
       "tags": [
         "endowment",
@@ -2300,7 +2300,7 @@
       ]
     },
     {
-      "gameName": "Sing Speak",
+      "name": "Sing Speak",
       "description": "As a scene is played, the improviser must begin singing their dialogue when an accompanist begins playing. They return to regular dialogue when the music stops, then sing when music plays, and then speak, etc.",
       "tags": [
         "musical",
@@ -2309,7 +2309,7 @@
       ]
     },
     {
-      "gameName": "Slide Show",
+      "name": "Slide Show",
       "description": "A great handle for many different formats. Improvisers pose in non specific poses while narrator explains - vacation, area of expertise, etc.",
       "tags": [
         "narrated",
@@ -2317,7 +2317,7 @@
       ]
     },
     {
-      "gameName": "Slides",
+      "name": "Slides",
       "description": "A scene in which an improviser slides from one state into another and then back again or goes back and forth between two states of being such as high/low status, two emotions, etc.",
       "tags": [
         "scene",
@@ -2327,7 +2327,7 @@
       ]
     },
     {
-      "gameName": "Slow Motion Commentary",
+      "name": "Slow Motion Commentary",
       "description": "Two improvisers perform an everyday activity, in slo-mo, as if part of an Olympic style competition. Two off stage improvisers provide color commentary. Good to avoid the now cliché fight in this scene.",
       "tags": [
         "game",
@@ -2337,7 +2337,7 @@
       ]
     },
     {
-      "gameName": "Soap Opera",
+      "name": "Soap Opera",
       "description": "Three improvisers must perform a scene in which one is leaning against something, one is staring at someone, and one is looking out at the audience.",
       "notes": "This can be a good exercise to remind people that stage picture is important, and to act with their eyes/gaze.\n\nIf performed for an audience, it can be a good idea to ask the audience to make \"ooh ooh ooh\" noises when the improvisers are failing to embody each of the three requirements.\n\nAdd risk by joining other performers in what they are doing, and try to justify the movement. Be surprised by what the physical offers tell you about yourself.",
       "related": [
@@ -2353,7 +2353,7 @@
       ]
     },
     {
-      "gameName": "Solo Scene",
+      "name": "Solo Scene",
       "description": "Only one person is allowed on stage. Teammates may provide voices, props, or sound effects.",
       "tags": [
         "scene",
@@ -2361,7 +2361,7 @@
       ]
     },
     {
-      "gameName": "Song Circle",
+      "name": "Song Circle",
       "description": "Improvisers form a circle. One at time, they add a musical sound to the circle. After everyone has joined in, the improvisers mingle with each other making their sounds, finding little \"jam sessions\". At a given signal, they reform the circle in the same starting order. Then one by one, starting with the person who made the first sound, everyone falls silent.",
       "tags": [
         "game",
@@ -2370,7 +2370,7 @@
       ]
     },
     {
-      "gameName": "Song Cue",
+      "name": "Song Cue",
       "description": "As a scene is played, an offstage improviser will occasionally freeze the scene and the last line spoken becomes the title of a song sung by that character. Duets, etc. can be endowed upon the scene.",
       "aliases": [
         "Sounds Like a Song"
@@ -2383,7 +2383,7 @@
       ]
     },
     {
-      "gameName": "Song in a Style",
+      "name": "Song in a Style",
       "description": "A single song is sung in a specific style, based on an audience suggestion.",
       "variations": [
         "Ballad",
@@ -2396,7 +2396,7 @@
       ]
     },
     {
-      "gameName": "Sound Effects",
+      "name": "Sound Effects",
       "description": "A tape with randomly placed sound effects is played while scene is being played. Improvisers must incorporate and justify the F/X. A sound improviser may be used in place of a tape.",
       "tags": [
         "justification",
@@ -2407,7 +2407,7 @@
       ]
     },
     {
-      "gameName": "SoundScape",
+      "name": "SoundScape",
       "description": "Scene is played, usually without dialogue, while off stage improviser(s) provide sounds for the environment.",
       "tags": [
         "scene",
@@ -2417,7 +2417,7 @@
       ]
     },
     {
-      "gameName": "Soundtrack",
+      "name": "Soundtrack",
       "description": "A situation is given. Music, changing periodically, sets the mood. Must be justified by the improvisers.",
       "tags": [
         "justification",
@@ -2428,7 +2428,7 @@
       ]
     },
     {
-      "gameName": "Speaking at the Same Time",
+      "name": "Speaking at the Same Time",
       "description": "Improvisers must carry on a scene in which they all must be speaking and silent at the same time.",
       "aliases": [
         "All or Nothing"
@@ -2441,7 +2441,7 @@
       ]
     },
     {
-      "gameName": "Speaking In One Voice",
+      "name": "Speaking In One Voice",
       "description": "A scene suggestion is given. Two or more improvisers combine to speak (and move) as one character. Can also be used to narrate or tell a story to the audience.",
       "variations": [
         "Two-Headed Expert: Scene where an interview is conducted with an expert comprised of two people that speak in a single voice."
@@ -2456,7 +2456,7 @@
       ]
     },
     {
-      "gameName": "Speaking In Turn",
+      "name": "Speaking In Turn",
       "description": "Improvisers decide on a speaking order rotation, then play the scene speaking only in that rotation.",
       "tags": [
         "scene",
@@ -2465,7 +2465,7 @@
       ]
     },
     {
-      "gameName": "Speck",
+      "name": "Speck",
       "description": "An onstage actor plays a scene with a \"speck\" whose voice is provided by an off stage improviser. The on stage improviser endows the voice (\"Wow, a talking bottle cap!\") and plays the scene.",
       "aliases": [
         "Small Voice"
@@ -2476,7 +2476,7 @@
       ]
     },
     {
-      "gameName": "Spell It",
+      "name": "Spell It",
       "description": "A scene is played in which all lines of dialogue are spelled rather then spoken. They must S-P-E-L-L   O-U-T   E-V-E-R-Y   W-O-R-D.",
       "tags": [
         "scene",
@@ -2485,7 +2485,7 @@
       ]
     },
     {
-      "gameName": "Split Focus",
+      "name": "Split Focus",
       "description": "A scene in which the focus alternates between characters and scenes in different areas of the stage. The two scenes may or may not be related, however, some elements of one scene should be incorporated into the other.",
       "tags": [
         "scene",
@@ -2493,7 +2493,7 @@
       ]
     },
     {
-      "gameName": "Split Screen",
+      "name": "Split Screen",
       "description": "A location is established for the stage. Imagine that a line is drawn down the center of the location and the two halves of the location are switched. The “center of the stage becomes the stage right and left edges of the playing area. A scene is then played in this environment. When a character crosses “center” they leave the playing area and another improviser enters from the other side playing the same character crossing the room.",
       "variations": [
         "The same actors play the same characters so a cross across the room would entail the actor running backstage and reentering on the other side."
@@ -2506,7 +2506,7 @@
       ]
     },
     {
-      "gameName": "Spoon River",
+      "name": "Spoon River",
       "description": "Improvisers get suggestions for occupations and an attitude; begin the scene by lying on the stage. One by one, they sit up and introduce their characters (who are dead). They recount the circumstances of their lives and deaths, as they tell their stories the tales should weave themselves together.",
       "tags": [
         "monologue",
@@ -2515,7 +2515,7 @@
       ]
     },
     {
-      "gameName": "Spotlight",
+      "name": "Spotlight",
       "description": "Different scenes take place in different pools of light that are changed at the lighting operator's discretion. When the lights change a new scene begins in the lit area; whenever the lights return to a previous area the scene that took place there previously resumes.",
       "related": [
         "Light Booth"
@@ -2528,7 +2528,7 @@
       ]
     },
     {
-      "gameName": "Stage Directions",
+      "name": "Stage Directions",
       "description": "Directions or instructions are written on a deck of cards. The onstage improvisers look at the cards and justifiably follow them while continuing the scene. Directions may be things like, “Be suspicious of one of the characters” “Stand on one foot” Or “Speak in poetic language”",
       "tags": [
         "justification",
@@ -2538,7 +2538,7 @@
       ]
     },
     {
-      "gameName": "Standing, Sitting, Kneeling, Lying Down",
+      "name": "Standing, Sitting, Kneeling, Lying Down",
       "description": "A scene in which the improvisers must be standing, sitting, kneeling, or lying down. No two improvisers can be in the same position and all positions must be justified.",
       "related": [
         "Soap Opera"
@@ -2551,7 +2551,7 @@
       ]
     },
     {
-      "gameName": "Statues",
+      "name": "Statues",
       "description": "Audience members, or other improvisers, mold the body positions of two on stage improvisers. Improvisers begin the scene, justifying their positions. May try to end the scene in the same positions, or having swapped the original positions.",
       "tags": [
         "audience",
@@ -2561,7 +2561,7 @@
       ]
     },
     {
-      "gameName": "Status Cards",
+      "name": "Status Cards",
       "description": "Each improviser onstage draws a card from a deck of playing cards without looking at it. They then place the card on their foreheads and play a scene. All the improvisers treat each other with the status they see on the improviser's forehead with aces being high. If it is a two is on someone's head, they are treated with low status; a queen receives very high status treatment, etc.",
       "variations": [
         "Each player has multiple cards that they cycle through allowing their status to change over the course of a scene."
@@ -2574,7 +2574,7 @@
       ]
     },
     {
-      "gameName": "Step Letter Scene",
+      "name": "Step Letter Scene",
       "description": "A word is taken from the audience as a suggestion (Stop). The first improviser has to use that word in a sentence (Stop, don't go there!). The second improviser must change one letter in the word and use it in the second sentence (I just took a step). This then continues (Don't leave without your stew).",
       "tags": [
         "scene",
@@ -2583,7 +2583,7 @@
       ]
     },
     {
-      "gameName": "Step Out Narrative",
+      "name": "Step Out Narrative",
       "description": "A scene or story in which any character can step out and share their true feelings or a monologue with the audience.",
       "tags": [
         "monologue",
@@ -2593,7 +2593,7 @@
       ]
     },
     {
-      "gameName": "Step-Word",
+      "name": "Step-Word",
       "description": "A scene or story that has a sequence of words. For instance you can all say one word sentences, then two word sentences, then three word sentences, then two word sentences, then one word sentences.",
       "tags": [
         "numbers",
@@ -2603,7 +2603,7 @@
       ]
     },
     {
-      "gameName": "Stimulus Response",
+      "name": "Stimulus Response",
       "description": "Each improviser gets a simple action that one of the other improvisers will naturally do in a scene (blink, or touch their lips), and something they will do in response (When improviser one blinks, I will sneeze!). None of the improvisers should hear the stimulus or the response of any other player. A scene is then played with the stimuli and responses activated.",
       "tags": [
         "justification",
@@ -2613,7 +2613,7 @@
       ]
     },
     {
-      "gameName": "Stop Action Narrative",
+      "name": "Stop Action Narrative",
       "description": "A scene starts with a suggestion from the audience. The improvisers begin playing the scene. Periodically, the narrator will stop the scene and ask the audience what happens next in the plot. Question may be informational (\"Who calls on the phone?\") or interpretive (\"Regis is deathly afraid of the next object Mary shows him, what is that object?\") The actors on stage should be constantly challenging the narrator with opportunities to stop the narrative in order to ask a question.",
       "tags": [
         "directed",
@@ -2623,7 +2623,7 @@
       ]
     },
     {
-      "gameName": "Stop and Go",
+      "name": "Stop and Go",
       "description": "Freeze while talking and move in silence. Or vice versa.",
       "tags": [
         "physical",
@@ -2634,7 +2634,7 @@
       ]
     },
     {
-      "gameName": "Story Story Die",
+      "name": "Story Story Die",
       "description": "Three or four improvisers stand in line on stage. MC/Narrator kneels just downstage of them, facing the line. The MC/Narrator points randomly to individuals in the line. When he points to Improviser 1, Improviser 1 speaks, when he moves to Improviser 2, Improviser 1 stops (mid syllable, if necessary), Improviser 2 picks up the story at exactly the same place. If Improviser 2 stutters, repeats a word or two from Improviser 1, or says something completely incongruous, the audience shouts, \"DIE!\" The improviser dies and a new story begins. This continues until only one person remains.",
       "variations": [
         "Get styles for each one as in Storyline.",
@@ -2649,7 +2649,7 @@
       ]
     },
     {
-      "gameName": "Strong Emotions",
+      "name": "Strong Emotions",
       "description": "Scene is played with actors using assigned emotions.",
       "tags": [
         "endowment",
@@ -2658,7 +2658,7 @@
       ]
     },
     {
-      "gameName": "Stunt Doubles",
+      "name": "Stunt Doubles",
       "description": "Improvisers begin a scene. At any point during the scene an on stage actor may call out \"Stunt Double\". That actor is then replaced by his stunt double, who then performs the dangerous or distasteful activities. When the activity is finished the double calls out \"First Team\", and the original improviser returns to the stage.",
       "tags": [
         "active",
@@ -2669,7 +2669,7 @@
       ]
     },
     {
-      "gameName": "Styles",
+      "name": "Styles",
       "description": "Team plays a short neutral scene. Then play the scene two more times \"In The Style Of...\" a playwright, a period in history, philosophers, painters, type of architecture, etc.\n\n-isms: Scene played in the style of \"-isms\" (eg: socialism, cannibalism, etc).\nPlaywrights: The style of any playwright, e.g. Miller, Brecht, Shakespeare, etc.\nMagazines/Newspapers: As in the style of a magazine or newspaper, e.g. National Enquirer, Playboy, Reader's Digest, New York Times, etc.\nMovies: Any style of film, e.g. Film Noir, Silent, Western, etc.",
       "variations": [
         "Use two emotions"
@@ -2681,7 +2681,7 @@
       ]
     },
     {
-      "gameName": "Subtitles",
+      "name": "Subtitles",
       "description": "Scene begins in gibberish. Offstage improviser \"translates\" the on stage dialogue into subtitles. Often used with Operas or Foreign Film.",
       "tags": [
         "gibberish",
@@ -2691,7 +2691,7 @@
       ]
     },
     {
-      "gameName": "Superhero Endowments",
+      "name": "Superhero Endowments",
       "description": "Someone is sent out and the remaining improvisers get the name of a brand new superhero. They then get two strengths, and a weakness based on the name. The offstage improviser returns and is told the name of his superhero. Ascene is then played out in which the superhero must guess his strengths and overcome his weakness.",
       "tags": [
         "endowment",
@@ -2701,7 +2701,7 @@
       ]
     },
     {
-      "gameName": "Swedish Storytelling",
+      "name": "Swedish Storytelling",
       "description": "Get suggestions for a big thing, a small thing, and something alive. Tell a story incorporating those three things. This game may also be played by taking three different sentences that then must be incorporated into the scene.",
       "tags": [
         "scene",
@@ -2709,7 +2709,7 @@
       ]
     },
     {
-      "gameName": "Tag Team Monologue",
+      "name": "Tag Team Monologue",
       "description": "A character monologue in which all the improvisers tag in playing the same single character.",
       "tags": [
         "monologue",
@@ -2717,7 +2717,7 @@
       ]
     },
     {
-      "gameName": "Tag Team Typewriter",
+      "name": "Tag Team Typewriter",
       "description": "Same as Typewriter, with several people tagging in and out of the scene. The typist who is tagged out might replace the actor who does the tagging.",
       "related": [
         "Typewriter"
@@ -2729,7 +2729,7 @@
       ]
     },
     {
-      "gameName": "The Moon",
+      "name": "The Moon",
       "description": "Improvisers play a scene as though they have very little gravity. This game works best with a mover (see Moving Bodies) to help with the weightlessness.",
       "related": [
         "Moving Bodies"
@@ -2741,7 +2741,7 @@
       ]
     },
     {
-      "gameName": "The Moon",
+      "name": "The Moon",
       "description": "Improvisers play a scene as though they have very little gravity. This game works best with a mover to help with the weightlessness.",
       "related": [
         "Moving Bodies"
@@ -2753,7 +2753,7 @@
       ]
     },
     {
-      "gameName": "Three Lines",
+      "name": "Three Lines",
       "description": "Choose three lines of dialogue, perhaps famous, perhaps not, which must be used somewhere in the scene.",
       "tags": [
         "scene",
@@ -2762,7 +2762,7 @@
       ]
     },
     {
-      "gameName": "Three Scene",
+      "name": "Three Scene",
       "description": "Scene is played in three parts. A “neutral” scene is played. It then repeated two times with a new style or piece of information.",
       "variations": [
         "Chapters: A scene is played in three parts as if from different chapters of a book, usually the first chapter, a middle chapter, and the last chapter.",
@@ -2781,7 +2781,7 @@
       ]
     },
     {
-      "gameName": "Timed Scene",
+      "name": "Timed Scene",
       "description": "A scene that takes place in a specific amount of time (Deaths In A Minute, Epic In A Minute, Two Minute Status Transfer, etc.). Or the scene can be played in the time it takes to complete an activity (Scene That Takes Place in the Same Amount of Time It Takes to Recite the Alphabet Backwards, In The Time It Takes To Walk Around the Theater Five Times, Player to Shave, etc). The key is to find the most appropriate method of timing that will serve the scene and not simply be a gag.",
       "tags": [
         "scene",
@@ -2790,7 +2790,7 @@
       ]
     },
     {
-      "gameName": "Timed Styles",
+      "name": "Timed Styles",
       "description": "A short scene is played. Then the accelerated scene is repeated in different styles as many times as possible within a three-minute time limit.",
       "tags": [
         "scene",
@@ -2800,7 +2800,7 @@
       ]
     },
     {
-      "gameName": "Torture Your Teammate",
+      "name": "Torture Your Teammate",
       "description": "All members of team except one block, wimp, waffle, do bad mime, all forms of bad improv. One \"straight\" improviser must justify everything - keeping the storyline strong.",
       "tags": [
         "justification",
@@ -2809,7 +2809,7 @@
       ]
     },
     {
-      "gameName": "Town Meeting",
+      "name": "Town Meeting",
       "description": "A topic is taken from the audience and an improviser opens a “Town Meeting” on that subject. They field questions and comments from fellow improvisers and audience members playing the population of the town.",
       "variations": [
         "Play as a timed endowment guessing game."
@@ -2823,7 +2823,7 @@
       ]
     },
     {
-      "gameName": "Transfers",
+      "name": "Transfers",
       "description": "Two improvisers start a scene with emotions, styles, opposite status and over the course of the scene they switch. This is usually played as a timed scene.",
       "tags": [
         "endowment",
@@ -2835,14 +2835,14 @@
       ]
     },
     {
-      "gameName": "Triptych",
+      "name": "Triptych",
       "description": "Three short, unconnected scenes are played. The improvisers play an extension of their original narratives in the same performance order, making minimal references to one or both of the other scenes. Scenes are played a third time gradually incorporating offers from the other stories. The ninth (and last) scene should connect all the scenes.",
       "tags": [
         "longform"
       ]
     },
     {
-      "gameName": "True Feelings",
+      "name": "True Feelings",
       "description": "Improviser(s) play a scene speaking their true feelings as improvisers in the scene. Important for the improvisers to be truthful with their feelings.",
       "tags": [
         "scene",
@@ -2850,7 +2850,7 @@
       ]
     },
     {
-      "gameName": "Two Chairs",
+      "name": "Two Chairs",
       "description": "The improvisers play a scene based on any location where two chairs would be found.",
       "tags": [
         "environment",
@@ -2860,7 +2860,7 @@
       ]
     },
     {
-      "gameName": "Two Rooms",
+      "name": "Two Rooms",
       "description": "The stage is divided in two and each half assigned a room in which separate scenes take place.",
       "tags": [
         "environment",
@@ -2869,7 +2869,7 @@
       ]
     },
     {
-      "gameName": "Two, Too, To",
+      "name": "Two, Too, To",
       "description": "The following blanks are filled by the audience: Two_________, To _______, Too_______. A scene then is played incorporating the suggestions.",
       "tags": [
         "scene",
@@ -2877,7 +2877,7 @@
       ]
     },
     {
-      "gameName": "Typewriter",
+      "name": "Typewriter",
       "description": "One improviser sits at an imaginary 'typewriter', typing a story, while the other actors act out the story. Both actors and typist are responsible for endowing the story with narrative line.",
       "tags": [
         "narrated",
@@ -2887,7 +2887,7 @@
       ]
     },
     {
-      "gameName": "Understudy",
+      "name": "Understudy",
       "description": "An improviser leaves the stage and does not watch the scene. A scene is played to a point and one of the characters falls ill. The offstage “understudy” is then called upon to recreate the scene and/or pick the scene up from where it was with no knowledge of what happened the first time.",
       "tags": [
         "justification",
@@ -2896,7 +2896,7 @@
       ]
     },
     {
-      "gameName": "Using Character of Plot Line From the Previous Scene",
+      "name": "Using Character of Plot Line From the Previous Scene",
       "description": "Title pretty much says it all.",
       "tags": [
         "scene",
@@ -2904,7 +2904,7 @@
       ]
     },
     {
-      "gameName": "Verse",
+      "name": "Verse",
       "description": "This scene is played entirely in verse. Unless stated the verse DOES NOT need to be rhymed couplets. If you do rhymed couplets you may rhyme yourself, or set up your partner. Haiku, Shakespeare, Iambic Pentameter, etc. are all permissible.",
       "tags": [
         "cultural",
@@ -2914,7 +2914,7 @@
       ]
     },
     {
-      "gameName": "Virtual Reality",
+      "name": "Virtual Reality",
       "description": "An audience member (or several) are brought to the stage and assigned an improviser. During the course of the scene, the audience member moves and the improviser must mimic their movements and justify them in the context of the scene.",
       "tags": [
         "audience",
@@ -2924,14 +2924,14 @@
       ]
     },
     {
-      "gameName": "Visualization",
+      "name": "Visualization",
       "description": "An improviser closes their eyes and visualizes a seashore. Don't have them think about it, just have them tell what they see. If they see a house ask them what's inside? Who's there? Continue to ask them what they see and have them describe it in detail. They shouldn't have to choose anything, simply use their strong imaginations.",
       "tags": [
         "exercise"
       ]
     },
     {
-      "gameName": "Wallpaper Drama",
+      "name": "Wallpaper Drama",
       "description": "Improvisers begin a scene. At the discretion of an off stage improviser, \"Positive\", \"Negative\", or \"Neutral\" are called and slowly effect the emotional content of the scene on stage accordingly. Variation: no off stage caller, the improvisers on stage move through levels of neutral, positive, and negative by there own silent discretion.",
       "tags": [
         "directed",
@@ -2940,7 +2940,7 @@
       ]
     },
     {
-      "gameName": "What Are You Doing?",
+      "name": "What Are You Doing?",
       "description": "Improviser 1 begins an action, (eg: jumping rope). Improviser 2 says, \"What are you doing?\" Improviser 1 says something OTHER than jumping rope (e.g. \"Building a bird house.\") Improviser 2 begins building a bird house, improviser 1 asks 2, \"What are you doing.\" and so on. Response speed is a must, as is making the action as different from the response as possible.",
       "tags": [
         "game",
@@ -2949,7 +2949,7 @@
       ]
     },
     {
-      "gameName": "What Comes Next?",
+      "name": "What Comes Next?",
       "description": "An improviser takes the stage and asks, \"What happens first?\", then does whatever the audience has replied, then they ask “What comes next?”. The goal is to create narrative. This works best if you show the audience that blocking or clever suggestions will get them nowhere. If you train the audience to do this, they will understand it's a skill. If the audience groans at a suggestion, go back and get a different suggestion.",
       "variations": [
         "Player ask for step by step instructions.",
@@ -2963,7 +2963,7 @@
       ]
     },
     {
-      "gameName": "What If ____",
+      "name": "What If ____",
       "description": "Audience fills in the blank. For example, \"What if money really did grow on trees?\"",
       "variations": [
         "Same idea.",
@@ -2975,7 +2975,7 @@
       ]
     },
     {
-      "gameName": "With Only Questions",
+      "name": "With Only Questions",
       "description": "Do you understand this challenge? Can you tell that no statements are allowed? Can this be explained anymore clearly?",
       "variations": [
         "Opposite challenge.",
@@ -2993,7 +2993,7 @@
       ]
     },
     {
-      "gameName": "Word Ball",
+      "name": "Word Ball",
       "description": "Improvisers stand in a circle. One improviser \"tosses\" any word they want to anybody else in the circle, that person in turn \"tosses\" another free associated word to another person in the circle. This warm up should be played at a fast pace and the improvisers should not think ahead, simply free associate on the word they're tossed.",
       "tags": [
         "exercise",
@@ -3001,7 +3001,7 @@
       ]
     },
     {
-      "gameName": "Word Pattern",
+      "name": "Word Pattern",
       "description": "A word is taken from the audience (Dog), and a scene is played in which the improvisers have to begin each line of dialogue using the next letter in the word. (“Doug has to be the right one.” “Over my dead Body!” “Get out of the way!” “Don't touch me.” Oh, come on!” “Go away”, etc.)",
       "tags": [
         "scene",
@@ -3010,7 +3010,7 @@
       ]
     },
     {
-      "gameName": "Word-at-a-Time Expert",
+      "name": "Word-at-a-Time Expert",
       "description": "Three or more improvisers stand or sit in a line. They are a single expert on a subject. They speak one word at a time. The subject is given by the audience. The improvisers must speak in order, one word at a time.",
       "notes": "An extra improviser may act as a moderator. They may invite the audience to ask questions. This is a great game to invite an audience member to play, who may sit between two more experienced improvisers who can help keep the game going.",
       "tags": [
@@ -3022,7 +3022,7 @@
       ]
     },
     {
-      "gameName": "Word-at-a-Time Story",
+      "name": "Word-at-a-Time Story",
       "description": "Improvisers stand in a circle. They begin to tell a story a word at a time around the circle.",
       "variations": [
         "Have the mutant narrate a story that is acted out by other improvisers.",
@@ -3053,7 +3053,7 @@
       ]
     },
     {
-      "gameName": "Yes, And…",
+      "name": "Yes, And…",
       "description": "Every line of dialogue begins with the words, \"Yes, and...\"Can be played as a brainstorming meeting for marketing a new product. The goal is to absolutely support your partners' suggestions and to experience being supported. Excellent workshop game.",
       "variations": [
         "Same as above, rather than demonstrating support, it demonstrates creative waffling.",
@@ -3065,7 +3065,7 @@
       ]
     },
     {
-      "gameName": "Zones",
+      "name": "Zones",
       "description": "Improvisers divide stage into quadrants and take audience suggestions (ex. -emotions, styles, status, attitudes) for each quadrant. Improvisers play the scene, changing their style as they change stage quadrants. Changes must be justifiable.",
       "variations": [
         "An order is established to the words, sounds, silences which is maintained by the onstage players.",
@@ -3085,7 +3085,7 @@
       ]
     },
     {
-      "gameName": "Zulu",
+      "name": "Zulu",
       "description": "Several improvisers line up and a product category is taken form the audience such as cars or furniture polishes. When the MC points at one of the improvisers, they must come up with a fictitious brand name for the item or the audience yells, “Die”.\n\nPlayed until only one improviser is left. Best played if sentences are not allowed. For instance a fictitious furniture polish named “Shine Bright” is acceptable while “Gee, my furniture looks terrific” is not.",
       "tags": [
         "directed",

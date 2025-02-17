@@ -38,7 +38,7 @@ class Playbook {
 
             // Walk through games and add anchorName
             this.data.games.forEach(game => {
-                game.anchorName = this.getAnchorName(game.gameName);
+                game.anchorName = this.getAnchorName(game.name);
                 if (game.aliases) {
                     game.anchorAliases = game.aliases.map(alias => this.getAnchorName(alias));
                 }
@@ -71,14 +71,14 @@ class Playbook {
 
     getGameDetailsByName(name) {
         if (this.data && this.data.games) {
-            return this.data.games.find(game => game.gameName === name) || null;
+            return this.data.games.find(game => game.name === name) || null;
         }
         return null;
     }
 
-    getAnchorName(gameName) {
+    getAnchorName(name) {
         // // Remove spaces and any non-letter/number characters from name
-        return gameName.replace(/[^A-Za-z0-9]+/g, '').toLowerCase();
+        return name.replace(/[^A-Za-z0-9]+/g, '').toLowerCase();
     }
 
     getGameIdFromSearchTerm(term) {
@@ -143,7 +143,7 @@ class Playbook {
 
                 return true;
             })
-        .map(game => game.gameName)
+        .map(game => game.name)
         .sort((a, b) => a.localeCompare(b));
     }
 
@@ -164,7 +164,7 @@ class Playbook {
         }
     
         this.data.games.forEach(game => {
-            game.gameName = sanitizeString(game.gameName);
+            game.name = sanitizeString(game.name);
             game.description = sanitizeString(game.description);
             game.notes = sanitizeString(game.notes);
             game.variations = sanitizeArray(game.variations);
@@ -173,7 +173,7 @@ class Playbook {
             game.tags = sanitizeArray(game.tags);
         });
 
-        this.data.games = this.data.games.sort((a, b) => a.gameName.localeCompare(b.gameName));
+        this.data.games = this.data.games.sort((a, b) => a.name.localeCompare(b.name));
 
         let unknownRelatedGames = new Set();
         this.data.games.forEach(game => {
@@ -182,7 +182,7 @@ class Playbook {
             }
 
             game.related.forEach(relatedGame => {
-                if (!this.data.games.some(game => game.gameName === relatedGame)) {
+                if (!this.data.games.some(game => game.name === relatedGame)) {
                     unknownRelatedGames.add(relatedGame);
                 }
             });
@@ -348,8 +348,8 @@ class PlaybookPage {
         const gamesContainer = document.getElementById('games-container');                
         gamesContainer.innerHTML = '';
     
-        games.forEach(gameName => {
-            const gameDetails = this.playbook.getGameDetailsByName(gameName);
+        games.forEach(name => {
+            const gameDetails = this.playbook.getGameDetailsByName(name);
             gamesContainer.appendChild(this.createGameCardDiv(gameDetails, this.editMode));
         });
     }
@@ -451,13 +451,13 @@ class PlaybookPage {
 
         const divTitle = document.createElement('div');
         divTitle.classList.add('game-card-title');
-        divTitle.textContent = gameDetails.gameName;
+        divTitle.textContent = gameDetails.name;
         const divCardContent = document.createElement('div');
         divCardContent.classList.add('game-card-content');
         divGameCard.appendChild(divTitle);
         divGameCard.appendChild(divCardContent);
 
-        this.createGameRow("name", "", gameDetails.gameName);
+        this.createGameRow("name", "", gameDetails.name);
         const divDesc = this.createGameRow("desc", "description", this.mdToHtml(gameDetails.description));
         divCardContent.appendChild(divDesc);
 
@@ -634,7 +634,7 @@ class PlaybookPage {
         };
 
         const newDetails = {
-            gameName: getValue(this.getEditId(gameId, GameField.Name)),
+            name: getValue(this.getEditId(gameId, GameField.Name)),
             description: getValue(this.getEditId(gameId, GameField.Description)),
             notes: getValue(this.getEditId(gameId, GameField.Notes)),
             variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
@@ -649,8 +649,8 @@ class PlaybookPage {
     previewGameEdit(newDetails) {
         const overlayElement = this.createOverlay();
 
-        const oldDetails = this.playbook.getGameDetailsByName(newDetails.gameName);
-        const gameId = this.playbook.getAnchorName(newDetails.gameName);
+        const oldDetails = this.playbook.getGameDetailsByName(newDetails.name);
+        const gameId = this.playbook.getAnchorName(newDetails.name);
         this.populatePreviewOverlay(overlayElement, oldDetails, newDetails);
         document.body.appendChild(overlayElement);
     }
@@ -660,11 +660,11 @@ class PlaybookPage {
         commitCallback = () => { },
         resetLabel = "Reset",
         resetCallback = () => { }) {
-        let gameId = this.playbook.getAnchorName(gameDetails.gameName);
+        let gameId = this.playbook.getAnchorName(gameDetails.name);
         let divEditGame = document.createElement('div');
         divEditGame.classList.add('game-edit');
         divEditGame.id = `game-edit-${gameId}`;
-        divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.gameName));
+        divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.name));
         divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.description));
         divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
         divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
@@ -744,8 +744,8 @@ class PlaybookPage {
         confirmButton.id = 'confirm-button';
         confirmButton.textContent = 'Confirm';
         confirmButton.addEventListener('click', () => {
-            const gameName = oldDetails ? oldDetails.gameName : newDetails.gameName;
-            let gameDetails = this.playbook.getGameDetailsByName(gameName);
+            const name = oldDetails ? oldDetails.name : newDetails.name;
+            let gameDetails = this.playbook.getGameDetailsByName(name);
             if (gameDetails == null) {
                 gameDetails = {};
                 this.playbook.data.games.push(gameDetails);
@@ -762,14 +762,14 @@ class PlaybookPage {
                 return value;
             }
 
-            gameDetails.gameName = fieldAssign(newDetails.gameName);
+            gameDetails.name = fieldAssign(newDetails.name);
             gameDetails.description = fieldAssign(newDetails.description);
             gameDetails.notes = fieldAssign(newDetails.notes);
             gameDetails.variations = fieldAssign(newDetails.variations);
             gameDetails.aliases = fieldAssign(newDetails.aliases);
             gameDetails.related = fieldAssign(newDetails.related);
             gameDetails.tags = fieldAssign(newDetails.tags);
-            gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.gameName); 
+            gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.name); 
             gameDetails.anchorAliases = gameDetails.aliases ? gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias)) : null;
             overlayElement.remove();
             this.populateGameList();
@@ -792,7 +792,7 @@ class PlaybookPage {
 
     showEditOverlay(gameDetails) {
         const overlayElement = this.createOverlay();
-        const gameId = this.playbook.getAnchorName(gameDetails.gameName);
+        const gameId = this.playbook.getAnchorName(gameDetails.name);
         const editDiv = this.createEditDiv(gameDetails,
             "Preview Changes",
             () => {
