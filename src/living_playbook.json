@@ -52,7 +52,7 @@
       ],
       "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
       "aliases": [
-        "List Game"
+        "List Endowment"
       ]
     },
     {
@@ -150,7 +150,7 @@
         "Toss-up: Two improvisers compete for who best endowed the animal in the audience's opinion."
       ],
       "related": [
-        "List Game"
+        "List Endowment"
       ]
     },
     {
@@ -678,7 +678,7 @@
       "related": [
         "Panel Expert Endowments",
         "Phone Bank",
-        "Word at a Time Expert"
+        "Word-at-a-Time Expert"
       ],
       "tags": [
         "game",
@@ -1393,6 +1393,9 @@
     {
       "gameName": "Madrigal",
       "description": "Three singers to begin. Person 1 may ask for a \"Simple phrase from the Bible or Shakespeare.\" Person 2 may get a \"Common Advertising Slogan\". Person 3 gets a \"Fictitious Headline from The Enquirer.\" Person 1 sings their phrase through twice. Then Person 2, then Person 3. After all three lines have been heard, the singers weave words and phrases in and out of each other's lines, creating new lines. Similar to Phone Bank. Singers trade focus, harmonies, tempos, words, etc.",
+      "related": [
+        "Oratorio"
+      ],
       "tags": [
         "cultural",
         "game",
@@ -1507,7 +1510,7 @@
         "Puppets a la Ruse: Moving Bodies with a twist, when the \"puppets\" are moved, they continue to move with their momentum until sent into another direction, or stopped. If the mover taps the puppets arm, that arm begins to move in slow motion. If the arm is not stopped, or tapped in another direction, the movement would begin to affect the whole body. For instance, if tapped outward, the arm would eventually begin pulling the whole body outward in that direction. The whole scene generally takes on a \"weightless\" quality, with puppets floating through the air."
       ],
       "related": [
-        "Moon"
+        "The Moon"
       ],
       "tags": [
         "audience",
@@ -1582,8 +1585,7 @@
         "The improvisers have an audience member share what they did that day, then enact the nightmare they will have tonight."
       ],
       "related": [
-        "Day in the Life",
-        "Experience"
+        "Day in the Life"
       ],
       "tags": [
         "shortform"
@@ -1687,28 +1689,6 @@
       ]
     },
     {
-      "gameName": "One Word Story",
-      "description": "Improvisers stand in a circle. They begin to tell a story a word at a time around the circle.",
-      "variations": [
-        "Have the mutant narrate a story that is acted out by other improvisers.",
-        "Mutants: Two improvisers tell a story, alternating one word at a time, acting out the action of the story as it is told. Story should be kept in the present tense so that action is accomplished rather than talked about.",
-        "Offstage player calls out numbers at random and that's how many words each improviser uses.",
-        "Step Word Scene: A verbal restriction scene. Scene begins with a 1 word sentence. Next sentence has two words. Then three. Proceeds up to a 10 word sentence, then to a 9 word sentence. Back to a final 1 word sentence.",
-        "Step Word Story: A combination of One Word Story, and Step Word Scene. Improvisers tell a story around a circle. The first time around the circle each improviser is allowed one word. The second time around, they are allowed two words, then three, etc. up to five. Then descend from five to one word circles. When the circle finishes the cycle the story should end. Again that pattern is 1-2-3-4-5-4-3-2-1-end",
-        "Word at a Time Expert: An area of expertise is asked of the audience. Several improvisers are picked to speak as an expert in that field. They answer questions, show slides, etc. speaking alternately one word at a time. Often done as a Talk Show, another teammate plays the talk show host. Have an audience member sit between two improvisers as the expert.",
-        "Word at a Time Scene: Like Mutants, except each improviser plays a separate character. If one character speaks, the dialogue is provided by all the improvisers onstage - a word at a time. It is vital in this scene to have strong character voices for each person in the scene, since all the actors onstage are providing dialogue, the voices serve to distinguish the characters from one another.",
-        "Word Ball: Improvisers stand in a circle. One improviser \"tosses\" any word they want to anybody else in the circle, that person in turn \"tosses\" another free associated word to another person in the circle. This warm up should be played at a fast pace and the improvisers should not think ahead, simply free associate on the word they're tossed."
-      ],
-      "tags": [
-        "audience",
-        "game",
-        "scene",
-        "shortform",
-        "verbal",
-        "warm-up"
-      ]
-    },
-    {
       "gameName": "Open Scene",
       "description": "A team gets to do any scene they like.",
       "aliases": [
@@ -1732,6 +1712,9 @@
     {
       "gameName": "Oratorio",
       "description": "Madrigal format, but rather than sing and play off the same few sentences, a singer can advance the story with each line they sing. As each advancing line is sung, the others combine the line with previous lines and sing in the regular madrigal format.",
+      "related": [
+        "Madrigal"
+      ],
       "tags": [
         "cultural",
         "game",
@@ -1749,7 +1732,7 @@
       ]
     },
     {
-      "gameName": "Oscar™ Winning Moment",
+      "gameName": "Oscar Winning Moment",
       "description": "A scene is played in which each improviser gets an “Oscar™ Winning Moment” in the scene. You can ask for these from the audience if you like: A subject for an award winning monologue, or a physical habit that is well played, etc.",
       "tags": [
         "monologue",
@@ -1758,7 +1741,7 @@
       ]
     },
     {
-      "gameName": "Panel Experts Endowments",
+      "gameName": "Panel Expert Endowments",
       "description": "You have three experts on a given topic. Each expert is introduced by the expert before them. During the introduction, the upcoming expert is endowed with a particular trait. This may be a speech pattern, a nervous tick, a physical limitation, an obsession, etc. The upcoming expert then plays the endowment for the remainder of the scene and endows the next expert.",
       "tags": [
         "endowment",
@@ -1768,10 +1751,11 @@
       ]
     },
     {
-      "gameName": "Paper",
+      "gameName": "Paper Chase",
       "description": "A situation is established. The stage is strewn with pieces of paper each containing single, unrelated lines of dialogue and/or stage directions. A scene is played, randomly incorporating these lines of dialogue and/or stage directions. The lines can come from plays, song titles or lyrics, the audience, clichés, etc",
       "aliases": [
-        "Paper Chase"
+        "Paper Scraps",
+        "Scraps of Paper"
       ],
       "tags": [
         "props",
@@ -2609,7 +2593,7 @@
       ]
     },
     {
-      "gameName": "Step Word",
+      "gameName": "Step-Word",
       "description": "A scene or story that has a sequence of words. For instance you can all say one word sentences, then two word sentences, then three word sentences, then two word sentences, then one word sentences.",
       "tags": [
         "numbers",
@@ -2740,6 +2724,18 @@
       ],
       "tags": [
         "narrated",
+        "scene",
+        "shortform"
+      ]
+    },
+    {
+      "gameName": "The Moon",
+      "description": "Improvisers play a scene as though they have very little gravity. This game works best with a mover (see Moving Bodies) to help with the weightlessness.",
+      "related": [
+        "Moving Bodies"
+      ],
+      "tags": [
+        "physical",
         "scene",
         "shortform"
       ]
@@ -2997,12 +2993,63 @@
       ]
     },
     {
+      "gameName": "Word Ball",
+      "description": "Improvisers stand in a circle. One improviser \"tosses\" any word they want to anybody else in the circle, that person in turn \"tosses\" another free associated word to another person in the circle. This warm up should be played at a fast pace and the improvisers should not think ahead, simply free associate on the word they're tossed.",
+      "tags": [
+        "exercise",
+        "warm-up"
+      ]
+    },
+    {
       "gameName": "Word Pattern",
       "description": "A word is taken from the audience (Dog), and a scene is played in which the improvisers have to begin each line of dialogue using the next letter in the word. (“Doug has to be the right one.” “Over my dead Body!” “Get out of the way!” “Don't touch me.” Oh, come on!” “Go away”, etc.)",
       "tags": [
         "scene",
         "shortform",
         "verbal"
+      ]
+    },
+    {
+      "gameName": "Word-at-a-Time Expert",
+      "description": "Three or more improvisers stand or sit in a line. They are a single expert on a subject. They speak one word at a time. The subject is given by the audience. The improvisers must speak in order, one word at a time.",
+      "notes": "An extra improviser may act as a moderator. They may invite the audience to ask questions. This is a great game to invite an audience member to play, who may sit between two more experienced improvisers who can help keep the game going.",
+      "tags": [
+        "audience",
+        "game",
+        "scene",
+        "shortform",
+        "verbal"
+      ]
+    },
+    {
+      "gameName": "Word-at-a-Time Story",
+      "description": "Improvisers stand in a circle. They begin to tell a story a word at a time around the circle.",
+      "variations": [
+        "Have the mutant narrate a story that is acted out by other improvisers.",
+        "Mutants: Two improvisers tell a story, alternating one word at a time, acting out the action of the story as it is told. Story should be kept in the present tense so that action is accomplished rather than talked about.",
+        "Offstage player calls out numbers at random and that's how many words each improviser uses.",
+        "Step-Word Scene: A verbal restriction scene. Scene begins with a 1 word sentence. Next sentence has two words. Then three. Proceeds up to a 10 word sentence, then to a 9 word sentence. Back to a final 1 word sentence.",
+        "Step-Word Story: A combination of Word-at-a-Time Story, and Step-Word Scene. Improvisers tell a story around a circle. The first time around the circle each improviser is allowed one word. The second time around, they are allowed two words, then three, etc. up to five. Then descend from five to one word circles. When the circle finishes the cycle the story should end. Again that pattern is 1-2-3-4-5-4-3-2-1-end",
+        "Word-at-a-Time Scene: Like Mutants, except each improviser plays a separate character. If one character speaks, the dialogue is provided by all the improvisers onstage - one word at a time. It is vital in this scene to have strong character voices for each person in the scene, since all the actors onstage are providing dialogue, the voices serve to distinguish the characters from one another."
+      ],
+      "aliases": [
+        "Mutants",
+        "One Word Story",
+        "Step-Word Scene",
+        "Step-Word Story",
+        "Word-at-a-Time Scene"
+      ],
+      "related": [
+        "Word Ball",
+        "Word-at-a-Time Expert"
+      ],
+      "tags": [
+        "audience",
+        "game",
+        "scene",
+        "shortform",
+        "verbal",
+        "warm-up"
       ]
     },
     {

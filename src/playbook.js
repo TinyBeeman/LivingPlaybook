@@ -174,6 +174,20 @@ class Playbook {
         });
 
         this.data.games = this.data.games.sort((a, b) => a.gameName.localeCompare(b.gameName));
+
+        let unknownRelatedGames = new Set();
+        this.data.games.forEach(game => {
+            if (!game.related || game.related.length === 0) {
+                return;
+            }
+
+            game.related.forEach(relatedGame => {
+                if (!this.data.games.some(game => game.gameName === relatedGame)) {
+                    unknownRelatedGames.add(relatedGame);
+                }
+            });
+        });
+        console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
     }
 
     exportJson() {
@@ -189,8 +203,6 @@ class Playbook {
 
     downloadJson() {
         const data = this.exportJson();
-        // console log the first 1000 characters of the JSON data
-        console.log(data.substring(0, 1000));
 
         const blob = new Blob([data], { type: 'application/json' });
         const url = URL.createObjectURL(blob);
