@@ -190,8 +190,18 @@ class Playbook {
         console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
     }
 
+    getVersionString() {
+        if (!this.data || !this.data.version) {
+            return 'Unknown';
+        }
+
+        return `${this.data.version.year}.${this.data.version.major}.${this.data.version.minor}`;
+    }
+
     exportJson() {
         this.sanitizeDatabase();
+        this.data.version.minor = this.data.version.minor + 1;
+
         const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
             if (key.toLowerCase() === 'anchorname' || key.toLowerCase() === 'anchoraliases') {
                 return undefined;
@@ -240,15 +250,16 @@ class PlaybookPage {
         this.searchTerm = urlParams.get('search');
         this.editMode = urlParams.get('edit') === '1';
     
-        if (this.dbId === "2001") {
-            document.getElementById('page-title').textContent = "The Online Living Playbook: Original 2001 Edition";
-        }
-
         this.initializeCollapsibles();
         this.initializeSearchBox();
     
         await this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json');
     
+        this.populatePageHeader(
+            `The (${this.dbId === "2001" ? "2001" : "Online"}) Living Playbook`,
+            `The Unexpected Productions Improv Game List ${this.playbook.getVersionString()}`
+        );
+
         const tags = this.playbook.getTags();
         if (this.searchTerm)
         {

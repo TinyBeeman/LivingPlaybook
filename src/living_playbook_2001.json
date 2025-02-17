@@ -1,4 +1,9 @@
 {
+    "version": {
+      "year": "2001",
+      "major": "00",
+      "minor": "0001"
+    },
     "notes": "This is the data from the original Living Playbook, 2001 edition.",
     "license": "The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
     "games": [
