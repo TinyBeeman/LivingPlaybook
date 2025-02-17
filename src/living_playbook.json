@@ -38,10 +38,7 @@
         "shortform",
         "switch"
       ],
-      "notes": "This game benefits from strong character choices, especially with physical traits. It is recommended to allow the scene to establish itself before escalating into faster switches.",
-      "anchorAliases": [
-        "characterswitch"
-      ]
+      "notes": "This game benefits from strong character choices, especially with physical traits. It is recommended to allow the scene to establish itself before escalating into faster switches."
     },
     {
       "gameName": "Adjective Scene",
@@ -56,9 +53,6 @@
       "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
       "aliases": [
         "List Game"
-      ],
-      "anchorAliases": [
-        "listgame"
       ]
     },
     {
@@ -72,9 +66,6 @@
         "exercise",
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "advancinggame"
       ],
       "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
       "variations": [
@@ -91,8 +82,7 @@
       "variations": [
         "Touch: The guide is limited to a light touch, maybe one hand on the airplane's back. They must learn to communicate.",
         "Verbal: The guide may not touch the airplane, and must communicate by voice."
-      ],
-      "anchorAliases": null
+      ]
     },
     {
       "gameName": "Alliances",
@@ -104,9 +94,6 @@
         "exercise",
         "scene",
         "timed"
-      ],
-      "anchorAliases": [
-        "exclusion"
       ],
       "notes": "This game used to be called Exclusion, but Alliances is a better fit. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded--don't fight it--be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific."
     },
@@ -123,8 +110,7 @@
         "shortform",
         "verbal"
       ],
-      "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words.",
-      "anchorAliases": null
+      "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words."
     },
     {
       "gameName": "Alphabet Game",
@@ -143,9 +129,6 @@
         "shortform",
         "verbal"
       ],
-      "anchorAliases": [
-        "abcgame"
-      ],
       "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends."
     },
     {
@@ -160,9 +143,6 @@
         "scene",
         "shortform",
         "tossup"
-      ],
-      "anchorAliases": [
-        "animalcharacters"
       ],
       "notes": "The improvisers are not the animal, they are humans. The endowment should affect physicality, speed, emotions, ways of speaking, wants and desires, interactions with others, etc.",
       "variations": [
@@ -193,9 +173,6 @@
       "notes": "Offers should go both ways. The speaker should take offers from their arms and the \"arms\" should take offers from the speaker.",
       "aliases": [
         "Arms Debate"
-      ],
-      "anchorAliases": [
-        "armsdebate"
       ]
     },
     {
@@ -214,8 +191,7 @@
         "narrative",
         "scene",
         "shortform"
-      ],
-      "anchorAliases": null
+      ]
     },
     {
       "gameName": "At The Movies",
@@ -349,9 +325,6 @@
         "physical",
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "bodyleadsbodywire"
       ]
     },
     {
@@ -511,9 +484,6 @@
         "scene",
         "shortform",
         "verbal"
-      ],
-      "anchorAliases": [
-        "threewaydubcrossdubbing"
       ]
     },
     {
@@ -548,9 +518,6 @@
       "tags": [
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "experience"
       ]
     },
     {
@@ -644,9 +611,6 @@
         "scene",
         "shortform",
         "verbal"
-      ],
-      "anchorAliases": [
-        "foreignfilmdub"
       ]
     },
     {
@@ -843,9 +807,6 @@
         "game",
         "gibberish",
         "shortform"
-      ],
-      "anchorAliases": [
-        "gibberishtranslation"
       ]
     },
     {
@@ -1206,9 +1167,6 @@
         "scene",
         "shortform",
         "toss-up"
-      ],
-      "anchorAliases": [
-        "nolaugh"
       ]
     },
     {
@@ -1379,14 +1337,10 @@
       ],
       "notes": "For some categories (emotions), it may make sense to start in neutral. For others (animals), it might make sense to start with an endowment. The director should make sure and encourage a variety of suggestions from the audience: they may get stuck on one type of emotion, for instance.",
       "aliases": [
+        "Animal",
         "Animal List",
         "Emotional List",
         "Emotions"
-      ],
-      "anchorAliases": [
-        "animallist",
-        "emotionallist",
-        "emotions"
       ]
     },
     {
@@ -1619,9 +1573,6 @@
         "monologue",
         "narrative",
         "shortform"
-      ],
-      "anchorAliases": [
-        "narrage"
       ]
     },
     {
@@ -1766,9 +1717,6 @@
       "tags": [
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "freescene"
       ]
     },
     {
@@ -1830,9 +1778,6 @@
         "scene",
         "shortform",
         "verbal"
-      ],
-      "anchorAliases": [
-        "paperchase"
       ]
     },
     {
@@ -1902,9 +1847,6 @@
         "scene",
         "shortform",
         "silence"
-      ],
-      "anchorAliases": [
-        "electricity"
       ]
     },
     {
@@ -1993,9 +1935,6 @@
         "cultural",
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "sceneinverse"
       ]
     },
     {
@@ -2147,9 +2086,6 @@
       "tags": [
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "gameomatic"
       ]
     },
     {
@@ -2228,9 +2164,6 @@
         "scene",
         "shortform",
         "timejump"
-      ],
-      "anchorAliases": [
-        "backwardsscene"
       ]
     },
     {
@@ -2463,9 +2396,6 @@
         "musical",
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "soundslikeasong"
       ]
     },
     {
@@ -2524,9 +2454,6 @@
         "shortform",
         "silence",
         "verbal"
-      ],
-      "anchorAliases": [
-        "allornothing"
       ]
     },
     {
@@ -2542,9 +2469,6 @@
         "scene",
         "shortform",
         "verbal"
-      ],
-      "anchorAliases": [
-        "multiplepeopleperson"
       ]
     },
     {
@@ -2565,9 +2489,6 @@
       "tags": [
         "scene",
         "shortform"
-      ],
-      "anchorAliases": [
-        "smallvoice"
       ]
     },
     {
@@ -3073,9 +2994,6 @@
         "shortform",
         "toss-up",
         "verbal"
-      ],
-      "anchorAliases": [
-        "questionsonly"
       ]
     },
     {
@@ -3117,9 +3035,6 @@
         "shortform",
         "status",
         "styles"
-      ],
-      "anchorAliases": [
-        "quadrants"
       ]
     },
     {

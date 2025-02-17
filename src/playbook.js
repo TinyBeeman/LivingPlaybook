@@ -69,10 +69,6 @@ class Playbook {
         return Array.from(tagsSet).sort((a, b) => a.localeCompare(b));
     }
 
-    getGamesAlphabetized(filter = null) {
-        return this.searchGames('', filter);
-    }
-
     getGameDetailsByName(name) {
         if (this.data && this.data.games) {
             return this.data.games.find(game => game.gameName === name) || null;
@@ -183,7 +179,7 @@ class Playbook {
     exportJson() {
         this.sanitizeDatabase();
         const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
-            if (key.toLowerCase() === 'anchorname' || key.toLowerCase === 'anchoraliases') {
+            if (key.toLowerCase() === 'anchorname' || key.toLowerCase() === 'anchoraliases') {
                 return undefined;
             }
             return value;
@@ -302,8 +298,41 @@ class PlaybookPage {
         }
     }
 
+    describeSearch(count) {
+        const yesTags = this.filter.getYesTags();
+        const noTags = this.filter.getNoTags();
+        let searchDescription = '';
+        if (this.searchTerm) {
+            searchDescription = `Search term: ${this.searchTerm}`;
+        }
+
+        if (yesTags.length > 0) {
+            if (searchDescription !== '')
+                searchDescription += '| ';
+            searchDescription += `Tags: ${yesTags.join('; ')}`;
+        }
+
+        if (noTags.length > 0) {
+            if (searchDescription !== '')
+                searchDescription += '| ';
+            searchDescription += `Excluded tags: ${noTags.join('; ')}`;
+        }
+
+        if (searchDescription === '')
+            searchDescription = 'All Games, Exercises and Formats';
+        
+        searchDescription += ` (${count} entries)`;
+        
+        return searchDescription;
+    }
+
     populateGameList() {
+        
         const games = this.playbook.searchGames(this.searchTerm, this.filter);
+        const searchDescription = this.describeSearch(games.length);
+        const searchDescriptionElement = document.getElementById('search-desc');
+            searchDescriptionElement.textContent = searchDescription;
+
         const gamesContainer = document.getElementById('games-container');                
         gamesContainer.innerHTML = '';
     
