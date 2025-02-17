@@ -502,43 +502,7 @@ class PlaybookPage {
 
         await this.playbook.loadFromURL('living_playbook.json');
         this.populateGameSelect(document.getElementById('game-select'));
-    
-        document.getElementById('confirm-button').addEventListener('click', () => {
-            const gameName = document.getElementById('game-select').value;
-            const gameDetails = this.playbook.getGameDetailsByName(gameName);
-    
-            const getValue = (gameField) => {
-                const id = this.getEditId(gameDetails.anchorName, gameField);
-                const value = document.getElementById(id).value.trim();
-                return value ? value : null;
-            };
-    
-            gameDetails.gameName = getValue(GameField.Name);
-            gameDetails.gameDetails = getValue(GameField.Description);
-            gameDetails.notes = getValue(GameField.Notes);
-            gameDetails.variations = getValue(GameField.Variations) ? getValue(GameField.Variations).split('\n').map(v => v.trim()) : [];
-            gameDetails.aliases = getValue(GameField.Aliases) ? getValue(GameField.Aliases).split(',').map(v => v.trim()) : [];
-            gameDetails.related = getValue(GameField.Related) ? getValue(GameField.Related).split(',').map(v => v.trim()) : [];
-            gameDetails.tags = getValue(GameField.Tags) ? getValue(GameField.Tags).split(',').map(v => v.trim()) : [];
-            gameDetails.anchorname = this.playbook.getAnchorName(gameDetails.gameName);
-
-            
-            /*gameDetails.gameDetails = getValue('game-description');
-            gameDetails.notes = getValue('game-notes');
-            gameDetails.variations = getValue('game-variations') ? getValue('game-variations').split('\n').map(v => v.trim()) : [];
-            gameDetails.aliases = getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [];
-            gameDetails.related = getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [];
-            gameDetails.tags = getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [];
-            gameDetails.anchorname = this.playbook.getAnchorName(gameDetails.gameName);
-    */
-            document.getElementById('overlay').classList.add("hidden");
-            alert('Game details updated!');
-        });
-    
-        document.getElementById('cancel-button').addEventListener('click', () => {
-            document.getElementById('overlay').classList.add("hidden");
-        });
-    
+        
         document.getElementById('download-button').addEventListener('click', () => {
             this.playbook.downloadJson();
         });
@@ -605,6 +569,86 @@ class PlaybookPage {
         return divCommitRow;
     }
 
+    showPreviewOverlay(oldDetails, newDetails) {
+        // Create the above HTML tree via document.createElement
+        const overlayElement = document.createElement('div');
+        overlayElement.id = 'overlay';
+        overlayElement.classList.add('overlay');
+        // overlayElement.classList.add('hidden');
+        
+        const overlayContent = document.createElement('div');
+        overlayContent.classList.add('overlay-content');
+        overlayElement.appendChild(overlayContent);
+        
+        const h2 = document.createElement('h2');
+        h2.textContent = 'Confirm Changes';
+        overlayContent.appendChild(h2);
+
+        const newDetailsDiv = document.createElement('div');
+        newDetailsDiv.id = 'new-details';
+        overlayContent.appendChild(newDetailsDiv);
+
+        const newDetailsHeader = document.createElement('h3');
+        newDetailsHeader.textContent = 'New Details';
+        newDetailsDiv.appendChild(newDetailsHeader);
+
+        const newDetailsContent = document.createElement('div');
+        newDetailsContent.id = 'new-details-content';
+        newDetailsContent.appendChild(this.createGameCardDiv(newDetails));
+        newDetailsDiv.appendChild(newDetailsContent);
+
+        const oldDetailsDiv = document.createElement('div');
+        oldDetailsDiv.id = 'old-details';
+        overlayContent.appendChild(oldDetailsDiv);
+
+        const oldDetailsHeader = document.createElement('h3');
+        oldDetailsHeader.textContent = 'Old Details';
+        oldDetailsDiv.appendChild(oldDetailsHeader);
+
+        const oldDetailsContent = document.createElement('div');
+        oldDetailsContent.id = 'old-details-content';
+        oldDetailsContent.appendChild(this.createGameCardDiv(oldDetails));
+        oldDetailsDiv.appendChild(oldDetailsContent);
+
+        const confirmButton = document.createElement('button');
+        confirmButton.id = 'confirm-button';
+        confirmButton.textContent = 'Confirm';
+        confirmButton.addEventListener('click', () => {
+            const gameName = oldDetails.gameName;
+            const gameDetails = this.playbook.getGameDetailsByName(gameName);
+        
+            gameDetails.gameName = newDetails.gameName;
+            gameDetails.gameDetails = newDetails.gameDetails;
+            gameDetails.notes = newDetails.notes;
+            gameDetails.variations = newDetails.variations;
+            gameDetails.aliases = newDetails.aliases;
+            gameDetails.related = newDetails.related;
+            gameDetails.tags = newDetails.tags;
+            gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.gameName); 
+            gameDetails.anchorAliases = gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias));
+            this.removeOverlay();
+        });
+        overlayContent.appendChild(confirmButton);
+
+        const cancelButton = document.createElement('button');
+        cancelButton.id = 'cancel-button';
+        cancelButton.textContent = 'Return to Edit';
+        cancelButton.addEventListener('click', () => {
+            this.removeOverlay();
+        });
+        overlayContent.appendChild(cancelButton);
+
+        // Append the overlay to the body
+        document.body.appendChild(overlayElement);
+    }
+
+    removeOverlay() {
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            overlay.remove();
+        }
+    }
+
     previewCallback(gameDetails) {
         const gameId = gameDetails.anchorName;
 
@@ -625,12 +669,7 @@ class PlaybookPage {
             tags: getValue(this.getEditId(gameId, GameField.Tags), ',')
         };
 
-        document.getElementById('old-details-content').innerHTML = '';
-        document.getElementById('new-details-content').innerHTML = '';
-        document.getElementById('old-details-content').appendChild(this.createGameCardDiv(gameDetails));
-        document.getElementById('new-details-content').appendChild(this.createGameCardDiv(newDetails));
-        document.getElementById('overlay').classList.remove('hidden');
-
+        this.showPreviewOverlay(gameDetails, newDetails);
     }
 
     createEditDiv(gameDetails) {
@@ -669,11 +708,7 @@ class PlaybookPage {
                 tags: getValue(GameField.Tags, ',')
             };
 
-            document.getElementById('old-details-content').innerHTML = '';
-            document.getElementById('new-details-content').innerHTML = '';
-            document.getElementById('old-details-content').appendChild(this.createGameCardDiv(gameDetails));
-            document.getElementById('new-details-content').appendChild(this.createGameCardDiv(newDetails));
-            document.getElementById('overlay').classList.remove('hidden');
+            this.showPreviewOverlay(gameDetails, newDetails);
         });
     
         const resetButton = divEditGame.querySelector(`#reset-button-${gameId}`);
