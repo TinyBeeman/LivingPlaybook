@@ -96,7 +96,7 @@
     },
     {
       "gameName": "Alliances",
-      "description": "Improvisers perform a two-minute, four-person scene. At the end of the two minutes, one person needs to have been excluded from the rest of the group. This game used to be called Exclusion, but that name doesn't fit the game. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded - don't fight it -be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific.",
+      "description": "A two-minute, four-person scene. At the end of the two minutes, one person needs to have been excluded from the rest of the group.",
       "aliases": [
         "Exclusion"
       ],
@@ -107,25 +107,12 @@
       ],
       "anchorAliases": [
         "exclusion"
-      ]
-    },
-    {
-      "gameName": "Soap Opera",
-      "description": "Three improvisers must perform a scene in which one is leaning against something, one is staring at someone, and one is looking out at the audience.",
-      "notes": "This can be a good exercise to remind people that stage picture is important, and to act with their eyes/gaze.\n\nIf performed for an audience, it can be a good idea to ask the audience to make \"ooh ooh ooh\" noises when the improvisers are failing to embody each of the three requirements.\n\nAdd risk by joining other performers in what they are doing, and try to justify the movement. Be surprised by what the physical offers tell you about yourself.",
-      "related": [ "Standing, Sitting, Kneeling, Lying Down"],
-      "tags": [
-        "scene",
-        "active",
-        "stage picture",
-        "environment",
-        "shortform",
-        "teamwork"
-      ]
+      ],
+      "notes": "This game used to be called Exclusion, but Alliances is a better fit. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded--don't fight it--be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific."
     },
     {
       "gameName": "Alliteration",
-      "description": "Improvisers ask for a letter of the alphabet and incorporate as many words beginning with that letter into the scene as possible.",
+      "description": "Improvisers ask for a letter of the alphabet and incorporate as many words beginning with the sound of that letter into the scene as possible.",
       "variations": [
         "Each improviser asks for their \"own\" letter.",
         "Every word spoken begins with that letter. Using the letter “T”, “Hello, How are you?” becomes “Tello, Tow Tar Tou?”",
@@ -135,30 +122,35 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words.",
+      "anchorAliases": null
     },
     {
       "gameName": "Alphabet Game",
-      "description": "Improvisers play a scene in which EACH sentence they speak begins with the next sequential letter of the alphabet from A to Z. For instance, One improviser may speak three sentence: Sentence one begins with the letter A, the second with the letter B, the third with the letter C. A second improviser may then speak but his first sentence must begin with the letter D, next sentence with the letter E, etc. This game is best played beginning at the letter A and ending on Z.",
+      "description": "Improvisers play a scene in which each *sentence* they speak begins with the next sequential letter of the alphabet from A to Z.\n\nPerson A: Anyone home? Best to say so, if you are! Candy for the first kid downstairs!\nPerson B: Daddy! Edmund has been hitting me!\nPerson C: Francis is a tattletale!",
       "variations": [
-        "The audience chooses a letter and/or you may go through the alphabet as many times as necessary to complete the scene.",
-        "This game can be easily played with an audience member in the role with only three lines."
+        "Audience: Include an audience member: they must speak three lines during the scene.",
+        "Different Letter: The audience chooses a letter to start on. You go until you get back to that letter.",
+        "Loop: You may go through the alphabet as many times as necessary to complete the scene."
       ],
       "aliases": [
         "ABC Game"
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "verbal"
       ],
       "anchorAliases": [
         "abcgame"
-      ]
+      ],
+      "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends."
     },
     {
       "gameName": "Animal People",
-      "description": "Improviser (or improvisers) asks for an animal, then plays the scene as a human with that animal's characteristics.",
+      "description": "The improvisers ask for animals and play the scene as a human with that animal's characteristics.",
       "aliases": [
         "Animal Characters"
       ],
@@ -166,17 +158,28 @@
         "animal",
         "character",
         "scene",
-        "shortform"
+        "shortform",
+        "tossup"
       ],
       "anchorAliases": [
         "animalcharacters"
+      ],
+      "notes": "The improvisers are not the animal, they are humans. The endowment should affect physicality, speed, emotions, ways of speaking, wants and desires, interactions with others, etc.",
+      "variations": [
+        "One Animal: All improvisers are endowed with the same animal.",
+        "Toss-up: Two improvisers compete for who best endowed the animal in the audience's opinion."
+      ],
+      "related": [
+        "List Game"
       ]
     },
     {
       "gameName": "Arms",
-      "description": "One improviser stands in front of another improviser. The improviser in front wraps his arms around the improviser behind. The improviser behind then uses his own arms as the front improvisers arms. Can be used with Experts.",
+      "description": "One improviser stands in front of another improviser. The improviser in front wraps their arms around the improviser behind. The improviser behind then uses their own arms as the front improvisers arms.",
       "variations": [
-        "A different improviser plays each arm of the third improviser."
+        "Arms Debate: Four improvisers perform a debate. A fifth improviser is the moderator.",
+        "One improvisers provides all the arms for the scene",
+        "Two improvisers each play an arm of a third improviser."
       ],
       "related": [
         "Experts"
@@ -186,23 +189,33 @@
         "physical",
         "scene",
         "shortform"
+      ],
+      "notes": "Offers should go both ways. The speaker should take offers from their arms and the \"arms\" should take offers from the speaker.",
+      "aliases": [
+        "Arms Debate"
+      ],
+      "anchorAliases": [
+        "armsdebate"
       ]
     },
     {
       "gameName": "Asides",
-      "description": "Improvisers turn to the audience and declare their true feelings or inner dialogue. The asides are not \"heard\" by the other characters on-stage. The others maintain their positions in a \"soft freeze\" (holding position without becoming rigid). Similar to Consciences and Inner Dialogue.",
+      "description": "A scene from an audience suggestion. Improvisers turn to the audience from time to time and declare their true feelings or inner dialogue.\n\nThe asides are not \"heard\" by the other characters on-stage. The others maintain their positions in a \"soft freeze\" (holding position without becoming rigid). Similar to Consciences and Inner Dialogue.",
       "variations": [
         "Detective Soliloquy: Play as a Film Noir scene."
       ],
       "related": [
         "Consciences",
-        "Inner Dialogue"
+        "Inner Dialogue",
+        "Oscar Winning Moment"
       ],
       "tags": [
+        "monologue",
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "anchorAliases": null
     },
     {
       "gameName": "At The Movies",
@@ -2407,6 +2420,22 @@
       ]
     },
     {
+      "gameName": "Soap Opera",
+      "description": "Three improvisers must perform a scene in which one is leaning against something, one is staring at someone, and one is looking out at the audience.",
+      "notes": "This can be a good exercise to remind people that stage picture is important, and to act with their eyes/gaze.\n\nIf performed for an audience, it can be a good idea to ask the audience to make \"ooh ooh ooh\" noises when the improvisers are failing to embody each of the three requirements.\n\nAdd risk by joining other performers in what they are doing, and try to justify the movement. Be surprised by what the physical offers tell you about yourself.",
+      "related": [
+        "Standing, Sitting, Kneeling, Lying Down"
+      ],
+      "tags": [
+        "active",
+        "environment",
+        "scene",
+        "shortform",
+        "stage picture",
+        "teamwork"
+      ]
+    },
+    {
       "gameName": "Solo Scene",
       "description": "Only one person is allowed on stage. Teammates may provide voices, props, or sound effects.",
       "tags": [
@@ -2606,7 +2635,9 @@
     {
       "gameName": "Standing, Sitting, Kneeling, Lying Down",
       "description": "A scene in which the improvisers must be standing, sitting, kneeling, or lying down. No two improvisers can be in the same position and all positions must be justified.",
-      "related": [ "Soap Opera"],
+      "related": [
+        "Soap Opera"
+      ],
       "tags": [
         "justification",
         "physical",
