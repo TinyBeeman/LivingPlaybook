@@ -553,13 +553,13 @@ class PlaybookPage {
         return divRow;
     }
 
-    createCommitRow(gameId, previewCallback, resetCallback) {
+    createCommitRow(gameId, previewGameEdit, resetCallback) {
         let divCommitRow = document.createElement('div');
         divCommitRow.classList.add('game-row');
         let previewButton = document.createElement('button');
         previewButton.id = 'preview-button-' + gameId;
         previewButton.textContent = 'Preview Changes';
-        previewButton.onclick = previewCallback;
+        previewButton.onclick = previewGameEdit;
         divCommitRow.appendChild(previewButton);
         let resetButton = document.createElement('button');
         resetButton.id = 'reset-button-' + gameId;
@@ -569,13 +569,102 @@ class PlaybookPage {
         return divCommitRow;
     }
 
-    showPreviewOverlay(oldDetails, newDetails) {
-        // Create the above HTML tree via document.createElement
+    getGameDetailsFromEditFields(gameId) {
+        const getValue = (id, delim = null) => {
+            const value = document.getElementById(id).value.trim();
+            if (delim != null)
+                return value ? value.split(delim).map(v => v.trim()) : [];
+            return value;
+        };
+
+        const newDetails = {
+            gameName: getValue(this.getEditId(gameId, GameField.Name)),
+            gameDetails: getValue(this.getEditId(gameId, GameField.Description)),
+            notes: getValue(this.getEditId(gameId, GameField.Notes)),
+            variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
+            aliases: getValue(this.getEditId(gameId, GameField.Aliases), ','),
+            related: getValue(this.getEditId(gameId, GameField.Related), ','),
+            tags: getValue(this.getEditId(gameId, GameField.Tags), ',')
+        };
+
+        return newDetails;
+    }
+
+    previewGameEdit(gameDetails) {
+        const gameId = gameDetails.anchorName;
+        const newDetails = this.getGameDetailsFromEditFields(gameId);
+        const overlayElement = this.createOverlay();
+        
+        this.populatePreviewOverlay(overlayElement, gameDetails, newDetails);
+        document.body.appendChild(overlayElement);
+    }
+
+    createEditDiv(gameDetails) {
+        let gameId = gameDetails.anchorName;
+        let divEditGame = document.createElement('div');
+        divEditGame.id = `game-edit-${gameId}`;
+        divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.gameName));
+        divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.gameDetails));
+        divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
+        divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
+        divEditGame.appendChild(this.createEditRow('text', 'Aliases (comma-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join(', ')));
+        divEditGame.appendChild(this.createEditRow('text', 'Related Games (comma-separated):', GameField.Related, gameId, (gameDetails.related || []).join(', ')));
+        divEditGame.appendChild(this.createEditRow('text', 'Tags (comma-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join(', ')));
+        divEditGame.appendChild(this.createCommitRow(gameId, () => this.previewGameEdit(gameDetails), () => this.loadGameDetails()));
+        
+        /*const previewButton = divEditGame.querySelector(`#preview-button-${gameId}`);
+        previewButton.addEventListener('click', () => {
+            const gameName = document.getElementById('game-select').value;
+            const gameDetails = this.playbook.getGameDetailsByName(gameName);
+    
+            const getValue = (gameField, delim = null) => {
+                const id = this.getEditId(gameId, gameField);
+                const value = document.getElementById(id).value.trim();
+                if (delim != null)
+                    return value ? value.split(delim).map(v => v.trim()) : [];
+                return value;
+            };
+    
+            const newDetails = {
+                gameName: getValue(GameField.Name),
+                gameDetails: getValue(GameField.Description),
+                notes: getValue(GameField.Notes),
+                variations: getValue(GameField.Variations, '\n'),
+                aliases: getValue(GameField.Aliases, ','),
+                related: getValue(GameField.Related, ','),
+                tags: getValue(GameField.Tags, ',')
+            };
+
+            this.showPreviewOverlay(gameDetails, newDetails);
+        });
+    
+        const resetButton = divEditGame.querySelector(`#reset-button-${gameId}`);
+        resetButton.addEventListener('click', () => {
+            this.loadGameDetails();
+        });*/
+        
+        return divEditGame;
+    }
+
+    createOverlay(hidden = false) {
         const overlayElement = document.createElement('div');
         overlayElement.id = 'overlay';
         overlayElement.classList.add('overlay');
-        // overlayElement.classList.add('hidden');
-        
+        if (hidden)
+            overlayElement.classList.add('hidden');
+        return overlayElement;
+    }
+
+    showOverlay(overlayElement, show = true) {
+        if (show) {
+            overlayElement.classList.remove('hidden');
+        } else {
+            overlayElement.classList.add('hidden');
+        }
+    }
+
+    populatePreviewOverlay(overlayElement, oldDetails, newDetails) {
+
         const overlayContent = document.createElement('div');
         overlayContent.classList.add('overlay-content');
         overlayElement.appendChild(overlayContent);
@@ -626,7 +715,7 @@ class PlaybookPage {
             gameDetails.tags = newDetails.tags;
             gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.gameName); 
             gameDetails.anchorAliases = gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias));
-            this.removeOverlay();
+            overlayElement.remove();
         });
         overlayContent.appendChild(confirmButton);
 
@@ -634,90 +723,24 @@ class PlaybookPage {
         cancelButton.id = 'cancel-button';
         cancelButton.textContent = 'Return to Edit';
         cancelButton.addEventListener('click', () => {
-            this.removeOverlay();
+            overlayElement.remove();
         });
         overlayContent.appendChild(cancelButton);
 
-        // Append the overlay to the body
-        document.body.appendChild(overlayElement);
+        overlayElement.appendChild(overlayContent);
+        return overlayContent;
     }
 
-    removeOverlay() {
-        const overlay = document.getElementById('overlay');
-        if (overlay) {
-            overlay.remove();
-        }
-    }
-
-    previewCallback(gameDetails) {
-        const gameId = gameDetails.anchorName;
-
-        const getValue = (id, delim = null) => {
-            const value = document.getElementById(id).value.trim();
-            if (delim != null)
-                return value ? value.split(delim).map(v => v.trim()) : [];
-            return value;
-        };
-
-        const newDetails = {
-            gameName: getValue(this.getEditId(gameId, GameField.Name)),
-            gameDetails: getValue(this.getEditId(gameId, GameField.Description)),
-            notes: getValue(this.getEditId(gameId, GameField.Notes)),
-            variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
-            aliases: getValue(this.getEditId(gameId, GameField.Aliases), ','),
-            related: getValue(this.getEditId(gameId, GameField.Related), ','),
-            tags: getValue(this.getEditId(gameId, GameField.Tags), ',')
-        };
-
-        this.showPreviewOverlay(gameDetails, newDetails);
-    }
-
-    createEditDiv(gameDetails) {
-        let gameId = gameDetails.anchorName;
-        let divEditGame = document.createElement('div');
-        divEditGame.id = `game-edit-${gameId}`;
-        divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.gameName));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.gameDetails));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
-        divEditGame.appendChild(this.createEditRow('text', 'Aliases (comma-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join(', ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Related Games (comma-separated):', GameField.Related, gameId, (gameDetails.related || []).join(', ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Tags (comma-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join(', ')));
-        divEditGame.appendChild(this.createCommitRow(gameId));
+    showPreviewOverlay(oldDetails, newDetails) {
         
-        const previewButton = divEditGame.querySelector(`#preview-button-${gameId}`);
-        previewButton.addEventListener('click', () => {
-            const gameName = document.getElementById('game-select').value;
-            const gameDetails = this.playbook.getGameDetailsByName(gameName);
-    
-            const getValue = (gameField, delim = null) => {
-                const id = this.getEditId(gameId, gameField);
-                const value = document.getElementById(id).value.trim();
-                if (delim != null)
-                    return value ? value.split(delim).map(v => v.trim()) : [];
-                return value;
-            };
-    
-            const newDetails = {
-                gameName: getValue(GameField.Name),
-                gameDetails: getValue(GameField.Description),
-                notes: getValue(GameField.Notes),
-                variations: getValue(GameField.Variations, '\n'),
-                aliases: getValue(GameField.Aliases, ','),
-                related: getValue(GameField.Related, ','),
-                tags: getValue(GameField.Tags, ',')
-            };
-
-            this.showPreviewOverlay(gameDetails, newDetails);
-        });
-    
-        const resetButton = divEditGame.querySelector(`#reset-button-${gameId}`);
-        resetButton.addEventListener('click', () => {
-            this.loadGameDetails();
-        });
-        
-        return divEditGame;
     }
+
+    showEditOverlay(gameDetails) {
+        const overlayElement = this.createOverlay();
+        
+    }
+
+
 
 }
 
