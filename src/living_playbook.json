@@ -47,15 +47,23 @@
       "gameName": "Adjective Scene",
       "description": "Improvisers ask for an adjective (eg: 'sad'). Must play the scene with as much 'sadness' as possible, or each player may ask for a different adjective.",
       "tags": [
+        "emotions",
         "endowment",
         "game",
         "scene",
         "shortform"
+      ],
+      "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
+      "aliases": [
+        "List Game"
+      ],
+      "anchorAliases": [
+        "listgame"
       ]
     },
     {
       "gameName": "Advance and Expand",
-      "description": "A very simple game. Perform an action, and then make it more interesting. Keep the action simple, and be strict. Have someone offstage call \"Advance\", at which point the improviser may advance the story, and \"Expand\", at which point the improviser must make whatever they are doing more interesting. Example, if the action is \"scratching your nose\", you need to make that activity more interesting. You can't blow your nose, because that would change the action. You need to make \"scratching your nose\" more interesting.",
+      "description": "An improviser tells a monologue or performs a scene. A director calls \"Advance,\" at which point the improviser may advance the story, or \"Expand,\" at which point the improviser stops advancing and explores the current action or moment.\n\nIf a performer is scratching their nose and asked to expand, they should find ways to make that activity more interesting. They can't blow their nose, because that would change the action. They might slow down, speed up, change angles, etc.\n\nIf a monologist is telling a story about their morning, and they are asked to expand as they say, \"I made some coffee,\" they may describe their coffee cup, explain where they got it, talk about why they like coffee, etc. They may not advance in the story.",
       "aliases": [
         "Advancing Game"
       ],
@@ -67,6 +75,10 @@
       ],
       "anchorAliases": [
         "advancinggame"
+      ],
+      "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
+      "variations": [
+        "Pair two people: one tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
       ]
     },
     {
@@ -75,7 +87,12 @@
       "tags": [
         "exercise",
         "teamwork"
-      ]
+      ],
+      "variations": [
+        "Touch: The guide is limited to a light touch, maybe one hand on the airplane's back. They must learn to communicate.",
+        "Verbal: The guide may not touch the airplane, and must communicate by voice."
+      ],
+      "anchorAliases": null
     },
     {
       "gameName": "Alliances",
@@ -90,6 +107,20 @@
       ],
       "anchorAliases": [
         "exclusion"
+      ]
+    },
+    {
+      "gameName": "Soap Opera",
+      "description": "Three improvisers must perform a scene in which one is leaning against something, one is staring at someone, and one is looking out at the audience.",
+      "notes": "This can be a good exercise to remind people that stage picture is important, and to act with their eyes/gaze.\n\nIf performed for an audience, it can be a good idea to ask the audience to make \"ooh ooh ooh\" noises when the improvisers are failing to embody each of the three requirements.\n\nAdd risk by joining other performers in what they are doing, and try to justify the movement. Be surprised by what the physical offers tell you about yourself.",
+      "related": [ "Standing, Sitting, Kneeling, Lying Down"],
+      "tags": [
+        "scene",
+        "active",
+        "stage picture",
+        "environment",
+        "shortform",
+        "teamwork"
       ]
     },
     {
@@ -1340,9 +1371,9 @@
         "Emotions"
       ],
       "anchorAliases": [
-        "emotions",
+        "animallist",
         "emotionallist",
-        "animallist"
+        "emotions"
       ]
     },
     {
@@ -2575,6 +2606,7 @@
     {
       "gameName": "Standing, Sitting, Kneeling, Lying Down",
       "description": "A scene in which the improvisers must be standing, sitting, kneeling, or lying down. No two improvisers can be in the same position and all positions must be justified.",
+      "related": [ "Soap Opera"],
       "tags": [
         "justification",
         "physical",

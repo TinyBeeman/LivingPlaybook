@@ -355,14 +355,14 @@ class PlaybookPage {
             url.searchParams.delete('search');
         }
 
-        const yesTags = Array.from(this.filter.yesTags).join(',');
+        const yesTags = Array.from(this.filter.yesTags).join(';');
         if (yesTags && yesTags.length > 0) {
             url.searchParams.set('yesTags', yesTags);
         } else {
             url.searchParams.delete('yesTags');
         }
 
-        const noTags = Array.from(this.filter.noTags).join(',');
+        const noTags = Array.from(this.filter.noTags).join(';');
         if (noTags && noTags.length > 0) {
             url.searchParams.set('noTags', noTags);
         } else {
@@ -597,9 +597,9 @@ class PlaybookPage {
             description: getValue(this.getEditId(gameId, GameField.Description)),
             notes: getValue(this.getEditId(gameId, GameField.Notes)),
             variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
-            aliases: getValue(this.getEditId(gameId, GameField.Aliases), ','),
-            related: getValue(this.getEditId(gameId, GameField.Related), ','),
-            tags: getValue(this.getEditId(gameId, GameField.Tags), ',')
+            aliases: getValue(this.getEditId(gameId, GameField.Aliases), ';'),
+            related: getValue(this.getEditId(gameId, GameField.Related), ';'),
+            tags: getValue(this.getEditId(gameId, GameField.Tags), ';')
         };
 
         return newDetails;
@@ -627,9 +627,9 @@ class PlaybookPage {
         divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.description));
         divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
         divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
-        divEditGame.appendChild(this.createEditRow('text', 'Aliases (comma-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join(', ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Related Games (comma-separated):', GameField.Related, gameId, (gameDetails.related || []).join(', ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Tags (comma-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join(', ')));
+        divEditGame.appendChild(this.createEditRow('text', 'Aliases (semi-colon-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join('; ')));
+        divEditGame.appendChild(this.createEditRow('text', 'Related Games (semi-color-separated):', GameField.Related, gameId, (gameDetails.related || []).join('; ')));
+        divEditGame.appendChild(this.createEditRow('text', 'Tags (semi-colon-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join('; ')));
         divEditGame.appendChild(this.createCommitRow(
             gameId,
             commitLabel,
