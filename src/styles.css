@@ -17,6 +17,7 @@
     --font-size-game-tag: smaller;
     --font-size-game-alias: smaller;
     --font-size-game-related-link: smaller;
+    --font-size-game-edit-button: smaller;
 
     --horizontal-rule-color: #aaaaaa;
     --horizontal-rule-width: 1px;
@@ -338,6 +339,14 @@ body {
     background-color: var(--color-game-related-link-hover-bg);
 }
 
+.game-edit-button {
+    font-size: var(--font-size-game-edit-button);
+    padding: var(--padding-small);
+    margin: var(--padding-small);
+    background-color: var(--default-bg);
+    border: var(--tag-border-width) solid black;
+}
+
 .include-only {
     font-size: var(--font-size-game-tag);
     color: var(----padding-page);
@@ -348,10 +357,28 @@ body {
     color: var(--exclude-tag-bg);
 }
 
+
+.game-edit {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: white;
+    height: 90%;
+    overflow-y: auto;
+}
+
 .field_edit {
     width: 100%;
     resize: none;
     font-size: var(--font-size-game-row)
+}
+
+.preview-details-container {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .overlay {

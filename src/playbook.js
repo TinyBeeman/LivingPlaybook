@@ -193,40 +193,14 @@ class PlaybookPage {
         this.playbook = new Playbook();
         this.searchTerm = null;
         this.lazyTimer = null;
+        this.editMode = false;
     }
 
-    initializeCollapsibles() {
-        var collapsibles = document.getElementsByClassName("collapsible-header");    
-        Array.from(collapsibles).forEach(collapsible => {
-            collapsible.addEventListener("click", function() {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        });
-    }
-
-    initializeSearchBox() {
-        const searchBox = document.getElementById('search-box');
-        searchBox.addEventListener('input', (event) => {
-            this.searchTerm = event.target.value;
-            this.lazyUpdateUrlFromState();
-            this.populateGameList();
-        });
-    
-        searchBox.addEventListener('blur', (event) => {
-            this.updateUrlFromState();
-        });
-    }
-
-    async onPageLoad(editMode = false) {
+    async onPageLoad() {
         let urlParams = new URLSearchParams(window.location.search);
         this.dbId = urlParams.get('dbId');
         this.searchTerm = urlParams.get('search');
+        this.editMode = urlParams.get('edit') === '1';
     
         if (this.dbId === "2001") {
             document.getElementById('page-title').textContent = "The Online Living Playbook: Original 2001 Edition";
@@ -260,6 +234,44 @@ class PlaybookPage {
         this.populateGameList();
     }
 
+
+
+    initializeCollapsibles() {
+        var collapsibles = document.getElementsByClassName("collapsible-header");    
+        Array.from(collapsibles).forEach(collapsible => {
+            collapsible.addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        });
+    }
+
+    initializeSearchBox() {
+        const searchBox = document.getElementById('search-box');
+        searchBox.addEventListener('input', (event) => {
+            this.searchTerm = event.target.value;
+            this.lazyUpdateUrlFromState();
+            this.populateGameList();
+        });
+    
+        searchBox.addEventListener('blur', (event) => {
+            this.updateUrlFromState();
+        });
+
+        if (this.editMode) {
+            const downloadButton = document.getElementById('download-json');
+            downloadButton.classList.remove('hidden');
+            downloadButton.addEventListener('click', () => {
+                this.playbook.downloadJson();
+            });
+        }
+    }
+
     populateGameList() {
         const games = this.playbook.searchGames(this.searchTerm, this.filter);
         const gamesContainer = document.getElementById('games-container');                
@@ -267,7 +279,7 @@ class PlaybookPage {
     
         games.forEach(gameName => {
             const gameDetails = this.playbook.getGameDetailsByName(gameName);
-            gamesContainer.appendChild(this.createGameCardDiv(gameDetails));
+            gamesContainer.appendChild(this.createGameCardDiv(gameDetails, this.editMode));
         });
     }
 
@@ -361,7 +373,7 @@ class PlaybookPage {
         this.updateUrlFromState();
     }
 
-    createGameCardDiv(gameDetails) {
+    createGameCardDiv(gameDetails, editMode = false) {
         const divGameCard = document.createElement('div');
         divGameCard.classList.add("game-card");
         divGameCard.id = `${gameDetails.anchorName}`;
@@ -433,6 +445,19 @@ class PlaybookPage {
             divCardContent.appendChild(divRelatedRow);
         }
 
+        if (editMode) {
+            const divEditRow = this.createGameRow("edit", "edit game");
+            const divEditContainer = this.createGameRowContainer("edit");
+
+            const editButton = document.createElement('button');
+            editButton.textContent = 'Edit';
+            editButton.classList.add('game-edit-button');
+            editButton.onclick = () => this.showEditOverlay(gameDetails);
+            divEditContainer.appendChild(editButton);
+            divEditRow.appendChild(divEditContainer);
+            divCardContent.appendChild(divEditRow);
+        }
+
         return divGameCard;
     }
 
@@ -447,31 +472,6 @@ class PlaybookPage {
             console.error('Marked library is not loaded.');
             return '';
         }
-    }
-
-    loadGameDetails() {
-        const gameName = document.getElementById('game-select').value;
-        const gameDetails = this.playbook.getGameDetailsByName(gameName);
-
-        const divGameEdit = document.getElementById('game-edit');
-        divGameEdit.innerHTML = '';
-        divGameEdit.appendChild(this.createEditDiv(gameDetails));
-
-
-        this.fitAllTextAreasToContent();
-    }
-
-
-    populateGameSelect(selectElement) {
-        const games = this.playbook.getGamesAlphabetized();
-        games.forEach(gameName => {
-            const option = document.createElement('option');
-            option.value = gameName;
-            option.textContent = gameName;
-            selectElement.appendChild(option);
-        });
-
-        selectElement.addEventListener('change', () => this.loadGameDetails());
     }
 
     populatePageHeader(title = "The (Online) Living Playbook",
@@ -495,25 +495,6 @@ class PlaybookPage {
         const textareas = document.querySelectorAll('.field_edit');
         textareas.forEach(textarea => { this.fitTextAreaToContent(textarea); }); 
     }
-
-    async initializeEditPage() {
-        
-        this.populatePageHeader('Living Playbook Editor', 'Edit Living Playbook Games');
-
-        await this.playbook.loadFromURL('living_playbook.json');
-        this.populateGameSelect(document.getElementById('game-select'));
-        
-        document.getElementById('download-button').addEventListener('click', () => {
-            this.playbook.downloadJson();
-        });
-    
-        document.querySelectorAll('.field_edit').forEach(textarea => {
-            textarea.addEventListener('input', () => this.fitTextAreaToContent(textarea));
-        });
-
-        this.loadGameDetails();
-    }
-
 
     getEditId(gameId, field) {
         return `edit-${gameId}-${field}`;
@@ -553,27 +534,31 @@ class PlaybookPage {
         return divRow;
     }
 
-    createCommitRow(gameId, previewGameEdit, resetCallback) {
+    createCommitRow(gameId,
+        commitLabel,
+        commitCallback,
+        resetLabel,
+        resetCallback) {
         let divCommitRow = document.createElement('div');
         divCommitRow.classList.add('game-row');
         let previewButton = document.createElement('button');
         previewButton.id = 'preview-button-' + gameId;
-        previewButton.textContent = 'Preview Changes';
-        previewButton.onclick = previewGameEdit;
+        previewButton.textContent = commitLabel;
+        previewButton.onclick = commitCallback;
         divCommitRow.appendChild(previewButton);
         let resetButton = document.createElement('button');
         resetButton.id = 'reset-button-' + gameId;
-        resetButton.textContent = 'Reset Changes';
+        resetButton.textContent = resetLabel;
         resetButton.onclick = resetCallback;
         divCommitRow.appendChild(resetButton);
         return divCommitRow;
     }
 
-    getGameDetailsFromEditFields(gameId) {
+    getDetailsFromDocEditFields(gameId) {
         const getValue = (id, delim = null) => {
             const value = document.getElementById(id).value.trim();
             if (delim != null)
-                return value ? value.split(delim).map(v => v.trim()) : [];
+                return value ? value.split(delim).map(v => v.trim()) : null;
             return value;
         };
 
@@ -590,18 +575,23 @@ class PlaybookPage {
         return newDetails;
     }
 
-    previewGameEdit(gameDetails) {
-        const gameId = gameDetails.anchorName;
-        const newDetails = this.getGameDetailsFromEditFields(gameId);
+    previewGameEdit(newDetails) {
         const overlayElement = this.createOverlay();
-        
-        this.populatePreviewOverlay(overlayElement, gameDetails, newDetails);
+
+        const oldDetails = this.playbook.getGameDetailsByName(newDetails.gameName);
+        const gameId = this.playbook.getAnchorName(newDetails.gameName);
+        this.populatePreviewOverlay(overlayElement, oldDetails, newDetails);
         document.body.appendChild(overlayElement);
     }
 
-    createEditDiv(gameDetails) {
-        let gameId = gameDetails.anchorName;
+    createEditDiv(gameDetails,
+        commitLabel = "Commit",
+        commitCallback = () => { },
+        resetLabel = "Reset",
+        resetCallback = () => { }) {
+        let gameId = this.playbook.getAnchorName(gameDetails.gameName);
         let divEditGame = document.createElement('div');
+        divEditGame.classList.add('game-edit');
         divEditGame.id = `game-edit-${gameId}`;
         divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.gameName));
         divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.gameDetails));
@@ -610,39 +600,13 @@ class PlaybookPage {
         divEditGame.appendChild(this.createEditRow('text', 'Aliases (comma-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join(', ')));
         divEditGame.appendChild(this.createEditRow('text', 'Related Games (comma-separated):', GameField.Related, gameId, (gameDetails.related || []).join(', ')));
         divEditGame.appendChild(this.createEditRow('text', 'Tags (comma-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join(', ')));
-        divEditGame.appendChild(this.createCommitRow(gameId, () => this.previewGameEdit(gameDetails), () => this.loadGameDetails()));
-        
-        /*const previewButton = divEditGame.querySelector(`#preview-button-${gameId}`);
-        previewButton.addEventListener('click', () => {
-            const gameName = document.getElementById('game-select').value;
-            const gameDetails = this.playbook.getGameDetailsByName(gameName);
-    
-            const getValue = (gameField, delim = null) => {
-                const id = this.getEditId(gameId, gameField);
-                const value = document.getElementById(id).value.trim();
-                if (delim != null)
-                    return value ? value.split(delim).map(v => v.trim()) : [];
-                return value;
-            };
-    
-            const newDetails = {
-                gameName: getValue(GameField.Name),
-                gameDetails: getValue(GameField.Description),
-                notes: getValue(GameField.Notes),
-                variations: getValue(GameField.Variations, '\n'),
-                aliases: getValue(GameField.Aliases, ','),
-                related: getValue(GameField.Related, ','),
-                tags: getValue(GameField.Tags, ',')
-            };
-
-            this.showPreviewOverlay(gameDetails, newDetails);
-        });
-    
-        const resetButton = divEditGame.querySelector(`#reset-button-${gameId}`);
-        resetButton.addEventListener('click', () => {
-            this.loadGameDetails();
-        });*/
-        
+        divEditGame.appendChild(this.createCommitRow(
+            gameId,
+            commitLabel,
+            commitCallback,
+            resetLabel,
+            resetCallback));
+                
         return divEditGame;
     }
 
@@ -664,7 +628,6 @@ class PlaybookPage {
     }
 
     populatePreviewOverlay(overlayElement, oldDetails, newDetails) {
-
         const overlayContent = document.createElement('div');
         overlayContent.classList.add('overlay-content');
         overlayElement.appendChild(overlayContent);
@@ -673,12 +636,17 @@ class PlaybookPage {
         h2.textContent = 'Confirm Changes';
         overlayContent.appendChild(h2);
 
+        const detailsDiv = document.createElement('div');
+        detailsDiv.classList.add('preview-details-container');
+        overlayContent.appendChild(detailsDiv);
+
         const newDetailsDiv = document.createElement('div');
         newDetailsDiv.id = 'new-details';
-        overlayContent.appendChild(newDetailsDiv);
+        detailsDiv.appendChild(newDetailsDiv);
 
         const newDetailsHeader = document.createElement('h3');
-        newDetailsHeader.textContent = 'New Details';
+        
+        newDetailsHeader.textContent = oldDetails ? 'Edited Details' : "New Game";
         newDetailsDiv.appendChild(newDetailsHeader);
 
         const newDetailsContent = document.createElement('div');
@@ -686,36 +654,54 @@ class PlaybookPage {
         newDetailsContent.appendChild(this.createGameCardDiv(newDetails));
         newDetailsDiv.appendChild(newDetailsContent);
 
-        const oldDetailsDiv = document.createElement('div');
-        oldDetailsDiv.id = 'old-details';
-        overlayContent.appendChild(oldDetailsDiv);
+        if (oldDetails) {
+            const oldDetailsDiv = document.createElement('div');
+            oldDetailsDiv.id = 'old-details';
+            detailsDiv.appendChild(oldDetailsDiv);
 
-        const oldDetailsHeader = document.createElement('h3');
-        oldDetailsHeader.textContent = 'Old Details';
-        oldDetailsDiv.appendChild(oldDetailsHeader);
+            const oldDetailsHeader = document.createElement('h3');
+            oldDetailsHeader.textContent = 'Old Details';
+            oldDetailsDiv.appendChild(oldDetailsHeader);
 
-        const oldDetailsContent = document.createElement('div');
-        oldDetailsContent.id = 'old-details-content';
-        oldDetailsContent.appendChild(this.createGameCardDiv(oldDetails));
-        oldDetailsDiv.appendChild(oldDetailsContent);
+            const oldDetailsContent = document.createElement('div');
+            oldDetailsContent.id = 'old-details-content';
+            oldDetailsContent.appendChild(this.createGameCardDiv(oldDetails));
+            oldDetailsDiv.appendChild(oldDetailsContent);
+        }
 
         const confirmButton = document.createElement('button');
         confirmButton.id = 'confirm-button';
         confirmButton.textContent = 'Confirm';
         confirmButton.addEventListener('click', () => {
-            const gameName = oldDetails.gameName;
-            const gameDetails = this.playbook.getGameDetailsByName(gameName);
-        
-            gameDetails.gameName = newDetails.gameName;
-            gameDetails.gameDetails = newDetails.gameDetails;
-            gameDetails.notes = newDetails.notes;
-            gameDetails.variations = newDetails.variations;
-            gameDetails.aliases = newDetails.aliases;
-            gameDetails.related = newDetails.related;
-            gameDetails.tags = newDetails.tags;
+            const gameName = oldDetails ? oldDetails.gameName : newDetails.gameName;
+            let gameDetails = this.playbook.getGameDetailsByName(gameName);
+            if (gameDetails == null) {
+                gameDetails = {};
+                this.playbook.data.games.push(gameDetails);
+            }
+
+            const fieldAssign = (value) => {
+                // If value is an array...
+                if (Array.isArray(value) && value.length === 0)
+                    return null;
+                // If value is a string...
+                if (typeof value === 'string' && value.trim() === '')
+                    return null;
+
+                return value;
+            }
+
+            gameDetails.gameName = fieldAssign(newDetails.gameName);
+            gameDetails.gameDetails = fieldAssign(newDetails.gameDetails);
+            gameDetails.notes = fieldAssign(newDetails.notes);
+            gameDetails.variations = fieldAssign(newDetails.variations);
+            gameDetails.aliases = fieldAssign(newDetails.aliases);
+            gameDetails.related = fieldAssign(newDetails.related);
+            gameDetails.tags = fieldAssign(newDetails.tags);
             gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.gameName); 
-            gameDetails.anchorAliases = gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias));
+            gameDetails.anchorAliases = gameDetails.aliases ? gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias)) : null;
             overlayElement.remove();
+            this.populateGameList();
         });
         overlayContent.appendChild(confirmButton);
 
@@ -724,6 +710,7 @@ class PlaybookPage {
         cancelButton.textContent = 'Return to Edit';
         cancelButton.addEventListener('click', () => {
             overlayElement.remove();
+            this.showEditOverlay(newDetails);
         });
         overlayContent.appendChild(cancelButton);
 
@@ -731,17 +718,24 @@ class PlaybookPage {
         return overlayContent;
     }
 
-    showPreviewOverlay(oldDetails, newDetails) {
-        
-    }
 
     showEditOverlay(gameDetails) {
         const overlayElement = this.createOverlay();
-        
+        const gameId = this.playbook.getAnchorName(gameDetails.gameName);
+        const editDiv = this.createEditDiv(gameDetails,
+            "Preview Changes",
+            () => {
+                const newDetails = this.getDetailsFromDocEditFields(gameId);
+                overlayElement.remove();
+                this.previewGameEdit(newDetails);
+            },
+            "Cancel",
+            () => { overlayElement.remove(); });
+
+        overlayElement.appendChild(editDiv);
+        document.body.appendChild(overlayElement);
+        this.fitAllTextAreasToContent();
     }
-
-
-
 }
 
 const g_playbookPage = new PlaybookPage();
