@@ -18,6 +18,10 @@
     --font-size-game-alias: smaller;
     --font-size-game-related-link: smaller;
 
+    --horizontal-rule-color: #aaaaaa;
+    --horizontal-rule-width: 1px;
+    --horizontal-rule-label-color: #aaaaaa;
+
     --card-border-color: black;
     --card-border-width: 1px;
     --card-border-radius: 5px;
@@ -102,6 +106,17 @@ body {
     line-height: 0.5;
     text-align: right;
     align-content: center;
+}
+
+.horizontal-rule-with-label {
+    font-size: xx-small;
+    color: var(--horizontal-rule-label-color); 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    border-bottom: var(--horizontal-rule-width) solid var(--horizontal-rule-color);
 }
 
 .search-tools {

@@ -15,16 +15,18 @@
 </head>
 <body>
     <div class="inner-body">
-        <div class="page-header">
-            <img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
-            <div id="page-title" class="page-title"><span>Playbook Editor</span></div>
-            <div class="logo-counterbalance"><span class="page-subtitle">The Unexpected Productions Improv Game List</span></div>
-        </div>
+        <div id="page-header"></div>
 
+        <!-- Game Selection Begin -->
         <div>
             <label for="game-select">Select Game:</label>
             <select id="game-select"></select>
         </div>
+
+        <!-- Game Selection End -->
+
+        <!-- Game Edit Begin -->
+
         <div>
             <label for="game-name">Name:</label>
             <input type="text" class="field_edit" id="game-name">
@@ -53,132 +55,35 @@
             <label for="game-tags">Tags (comma-separated):</label>
             <input type="text" class="field_edit field_short" id="game-tags">
         </div>
-        <button id="preview-button">Preview Changes</button>
-        <button id="reset-button">Reset Changes</button>
+        <div>
+            <button id="preview-button">Preview Changes</button>
+            <button id="reset-button">Reset Changes</button>
+        </div>
+        <div class="horizontal-rule-with-label">Save/Load</div>
+        <!-- Game Edit End -->
         <button id="download-button">Download JSON</button> 
         <div id="overlay" class="overlay hidden">
             <div class="overlay-content">
                 <h2>Confirm Changes</h2>
-                <div id="old-details">
-                    <h3>Old Details</h3>
-                    <div id="old-details-content"></div>
-                </div>
                 <div id="new-details">
                     <h3>New Details</h3>
                     <div id="new-details-content"></div>
+                </div>
+                <div id="old-details">
+                    <h3>Old Details</h3>
+                    <div id="old-details-content"></div>
                 </div>
                 <button id="confirm-button">Confirm</button>
                 <button id="cancel-button">Return to Edit</button>
             </div>
         </div>
+
     </div>    
     <script>
     document.addEventListener('DOMContentLoaded', async () => {
-        await globals.playbook.loadFromURL('living_playbook.json');
-        populateGameSelect();
+        await playbookPage.initializeEditPage();
     });
 
-    function populateGameSelect() {
-        const gameSelect = document.getElementById('game-select');
-        const games = globals.playbook.getGamesAlphabetized();
-        games.forEach(gameName => {
-            const option = document.createElement('option');
-            option.value = gameName;
-            option.textContent = gameName;
-            gameSelect.appendChild(option);
-        });
-
-        gameSelect.addEventListener('change', loadGameDetails);
-        loadGameDetails();
-    }
-
-    function loadGameDetails() {
-        const gameName = document.getElementById('game-select').value;
-        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
-
-        document.getElementById('game-name').value = gameDetails.gameName;
-        document.getElementById('game-description').value = gameDetails.gameDetails;
-        document.getElementById('game-notes').value = gameDetails.notes || '';
-        document.getElementById('game-variations').value = (gameDetails.variations || []).join('\n');
-        document.getElementById('game-aliases').value = (gameDetails.aliases || []).join(', ');
-        document.getElementById('game-related').value = (gameDetails.related || []).join(', ');
-        document.getElementById('game-tags').value = (gameDetails.tags || []).join(', ');
-
-        adjustAllTextAreas();
-    }
-
-    function adjustTextAreaSize(textArea) {
-        textArea.style.height = 'auto';
-        textArea.style.height = (textArea.scrollHeight) + 'px';
-    }
-
-    function adjustAllTextAreas() {
-        const textareas = document.querySelectorAll('.field_edit');
-        textareas.forEach(textarea => { adjustTextAreaSize(textarea); }); 
-    }
-
-    document.getElementById('preview-button').addEventListener('click', () => {
-        const gameName = document.getElementById('game-select').value;
-        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
-
-        const getValue = (id) => {
-            const value = document.getElementById(id).value.trim();
-            return value ? value : null;
-        };
-
-        const newDetails = {
-            gameName: getValue('game-name'),
-            gameDetails: getValue('game-description'),
-            notes: getValue('game-notes'),
-            variations: getValue('game-variations') ? getValue('game-variations').split('\n').map(v => v.trim()) : [],
-            aliases: getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [],
-            related: getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [],
-            tags: getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [],
-        };
-        document.getElementById('old-details-content').innerHTML = '';
-        document.getElementById('new-details-content').innerHTML = '';
-        document.getElementById('old-details-content').appendChild(CreateGameCardDiv(gameDetails));
-        document.getElementById('new-details-content').appendChild(CreateGameCardDiv(newDetails));
-        document.getElementById('overlay').classList.remove('hidden');
-    });
-
-    document.getElementById('reset-button').addEventListener('click', () => {
-        loadGameDetails();
-    });
-
-    document.getElementById('confirm-button').addEventListener('click', () => {
-        const gameName = document.getElementById('game-select').value;
-        const gameDetails = globals.playbook.getGameDetailsByName(gameName);
-
-        const getValue = (id) => {
-            const value = document.getElementById(id).value.trim();
-            return value ? value : null;
-        };
-
-        gameDetails.gameName = getValue('game-name');
-        gameDetails.gameDetails = getValue('game-description');
-        gameDetails.notes = getValue('game-notes');
-        gameDetails.variations = getValue('game-variations') ? getValue('game-variations').split('\n').map(v => v.trim()) : [];
-        gameDetails.aliases = getValue('game-aliases') ? getValue('game-aliases').split(',').map(v => v.trim()) : [];
-        gameDetails.related = getValue('game-related') ? getValue('game-related').split(',').map(v => v.trim()) : [];
-        gameDetails.tags = getValue('game-tags') ? getValue('game-tags').split(',').map(v => v.trim()) : [];
-        gameDetails.anchorname = globals.playbook.getAnchorName(gameDetails.gameName);
-
-        document.getElementById('overlay').classList.add("hidden");
-        alert('Game details updated!');
-    });
-
-    document.getElementById('cancel-button').addEventListener('click', () => {
-        document.getElementById('overlay').classList.add("hidden");
-    });
-
-    document.getElementById('download-button').addEventListener('click', () => {
-        globals.playbook.downloadJson();
-    });
-
-    document.querySelectorAll('.field_edit').forEach(textarea => {
-        textarea.addEventListener('input', () => adjustTextAreaSize(textarea));
-    });
     </script>
 </body>
 </html>
