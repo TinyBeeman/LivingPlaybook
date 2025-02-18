@@ -367,6 +367,11 @@ body {
     margin-top: 20px;
 }
 
+.footer-content p {
+    color: black;
+    margin-block-start: 0px;;
+}
+
 
 .game-edit {
     display: flex;
