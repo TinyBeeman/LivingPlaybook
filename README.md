@@ -9,11 +9,12 @@ Please feel free to submit a pull request or open an issue for any suggestions o
 ## TODO
 
 * Fix tags in URLs
-* Add better searching
+* Add better searching  
 * A lot of library clean-up
 
 ## Licensing
-The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1).
+
+The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). Suggestions can be made by filing an issue via the [Github Repository](https://github.com/TinyBeeman/LivingPlaybook).
 
 Because this database originates from The Living Playbook, anyone seeking to distribute any information in this database must abide by the original document's terms. 
 

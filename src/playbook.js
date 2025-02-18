@@ -259,7 +259,8 @@ class PlaybookPage {
     
         this.populatePageHeader(
             `The (${this.dbId === "2001" ? "2001" : "Online"}) Living Playbook`,
-            `The Unexpected Productions Improv Game List ${this.playbook.getVersionString()}`
+            `The Unexpected Productions Improv Game List`,
+            `Version ${this.playbook.getVersionString()}`
         );
 
         const tags = this.playbook.getTags();
@@ -290,7 +291,9 @@ class PlaybookPage {
         const footerHtml = `
             <div class="footer-content">
                 <div class="horizontal-rule-with-label">License and Copyright Information</div>
-                <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
+                <p>The Online Living Playbook © 2025, maintained by <a href="https://tinybeeman.com/">Tony Beeman</a>, is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0</a>.</p>
+                <p>Suggestions can be made by filing an issue via the <a href="https://github.com/TinyBeeman/LivingPlaybook">Github Repository</a>.</p>
+                <p>This webpage includes data from the original <a href="Living-Playbook.pdf">Living Playbook</a> document, maintained by Unexpected Productions and Randy Dixon through 2001. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
                 <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
                 <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
             </div>
@@ -571,10 +574,14 @@ class PlaybookPage {
     }
 
     populatePageHeader(title = "The (Online) Living Playbook",
-        subtitle = "The Unexpected Productions Improv Game List") {
+        subtitle = "The Unexpected Productions Improv Game List",
+        version = "") {
 
         const headerHtml = `<img class="logo" src="img/UPLogo.svg" alt="Unexpected Productions Improv Logo">
-            <div id="page-title" class="page-title"><span>${title}</span></div>
+            <div id="page-title" class="page-title">
+                <span>${title}</span>
+                <span class="page-subtitle">${version}</span>
+            </div>
             <div class="logo-counterbalance"><span class="page-subtitle">${subtitle}</span></div>`
         let headerElement = document.getElementById('page-header');
         headerElement.classList.add('page-header');
