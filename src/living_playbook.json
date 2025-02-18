@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0000",
-    "minor": "0002"
+    "minor": "0004"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -227,14 +227,20 @@
     },
     {
       "name": "Ballet",
-      "description": "Scene is performed in the style of a ballet, often with a narrator. May choose to use music, but its not necessary. Performed without speaking, except for the narrator's part.",
+      "description": "An appropriate suggestion, such as a \"change\" or a meeting of two people or things is performed in the style of a ballet with no dialog.",
       "tags": [
         "cultural",
+        "dance",
         "musical",
         "physical",
         "scene",
         "shortform",
+        "silence",
         "styles"
+      ],
+      "notes": "Good suggestions are typically not overly complicated and leave room for interpretation. The change in Seattle from Summer to Fall, or The Meeting of Two Ex-Lovers are good examples.\n\nIn the narrated variant, offers should go back and forth: the narrator may suggest what we are about to see and may interpret things. Care should be taken to not rob the audience of their own chance to interpret what is happening.",
+      "variations": [
+        "Narrated Ballet: A Narrator \"helps\" the audience by suggesting what they are seeing."
       ]
     },
     {
@@ -258,16 +264,21 @@
         "scene",
         "shortform",
         "silence"
+      ],
+      "notes": "A typical suggestion we use at Unexpected Productions is, \"what has just happened?\"",
+      "variations": [
+        "One Line: One line of dialog may be spoken, which immediately ends the scene."
       ]
     },
     {
       "name": "Black Box",
-      "description": "Person 1 is sitting on a chair, in a location to be determined. He holds a small, black box on his lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc. Person 2 enters, notices the box and asks to use it. Person 1 says, \"OK, but be sure you don't press the RED button.\" Person 2 plays with it, controlling person 1. Starting slowly, person 2 gets more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
+      "description": "Person 1 is sitting on a chair, in a location to be determined. They hold a small, black box on their lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc.\n\nPerson 2 enters, notices the box and asks to use it. Person 1 says, \"OK, but be sure you don't press the RED button.\" Person 2 plays with it, controlling Person 1.\n\nStarting slowly, person 2 gets more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
       "tags": [
+        "exercise",
         "physical",
         "pimping",
-        "scene",
-        "shortform"
+        "shortform",
+        "wtf"
       ]
     },
     {
@@ -382,7 +393,7 @@
     },
     {
       "name": "Chain Murder Endowment",
-      "description": "The scene is played in Gibberish. One improviser remains on stage; the rest of the team leaves the playing area. The on stage improviser asks for 1) an occupation, 2) a room in a house or building, 3) an object, not considered dangerous which will be used in the scene as a murder weapon. The actors are brought back into the playing area. In gibberish, the on stage improviser endows off stage improviser #1 with the three pieces of information. When the endowing improviser is convinced that the endowed improviser knows what the weapon is, he should be killed by it. Then improviser 2 communicates the information to improviser 3 and finally, 3 to 4. The MC then asks the final improviser what the three pieces of information were. Score is not effected by correct or incorrect answers. Remember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser. The audience is encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted.",
+      "description": "The scene is played in Gibberish. One improviser remains on stage; the rest of the team leaves the playing area. The on-stage improviser asks for 1) an occupation, 2) a room in a house or building, 3) an object, not considered dangerous which will be used in the scene as a murder weapon.\n\nThe actors are brought back into the playing area. The improvisers now have three minutes: In gibberish, the first improviser endows off-stage improviser #1 with the three pieces of information. When the endowing improviser is convinced that the endowed improviser knows what the weapon is, they should be killed by it.\n\nImproviser 2 communicates the information to improviser 3 and finally, 3 to 4. The MC then asks the final improviser what the three pieces of information were. Score, if performed in Theatresports, is not effected by correct or incorrect answers.\n\nRemember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser.\n\nThe audience is encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted.",
       "variations": [
         "Personality Murder Endowments: Same as Chain Murder, except instead of a location, the team gets a famous personality."
       ],
@@ -390,6 +401,7 @@
         "endowment",
         "game",
         "gibberish",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -444,6 +456,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -495,6 +508,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -543,16 +557,6 @@
       "tags": [
         "scene",
         "shortform"
-      ]
-    },
-    {
-      "name": "Directed Movie",
-      "description": "Scene is played with one or multiple players calling out film shots that must be created by the onstage performers. Any type of film technique can be called out such as “Long shot, extreme close up, medium establishing shot, slow cross fade”.",
-      "tags": [
-        "directed",
-        "scene",
-        "shortform",
-        "styles"
       ]
     },
     {
@@ -683,6 +687,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -747,6 +752,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "historical",
         "pop-culture",
         "shortform",
@@ -1322,6 +1328,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -1457,6 +1464,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -1554,6 +1562,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -1650,6 +1659,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -1678,6 +1688,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -1776,6 +1787,9 @@
         "game",
         "shortform",
         "timed"
+      ],
+      "related": [
+        "Word-At-A-Time Expert"
       ]
     },
     {
@@ -1819,6 +1833,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2013,6 +2028,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2023,6 +2039,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2107,6 +2124,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2235,6 +2253,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2245,6 +2264,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2727,6 +2747,7 @@
       "tags": [
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
@@ -2849,6 +2870,7 @@
         "audience",
         "endowment",
         "game",
+        "guessing",
         "shortform",
         "timed"
       ]
