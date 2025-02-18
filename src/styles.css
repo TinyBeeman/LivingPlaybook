@@ -357,6 +357,13 @@ body {
     color: var(--exclude-tag-bg);
 }
 
+.footer-content {
+    font-size: x-small;
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
 
 .game-edit {
     display: flex;

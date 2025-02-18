@@ -283,9 +283,21 @@ class PlaybookPage {
 
         tagsContainer.style.display = 'block'; // Ensure tags are visible on load
         this.populateGameList();
+        this.populateFooter();
     }
 
-
+    populateFooter() {
+        const footerHtml = `
+            <div class="footer-content">
+                <div class="horizontal-rule-with-label">License and Copyright Information</div>
+                <p>This webpage includes data from <a href="Living-Playbook.pdf">The Living Playbook</a>. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
+                <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
+                <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
+            </div>
+        `;
+        const footerElement = document.querySelector('footer');
+        footerElement.innerHTML = footerHtml;
+    }
 
     initializeCollapsibles() {
         var collapsibles = document.getElementsByClassName("collapsible-header");    

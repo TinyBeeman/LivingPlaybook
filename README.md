@@ -6,6 +6,12 @@ The Living Playbook is a database of improvisational theatre games. The web appl
 ## Contributing
 Please feel free to submit a pull request or open an issue for any suggestions or improvements.
 
+## TODO
+
+* Fix tags in URLs
+* Add better searching
+* A lot of library clean-up
+
 ## Licensing
 The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1).
 
