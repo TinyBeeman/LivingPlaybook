@@ -1,8 +1,8 @@
 {
   "version": {
     "year": "2025",
-    "major": "0000",
-    "minor": "0005"
+    "major": "0001",
+    "minor": "0000"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -707,7 +707,7 @@
       "name": "Experts",
       "description": "At least one improviser is an expert on a topic of the audiences choosing. Talk shows, lectures, debates, or interviews have been used.",
       "related": [
-        "Panel Expert Endowments",
+        "Panel Expert Endowment",
         "Phone Bank",
         "Word-at-a-Time Expert"
       ],
@@ -1802,7 +1802,7 @@
       ]
     },
     {
-      "name": "Panel Expert Endowments",
+      "name": "Panel Expert Endowment",
       "description": "You have three experts on a given topic. Each expert is introduced by the expert before them. During the introduction, the upcoming expert is endowed with a particular trait. This may be a speech pattern, a nervous tick, a physical limitation, an obsession, etc. The upcoming expert then plays the endowment for the remainder of the scene and endows the next expert.",
       "tags": [
         "endowment",
