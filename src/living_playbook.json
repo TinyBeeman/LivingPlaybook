@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0000",
-    "minor": "0004"
+    "minor": "0005"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -1483,6 +1483,28 @@
       ]
     },
     {
+      "name": "Meanwhile",
+      "description": "The players get a suggestion of a locale, such as a specific town or a city. They may also ask for a more specific place in that locale to start. A scene starts in a specific location. At any point, an on or off-stage improviser can yell, \"Meanwhile, at [name of location]\" and the scene immediately jumps to that location.",
+      "notes": "Time passes in the scenes in real time. A common bad habit is for improvisers to show up in new locations as characters from a previous location. Unless enough time has passed for the characters to realistically travel there, this breaks the rules (and the intent) of the game. Instead, improvisers should focus on telling the story of the place over the story of the characters.",
+      "variations": [
+        "Time Jump: Instead of jumping to a new location, the performers can shout, \"One month later\", or \"Five minutes before\", or \"Jump to 1890\" and the scene will stay in that location but jump in time.",
+        "Combination: Improvisers can combine *meanwhile* with *time jump* to create a cinematic-like story."
+      ],
+      "aliases": [
+        "Time Jump"
+      ],
+      "related": [
+        "Called Movie",
+        "Move On"
+      ],
+      "tags": [
+        "scene",
+        "shortform",
+        "directed",
+        "timejump"
+      ]
+    },
+    {
       "name": "Media Challenges",
       "description": "Scene is based on some kind of published material. Maybe in the form of a newspaper headline (real or imagined), personal ad, letter to Dear Abby, TV Guide Synopsis, Movie or Video Guide Synopsis, entry from Ripley's Believe it or Not, Guiness Book of World Records, etc. The internet is another great resource for this game. The shorter the original source, the better.",
       "tags": [
@@ -1789,7 +1811,7 @@
         "timed"
       ],
       "related": [
-        "Word-At-A-Time Expert"
+        "Word-at-a-Time Expert"
       ]
     },
     {
@@ -2064,6 +2086,34 @@
         "musical",
         "shortform",
         "styles"
+      ]
+    },
+    {
+      "name": "Rapid Musicals",
+      "description": "Players get a suggestion of a starting musical style. They start a song from the middle of a musical. A director rings a bell as *soon* as they feel we have a good idea what the musical is about. The musician should immediately starting playing a new style, while the performers justify both their position and the new musical by discovering what new musical they are in the middle of.",
+      "notes": "This game benefits from the musician and the performers commiting heavily to the music, the dance, and the singing.",
+      "related": [
+        "Rapid Scenes"
+      ],
+      "tags": [
+        "bell",
+        "musical",
+        "scene",
+        "shortform"
+      ]
+    },
+    {
+      "name": "Rapid Scenes",
+      "description": "Players start a scene from audience suggestion. After just a few seconds, the MC rings a bell. The performers must justify whatever position they are in by starting a new scene. Scenes rarely last longer than about 30 seconds.",
+      "notes": "Once we know what is going on in a scene, there's little reason not to ring the bell. But the MC may let scenes breath a few seconds longer sometimes just to keep the performers on their toes. Good training for improvisers who are more used to long-form and less used to starting scenes in the middle of the action.",
+      "related": [
+        "Rapid Musicals"
+      ],
+      "tags": [
+        "bell",
+        "scene",
+        "shortform",
+        "timed"
       ]
     },
     {
