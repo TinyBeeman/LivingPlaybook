@@ -250,6 +250,9 @@ class PlaybookPage {
         let urlParams = new URLSearchParams(window.location.search);
         this.dbId = urlParams.get('dbId');
         this.searchTerm = urlParams.get('search');
+        this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
+        this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
+
         this.editMode = urlParams.get('edit') === '1';
     
         this.initializeCollapsibles();
@@ -274,7 +277,15 @@ class PlaybookPage {
             const button = document.createElement('button');
             button.className = 'tag-button';
             button.textContent = tag;
-            button.dataset.state = 'empty';
+            if (this.filter.yesTags.has(tag)) {
+                button.dataset.state = 'checked';
+                button.classList.add('checked');
+            } else if (this.filter.noTags.has(tag)) {
+                button.dataset.state = 'unchecked';
+                button.classList.add('unchecked');
+            } else {
+                button.dataset.state = 'empty';
+            }
             button.addEventListener('click', () => {
                 this.toggleTagState(button, tag);
                 this.populateGameList();
