@@ -8,9 +8,10 @@ Please feel free to submit a pull request or open an issue for any suggestions o
 
 ## TODO
 
-* Fix tags in URLs
 * Add better searching  
-* A lot of library clean-up
+* Library clean-up
+* Reconsider tags and categories.
+* Add long form formats
 
 ## Licensing
 
