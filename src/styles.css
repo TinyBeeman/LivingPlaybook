@@ -123,6 +123,17 @@ body {
     border-bottom: var(--horizontal-rule-width) solid var(--horizontal-rule-color);
 }
 
+.game-letter-rule-line {
+    font-size: xx-small;
+    color: var(--horizontal-rule-label-color); 
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    border-bottom: var(--horizontal-rule-width) solid var(--horizontal-rule-color);
+}
+
 .search-tools {
     display: flex;
     flex-direction: column;

@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0001",
-    "minor": "0000"
+    "minor": "0003"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -186,7 +186,8 @@
       "name": "Asides",
       "description": "A scene from an audience suggestion. Improvisers turn to the audience from time to time and declare their true feelings or inner dialogue.\n\nThe asides are not \"heard\" by the other characters on-stage. The others maintain their positions in a \"soft freeze\" (holding position without becoming rigid). Similar to Consciences and Inner Dialogue.",
       "variations": [
-        "Detective Soliloquy: Play as a Film Noir scene."
+        "Detective Soliloquy: Play as a Film Noir scene.",
+        "Narrated Asides: A second improviser plays the internal voice of each character."
       ],
       "related": [
         "Consciences",
@@ -272,28 +273,34 @@
     },
     {
       "name": "Black Box",
-      "description": "Person 1 is sitting on a chair, in a location to be determined. They hold a small, black box on their lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc.\n\nPerson 2 enters, notices the box and asks to use it. Person 1 says, \"OK, but be sure you don't press the RED button.\" Person 2 plays with it, controlling Person 1.\n\nStarting slowly, person 2 gets more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
+      "description": "* Improviser A is sitting on a chair, in a location to be determined. They hold a small, black box on their lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc.\n* Improviser B enters, notices the box and asks to use it. A says, \"OK, but be sure you don't press the RED button.\" B plays with it, \"controlling\" A.\n* Starting slowly, B becomes more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
       "tags": [
         "exercise",
         "physical",
         "pimping",
-        "shortform",
-        "wtf"
+        "shortform"
+      ],
+      "notes": "A useful exercise for playing with \"control\": Narratively, B is in charge, while in reality, A remains in control of everything that happens to their own body.",
+      "related": [
+        "Boris"
       ]
     },
     {
       "name": "Blank Family",
-      "description": "Improvisers ask for a verb or adjective and then play a family of characters who are that verb or adjective.",
+      "description": "Improvisers ask for a verb, adjective or emotion and then play a family of characters who are that verb or adjective.",
       "tags": [
+        "blank challenge",
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "notes": "This game benefits from improvisers looking to vary the way they play the blank word. The game quickly becomes boring without variance and change."
     },
     {
       "name": "Blank Scene",
       "description": "Any scene based on suggestion that fills in a blank such as “I opened the closet and found a ______?”",
       "tags": [
+        "blank challenge",
         "scene",
         "shortform"
       ]
@@ -318,51 +325,74 @@
     },
     {
       "name": "Blindfold Scene",
-      "description": "All onstage improvisers wear blindfolds while playing the scene. They act as though they were sighted and the scene was a normal scene. For the sake of safety, the stage should be lined with spotters to make sure the onstage players do not walk off the edge of the stage.",
+      "description": "All onstage improvisers wear blindfolds while playing the scene. They act as though they were sighted and the scene was a normal scene.",
       "tags": [
+        "risky",
         "scene",
         "shortform",
         "spectacle"
+      ],
+      "notes": "For the sake of safety, the stage should be lined with spotters to make sure the onstage players do not walk off the edge of the stage. Players should take risks, such as committing to where the believe other players are, but avoid risks that endanger anyone's safety.",
+      "variations": [
+        "One Blindfold: Only one player is blindfolded.",
+        "Sighter: All but one players are blindfolded. The -sighter- must justify the blindfolded performers' choices."
       ]
     },
     {
-      "name": "Blocking Game",
-      "description": "Improviser A accepts all offers, while Improviser B blocks all offers. Both should want to tell a story so a general location should be accepted by both. A's offers will gradually move the story forward.\n\nEventually, A can create action from presenting B with a \"negative offer\", an offer that in order to be blocked forces B to do an action. Example; A: \"Too bad you don't have the ability to fly!\" or, \"Too bad, your gun is out of bullets.\" Take your time with this exercise and try it a lot.",
+      "name": "Blocking Exercise",
+      "description": "Improviser A accepts all offers, while Improviser B blocks all offers. B should accept reality-defining offers so that the scene can be established. A's offers will gradually move the story forward.",
+      "notes": "*A* can create action from presenting *B* with a \"negative offer\": an offer that in order to be blocked forces B to do an action. \n\n* \"Too bad you don't have the ability to fly!\"\n* \"Too bad, your gun is out of bullets.\"",
       "tags": [
-        "exercise"
+        "blocking",
+        "exercise",
+        "scene",
+        "yes-and"
       ]
     },
     {
       "name": "Body Parts",
-      "description": "Any scene where a body part is endowed with something, or is a focal point. Scenes such as Emotional Body Parts, where a part has an emotion (Sad elbows). Body Leads, where a characters movement (or center) is led by a particular part of the body; and Body Wire, where your body is suspended by a body part while the rest of your body is relaxed, all fit into this category.",
+      "description": "A body part is given focus or endowed with a trait.",
       "aliases": [
-        "Body Leads, Body Wire"
+        "Body Leads",
+        "Body Wire"
       ],
       "tags": [
         "endowment",
         "physical",
         "scene",
         "shortform"
+      ],
+      "notes": "The point of this exercise is to allow it to develop into a character: as such, performers should not make the scene about the body part, but allow the choice to inform the whole of the character. The performer should *discover* this, though, by starting with the physical choice rather than the idea of what it might mean.",
+      "variations": [
+        "Body Leads: Each performer is given a body part and their physicality must be focused on that body part. It might lead, or drag behind, or be tense while the rest of the body is relaxed, or be relaxed while the rest of the body is tense, for instance.",
+        "Body Wire: Each perform has a body part and a direction. The body part is \"tugged\" in that direction. A player whose chin is tugged upward might discover they are haughty... or joyful. A character whose chin is tugged downward might turn out to be depressed, or a tracker, or a contemplative person.",
+        "Emotional Body Parts: Each performer is given a body part and an emotion, such as sad elbows."
       ]
     },
     {
       "name": "Body Reversal",
-      "description": "Improvisers play the scene as though the back of their body is the front.",
+      "description": "Improvisers play the scene as though the back of their body is the front. The scene is played without mention of this, of course, as if all is normal.",
       "tags": [
+        "justification",
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "notes": "Players can add risk by interacting with each other: hugging, handing things to each other, performing shared activities, etc."
     },
     {
       "name": "Boris",
-      "description": "Scene in which an improviser is interrogated. The improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris). Whenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the Interrogator is a cruel one. TELL A STORY.",
+      "description": "Scene in which an improviser is interrogated. The improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris).\n\nWhenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the Interrogator is a cruel one.\n\nThe players should work together to tell a story through the interrogation, rather than letting the dialog be about the physical action.",
       "tags": [
         "active",
         "game",
         "physical",
         "pimping",
-        "shortform"
+        "shortform",
+        "teamwork"
+      ],
+      "related": [
+        "Black Box"
       ]
     },
     {
@@ -385,7 +415,8 @@
       ],
       "tags": [
         "directed",
-        "physical, group game",
+        "group game",
+        "physical",
         "scene",
         "shortform",
         "styles"
@@ -1487,8 +1518,8 @@
       "description": "The players get a suggestion of a locale, such as a specific town or a city. They may also ask for a more specific place in that locale to start. A scene starts in a specific location. At any point, an on or off-stage improviser can yell, \"Meanwhile, at [name of location]\" and the scene immediately jumps to that location.",
       "notes": "Time passes in the scenes in real time. A common bad habit is for improvisers to show up in new locations as characters from a previous location. Unless enough time has passed for the characters to realistically travel there, this breaks the rules (and the intent) of the game. Instead, improvisers should focus on telling the story of the place over the story of the characters.",
       "variations": [
-        "Time Jump: Instead of jumping to a new location, the performers can shout, \"One month later\", or \"Five minutes before\", or \"Jump to 1890\" and the scene will stay in that location but jump in time.",
-        "Combination: Improvisers can combine *meanwhile* with *time jump* to create a cinematic-like story."
+        "Combination: Improvisers can combine *meanwhile* with *time jump* to create a cinematic-like story.",
+        "Time Jump: Instead of jumping to a new location, the performers can shout, \"One month later\", or \"Five minutes before\", or \"Jump to 1890\" and the scene will stay in that location but jump in time."
       ],
       "aliases": [
         "Time Jump"
@@ -1498,9 +1529,9 @@
         "Move On"
       ],
       "tags": [
+        "directed",
         "scene",
         "shortform",
-        "directed",
         "timejump"
       ]
     },
@@ -1557,6 +1588,27 @@
         "scene",
         "shortform",
         "timejump"
+      ]
+    },
+    {
+      "name": "Movie Critics",
+      "description": "Two critics review either a single film or multiple films. As they review, clips from the fictitious movie are acted out onstage.",
+      "variations": [
+        "Expanded Movie (Longform): After the trailer is played, the improvisers create a full length movie that features all the clips from the trailer.",
+        "Trailer: Rather than critics, the improvisers can play a trailer to an upcoming feature, with an \"In a World\" voice directing the scenes.",
+        "Tribute: Can be done as a “tribute” to a fictitious actor or director, with scenes from multiple movie."
+      ],
+      "aliases": [
+        "At The Movies"
+      ],
+      "related": [
+        "Called Movie"
+      ],
+      "tags": [
+        "game",
+        "longform",
+        "narrated",
+        "shortform"
       ]
     },
     {

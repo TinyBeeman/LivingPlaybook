@@ -387,8 +387,17 @@ class PlaybookPage {
         const gamesContainer = document.getElementById('games-container');                
         gamesContainer.innerHTML = '';
     
+        let lastLetter = '';
         games.forEach(name => {
             const gameDetails = this.playbook.getGameDetailsByName(name);
+            if (name[0].toLowerCase() !== lastLetter) {
+                lastLetter = name[0].toLowerCase();
+                const divLetter = document.createElement('div');
+                divLetter.classList.add('game-letter-rule-line');
+                divLetter.textContent = lastLetter.toUpperCase();
+                gamesContainer.appendChild(divLetter);
+            }
+
             gamesContainer.appendChild(this.createGameCardDiv(gameDetails, this.editMode));
         });
     }
