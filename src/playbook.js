@@ -147,6 +147,13 @@ class Playbook {
         .sort((a, b) => a.localeCompare(b));
     }
 
+    getNextUid(inc=true) {
+        // Check if nextUid exists and use its value if it's a number, otherwise default to 1
+        const uid = (typeof this.data.nextUid === 'number') ? this.data.nextUid : 1;
+        this.data.nextUid = inc ? uid + 1 : uid;
+        return uid;
+    }
+
     sanitizeDatabase() {
         if (!this.data || !this.data.games) {
             return;
@@ -163,7 +170,30 @@ class Playbook {
             return stringValue? stringValue.trim() : undefined;
         }
     
+        // Create a list to hold games which need new uids.
+        const gamesWithNoUid = [];
+        // Create a set to ensure unique uids.
+        const uids = new Set();
+
         this.data.games.forEach(game => {
+            // If a game does not have a unique ID integer in game.uid, give it one.
+            if (!game.uid || typeof game.uid !== 'number') {
+                gamesWithNoUid.push(game);    
+            }
+            else
+            {
+                if (game.uid == -1 || uids.has(game.uid)) {
+                    game.uid = undefined;
+                    gamesWithNoUid.push(game);
+                }
+                else {
+                    uids.add(game.uid);
+                    if (game.uid >= this.data.nextUid) {
+                        this.data.nextUid = game.uid + 1;
+                    }
+                }
+            }
+
             game.name = sanitizeString(game.name);
             game.description = sanitizeString(game.description);
             game.notes = sanitizeString(game.notes);
@@ -171,6 +201,10 @@ class Playbook {
             game.aliases = sanitizeArray(game.aliases);
             game.related = sanitizeArray(game.related);
             game.tags = sanitizeArray(game.tags);
+        });
+
+        gamesWithNoUid.forEach(game => {
+            game.uid = this.getNextUid();
         });
 
         this.data.games = this.data.games.sort((a, b) => a.name.localeCompare(b.name));
@@ -187,7 +221,9 @@ class Playbook {
                 }
             });
         });
-        console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
+
+        if (unknownRelatedGames.size > 0)
+            console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
     }
 
     getVersionString() {
