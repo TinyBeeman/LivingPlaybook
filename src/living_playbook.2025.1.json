@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0001",
-    "minor": "0004"
+    "minor": "0003"
   },
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
@@ -69,9 +69,7 @@
       "tags": [
         "bell",
         "directed",
-        "directed",
         "exercise",
-        "narrated",
         "scene",
         "shortform"
       ],
@@ -253,7 +251,6 @@
         "Play this as a long form."
       ],
       "tags": [
-        "directed",
         "longform",
         "narrative",
         "scene",
@@ -279,7 +276,6 @@
       "description": "* Improviser A is sitting on a chair, in a location to be determined. They hold a small, black box on their lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc.\n* Improviser B enters, notices the box and asks to use it. A says, \"OK, but be sure you don't press the RED button.\" B plays with it, \"controlling\" A.\n* Starting slowly, B becomes more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
       "tags": [
         "exercise",
-        "justification",
         "physical",
         "pimping",
         "shortform"
@@ -504,7 +500,6 @@
         "True Feelings"
       ],
       "tags": [
-        "monologue",
         "scene",
         "shortform"
       ]
@@ -969,11 +964,8 @@
       "name": "Gibberish Reunion",
       "description": "A group of improvisers enter a playing area speaking gibberish. They are at a reunion, not having seen each other for quite some time. After a few minutes of catching up in their native language, they gather in a circle and begin to sing gibberish songs they all know. Each person, or small groups, may step into the circle and sing a verse or dance a native dance. When the songs end, they all say good-bye, then leave.",
       "tags": [
-        "dance",
-        "exercise",
         "gibberish",
         "musical",
-        "physical",
         "scene",
         "shortform"
       ]
@@ -2157,7 +2149,6 @@
       ],
       "tags": [
         "bell",
-        "dance",
         "musical",
         "scene",
         "shortform"
@@ -2437,7 +2428,6 @@
       "name": "Sideways Scene",
       "description": "The stage floor is used as a wall in the reality of the scene. The proscenium's \"4th wall\" becomes the floor of the stage reality. Allows the improvisers to defy gravity and fall to truly gruesome deaths.",
       "tags": [
-        "environment",
         "physical",
         "scene",
         "shortform",
