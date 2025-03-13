@@ -134,7 +134,7 @@ body {
     border-bottom: var(--horizontal-rule-width) solid var(--horizontal-rule-color);
 }
 
-.search-tools {
+.control-pane {
     display: flex;
     flex-direction: column;
 }
@@ -438,7 +438,7 @@ body {
         box-shadow: none;
     }
 
-    .search-tools {
+    .control-pane {
         display: none;
     }
 }

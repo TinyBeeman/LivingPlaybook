@@ -21,6 +21,26 @@ class TagFilter {
     }
 }
 
+const DatabaseField = {
+    Games: "games",
+    Contributors: "contributors",
+    NextUid: "nextUid",
+    Version: "version"
+}
+
+const GameField = {
+    Name: "name",
+    CreatedBy: "createdBy",
+    Description: "description",
+    Notes: "notes",
+    Variations: "variations",
+    Aliases: "aliases",
+    Related: "related",
+    Tags: "tags",
+    Uid: "uid"
+};
+
+
 class Playbook {
     constructor(source) {
         this.data = null;
@@ -236,12 +256,19 @@ class Playbook {
         }
     }
 
-    getVersionString() {
-        if (!this.data || !this.data.version) {
-            return 'Unknown';
+    getDatabaseValue(databaseField) {
+        switch (databaseField) {
+            case DatabaseField.Games:
+                return this.data.games;
+            case DatabaseField.Contributors:
+                return this.data.contributors;
+            case DatabaseField.NextUid:
+                return this.data.nextUid;
+            case DatabaseField.Version:
+                return this.data.version;
+            default:
+                return null;
         }
-
-        return `${this.data.version.year}.${this.data.version.major}.${this.data.version.minor}`;
     }
 
     exportJson() {
@@ -272,18 +299,6 @@ class Playbook {
     }
 }
 
-const GameField = {
-    Name: "name",
-    CreatedBy: "createdBy",
-    Description: "description",
-    Notes: "notes",
-    Variations: "variations",
-    Aliases: "aliases",
-    Related: "related",
-    Tags: "tags",
-    Uid: "uid"
-};
-
 class PlaybookPage {
     constructor() {
         this.dbId = null;
@@ -294,24 +309,12 @@ class PlaybookPage {
         this.editMode = false;
     }
 
-    async onPageLoad() {
-        let urlParams = new URLSearchParams(window.location.search);
-        this.dbId = urlParams.get('dbId');
-        this.searchTerm = urlParams.get('search');
-        this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
-        this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
-
-        this.editMode = urlParams.get('edit') === '1';
-    
-        this.initializeCollapsibles();
-        this.initializeSearchBox();
-    
-        await this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json');
-    
+    onDatabaseLoad() {
+        const version = this.playbook.getDatabaseValue(DatabaseField.Version);
         this.populatePageHeader(
             `The (${this.dbId === "2001" ? "2001" : "Online"}) Living Playbook`,
             `The Unexpected Productions Improv Game List`,
-            `Version ${this.playbook.getVersionString()}`
+            `Version ${version.major}.${version.minor}` // Add version number
         );
 
         const tags = this.playbook.getTags();
@@ -346,7 +349,122 @@ class PlaybookPage {
         this.populateFooter();
     }
 
+    populateControlPane() {
+        const controlPane = document.getElementById('control-pane');
+        
+        // Create search section
+        const searchSection = document.createElement('div');
+        searchSection.id = 'search-section';
+        searchSection.className = 'search-container';
+        
+        // Create search box
+        const searchBox = document.createElement('input');
+        searchBox.type = 'search';
+        searchBox.id = 'search-box';
+        searchBox.className = 'search-textbox';
+        searchBox.placeholder = 'Search games...';
+        searchSection.appendChild(searchBox);
+
+        searchBox.addEventListener('input', (event) => {
+            this.searchTerm = event.target.value;
+            this.lazyUpdateUrlFromState();
+            this.populateGameList();
+        });
+    
+        searchBox.addEventListener('blur', (event) => {
+            this.updateUrlFromState();
+        });
+
+        if (this.editMode) {
+            // Create download button (hidden by default)
+            const downloadButton = document.createElement('button');
+            downloadButton.id = 'download-json';
+            downloadButton.className = 'game-edit-button';
+            downloadButton.textContent = 'Download Json';
+            searchSection.appendChild(downloadButton);
+            downloadButton.classList.remove('hidden');
+            downloadButton.addEventListener('click', () => {
+                this.playbook.downloadJson();
+            });
+        }
+        
+        // Create tag filter section
+        const tagHeader = document.createElement('div');
+        tagHeader.className = 'collapsible-header';
+        tagHeader.textContent = 'Filter By Tags';
+        
+        const tagContent = document.createElement('div');
+        tagContent.className = 'collapsible-content';
+        
+        const paragraph = document.createElement('p');
+        
+        const tagsContainer = document.createElement('div');
+        tagsContainer.id = 'tags-container';
+        paragraph.appendChild(tagsContainer);
+        
+        const tagInstructions = document.createElement('span');
+        
+        const includeSpan = document.createElement('span');
+        includeSpan.className = 'include-only';
+        includeSpan.textContent = 'Green to include only games with this tag.';
+        tagInstructions.appendChild(includeSpan);
+        
+        const space = document.createTextNode(' ');
+        tagInstructions.appendChild(space);
+        
+        const excludeSpan = document.createElement('span');
+        excludeSpan.className = 'exclude-only';
+        excludeSpan.textContent = 'Red to exclude games with this tag.';
+        tagInstructions.appendChild(excludeSpan);
+        
+        paragraph.appendChild(tagInstructions);
+        tagContent.appendChild(paragraph);
+        
+        // Add all elements to control pane
+        controlPane.appendChild(searchSection);
+        controlPane.appendChild(tagHeader);
+        controlPane.appendChild(tagContent);
+    }
+
+    async onPageLoad() {
+        let urlParams = new URLSearchParams(window.location.search);
+        this.dbId = urlParams.get('dbId');
+        this.searchTerm = urlParams.get('search');
+        this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
+        this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
+
+        this.editMode = urlParams.get('edit') === '1';
+    
+        // Populate the control-pane div
+        this.populateControlPane();
+
+        this.initializeCollapsibles();
+    
+        this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json')
+            .then(() => {
+                this.onDatabaseLoad();
+            })
+            .catch(error => {
+                console.error("Error loading database:", error);
+            });
+    }
+
     populateFooter() {
+        // combine this.data.contributors array into one comma-separated string
+        let conStr = "";
+        const contributors = this.playbook.getDatabaseValue(DatabaseField.Contributors);
+        if (contributors)
+        {
+            contributors.forEach( (contributor, index) => {
+                if (index > 0) {
+                    conStr += ", ";
+                }
+                conStr += contributor;
+            });
+            conStr += " and ";
+        }
+        conStr += "many friends, company members, teachers and supporters of Unexpected Productions.";
+
         const footerHtml = `
             <div class="footer-content">
                 <div class="horizontal-rule-with-label">License and Copyright Information</div>
@@ -355,6 +473,7 @@ class PlaybookPage {
                 <p>This webpage includes data from the original <a href="Living-Playbook.pdf">Living Playbook</a> document, maintained by Unexpected Productions and Randy Dixon through 2001. The playbook includes the following Copyright notice, which is reproduced here. This page and the data linked to it are given freely, with the same restrictions.</p>
                 <p><span>The Copyright:</span>The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.</p>
                 <p>The original playbook's games and descriptions can also be found in our <a href="?dbId=2001">2001 version</a> of this database.</p>
+                <p>Contributors to this database include ${conStr}</p>     
             </div>
         `;
         const footerElement = document.querySelector('footer');
@@ -362,7 +481,7 @@ class PlaybookPage {
     }
 
     initializeCollapsibles() {
-        var collapsibles = document.getElementsByClassName("collapsible-header");    
+        var collapsibles = document.getElementsByClassName("collapsible-header");
         Array.from(collapsibles).forEach(collapsible => {
             collapsible.addEventListener("click", function() {
                 this.classList.toggle("active");
@@ -376,26 +495,6 @@ class PlaybookPage {
         });
     }
 
-    initializeSearchBox() {
-        const searchBox = document.getElementById('search-box');
-        searchBox.addEventListener('input', (event) => {
-            this.searchTerm = event.target.value;
-            this.lazyUpdateUrlFromState();
-            this.populateGameList();
-        });
-    
-        searchBox.addEventListener('blur', (event) => {
-            this.updateUrlFromState();
-        });
-
-        if (this.editMode) {
-            const downloadButton = document.getElementById('download-json');
-            downloadButton.classList.remove('hidden');
-            downloadButton.addEventListener('click', () => {
-                this.playbook.downloadJson();
-            });
-        }
-    }
 
     describeSearch(count) {
         const yesTags = this.filter.getYesTags();
