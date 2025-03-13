@@ -195,6 +195,7 @@ class Playbook {
             }
 
             game.name = sanitizeString(game.name);
+            game.createdBy = sanitizeString(game.createdBy);
             game.description = sanitizeString(game.description);
             game.notes = sanitizeString(game.notes);
             game.variations = sanitizeArray(game.variations);
@@ -224,6 +225,15 @@ class Playbook {
 
         if (unknownRelatedGames.size > 0)
             console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
+    
+        // If there is a this.data.contributors array, sort it by the last word in the string (last name).
+        if (this.data.contributors) {
+            this.data.contributors = this.data.contributors.sort((a, b) => {
+                const aName = a.split(' ').pop();
+                const bName = b.split(' ').pop();
+                return aName.localeCompare(bName);
+            });
+        }
     }
 
     getVersionString() {
@@ -264,12 +274,14 @@ class Playbook {
 
 const GameField = {
     Name: "name",
+    CreatedBy: "createdBy",
     Description: "description",
     Notes: "notes",
     Variations: "variations",
     Aliases: "aliases",
     Related: "related",
-    Tags: "tags"
+    Tags: "tags",
+    Uid: "uid"
 };
 
 class PlaybookPage {
@@ -600,6 +612,12 @@ class PlaybookPage {
             divCardContent.appendChild(divRelatedRow);
         }
 
+        if (gameDetails.createdBy) {
+            const divCreatedByRow = this.createGameRow("createdBy", "createdBy", this.mdToHtml(gameDetails.createdBy));
+            divCardContent.appendChild(divCreatedByRow);
+        }
+
+
         if (editMode) {
             const divEditRow = this.createGameRow("edit", "edit game");
             const divEditContainer = this.createGameRowContainer("edit");
@@ -728,7 +746,8 @@ class PlaybookPage {
             variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
             aliases: getValue(this.getEditId(gameId, GameField.Aliases), ';'),
             related: getValue(this.getEditId(gameId, GameField.Related), ';'),
-            tags: getValue(this.getEditId(gameId, GameField.Tags), ';')
+            tags: getValue(this.getEditId(gameId, GameField.Tags), ';'),
+            createdBy: getValue(this.getEditId(gameId, GameField.CreatedBy))
         };
 
         return newDetails;
@@ -759,6 +778,7 @@ class PlaybookPage {
         divEditGame.appendChild(this.createEditRow('text', 'Aliases (semi-colon-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join('; ')));
         divEditGame.appendChild(this.createEditRow('text', 'Related Games (semi-color-separated):', GameField.Related, gameId, (gameDetails.related || []).join('; ')));
         divEditGame.appendChild(this.createEditRow('text', 'Tags (semi-colon-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join('; ')));
+        divEditGame.appendChild(this.createEditRow('textarea', 'Created By:', GameField.CreatedBy, gameId, gameDetails.createdBy));
         divEditGame.appendChild(this.createCommitRow(
             gameId,
             commitLabel,
@@ -851,6 +871,7 @@ class PlaybookPage {
             }
 
             gameDetails.name = fieldAssign(newDetails.name);
+            gameDetails.createdBy = fieldAssign(newDetails.createdBy);
             gameDetails.description = fieldAssign(newDetails.description);
             gameDetails.notes = fieldAssign(newDetails.notes);
             gameDetails.variations = fieldAssign(newDetails.variations);
