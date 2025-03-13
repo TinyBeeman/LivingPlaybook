@@ -14,7 +14,8 @@ def compare_games(old_game, new_game):
         if key not in old_game:
             changes.append(f"- {key.capitalize()} Added")
         elif old_game[key] != new_game[key]:
-            changes.append(f"- {key.capitalize()} Updated")
+            if (key != 'uid'):
+                changes.append(f"- {key.capitalize()} Updated")
     for key in old_game:
         if key not in new_game:
             changes.append(f"- {key.capitalize()} Removed")

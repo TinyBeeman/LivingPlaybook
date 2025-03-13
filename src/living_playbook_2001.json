@@ -2,10 +2,11 @@
   "version": {
     "year": "2001",
     "major": "0001",
-    "minor": "0000"
+    "minor": "0001"
   },
   "notes": "This is the data from the original Living Playbook, 2001 edition.",
   "license": "The Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
+  "nextUid": 287,
   "games": [
     {
       "name": "50's Song",
@@ -15,7 +16,8 @@
         "game",
         "musical",
         "shortform"
-      ]
+      ],
+      "uid": 285
     },
     {
       "name": "Accepting Game",
@@ -27,7 +29,8 @@
         "exercise",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 1
     },
     {
       "name": "Actor Switch",
@@ -48,7 +51,8 @@
         "scene",
         "shortform",
         "switch"
-      ]
+      ],
+      "uid": 2
     },
     {
       "name": "Adjective Scene",
@@ -57,7 +61,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 3
     },
     {
       "name": "Advance and Expand",
@@ -70,7 +75,8 @@
         "exercise",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 4
     },
     {
       "name": "Airplane",
@@ -78,7 +84,8 @@
       "tags": [
         "exercise",
         "teamwork"
-      ]
+      ],
+      "uid": 5
     },
     {
       "name": "Alliances",
@@ -90,7 +97,8 @@
         "exercise",
         "scene",
         "timed"
-      ]
+      ],
+      "uid": 6
     },
     {
       "name": "Alliteration",
@@ -104,7 +112,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 7
     },
     {
       "name": "Alphabet Game",
@@ -120,7 +129,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 8
     },
     {
       "name": "Animal People",
@@ -133,7 +143,8 @@
         "character",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 9
     },
     {
       "name": "Arms",
@@ -149,7 +160,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 10
     },
     {
       "name": "Asides",
@@ -165,7 +177,8 @@
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 11
     },
     {
       "name": "At The Movies",
@@ -178,7 +191,8 @@
         "game",
         "narrated",
         "shortform"
-      ]
+      ],
+      "uid": 12
     },
     {
       "name": "Attitude Scene",
@@ -190,7 +204,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 13
     },
     {
       "name": "Ballet",
@@ -202,7 +217,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 14
     },
     {
       "name": "Before or After",
@@ -216,7 +232,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 15
     },
     {
       "name": "Beyond Words",
@@ -225,7 +242,8 @@
         "scene",
         "shortform",
         "silence"
-      ]
+      ],
+      "uid": 16
     },
     {
       "name": "Black Box",
@@ -235,7 +253,8 @@
         "pimping",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 17
     },
     {
       "name": "Blank Family",
@@ -244,7 +263,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 18
     },
     {
       "name": "Blank Scene",
@@ -252,7 +272,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 19
     },
     {
       "name": "Blind Hunt",
@@ -263,14 +284,16 @@
       "tags": [
         "exercise",
         "warm-up"
-      ]
+      ],
+      "uid": 20
     },
     {
       "name": "Blind Offers",
       "description": "Improviser A makes a physical gesture, Improviser B looks at the gesture for a three count, then justifies the gesture if they can. If not, Improviser B puts Improviser A back into a neutral position, and Improviser A says \"Thank You.\" Don't force the justifications; let them come. The idea is to build up a visual vocabulary. It's not abstract. You want to train the eye to “see”, not to come up with clever justifications. The more you do this exercise, the easier it will be to justify the positions.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 21
     },
     {
       "name": "Blindfold Scene",
@@ -279,14 +302,16 @@
         "scene",
         "shortform",
         "spectacle"
-      ]
+      ],
+      "uid": 22
     },
     {
       "name": "Blocking Game",
       "description": "Improviser A accepts all offers, while Improviser B blocks all offers. Both should want to tell a story so a general location should be accepted by both. A's offers will gradually move the story forward.\n\nEventually, A can create action from presenting B with a \"negative offer\", an offer that in order to be blocked forces B to do an action. Example; A: \"Too bad you don't have the ability to fly!\" or, \"Too bad, your gun is out of bullets.\" Take your time with this exercise and try it a lot.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 23
     },
     {
       "name": "Body Parts",
@@ -299,7 +324,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 24
     },
     {
       "name": "Body Reversal",
@@ -308,7 +334,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 25
     },
     {
       "name": "Boris",
@@ -319,7 +346,8 @@
         "physical",
         "pimping",
         "shortform"
-      ]
+      ],
+      "uid": 26
     },
     {
       "name": "Call From Ray",
@@ -327,7 +355,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 27
     },
     {
       "name": "Chain Murder Endowment",
@@ -341,7 +370,8 @@
         "gibberish",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 29
     },
     {
       "name": "Chance of a Lifetime",
@@ -350,7 +380,8 @@
         "audience",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 30
     },
     {
       "name": "Characters from the Audience",
@@ -359,7 +390,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 31
     },
     {
       "name": "Chase",
@@ -367,7 +399,8 @@
       "tags": [
         "exercise",
         "pimping"
-      ]
+      ],
+      "uid": 32
     },
     {
       "name": "Clashing Environments",
@@ -377,7 +410,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 33
     },
     {
       "name": "Commercial",
@@ -385,7 +419,8 @@
       "tags": [
         "game",
         "shortform"
-      ]
+      ],
+      "uid": 34
     },
     {
       "name": "Confession",
@@ -395,7 +430,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 35
     },
     {
       "name": "Consciences",
@@ -407,7 +443,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 36
     },
     {
       "name": "Continuation",
@@ -421,14 +458,16 @@
         "scene",
         "shortform",
         "switch"
-      ]
+      ],
+      "uid": 37
     },
     {
       "name": "Corridors",
       "description": "Two playing spaces are defined with a \"neutral corridor\" between them. Improviser A walks from the neutral corridor into one of the spaces, Improviser B, already in the area makes an offer. A and B have three lines to define who, what, and where they are before B has to find a justified reason to leave. Improviser B leaves, passing through the corridor to the other space, where Improviser C waits to make an offer. You can do this with two lines of improvisers feeding each playing space. Example: A steps into scene. B says,\"Young man, do you know what time it is?\" A replies, \"I'm sorry Dad, I won't come home this late again.\" B Says, \"I think your Mother should hear that, I'll go get her.\" B leaves to go to the other playing area through the corridor.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 38
     },
     {
       "name": "Creation Myth",
@@ -436,7 +475,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 39
     },
     {
       "name": "Crime Endowments",
@@ -446,7 +486,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 40
     },
     {
       "name": "Crosstalk",
@@ -458,7 +499,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 41
     },
     {
       "name": "Culture",
@@ -468,7 +510,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 42
     },
     {
       "name": "Cutting Room",
@@ -481,7 +524,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 43
     },
     {
       "name": "Day in the Life",
@@ -492,7 +536,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 44
     },
     {
       "name": "Directed Movie",
@@ -502,7 +547,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 28
     },
     {
       "name": "Director",
@@ -514,7 +560,8 @@
         "pimping",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 45
     },
     {
       "name": "Documentary",
@@ -524,7 +571,8 @@
         "narrated",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 46
     },
     {
       "name": "Dramatic Situations",
@@ -533,7 +581,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 47
     },
     {
       "name": "Dramatis Personae",
@@ -547,7 +596,8 @@
         "pop-culture",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 48
     },
     {
       "name": "Drawing Game",
@@ -558,7 +608,8 @@
       "tags": [
         "exercise",
         "props"
-      ]
+      ],
+      "uid": 49
     },
     {
       "name": "Driver's License",
@@ -567,7 +618,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 50
     },
     {
       "name": "Dubbing",
@@ -585,7 +637,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 51
     },
     {
       "name": "Emotional Party",
@@ -597,7 +650,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 52
     },
     {
       "name": "Ending in \"Blank\"",
@@ -605,7 +659,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 53
     },
     {
       "name": "English/Gibberish",
@@ -615,7 +670,8 @@
         "gibberish",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 54
     },
     {
       "name": "Entirely in the Audience",
@@ -623,7 +679,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 55
     },
     {
       "name": "Environment Endowments",
@@ -633,7 +690,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 56
     },
     {
       "name": "Environment in a Minute",
@@ -644,7 +702,8 @@
         "gibberish",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 57
     },
     {
       "name": "Experts",
@@ -657,7 +716,8 @@
       "tags": [
         "game",
         "shortform"
-      ]
+      ],
+      "uid": 58
     },
     {
       "name": "Fairy Tale",
@@ -667,7 +727,8 @@
         "scene",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 59
     },
     {
       "name": "Family Dinner",
@@ -678,7 +739,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 60
     },
     {
       "name": "Famous Last Words",
@@ -686,7 +748,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 61
     },
     {
       "name": "Famous Person Endowments",
@@ -698,7 +761,8 @@
         "pop-culture",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 62
     },
     {
       "name": "Film Rollback",
@@ -710,7 +774,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 63
     },
     {
       "name": "Finger Puppets",
@@ -718,7 +783,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 64
     },
     {
       "name": "First Line, Last Line",
@@ -731,7 +797,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 65
     },
     {
       "name": "Fish Out of Water",
@@ -740,7 +807,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 66
     },
     {
       "name": "Five Things",
@@ -750,7 +818,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 67
     },
     {
       "name": "Foley Room",
@@ -765,7 +834,8 @@
         "shortform",
         "sound",
         "tech"
-      ]
+      ],
+      "uid": 68
     },
     {
       "name": "Foreign Poet",
@@ -781,7 +851,8 @@
         "game",
         "gibberish",
         "shortform"
-      ]
+      ],
+      "uid": 69
     },
     {
       "name": "Foreign Vacation",
@@ -794,7 +865,8 @@
         "gibberish",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 70
     },
     {
       "name": "Fortune Cookie",
@@ -803,7 +875,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 71
     },
     {
       "name": "Fortune Teller",
@@ -813,7 +886,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 72
     },
     {
       "name": "Free Association/Reincorporation",
@@ -822,7 +896,8 @@
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 73
     },
     {
       "name": "Freeze Tag",
@@ -838,7 +913,8 @@
         "justification",
         "shortform",
         "warm-up"
-      ]
+      ],
+      "uid": 74
     },
     {
       "name": "Gibberish Conversation",
@@ -847,7 +923,8 @@
         "gibberish",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 75
     },
     {
       "name": "Gibberish Dictionary",
@@ -855,7 +932,8 @@
       "tags": [
         "exercise",
         "gibberish"
-      ]
+      ],
+      "uid": 76
     },
     {
       "name": "Gibberish Joke",
@@ -867,7 +945,8 @@
         "game",
         "gibberish",
         "shortform"
-      ]
+      ],
+      "uid": 77
     },
     {
       "name": "Gibberish Reunion",
@@ -877,7 +956,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 78
     },
     {
       "name": "Give and Take",
@@ -885,7 +965,8 @@
       "tags": [
         "exercise",
         "physical"
-      ]
+      ],
+      "uid": 79
     },
     {
       "name": "Group Mirror",
@@ -899,7 +980,8 @@
       "tags": [
         "exercise",
         "game"
-      ]
+      ],
+      "uid": 80
     },
     {
       "name": "Growing and Shrinking Machine",
@@ -916,7 +998,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 81
     },
     {
       "name": "Half Life",
@@ -927,7 +1010,8 @@
         "scene",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 82
     },
     {
       "name": "Hall of Justice",
@@ -936,7 +1020,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 83
     },
     {
       "name": "Hand Slap",
@@ -944,7 +1029,8 @@
       "tags": [
         "exercise",
         "warm-up"
-      ]
+      ],
+      "uid": 84
     },
     {
       "name": "Hats",
@@ -954,7 +1040,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 85
     },
     {
       "name": "He Said, She Said",
@@ -964,7 +1051,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 86
     },
     {
       "name": "Headline",
@@ -974,14 +1062,16 @@
         "pop-culture",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 87
     },
     {
       "name": "Healthy and Fit",
       "description": "Have several improvisers play a simple family scene together. When finished give them the instructions, \"You feel healthy and fit. You have all the space and air you need, and have a great interest in what people have to say. Have the improvisers replay the scene and watch the results. The scene will generally be much more interesting to watch. This exercise is a good mantra to use when you are on stage as well.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 88
     },
     {
       "name": "Hidden Word Endowments",
@@ -991,7 +1081,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 89
     },
     {
       "name": "Hitchhiker",
@@ -1004,7 +1095,8 @@
         "endowment",
         "game",
         "shortform"
-      ]
+      ],
+      "uid": 90
     },
     {
       "name": "Honestly",
@@ -1013,14 +1105,16 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 91
     },
     {
       "name": "Honeymoon",
       "description": "A hotelkeeper shows a couple into a room and leaves. They grab long knifes (imaginary) and cut their bodies open. Another creature emerges, moving around the space gleefully. The hotelkeeper knocks, the creatures freak and climb back into their old bodies (in a hurry, they put them on wrong, or put on each others bodies, etc). Hotelkeeper enters, says, \"I know what you've been doing,\" and proceeds to cut himself in the same manner.",
       "tags": [
         "wtf"
-      ]
+      ],
+      "uid": 92
     },
     {
       "name": "Horoscope",
@@ -1029,7 +1123,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 93
     },
     {
       "name": "Human Environment",
@@ -1042,7 +1137,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 94
     },
     {
       "name": "Human Prop",
@@ -1052,7 +1148,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 95
     },
     {
       "name": "I Love You",
@@ -1060,7 +1157,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 96
     },
     {
       "name": "I Me Mine",
@@ -1069,7 +1167,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 97
     },
     {
       "name": "In A _____, With A ____, While _____",
@@ -1080,7 +1179,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 98
     },
     {
       "name": "In/Out",
@@ -1092,7 +1192,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 99
     },
     {
       "name": "Inner Dialogue",
@@ -1105,7 +1206,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 100
     },
     {
       "name": "Inner Song-alogue",
@@ -1115,7 +1217,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 101
     },
     {
       "name": "Innuendo",
@@ -1126,7 +1229,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 102
     },
     {
       "name": "Instant Exit",
@@ -1141,14 +1245,16 @@
         "scene",
         "shortform",
         "toss-up"
-      ]
+      ],
+      "uid": 103
     },
     {
       "name": "Insult Relay",
       "description": "Tag team insults. Get it? Some get it, others don't...we fall into that latter category! Ouch.",
       "tags": [
         "wtf"
-      ]
+      ],
+      "uid": 104
     },
     {
       "name": "Interference",
@@ -1157,7 +1263,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 105
     },
     {
       "name": "Internal Narrative",
@@ -1167,7 +1274,8 @@
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 106
     },
     {
       "name": "Invisibility",
@@ -1175,7 +1283,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 107
     },
     {
       "name": "Jeepers/Peepers",
@@ -1183,7 +1292,8 @@
       "tags": [
         "exercise",
         "warm-up"
-      ]
+      ],
+      "uid": 108
     },
     {
       "name": "Jumping to Conclusions",
@@ -1192,7 +1302,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 109
     },
     {
       "name": "Just a Minute",
@@ -1202,7 +1313,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 110
     },
     {
       "name": "Kick It",
@@ -1212,7 +1324,8 @@
         "directed",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 111
     },
     {
       "name": "Kiddy Show",
@@ -1221,7 +1334,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 112
     },
     {
       "name": "King Game",
@@ -1230,7 +1344,8 @@
         "exercise",
         "game",
         "shortform"
-      ]
+      ],
+      "uid": 113
     },
     {
       "name": "Kitty Wants a Corner",
@@ -1238,7 +1353,8 @@
       "tags": [
         "exercise",
         "warm-up"
-      ]
+      ],
+      "uid": 114
     },
     {
       "name": "Language Barrier",
@@ -1247,7 +1363,8 @@
         "cultural",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 115
     },
     {
       "name": "Last Letter/First Letter",
@@ -1260,7 +1377,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 116
     },
     {
       "name": "Lecture Endowments",
@@ -1270,7 +1388,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 117
     },
     {
       "name": "Light Booth",
@@ -1283,7 +1402,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 118
     },
     {
       "name": "Lists",
@@ -1303,7 +1423,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 119
     },
     {
       "name": "Lotus",
@@ -1314,7 +1435,8 @@
       ],
       "tags": [
         "longform"
-      ]
+      ],
+      "uid": 120
     },
     {
       "name": "Lounge Lizards",
@@ -1325,7 +1447,8 @@
         "pop-culture",
         "shortform",
         "toss-up"
-      ]
+      ],
+      "uid": 121
     },
     {
       "name": "Lyric Speak",
@@ -1335,7 +1458,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 122
     },
     {
       "name": "Machine",
@@ -1350,7 +1474,8 @@
         "game",
         "physical",
         "shortform"
-      ]
+      ],
+      "uid": 123
     },
     {
       "name": "Madrigal",
@@ -1360,7 +1485,8 @@
         "game",
         "musical",
         "shortform"
-      ]
+      ],
+      "uid": 124
     },
     {
       "name": "Making Faces",
@@ -1372,7 +1498,8 @@
         "game",
         "physical",
         "shortform"
-      ]
+      ],
+      "uid": 125
     },
     {
       "name": "Mantra Scene",
@@ -1380,7 +1507,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 126
     },
     {
       "name": "Marriage Counselor Endowments",
@@ -1390,7 +1518,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 127
     },
     {
       "name": "Masterpiece Theater",
@@ -1403,7 +1532,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 128
     },
     {
       "name": "Media Challenges",
@@ -1414,7 +1544,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 130
     },
     {
       "name": "Minute Long Scene",
@@ -1423,7 +1554,8 @@
         "scene",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 131
     },
     {
       "name": "Mirror Faces",
@@ -1434,7 +1566,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 132
     },
     {
       "name": "Motivational Exit",
@@ -1442,14 +1575,16 @@
       "tags": [
         "exercise",
         "silence"
-      ]
+      ],
+      "uid": 133
     },
     {
       "name": "Mouth",
       "description": "Simple exercise. Play a scene, as you open your mouth to say something, pause, and say something else. If you are thinking of saying, \"Hello John, Can I help you?\", grab onto that thought, open your mouth to say it but don't say it; say whatever comes out of your mouth. It helps to open your mouth wide before you say your line.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 134
     },
     {
       "name": "Move On",
@@ -1458,7 +1593,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 135
     },
     {
       "name": "Moving Bodies",
@@ -1477,7 +1613,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 137
     },
     {
       "name": "Murder Endowments",
@@ -1487,7 +1624,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 138
     },
     {
       "name": "Musical",
@@ -1497,7 +1635,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 139
     },
     {
       "name": "Musical Chair",
@@ -1507,14 +1646,16 @@
         "scene",
         "shortform",
         "toss-up"
-      ]
+      ],
+      "uid": 140
     },
     {
       "name": "Name Game",
       "description": "Improvisers roam around the room pointing at different objects, calling them by a name other than what they actually are. Example: An improviser points at a cat and declares, \"A Walnut!\", then points at a chair and says, “A hat!\", etc. Best played at a fast pace with everyone speaking at once.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 141
     },
     {
       "name": "Narrated Scene",
@@ -1523,7 +1664,8 @@
         "narrated",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 142
     },
     {
       "name": "Narrative Collage",
@@ -1535,7 +1677,8 @@
         "monologue",
         "narrative",
         "shortform"
-      ]
+      ],
+      "uid": 143
     },
     {
       "name": "Nightmare",
@@ -1549,7 +1692,8 @@
       ],
       "tags": [
         "shortform"
-      ]
+      ],
+      "uid": 144
     },
     {
       "name": "Nine Line",
@@ -1561,7 +1705,8 @@
         "shortform",
         "styles",
         "verbal"
-      ]
+      ],
+      "uid": 145
     },
     {
       "name": "Number of Words",
@@ -1574,7 +1719,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 146
     },
     {
       "name": "Object Endowments",
@@ -1584,7 +1730,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 147
     },
     {
       "name": "Object From the Audience",
@@ -1593,7 +1740,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 148
     },
     {
       "name": "Obsession Party",
@@ -1602,7 +1750,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 149
     },
     {
       "name": "Occupation Endowments",
@@ -1612,7 +1761,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 150
     },
     {
       "name": "Ola/Reno",
@@ -1622,7 +1772,8 @@
         "shortform",
         "verbal",
         "wtf"
-      ]
+      ],
+      "uid": 151
     },
     {
       "name": "One Hit Wonders",
@@ -1636,7 +1787,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 152
     },
     {
       "name": "One On One",
@@ -1646,7 +1798,8 @@
         "shortform",
         "timed",
         "toss-up"
-      ]
+      ],
+      "uid": 153
     },
     {
       "name": "One Word Story",
@@ -1668,7 +1821,8 @@
         "shortform",
         "verbal",
         "warm-up"
-      ]
+      ],
+      "uid": 281
     },
     {
       "name": "Open Scene",
@@ -1679,7 +1833,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 154
     },
     {
       "name": "Opera",
@@ -1689,7 +1844,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 155
     },
     {
       "name": "Oratorio",
@@ -1699,7 +1855,8 @@
         "game",
         "musical",
         "shortform"
-      ]
+      ],
+      "uid": 156
     },
     {
       "name": "Order a Coke",
@@ -1708,7 +1865,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 157
     },
     {
       "name": "Oscar™ Winning Moment",
@@ -1717,7 +1875,8 @@
         "monologue",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 158
     },
     {
       "name": "Panel Experts Endowments",
@@ -1727,7 +1886,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 58
     },
     {
       "name": "Paper",
@@ -1740,7 +1900,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 160
     },
     {
       "name": "Parallel Parking",
@@ -1749,7 +1910,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 161
     },
     {
       "name": "Parallel Universe",
@@ -1761,7 +1923,8 @@
         "environment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 162
     },
     {
       "name": "Party Quirks",
@@ -1771,7 +1934,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 163
     },
     {
       "name": "Pecking Order",
@@ -1784,7 +1948,8 @@
         "scene",
         "shortform",
         "status"
-      ]
+      ],
+      "uid": 164
     },
     {
       "name": "Phone Bank",
@@ -1795,7 +1960,8 @@
       "tags": [
         "monologue",
         "shortform"
-      ]
+      ],
+      "uid": 165
     },
     {
       "name": "Physical Contact",
@@ -1809,7 +1975,8 @@
         "scene",
         "shortform",
         "silence"
-      ]
+      ],
+      "uid": 166
     },
     {
       "name": "Physical Thermometer",
@@ -1818,7 +1985,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 167
     },
     {
       "name": "Piano Bar",
@@ -1827,7 +1995,8 @@
         "game",
         "musical",
         "shortform"
-      ]
+      ],
+      "uid": 168
     },
     {
       "name": "Pillars",
@@ -1837,7 +2006,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 169
     },
     {
       "name": "Pivot",
@@ -1850,7 +2020,8 @@
         "scene",
         "shortform",
         "status"
-      ]
+      ],
+      "uid": 170
     },
     {
       "name": "Plagiarism",
@@ -1859,7 +2030,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 171
     },
     {
       "name": "Playbook",
@@ -1875,7 +2047,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 172
     },
     {
       "name": "Poetic Speak",
@@ -1885,7 +2058,8 @@
         "gibberish",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 173
     },
     {
       "name": "Poetry Scene",
@@ -1897,7 +2071,8 @@
         "cultural",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 174
     },
     {
       "name": "Point of View",
@@ -1909,7 +2084,8 @@
         "monologue",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 175
     },
     {
       "name": "Poison Arm Samurai",
@@ -1917,7 +2093,8 @@
       "tags": [
         "exercise",
         "warm-up"
-      ]
+      ],
+      "uid": 176
     },
     {
       "name": "Pop Up Storybook",
@@ -1929,7 +2106,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 177
     },
     {
       "name": "Position Vacant",
@@ -1937,7 +2115,8 @@
       "tags": [
         "endowment",
         "shortform"
-      ]
+      ],
+      "uid": 178
     },
     {
       "name": "Props",
@@ -1954,7 +2133,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 179
     },
     {
       "name": "Proverbs/Word Endowments",
@@ -1964,7 +2144,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 180
     },
     {
       "name": "Psychic Endowments",
@@ -1974,7 +2155,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 181
     },
     {
       "name": "Radio Play",
@@ -1986,7 +2168,8 @@
         "sound",
         "tech",
         "verbal"
-      ]
+      ],
+      "uid": 182
     },
     {
       "name": "Radio Stations",
@@ -1996,7 +2179,8 @@
         "musical",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 183
     },
     {
       "name": "Realistic Scene",
@@ -2005,7 +2189,8 @@
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 186
     },
     {
       "name": "Reminiscence",
@@ -2015,7 +2200,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 187
     },
     {
       "name": "Remote Control",
@@ -2028,7 +2214,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 188
     },
     {
       "name": "Replacement",
@@ -2037,7 +2224,8 @@
         "exercise",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 189
     },
     {
       "name": "Research and Development",
@@ -2048,7 +2236,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 190
     },
     {
       "name": "Return Department",
@@ -2058,7 +2247,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 191
     },
     {
       "name": "Ritual",
@@ -2067,7 +2257,8 @@
         "cultural",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 192
     },
     {
       "name": "Scene By Numbers",
@@ -2077,7 +2268,8 @@
         "numbers",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 193
     },
     {
       "name": "Scene from Music",
@@ -2092,7 +2284,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 194
     },
     {
       "name": "Scene From Nothing",
@@ -2103,7 +2296,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 195
     },
     {
       "name": "Scene From Something",
@@ -2111,7 +2305,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 196
     },
     {
       "name": "Scene in Reverse",
@@ -2126,7 +2321,8 @@
         "scene",
         "shortform",
         "timejump"
-      ]
+      ],
+      "uid": 197
     },
     {
       "name": "Scene in the Dark",
@@ -2138,7 +2334,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 198
     },
     {
       "name": "Scene Tag",
@@ -2149,7 +2346,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 199
     },
     {
       "name": "Scene Using the MC",
@@ -2158,7 +2356,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 200
     },
     {
       "name": "Scene Without _______",
@@ -2168,7 +2367,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 201
     },
     {
       "name": "Scene Without Humans",
@@ -2176,7 +2376,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 202
     },
     {
       "name": "Secret Word Endowments",
@@ -2186,7 +2387,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 203
     },
     {
       "name": "Secrets Endowments",
@@ -2196,7 +2398,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 204
     },
     {
       "name": "Seductions",
@@ -2204,7 +2407,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 205
     },
     {
       "name": "Serious Scene",
@@ -2212,7 +2416,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 206
     },
     {
       "name": "Sex Role Reversal",
@@ -2220,7 +2425,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 207
     },
     {
       "name": "Shared Story",
@@ -2234,7 +2440,8 @@
         "narrated",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 208
     },
     {
       "name": "Should Have Said",
@@ -2247,7 +2454,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 209
     },
     {
       "name": "Sideways Scene",
@@ -2257,7 +2465,8 @@
         "scene",
         "shortform",
         "spectacle"
-      ]
+      ],
+      "uid": 210
     },
     {
       "name": "Silent Scene",
@@ -2266,7 +2475,8 @@
         "scene",
         "shortform",
         "silence"
-      ]
+      ],
+      "uid": 211
     },
     {
       "name": "Silly-Stinky-Sexy",
@@ -2275,7 +2485,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 212
     },
     {
       "name": "Sing Speak",
@@ -2284,7 +2495,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 213
     },
     {
       "name": "Slide Show",
@@ -2292,7 +2504,8 @@
       "tags": [
         "narrated",
         "shortform"
-      ]
+      ],
+      "uid": 214
     },
     {
       "name": "Slides",
@@ -2302,7 +2515,8 @@
         "shortform",
         "status",
         "transitions"
-      ]
+      ],
+      "uid": 215
     },
     {
       "name": "Slow Motion Commentary",
@@ -2312,7 +2526,8 @@
         "physical",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 216
     },
     {
       "name": "Solo Scene",
@@ -2320,7 +2535,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 218
     },
     {
       "name": "Song Circle",
@@ -2329,7 +2545,8 @@
         "game",
         "musical",
         "shortform"
-      ]
+      ],
+      "uid": 219
     },
     {
       "name": "Song Cue",
@@ -2342,7 +2559,8 @@
         "musical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 220
     },
     {
       "name": "Sound Effects",
@@ -2353,7 +2571,8 @@
         "shortform",
         "sound",
         "tech"
-      ]
+      ],
+      "uid": 222
     },
     {
       "name": "SoundScape",
@@ -2363,7 +2582,8 @@
         "shortform",
         "silence",
         "sound"
-      ]
+      ],
+      "uid": 223
     },
     {
       "name": "Soundtrack",
@@ -2374,7 +2594,8 @@
         "shortform",
         "sound",
         "tech"
-      ]
+      ],
+      "uid": 224
     },
     {
       "name": "Speaking at the Same Time",
@@ -2387,7 +2608,8 @@
         "shortform",
         "silence",
         "verbal"
-      ]
+      ],
+      "uid": 225
     },
     {
       "name": "Speaking In One Voice",
@@ -2402,7 +2624,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 226
     },
     {
       "name": "Speaking In Turn",
@@ -2411,7 +2634,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 227
     },
     {
       "name": "Speck",
@@ -2422,7 +2646,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 228
     },
     {
       "name": "Spell It",
@@ -2431,7 +2656,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 229
     },
     {
       "name": "Split Focus",
@@ -2439,7 +2665,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 230
     },
     {
       "name": "Split Screen",
@@ -2452,7 +2679,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 231
     },
     {
       "name": "Spoon River",
@@ -2461,7 +2689,8 @@
         "monologue",
         "narrative",
         "shortform"
-      ]
+      ],
+      "uid": 232
     },
     {
       "name": "Spotlight",
@@ -2474,7 +2703,8 @@
         "scene",
         "shortform",
         "tech"
-      ]
+      ],
+      "uid": 233
     },
     {
       "name": "Stage Directions",
@@ -2484,7 +2714,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 234
     },
     {
       "name": "Standing, Sitting, Kneeling, Lying Down",
@@ -2494,7 +2725,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 235
     },
     {
       "name": "Statues",
@@ -2504,7 +2736,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 236
     },
     {
       "name": "Status Cards",
@@ -2517,7 +2750,8 @@
         "scene",
         "shortform",
         "status"
-      ]
+      ],
+      "uid": 237
     },
     {
       "name": "Step Letter Scene",
@@ -2526,7 +2760,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 238
     },
     {
       "name": "Step Out Narrative",
@@ -2536,7 +2771,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 239
     },
     {
       "name": "Step Word",
@@ -2546,7 +2782,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 286
     },
     {
       "name": "Stimulus Response",
@@ -2556,7 +2793,8 @@
         "pimping",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 241
     },
     {
       "name": "Stop Action Narrative",
@@ -2566,7 +2804,8 @@
         "narrated",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 242
     },
     {
       "name": "Stop and Go",
@@ -2577,7 +2816,8 @@
         "shortform",
         "silence",
         "verbal"
-      ]
+      ],
+      "uid": 243
     },
     {
       "name": "Story Story Die",
@@ -2592,7 +2832,8 @@
         "shortform",
         "styles",
         "toss-up"
-      ]
+      ],
+      "uid": 244
     },
     {
       "name": "Strong Emotions",
@@ -2601,7 +2842,8 @@
         "endowment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 245
     },
     {
       "name": "Stunt Doubles",
@@ -2612,7 +2854,8 @@
         "pimping",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 246
     },
     {
       "name": "Styles",
@@ -2624,7 +2867,8 @@
         "scene",
         "shortform",
         "styles"
-      ]
+      ],
+      "uid": 247
     },
     {
       "name": "Subtitles",
@@ -2634,7 +2878,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 248
     },
     {
       "name": "Superhero Endowments",
@@ -2644,7 +2889,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 249
     },
     {
       "name": "Swedish Storytelling",
@@ -2652,7 +2898,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 250
     },
     {
       "name": "Tag Team Monologue",
@@ -2660,7 +2907,8 @@
       "tags": [
         "monologue",
         "shortform"
-      ]
+      ],
+      "uid": 251
     },
     {
       "name": "Tag Team Typewriter",
@@ -2672,7 +2920,8 @@
         "narrated",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 252
     },
     {
       "name": "The Moon",
@@ -2684,7 +2933,8 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 254
     },
     {
       "name": "Three Lines",
@@ -2693,7 +2943,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 255
     },
     {
       "name": "Three Scene",
@@ -2712,7 +2963,8 @@
         "shortform",
         "styles",
         "timejump"
-      ]
+      ],
+      "uid": 256
     },
     {
       "name": "Timed Scene",
@@ -2721,7 +2973,8 @@
         "scene",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 257
     },
     {
       "name": "Timed Styles",
@@ -2731,7 +2984,8 @@
         "shortform",
         "styles",
         "timed"
-      ]
+      ],
+      "uid": 258
     },
     {
       "name": "Torture Your Teammate",
@@ -2740,7 +2994,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 259
     },
     {
       "name": "Town Meeting",
@@ -2754,7 +3009,8 @@
         "game",
         "shortform",
         "timed"
-      ]
+      ],
+      "uid": 260
     },
     {
       "name": "Transfers",
@@ -2766,14 +3022,16 @@
         "status",
         "timed",
         "transitions"
-      ]
+      ],
+      "uid": 261
     },
     {
       "name": "Triptych",
       "description": "Three short, unconnected scenes are played. The improvisers play an extension of their original narratives in the same performance order, making minimal references to one or both of the other scenes. Scenes are played a third time gradually incorporating offers from the other stories. The ninth (and last) scene should connect all the scenes.",
       "tags": [
         "longform"
-      ]
+      ],
+      "uid": 262
     },
     {
       "name": "True Feelings",
@@ -2781,7 +3039,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 263
     },
     {
       "name": "Two Chairs",
@@ -2791,7 +3050,8 @@
         "props",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 264
     },
     {
       "name": "Two Rooms",
@@ -2800,7 +3060,8 @@
         "environment",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 265
     },
     {
       "name": "Two, Too, To",
@@ -2808,7 +3069,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 266
     },
     {
       "name": "Typewriter",
@@ -2818,7 +3080,8 @@
         "narrative",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 267
     },
     {
       "name": "Understudy",
@@ -2827,7 +3090,8 @@
         "justification",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 268
     },
     {
       "name": "Using Character of Plot Line From the Previous Scene",
@@ -2835,7 +3099,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 269
     },
     {
       "name": "Verse",
@@ -2845,7 +3110,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 270
     },
     {
       "name": "Virtual Reality",
@@ -2855,14 +3121,16 @@
         "physical",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 271
     },
     {
       "name": "Visualization",
       "description": "An improviser closes their eyes and visualizes a seashore. Don't have them think about it, just have them tell what they see. If they see a house ask them what's inside? Who's there? Continue to ask them what they see and have them describe it in detail. They shouldn't have to choose anything, simply use their strong imaginations.",
       "tags": [
         "exercise"
-      ]
+      ],
+      "uid": 272
     },
     {
       "name": "Wallpaper Drama",
@@ -2871,7 +3139,8 @@
         "directed",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 273
     },
     {
       "name": "What Are You Doing?",
@@ -2880,7 +3149,8 @@
         "game",
         "shortform",
         "toss-up"
-      ]
+      ],
+      "uid": 274
     },
     {
       "name": "What Comes Next?",
@@ -2894,7 +3164,8 @@
         "directed",
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 275
     },
     {
       "name": "What If ____",
@@ -2906,7 +3177,8 @@
       "tags": [
         "scene",
         "shortform"
-      ]
+      ],
+      "uid": 276
     },
     {
       "name": "With Only Questions",
@@ -2924,7 +3196,8 @@
         "shortform",
         "toss-up",
         "verbal"
-      ]
+      ],
+      "uid": 277
     },
     {
       "name": "Word Pattern",
@@ -2933,7 +3206,8 @@
         "scene",
         "shortform",
         "verbal"
-      ]
+      ],
+      "uid": 279
     },
     {
       "name": "Yes, And…",
@@ -2945,7 +3219,8 @@
       "tags": [
         "exercise",
         "shortform"
-      ]
+      ],
+      "uid": 282
     },
     {
       "name": "Zones",
@@ -2965,7 +3240,8 @@
         "shortform",
         "status",
         "styles"
-      ]
+      ],
+      "uid": 283
     },
     {
       "name": "Zulu",
@@ -2975,7 +3251,8 @@
         "game",
         "shortform",
         "toss-up"
-      ]
+      ],
+      "uid": 284
     }
   ]
 }

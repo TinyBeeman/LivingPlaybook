@@ -1,3 +1,8 @@
+## Version 2025.0002.0000
+
+**Features**
+- Added unique identifiers to games, to enable features where links still work when the name of a game is changed.
+
 ## Version 2025.0001.0000
 
 **Games Added**
