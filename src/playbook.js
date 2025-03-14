@@ -128,6 +128,14 @@ const GameField = {
     Uid: "uid"
 };
 
+// Enum for page mode
+const PageMode = {
+    Default: "default",
+    SearchFilter: "searchFilter",
+    Uid: "uid",
+    List: "list"
+};
+
 
 class LocalStore {
     constructor() {
@@ -440,6 +448,7 @@ class Playbook {
 
 class PlaybookPage {
     constructor() {
+        this.pageMode = PageMode.Default;
         this.dbId = null;
         this.filter = new TagFilter();
         this.playbook = new Playbook();
@@ -459,9 +468,7 @@ class PlaybookPage {
 
         const tags = this.playbook.getTags();
         if (this.searchTerm)
-        {
             document.getElementById('search-box').value = this.searchTerm;
-        }
 
         const tagsContainer = document.getElementById('tags-container');
         tags.forEach(tag => {
@@ -488,7 +495,6 @@ class PlaybookPage {
         this.populateGameList();
         this.populateFooter();
     }
-
     
     async onPageLoad() {
         let urlParams = new URLSearchParams(window.location.search);
@@ -496,12 +502,24 @@ class PlaybookPage {
         this.searchTerm = urlParams.get('search');
         this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
         this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
+        this.uid = urlParams.get('uid');
+        this.list = urlParams.get('list');
+
+        if (this.searchTerm != null) {
+            this.pageMode = PageMode.SearchFilter;
+        }
+        else if (this.uid != null) {
+            this.pageMode = PageMode.Uid;
+            this.searchTerm = "uid:" + this.uid;
+        }
+        else if (this.list != null) {
+            this.pageMode = PageMode.List;
+        }
 
         this.editMode = urlParams.get('edit') === '1';
     
         // Populate the control-pane div
         this.populateControlPane();
-
         this.initializeCollapsibles();
     
         this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json')
@@ -646,7 +664,6 @@ class PlaybookPage {
         });
     }
 
-
     describeSearch(count) {
         const yesTags = this.filter.getYesTags();
         const noTags = this.filter.getNoTags();
@@ -676,7 +693,6 @@ class PlaybookPage {
     }
 
     populateGameList() {
-        
         const games = this.playbook.searchGames(this.searchTerm, this.filter);
         const searchDescription = this.describeSearch(games.length);
         const searchDescriptionElement = document.getElementById('search-desc');
@@ -702,25 +718,29 @@ class PlaybookPage {
 
     updateUrlFromState() {
         const url = new URL(window.location);
+        url.searchParams.delete('uid');
+        url.searchParams.delete('search');
+        url.searchParams.delete('yesTags');
+        url.searchParams.delete('noTags');
+        url.searchParams.delete('list');
+
         if (this.searchTerm) {
-            url.searchParams.set('search', this.searchTerm.trim().toLowerCase());
-        } else {
-            url.searchParams.delete('search');
+            // If the search term includes uid:[integer] as a substring, set the uid parameter
+            const uidMatch = this.searchTerm.match(/uid:(\d+)/);
+            if (uidMatch) {
+                url.searchParams.set('uid', uidMatch[1]);
+            } else {
+                url.searchParams.set('search', this.searchTerm.trim().toLowerCase());
+            }
         }
 
         const yesTags = Array.from(this.filter.yesTags).join(';');
-        if (yesTags && yesTags.length > 0) {
+        if (yesTags && yesTags.length > 0)
             url.searchParams.set('yesTags', yesTags);
-        } else {
-            url.searchParams.delete('yesTags');
-        }
 
         const noTags = Array.from(this.filter.noTags).join(';');
-        if (noTags && noTags.length > 0) {
+        if (noTags && noTags.length > 0)
             url.searchParams.set('noTags', noTags);
-        } else {
-            url.searchParams.delete('noTags');
-        }
 
         window.history.pushState({}, '', url);
     }
@@ -866,6 +886,51 @@ class PlaybookPage {
         return addToListButton;
     }
 
+    createShareButton(gameDetails) {
+        const shareButton = document.createElement('button');
+        shareButton.classList.add('share-button');
+        shareButton.classList.add('card-title-button');
+        shareButton.setAttribute('title', 'Share Game');
+
+        // Create a pop-up with a link to the game, and a button to copy the link.
+        // The link's format is the current base url with a uid parameter.
+        shareButton.addEventListener('click', () => {
+            const shareDiv = document.createElement('div');
+            shareDiv.classList.add('share-div');
+            const shareLink = document.createElement('input');
+            shareLink.type = 'text';
+            shareLink.value = `${window.location.origin}?${this.dbId ? 'dbId=' + this.dbId : ''}&uid=${gameDetails.uid}`;
+            shareLink.readOnly = true;
+            shareDiv.appendChild(shareLink);
+
+            const copyButton = document.createElement('button');
+            copyButton.textContent = 'Copy Link';
+            copyButton.addEventListener('click', () => {
+                shareLink.select();
+                // deprecated: document.execCommand('copy');
+                navigator.clipboard.writeText(shareLink.value);
+                alert('Link copied to clipboard!');
+            });
+            shareDiv.appendChild(copyButton);
+
+            // Add shareDiv so it pops up as a context menu off of the button
+            document.body.appendChild(shareDiv);
+            shareDiv.style.top = `${shareButton.getBoundingClientRect().top + window.scrollY}px`;
+            shareDiv.style.left = `${shareButton.getBoundingClientRect().left + window.scrollX}px`;
+
+            // Remove the shareDiv when clicking outside of it
+            const removeShareDiv = (event) => {
+                if (!shareDiv.contains(event.target) && event.target !== shareButton) {
+                    shareDiv.remove();
+                    document.removeEventListener('click', removeShareDiv);
+                }
+            };
+            document.addEventListener('click', removeShareDiv);  
+        });
+
+        return shareButton;
+    }
+
     createGameCardDiv(gameDetails, editMode = false) {
 
         function createGameRowContainer(class_name) {
@@ -912,6 +977,7 @@ class PlaybookPage {
 
         divTitle.appendChild(this.createFavoriteButton(gameDetails));
         divTitle.appendChild(this.createAddToListButton(gameDetails));
+        divTitle.appendChild(this.createShareButton(gameDetails));
 
         if (editMode) {
             const editButton = document.createElement('button');

@@ -518,6 +518,26 @@ body {
     overflow-y: auto;
 }
 
+.share-div {
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    max-height: 200px;
+    min-width: 50%;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row;
+}
+
+.share-div input {
+    /* fill width to remain space in parent */
+    flex-grow: 1;
+}
+
 .add-to-list-menu {
     display: flex;
     flex-direction: column;

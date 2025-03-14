@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0001",
-    "minor": "0007"
+    "minor": "0008"
   },
   "contributors": [
     "Kris Anderson",
@@ -887,7 +887,7 @@
     },
     {
       "name": "Famous Person Endowments",
-      "description": "Two improvisers leave the stage area. 3rd improviser gets 2 famous people. The 2 improvisers are called back to the playing area. Whispering, Improviser 3 arbitrarily assigns to each improviser who the OTHER improviser is (eg: improviser 1 has to endow improviser 2 with being Mickey Mantle, Improviser 2 endows improviser 1 with being Marie Antoinette). This scene is played in the vernacular. Like all endowment scenes, this is not a charades scene.",
+      "description": "Two improvisers leave the stage area, while a third improviser asks for two famous people.\n\nThe two improvisers are called back to the playing area. Whispering, the third improviser assigns to each improviser who the OTHER improviser is (eg: A has to endow B with being Mickey Mantle, B endows A with being Marie Antoinette).\n\nThe improvisers must make offers that suggest a guess as to who they are. \"Ah, yes, I DO enjoy eating both bread AND cake.\"",
       "tags": [
         "endowment",
         "game",
@@ -897,7 +897,8 @@
         "shortform",
         "timed"
       ],
-      "uid": 62
+      "uid": 62,
+      "notes": "The characters speak in every-day vernacular. Like all endowment scenes, this is not a charades scene."
     },
     {
       "name": "Film Rollback",
