@@ -1,3 +1,16 @@
+function mdToHtml(markdown) {
+    if (typeof marked !== 'undefined') {
+        if (markdown.indexOf('\n') === -1) {
+            return marked.parseInline(markdown);
+        } else {
+            return marked.parse(markdown);
+        }
+    } else {
+        console.error('Marked library is not loaded.');
+        return '';
+    }
+}
+
 class TagFilter {
     constructor() {
         this.yesTags = new Set();
@@ -42,7 +55,7 @@ const GameField = {
 
 
 class Playbook {
-    constructor(source) {
+    constructor() {
         this.data = null;
     }
 
@@ -66,14 +79,6 @@ class Playbook {
 
         } catch (error) {
             console.error(`Error loading data from URL: ${error}`);
-        }
-    }
-
-    loadFromFile(filePath) {
-        try {
-            this.data = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-        } catch (error) {
-            console.error(`Error loading data from file: ${error}`);
         }
     }
 
@@ -349,6 +354,42 @@ class PlaybookPage {
         this.populateFooter();
     }
 
+    
+    async onPageLoad() {
+        let urlParams = new URLSearchParams(window.location.search);
+        this.dbId = urlParams.get('dbId');
+        this.searchTerm = urlParams.get('search');
+        this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
+        this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
+
+        this.editMode = urlParams.get('edit') === '1';
+    
+        // Populate the control-pane div
+        this.populateControlPane();
+
+        this.initializeCollapsibles();
+    
+        this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json')
+            .then(() => {
+                this.onDatabaseLoad();
+            })
+            .catch(error => {
+                console.error("Error loading database:", error);
+            });
+    }
+
+    getFavoriteGameUids() {
+        return JSON.parse(localStorage.getItem('favorites')) || [];
+    }
+
+    addGameToFavorites(uid) {
+        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (!favorites.includes(uid)) {
+            favorites.push(uid);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+    }
+
     populateControlPane() {
         const controlPane = document.getElementById('control-pane');
         
@@ -426,28 +467,6 @@ class PlaybookPage {
         controlPane.appendChild(tagContent);
     }
 
-    async onPageLoad() {
-        let urlParams = new URLSearchParams(window.location.search);
-        this.dbId = urlParams.get('dbId');
-        this.searchTerm = urlParams.get('search');
-        this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
-        this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
-
-        this.editMode = urlParams.get('edit') === '1';
-    
-        // Populate the control-pane div
-        this.populateControlPane();
-
-        this.initializeCollapsibles();
-    
-        this.playbook.loadFromURL(this.dbId === "2001" ? 'living_playbook_2001.json' : 'living_playbook.json')
-            .then(() => {
-                this.onDatabaseLoad();
-            })
-            .catch(error => {
-                console.error("Error loading database:", error);
-            });
-    }
 
     populateFooter() {
         // combine this.data.contributors array into one comma-separated string
@@ -549,40 +568,6 @@ class PlaybookPage {
         });
     }
 
-    createGameRow(class_name, header="", innerHTML="") {
-        const divRow = document.createElement('div');
-        divRow.classList.add("game-row");
-        divRow.classList.add("game-row-" + class_name);
-        if (header) {
-            const divHeader = document.createElement('div');
-            divHeader.classList.add("game-row-header");
-            divHeader.textContent = header;
-            divRow.appendChild(divHeader);
-        }
-
-        if (innerHTML) {
-            const divText = this.createGameRowText(class_name, innerHTML);
-            divRow.appendChild(divText);
-        }
-        return divRow;
-    }
-
-    createGameRowText(class_name, innerHTML="") {
-        const divText = document.createElement('div');
-        divText.classList.add("game-row-content");
-        divText.classList.add("game-row-text");
-        divText.classList.add("game-row-text-" + class_name);
-        divText.innerHTML = innerHTML;
-        return divText;
-    }
-
-    createGameRowContainer(class_name) {
-        const divRowContainer = document.createElement('div');
-        divRowContainer.classList.add(`game-row-${class_name}-container`);
-        divRowContainer.classList.add("game-row-container");        
-        return divRowContainer;
-    }
-
     updateUrlFromState() {
         const url = new URL(window.location);
         if (this.searchTerm) {
@@ -640,6 +625,41 @@ class PlaybookPage {
     }
 
     createGameCardDiv(gameDetails, editMode = false) {
+
+        function createGameRowContainer(class_name) {
+            const divRowContainer = document.createElement('div');
+            divRowContainer.classList.add(`game-row-${class_name}-container`);
+            divRowContainer.classList.add("game-row-container");        
+            return divRowContainer;
+        }
+        
+        function createGameRowText(class_name, innerHTML="") {
+            const divText = document.createElement('div');
+            divText.classList.add("game-row-content");
+            divText.classList.add("game-row-text");
+            divText.classList.add("game-row-text-" + class_name);
+            divText.innerHTML = innerHTML;
+            return divText;
+        }
+
+        function createGameRow(class_name, header="", innerHTML="") {
+            const divRow = document.createElement('div');
+            divRow.classList.add("game-row");
+            divRow.classList.add("game-row-" + class_name);
+            if (header) {
+                const divHeader = document.createElement('div');
+                divHeader.classList.add("game-row-header");
+                divHeader.textContent = header;
+                divRow.appendChild(divHeader);
+            }
+    
+            if (innerHTML) {
+                const divText = createGameRowText(class_name, innerHTML);
+                divRow.appendChild(divText);
+            }
+            return divRow;
+        }
+    
         const divGameCard = document.createElement('div');
         divGameCard.classList.add("game-card");
         divGameCard.id = `${gameDetails.anchorName}`;
@@ -647,31 +667,42 @@ class PlaybookPage {
         const divTitle = document.createElement('div');
         divTitle.classList.add('game-card-title');
         divTitle.textContent = gameDetails.name;
+
+        const heartButton = document.createElement('button');
+        heartButton.classList.add('heart-button');
+        heartButton.innerHTML = '🩶';
+        heartButton.addEventListener('click', () => {
+            heartButton.classList.toggle('favorited');
+            heartButton.innerHTML = heartButton.classList.contains('favorited') ? '❤️' : '🩶';
+        });
+
+        divTitle.appendChild(heartButton);
+
         const divCardContent = document.createElement('div');
         divCardContent.classList.add('game-card-content');
         divGameCard.appendChild(divTitle);
         divGameCard.appendChild(divCardContent);
 
-        this.createGameRow("name", "", gameDetails.name);
-        const divDesc = this.createGameRow("desc", "description", this.mdToHtml(gameDetails.description));
+        createGameRow("name", "", gameDetails.name);
+        const divDesc = createGameRow("desc", "description", mdToHtml(gameDetails.description));
         divCardContent.appendChild(divDesc);
 
         if (gameDetails.notes) {
-            const divNotesRow = this.createGameRow("notes", "notes", this.mdToHtml(gameDetails.notes));
+            const divNotesRow = createGameRow("notes", "notes", mdToHtml(gameDetails.notes));
             divCardContent.appendChild(divNotesRow);
         }
 
         if (gameDetails.variations) {
-            const divVariationsRow = this.createGameRow("variations", "variations");
+            const divVariationsRow = createGameRow("variations", "variations");
             gameDetails.variations.forEach(variation => {
-                divVariationsRow.appendChild(this.createGameRowText("variation", this.mdToHtml(variation)));
+                divVariationsRow.appendChild(createGameRowText("variation", mdToHtml(variation)));
             });
             divCardContent.appendChild(divVariationsRow);
         }
 
         if (gameDetails.aliases) {
-            const divAliasesRow = this.createGameRow("aliases", "aliases");
-            const divAliases = this.createGameRowContainer("aliases");
+            const divAliasesRow = createGameRow("aliases", "aliases");
+            const divAliases = createGameRowContainer("aliases");
             gameDetails.aliases.forEach(alias => {
                 const divAlias = document.createElement('div');
                 divAlias.classList.add('game-alias');
@@ -683,8 +714,8 @@ class PlaybookPage {
         }
 
         if (gameDetails.tags) {
-            const divTagsRow = this.createGameRow("tags", "tags");
-            const divTags = this.createGameRowContainer("tags");
+            const divTagsRow = createGameRow("tags", "tags");
+            const divTags = createGameRowContainer("tags");
             gameDetails.tags.forEach(tag => {
                 const divTag = document.createElement('div');
                 divTag.classList.add('game-tag');
@@ -696,8 +727,8 @@ class PlaybookPage {
         }
 
         if (gameDetails.related) {
-            const divRelatedRow = this.createGameRow("related", "related games");
-            const divRelated = this.createGameRowContainer("related");
+            const divRelatedRow = createGameRow("related", "related games");
+            const divRelated = createGameRowContainer("related");
             gameDetails.related.forEach(related => {
                 const link = document.createElement('a');
                 const url = new URL(window.location);
@@ -712,14 +743,14 @@ class PlaybookPage {
         }
 
         if (gameDetails.createdBy) {
-            const divCreatedByRow = this.createGameRow("createdBy", "createdBy", this.mdToHtml(gameDetails.createdBy));
+            const divCreatedByRow = createGameRow("createdBy", "createdBy", mdToHtml(gameDetails.createdBy));
             divCardContent.appendChild(divCreatedByRow);
         }
 
 
         if (editMode) {
-            const divEditRow = this.createGameRow("edit", "edit game");
-            const divEditContainer = this.createGameRowContainer("edit");
+            const divEditRow = createGameRow("edit", "edit game");
+            const divEditContainer = createGameRowContainer("edit");
 
             const editButton = document.createElement('button');
             editButton.textContent = 'Edit';
@@ -731,19 +762,6 @@ class PlaybookPage {
         }
 
         return divGameCard;
-    }
-
-    mdToHtml(markdown) {
-        if (typeof marked !== 'undefined') {
-            if (markdown.indexOf('\n') === -1) {
-                return marked.parseInline(markdown);
-            } else {
-                return marked.parse(markdown);
-            }
-        } else {
-            console.error('Marked library is not loaded.');
-            return '';
-        }
     }
 
     populatePageHeader(title = "The (Online) Living Playbook",
@@ -895,14 +913,6 @@ class PlaybookPage {
         if (hidden)
             overlayElement.classList.add('hidden');
         return overlayElement;
-    }
-
-    showOverlay(overlayElement, show = true) {
-        if (show) {
-            overlayElement.classList.remove('hidden');
-        } else {
-            overlayElement.classList.add('hidden');
-        }
     }
 
     populatePreviewOverlay(overlayElement, oldDetails, newDetails) {
