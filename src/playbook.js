@@ -687,7 +687,7 @@ class PlaybookPage {
         if (searchDescription === '')
             searchDescription = 'All Games, Exercises and Formats';
         
-        searchDescription += ` (${count} entries)`;
+        searchDescription += count == 1 ? ` (1 entry)` : ` (${count} entries)`;
         
         return searchDescription;
     }
