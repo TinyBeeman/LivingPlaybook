@@ -34,6 +34,67 @@ class TagFilter {
     }
 }
 
+class SearchFilter {
+    constructor() {
+        this.searchTerms = [];
+        this.tagFilter = new TagFilter();
+    }
+
+    static fromSearchString(searchString) {
+        let filter = new SearchFilter();
+        filter.parseString(searchString);
+        return filter;
+    }
+
+    static gameIncludesTerm(game, searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            return true;
+        }
+
+        const termLowerCase = searchTerm.toLowerCase();
+        // Check to see if term starts with id:
+        if (termLowerCase.startsWith("id:")) {
+            return game.anchorName === termLowerCase.slice(3);
+        }
+
+        // Check to see if term starts with uid:
+        if (termLowerCase.startsWith("uid:")) {
+            return game.uid === parseInt(termLowerCase.slice(4));
+        }
+
+        return Object.entries(game).some(([key, value]) => {
+            if (key === 'related')
+                return false;
+
+            if (Array.isArray(value)) {
+                return value.some(item => item.toLowerCase().includes(termLowerCase));
+            } else if (typeof value === 'string') {
+                return value.toLowerCase().includes(termLowerCase);
+            }
+            return false;
+        });
+    }
+
+    parseString(searchString) {
+        // Split the search string into terms, consider any whitespace as a
+        // separator unless it's inside quotes.
+        const regex = /"([^"]+)"|(\S+)/g;
+        let match;
+        while ((match = regex.exec(searchString)) !== null) {
+            if (match[1]) {
+                this.searchTerms.push(match[1]);
+            } else {
+                this.searchTerms.push(match[2]);
+            }
+        }
+    }
+
+    matchTerm(game) {
+        return this.searchTerms.every(term => SearchFilter.gameIncludesTerm(game, term));
+    }
+
+}
+
 const DatabaseField = {
     Games: "games",
     Contributors: "contributors",
@@ -53,41 +114,70 @@ const GameField = {
     Uid: "uid"
 };
 
+
 class LocalStore {
     constructor() {
         this.storage = window.localStorage;
     }
 
-    setItem(key, value) {
+    storeItem(key, value) {
         this.storage.setItem(key, JSON.stringify(value));
     }
 
-    getItem(key) {
+    retrieveItem(key) {
         return JSON.parse(this.storage.getItem(key));
     }
 
-    getFavoriteGameUids() {
-        let favorites = this.getItem('favorites') ?? [];
-
-        return favorites;
+    retrieveArray(key) {
+        return this.retrieveItem(key) || [];
     }
 
-    addGameToFavorites(uid) {
-        const favorites = this.getFavoriteGameUids();
-        if (!favorites.includes(uid)) {
-            favorites.push(uid);
-            this.setItem('favorites', favorites);
-        }
+    forgetItem(key) {
+        this.storage.removeItem(key);
+    }
+}
+
+class GameList {
+    constructor(name) {
+        this.name = name;
+        // Replace Spaces With Hyphens
+        this.storageName = "gamelist-" + name.replace(/\s+/g, '-');
+        this.localStorage = new LocalStore();
+        this.games = [];
     }
 
-    removeGameFromFavorites(uid) {
-        const favorites = this.getFavoriteGameUids();
-        const index = favorites.indexOf(uid);
+    static fromLocalStorage(name) {
+        const gameList = new GameList(name);
+        gameList.games = gameList.localStorage.retrieveArray(gameList.storageName);
+        return gameList;
+    }
+
+    saveToLocalStorage() {
+        localStorage.setItem(this.storageName, JSON.stringify(this.games));
+    }
+
+     // Add static method to create a GameList from an array
+    addGame(uid) {
+        this.games.push(uid);
+        this.saveToLocalStorage();
+    }
+
+    removeGame(uid) {
+        const index = this.games.indexOf(uid);
         if (index > -1) {
-            favorites.splice(index, 1);
-            this.setItem('favorites', favorites);
+            this.games.splice(index, 1);
         }
+        this.saveToLocalStorage();
     }
+
+    includes(uid) {
+        return this.games.includes(uid);
+    }
+
+    getGames() {
+        return this.games;
+    }
+
 }
 
 
@@ -148,49 +238,28 @@ class Playbook {
             return null;
         }
 
-        let lowerTerm = term.toLowerCase();
-        if (lowerTerm.startsWith("id:")) {
-            lowerTerm = lowerTerm.slice(3);
+        let termLowerCase = term.toLowerCase();
+        if (termLowerCase.startsWith("id:")) {
+            termLowerCase = termLowerCase.slice(3);
         }
 
         const game = this.data.games.find(game => 
-            game.anchorName === lowerTerm || 
-            (game.anchorAliases && game.anchorAliases.includes(lowerTerm))
+            game.anchorName === termLowerCase || 
+            (game.anchorAliases && game.anchorAliases.includes(termLowerCase))
         );
         return game ? game.anchorName : null;
     }
 
-    searchGames(term, tagFilter = null) {
+    searchGames(searchString, tagFilter = null) {
         if (!this.data || !this.data.games) {
             return [];
         }
 
-        let lowerTerm = term?.toLowerCase();
-        let gameId = this.getGameIdFromSearchTerm(lowerTerm);
+        let searchFilter = SearchFilter.fromSearchString(searchString);
        
         return this.data.games
             .filter(game => {
-                if (gameId) {
-                    return game.anchorName.includes(gameId);
-                }
-
-                const matchesTerm = Object.entries(game).some(([key, value]) => {
-                    // Always return true if term is empty
-                    if (!term)
-                        return true;
-
-                    if (key === 'related')
-                        return false;
-
-                    if (Array.isArray(value)) {
-                        return value.some(item => item.toLowerCase().includes(lowerTerm));
-                    } else if (typeof value === 'string') {
-                        return value.toLowerCase().includes(lowerTerm);
-                    }
-                    return false;
-                });
-
-                if (!matchesTerm) {
+                if (!searchFilter.matchTerm(game)) {
                     return false;
                 }
 
@@ -349,7 +418,7 @@ class PlaybookPage {
         this.searchTerm = null;
         this.lazyTimer = null;
         this.editMode = false;
-        this.localStore = new LocalStore();
+        this.favoriteList = GameList.fromLocalStorage("favorites");
     }
 
     onDatabaseLoad() {
@@ -696,15 +765,15 @@ class PlaybookPage {
 
         const heartButton = document.createElement('button');
         heartButton.classList.add('heart-button');
-        if (this.localStore.getFavoriteGameUids().includes(gameDetails.uid)) {
+        if (this.favoriteList.includes(gameDetails.uid)) {
             heartButton.classList.add('favorited');
         }
 
         heartButton.addEventListener('click', () => {
             if (heartButton.classList.contains('favorited')) {
-                this.localStore.removeGameFromFavorites(gameDetails.uid);
+                this.favoriteList.removeGame(gameDetails.uid);
             } else {
-                this.localStore.addGameToFavorites(gameDetails.uid);
+                this.favoriteList.addGame(gameDetails.uid);
             }
             heartButton.classList.toggle('favorited');
         });
