@@ -4,6 +4,7 @@
 - Added contributors
 - Added ability to add createdBy field to games
 - Added unique identifiers to games, to enable features where links still work when the name of a game is changed.
+- Search now supports quotes around strings and unique identifiers (will be useful in the future)
 
 ## Version 2025.0001.0000
 
