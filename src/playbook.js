@@ -53,6 +53,43 @@ const GameField = {
     Uid: "uid"
 };
 
+class LocalStore {
+    constructor() {
+        this.storage = window.localStorage;
+    }
+
+    setItem(key, value) {
+        this.storage.setItem(key, JSON.stringify(value));
+    }
+
+    getItem(key) {
+        return JSON.parse(this.storage.getItem(key));
+    }
+
+    getFavoriteGameUids() {
+        let favorites = this.getItem('favorites') ?? [];
+
+        return favorites;
+    }
+
+    addGameToFavorites(uid) {
+        const favorites = this.getFavoriteGameUids();
+        if (!favorites.includes(uid)) {
+            favorites.push(uid);
+            this.setItem('favorites', favorites);
+        }
+    }
+
+    removeGameFromFavorites(uid) {
+        const favorites = this.getFavoriteGameUids();
+        const index = favorites.indexOf(uid);
+        if (index > -1) {
+            favorites.splice(index, 1);
+            this.setItem('favorites', favorites);
+        }
+    }
+}
+
 
 class Playbook {
     constructor() {
@@ -312,6 +349,7 @@ class PlaybookPage {
         this.searchTerm = null;
         this.lazyTimer = null;
         this.editMode = false;
+        this.localStore = new LocalStore();
     }
 
     onDatabaseLoad() {
@@ -376,18 +414,6 @@ class PlaybookPage {
             .catch(error => {
                 console.error("Error loading database:", error);
             });
-    }
-
-    getFavoriteGameUids() {
-        return JSON.parse(localStorage.getItem('favorites')) || [];
-    }
-
-    addGameToFavorites(uid) {
-        const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
-        if (!favorites.includes(uid)) {
-            favorites.push(uid);
-            localStorage.setItem('favorites', JSON.stringify(favorites));
-        }
     }
 
     populateControlPane() {
@@ -670,10 +696,17 @@ class PlaybookPage {
 
         const heartButton = document.createElement('button');
         heartButton.classList.add('heart-button');
-        heartButton.innerHTML = '🩶';
+        if (this.localStore.getFavoriteGameUids().includes(gameDetails.uid)) {
+            heartButton.classList.add('favorited');
+        }
+
         heartButton.addEventListener('click', () => {
+            if (heartButton.classList.contains('favorited')) {
+                this.localStore.removeGameFromFavorites(gameDetails.uid);
+            } else {
+                this.localStore.addGameToFavorites(gameDetails.uid);
+            }
             heartButton.classList.toggle('favorited');
-            heartButton.innerHTML = heartButton.classList.contains('favorited') ? '❤️' : '🩶';
         });
 
         divTitle.appendChild(heartButton);
