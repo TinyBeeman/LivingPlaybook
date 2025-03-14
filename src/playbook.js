@@ -150,12 +150,14 @@ class LocalStore {
         this.storage.removeItem(key);
     }
 
-    getGameListNames() {
+    getGameListNames(includeFavorites = true) {
         const gameListNames = [];
         for (let i = 0; i < this.storage.length; i++) {
             const key = this.storage.key(i);
             if (key.startsWith('gamelist-')) {
-                gameListNames.push(key.slice(9));
+                if (includeFavorites || key !== 'gamelist-Favorites') {
+                    gameListNames.push(key.slice(9));
+                }
             }
         }
         return gameListNames;
@@ -444,7 +446,7 @@ class PlaybookPage {
         this.searchTerm = null;
         this.lazyTimer = null;
         this.editMode = false;
-        this.favoriteList = GameList.fromLocalStorage("favorites");
+        this.favoriteList = GameList.fromLocalStorage("Favorites");
     }
 
     onDatabaseLoad() {
@@ -784,6 +786,86 @@ class PlaybookPage {
         return favButton;    
     }
 
+    createAddToListButton(gameDetails) {
+        const addToListButton = document.createElement('button');
+        addToListButton.classList.add('add-to-list-button');
+        addToListButton.classList.add('card-title-button');
+        addToListButton.setAttribute('title', 'Add to List');
+
+        addToListButton.addEventListener('click', () => {
+            // Show pop-up UI to select a list
+            const addToListDiv = document.createElement('div');
+            addToListDiv.classList.add('add-to-list-div');
+            
+            const gameListNames = this.favoriteList.localStorage.getGameListNames(false);
+
+            // Create a list of checkboxes for each game list
+            const listSelect = document.createElement('div');
+            listSelect.classList.add('add-to-list-menu');
+
+
+            // Create a button to add to a new list
+            const newListButton = document.createElement('button');            
+            newListButton.textContent = 'Add to New List...';
+            newListButton.onclick = () => {
+                const newListName = prompt('Enter a name for the new list:');
+                if (newListName) {
+                    const newList = GameList.fromLocalStorage(newListName);
+                    newList.addGame(gameDetails.uid);
+                    newList.saveToLocalStorage();
+                    addToListDiv.remove();
+                }
+            }
+            listSelect.appendChild(newListButton);
+            
+            gameListNames.forEach(listName => {
+                const menuItem = document.createElement('div');
+                menuItem.classList.add('add-to-list-menu-item');
+
+                const listCheckbox = document.createElement('input');
+                listCheckbox.type = 'checkbox';
+                listCheckbox.id = `list-${listName}`;
+                listCheckbox.value = listName;
+                const list = GameList.fromLocalStorage(listName);
+                listCheckbox.dataset.list = listName;
+                listCheckbox.checked = list.includes(gameDetails.uid);
+                const label = document.createElement('label');
+                label.htmlFor = `list-${listName}`;
+                label.textContent = listName;
+                menuItem.appendChild(listCheckbox);
+                menuItem.appendChild(label);
+
+                listCheckbox.addEventListener('change', () => {
+                    if (listCheckbox.checked) {
+                        list.addGame(gameDetails.uid);
+                    } else {
+                        list.removeGame(gameDetails.uid);
+                    }
+                });
+                listSelect.appendChild(menuItem);
+            });
+            addToListDiv.appendChild(listSelect);
+
+            // Add addToListDiv so it pops up as a context menu off of the button
+            document.body.appendChild(addToListDiv);
+            addToListDiv.style.top = `${addToListButton.getBoundingClientRect().top + window.scrollY}px`;
+            addToListDiv.style.left = `${addToListButton.getBoundingClientRect().left + window.scrollX}px`;
+
+            // Remove the addToListDiv when clicking outside of it
+            const removeAddToListDiv = (event) => {
+                if (!addToListDiv.contains(event.target) && event.target !== addToListButton) {
+                    addToListDiv.remove();
+                    document.removeEventListener('click', removeAddToListDiv);
+                }
+            };
+            document.addEventListener('click', removeAddToListDiv);  
+            
+
+        });
+
+        return addToListButton;
+    }
+
     createGameCardDiv(gameDetails, editMode = false) {
 
         function createGameRowContainer(class_name) {
@@ -829,6 +911,16 @@ class PlaybookPage {
         divTitle.textContent = gameDetails.name;
 
         divTitle.appendChild(this.createFavoriteButton(gameDetails));
+        divTitle.appendChild(this.createAddToListButton(gameDetails));
+
+        if (editMode) {
+            const editButton = document.createElement('button');
+            editButton.classList.add('edit-button');
+            editButton.classList.add('card-title-button');
+            editButton.onclick = () => this.showEditOverlay(gameDetails);
+            editButton.setAttribute('title', 'Edit Game');
+            divTitle.appendChild(editButton);
+        }
 
         const divCardContent = document.createElement('div');
         divCardContent.classList.add('game-card-content');
@@ -897,20 +989,6 @@ class PlaybookPage {
         if (gameDetails.createdBy) {
             const divCreatedByRow = createGameRow("createdBy", "createdBy", mdToHtml(gameDetails.createdBy));
             divCardContent.appendChild(divCreatedByRow);
-        }
-
-
-        if (editMode) {
-            const divEditRow = createGameRow("edit", "edit game");
-            const divEditContainer = createGameRowContainer("edit");
-
-            const editButton = document.createElement('button');
-            editButton.textContent = 'Edit';
-            editButton.classList.add('game-edit-button');
-            editButton.onclick = () => this.showEditOverlay(gameDetails);
-            divEditContainer.appendChild(editButton);
-            divEditRow.appendChild(divEditContainer);
-            divCardContent.appendChild(divEditRow);
         }
 
         return divGameCard;

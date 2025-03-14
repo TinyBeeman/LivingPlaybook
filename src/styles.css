@@ -431,20 +431,19 @@ body {
 }
 
 .card-title-button {
-    background: none;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
     font-size: 1.25em;
     transition: color 0.3s ease;
-    /* Shift text down 1 pixel */
     position: relative;
-    top: 1px;
-    /* Add position relative for tooltip positioning */
-    position: relative;
-}
-
-.heart-button {
-    color: grey;
+    width: 20px;
+    height: 20px;
+    padding: 2px 2px;
+    margin-left: 5px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-color: transparent;
 }
 
 /* Add tooltip base style */
@@ -466,13 +465,85 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.heart-button::before {
-    content: "♥";
+.heart-button {
+    background-image: url(./img/icons/heart-gray.svg);
+}
+
+.heart-button:hover {
+    background-image: url(./img/icons/heart-plus.svg);
 }
 
 .heart-button.favorited {
-    color: red;
+    background-image: url(./img/icons/heart-red.svg)
 }
+
+.heart-button.favorited:hover {
+    background-image: url(./img/icons/heart-minus.svg)
+}
+
+.add-to-list-button {
+    background-image: url(./img/icons/add-to-playlist-gray.svg);
+}
+
+.add-to-list-button:hover {
+    background-image: url(./img/icons/add-to-playlist-black.svg);
+}
+
+.edit-button {
+    background-image: url(./img/icons/edit-gray.svg);
+}
+
+.edit-button:hover {
+    background-image: url(./img/icons/edit-black.svg);
+}
+
+.share-button {
+    background-image: url(./img/icons/share-gray.svg);
+}
+
+.share-button:hover {
+    background-image: url(./img/icons/share-black.svg);
+}
+
+.add-to-list-div {
+    position: absolute;
+    z-index: 1000;
+    background-color: white;
+    border: 1px solid black;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    display: block;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.add-to-list-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.add-to-list-menu button {
+    /* inherit font from parent */
+    font-family: inherit;
+    font-size: inherit;
+
+    background: none;
+    border: none;
+    padding: 5px;
+    text-align: left;
+    cursor: pointer;
+    width: 100%;
+}
+
+.menu-checkbox-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
 
 @media print {
     .inner-body {

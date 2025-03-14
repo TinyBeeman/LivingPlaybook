@@ -1,14 +1,23 @@
 ## Version 2025.0002.0000
 
-**Features**
-- Added favorite button (stored in cookie)
-- Added contributors
-- Added ability to add createdBy field to games
+**User-Friendly Features**
+- Added the ability to add favorites and create lists
+    - These are stored locally in a cookie, so they aren't available from another device. I'll eventually add the ability to share lists.
+- Added ability to add createdBy field to games, when we know who created a game.
+- Added contributors (listed at the bottom) and included all the contributors listed in the original living playbook.
+
+**Technical Updates**
 - Added unique identifiers to games, to enable features where links still work when the name of a game is changed.
-- Search now supports
+- Search strings now support...
   - quotes around strings
-  - list:favorites (and other list names for future feature)
-  - Search now supports uid:# (will be useful in the future for linking to games)
+    - yes and
+        - returns games that include both words, anywhere
+    - "yes and"
+        - return games where the two words appear together
+  - list:Favorites
+    - ...and other list names
+  - uid:#
+    - Allows permalinks to games, even if they are renamed, also used when saving lists.
 
 ## Version 2025.0001.0000
 
