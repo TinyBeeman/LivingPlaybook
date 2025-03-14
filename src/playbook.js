@@ -43,6 +43,7 @@ class SearchFilter {
     static fromSearchString(searchString) {
         let filter = new SearchFilter();
         filter.parseString(searchString);
+        console.log(filter);
         return filter;
     }
 
@@ -62,6 +63,11 @@ class SearchFilter {
             return game.uid === parseInt(termLowerCase.slice(4));
         }
 
+        if (termLowerCase.startsWith("list:")) {
+            let gameList = GameList.fromLocalStorage(termLowerCase.slice(5));
+            return gameList.includes(game.uid);
+        }
+
         return Object.entries(game).some(([key, value]) => {
             if (key === 'related')
                 return false;
@@ -76,6 +82,10 @@ class SearchFilter {
     }
 
     parseString(searchString) {
+        this.searchTerms = [];
+        if (!searchString || searchString.trim() === '')
+            return;
+
         // Split the search string into terms, consider any whitespace as a
         // separator unless it's inside quotes.
         const regex = /"([^"]+)"|(\S+)/g;
@@ -90,6 +100,10 @@ class SearchFilter {
     }
 
     matchTerm(game) {
+        if (this.searchTerms.length === 0) {
+            return true;
+        }
+
         return this.searchTerms.every(term => SearchFilter.gameIncludesTerm(game, term));
     }
 
@@ -134,6 +148,17 @@ class LocalStore {
 
     forgetItem(key) {
         this.storage.removeItem(key);
+    }
+
+    getGameListNames() {
+        const gameListNames = [];
+        for (let i = 0; i < this.storage.length; i++) {
+            const key = this.storage.key(i);
+            if (key.startsWith('gamelist-')) {
+                gameListNames.push(key.slice(9));
+            }
+        }
+        return gameListNames;
     }
 }
 
@@ -251,6 +276,7 @@ class Playbook {
     }
 
     searchGames(searchString, tagFilter = null) {
+        console.log("Searching for: " + searchString);
         if (!this.data || !this.data.games) {
             return [];
         }
@@ -485,6 +511,47 @@ class PlaybookPage {
             });
     }
 
+    createTagFilterSection() {
+        // Create tag filter section
+        const tagHeader = document.createElement('div');
+        tagHeader.className = 'collapsible-header';
+        tagHeader.textContent = 'Filter By Tags';
+        
+        const tagContent = document.createElement('div');
+        tagContent.className = 'collapsible-content';
+        
+        const paragraph = document.createElement('p');
+        
+        const tagsContainer = document.createElement('div');
+        tagsContainer.id = 'tags-container';
+        paragraph.appendChild(tagsContainer);
+        
+        const tagInstructions = document.createElement('span');
+        
+        const includeSpan = document.createElement('span');
+        includeSpan.className = 'include-only';
+        includeSpan.textContent = 'Green to include only games with this tag.';
+        tagInstructions.appendChild(includeSpan);
+        
+        const space = document.createTextNode(' ');
+        tagInstructions.appendChild(space);
+        
+        const excludeSpan = document.createElement('span');
+        excludeSpan.className = 'exclude-only';
+        excludeSpan.textContent = 'Red to exclude games with this tag.';
+        tagInstructions.appendChild(excludeSpan);
+        
+        paragraph.appendChild(tagInstructions);
+        tagContent.appendChild(paragraph);
+
+        const tagFilterSection = document.createElement('div');
+        tagFilterSection.id = 'tag-filter-section';
+        tagFilterSection.className = 'tag-filter-section';
+        tagFilterSection.appendChild(tagHeader);
+        tagFilterSection.appendChild(tagContent);
+        return tagFilterSection;
+    }
+
     populateControlPane() {
         const controlPane = document.getElementById('control-pane');
         
@@ -524,42 +591,10 @@ class PlaybookPage {
             });
         }
         
-        // Create tag filter section
-        const tagHeader = document.createElement('div');
-        tagHeader.className = 'collapsible-header';
-        tagHeader.textContent = 'Filter By Tags';
-        
-        const tagContent = document.createElement('div');
-        tagContent.className = 'collapsible-content';
-        
-        const paragraph = document.createElement('p');
-        
-        const tagsContainer = document.createElement('div');
-        tagsContainer.id = 'tags-container';
-        paragraph.appendChild(tagsContainer);
-        
-        const tagInstructions = document.createElement('span');
-        
-        const includeSpan = document.createElement('span');
-        includeSpan.className = 'include-only';
-        includeSpan.textContent = 'Green to include only games with this tag.';
-        tagInstructions.appendChild(includeSpan);
-        
-        const space = document.createTextNode(' ');
-        tagInstructions.appendChild(space);
-        
-        const excludeSpan = document.createElement('span');
-        excludeSpan.className = 'exclude-only';
-        excludeSpan.textContent = 'Red to exclude games with this tag.';
-        tagInstructions.appendChild(excludeSpan);
-        
-        paragraph.appendChild(tagInstructions);
-        tagContent.appendChild(paragraph);
-        
+                
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
-        controlPane.appendChild(tagHeader);
-        controlPane.appendChild(tagContent);
+        controlPane.appendChild(this.createTagFilterSection());
     }
 
 
@@ -719,6 +754,36 @@ class PlaybookPage {
         this.updateUrlFromState();
     }
 
+    createFavoriteButton(gameDetails) {
+        function updateFavoriteButton(favButton) {
+            if (favButton.classList.contains('favorited')) {
+                favButton.setAttribute('title', 'Remove from favorites');
+            } else {
+                favButton.setAttribute('title', 'Add to favorites');
+            }
+        }
+
+        // Add favorite button
+        const favButton = document.createElement('button');
+        favButton.classList.add('heart-button');
+        favButton.classList.add('card-title-button');
+        if (this.favoriteList.includes(gameDetails.uid)) {
+            favButton.classList.add('favorited');
+        }
+        updateFavoriteButton(favButton);
+        favButton.addEventListener('click', () => {
+            if (favButton.classList.contains('favorited')) {
+                this.favoriteList.removeGame(gameDetails.uid);
+            } else {
+                this.favoriteList.addGame(gameDetails.uid);
+            }
+            favButton.classList.toggle('favorited');
+            
+            updateFavoriteButton(favButton);
+        });
+        return favButton;    
+    }
+
     createGameCardDiv(gameDetails, editMode = false) {
 
         function createGameRowContainer(class_name) {
@@ -763,22 +828,7 @@ class PlaybookPage {
         divTitle.classList.add('game-card-title');
         divTitle.textContent = gameDetails.name;
 
-        const heartButton = document.createElement('button');
-        heartButton.classList.add('heart-button');
-        if (this.favoriteList.includes(gameDetails.uid)) {
-            heartButton.classList.add('favorited');
-        }
-
-        heartButton.addEventListener('click', () => {
-            if (heartButton.classList.contains('favorited')) {
-                this.favoriteList.removeGame(gameDetails.uid);
-            } else {
-                this.favoriteList.addGame(gameDetails.uid);
-            }
-            heartButton.classList.toggle('favorited');
-        });
-
-        divTitle.appendChild(heartButton);
+        divTitle.appendChild(this.createFavoriteButton(gameDetails));
 
         const divCardContent = document.createElement('div');
         divCardContent.classList.add('game-card-content');

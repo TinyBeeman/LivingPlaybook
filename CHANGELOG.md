@@ -1,10 +1,14 @@
 ## Version 2025.0002.0000
 
 **Features**
+- Added favorite button (stored in cookie)
 - Added contributors
 - Added ability to add createdBy field to games
 - Added unique identifiers to games, to enable features where links still work when the name of a game is changed.
-- Search now supports quotes around strings and unique identifiers (will be useful in the future)
+- Search now supports
+  - quotes around strings
+  - list:favorites (and other list names for future feature)
+  - Search now supports uid:# (will be useful in the future for linking to games)
 
 ## Version 2025.0001.0000
 

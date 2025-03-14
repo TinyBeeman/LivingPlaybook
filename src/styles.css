@@ -430,13 +430,40 @@ body {
     overflow-y: auto;
 }
 
-.heart-button {
+.card-title-button {
     background: none;
     border: none;
     cursor: pointer;
-    font-size: 1.5em;
-    color: grey;
+    font-size: 1.25em;
     transition: color 0.3s ease;
+    /* Shift text down 1 pixel */
+    position: relative;
+    top: 1px;
+    /* Add position relative for tooltip positioning */
+    position: relative;
+}
+
+.heart-button {
+    color: grey;
+}
+
+/* Add tooltip base style */
+.card-title-button[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: white;
+    color: black;
+    font-size: 0.8rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    z-index: 10;
+    /* Ensure all borders are visible */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .heart-button::before {
