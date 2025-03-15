@@ -9,30 +9,28 @@
       - This would return all games with emotion along with any games that have both attitude and game (because "and" has precendence over "or")...
     - (emotion or attitude) and game
       - This is probably what you wanted: anything with both game and either emotion or attitude.
-  - can put things in quotes
+  - can put phrases in "quotes"
     - yes and
       - This returns any game with both 'yes' and 'and' in it.
     - "yes and"
       - This returns any game where "yes and" appears as a whole string.
-    - can use tag:tag-name
-      - *Example*: tag:audience and not tag:justification
+  - can use tag:tag-name
+    - *Example*: tag:audience and not tag:justification
 - **Added the Ability to Add Favorites and Create Lists**
     - These are stored locally in a cookie, so they aren't available from another device. I'll eventually add the ability to share lists.
 - Added ability to add createdBy field to games, when we know who created a game.
+  - A lot of work needed to document game creators.
 - Added contributors (listed at the bottom) and included all the contributors listed in the original living playbook.
 
-**Technical Updates**
+**Technical Improvements**
 - Added unique identifiers to games, to enable features where links still work when the name of a game is changed.
-- Search strings now support...
-  - quotes around strings
-    - yes and
-        - returns games that include both words, anywhere
-    - "yes and"
-        - return games where the two words appear together
+- Additional search stuff:
   - list:Favorites
     - ...and other list names
   - uid:#
-    - Allows permalinks to games, even if they are renamed, also used when saving lists.
+    - Useful for creating an easy permalink to a game.
+  - id:AnchorName
+    - Obsolete, but still used by related game links.
 
 ## Version 2025.0001.0000
 
