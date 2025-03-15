@@ -852,9 +852,6 @@ class PlaybookPage {
             this.pageMode = PageMode.Uids;
             this.searchTerm = "uids:" + this.uids.join(',');
         }
-        else if (this.dbId == null) {
-            this.dbId = "2001";
-        }
 
         this.editMode = urlParams.get('edit') === '1';
     
