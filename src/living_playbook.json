@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0001",
-    "minor": "0008"
+    "minor": "0010"
   },
   "contributors": [
     "Kris Anderson",
@@ -47,7 +47,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 287,
+  "nextUid": 289,
   "games": [
     {
       "name": "Accepting Game",
@@ -514,7 +514,7 @@
     },
     {
       "name": "Chance of a Lifetime",
-      "description": "A person is picked from the audience and questioned about something he has always wanted to do. He is then brought on-stage where he gets to live that Chance of A Lifetime.",
+      "description": "A person is picked from the audience and questioned about something they have always wanted to do. They are then brought on-stage where they gets to live that Chance of A Lifetime.",
       "tags": [
         "audience",
         "scene",
@@ -621,7 +621,7 @@
     },
     {
       "name": "Crime Endowments",
-      "description": "The offstage improviser is endowed as the head of a criminal organization and gathers with the others to plan or act out the crime. He is endowed with “something to steal”, “a method”, and some wild card such as a code word or a disguise.",
+      "description": "The offstage improviser is endowed as the head of a criminal organization and gathers with the others to plan or act out the crime. They are endowed with “something to steal”, “a method”, and some wild card such as a code word or a disguise.",
       "tags": [
         "endowment",
         "game",
@@ -865,7 +865,7 @@
     },
     {
       "name": "Family Dinner",
-      "description": "Audience member is brought to he stage. The Improvisers ask them to describe their family or workplace and then play a scene with those characters. When the audience member feels the offer made by a character is accurate, they ring a bell. If the action is inaccurate, they ring a buzzer and the improviser must continue to make new offers until the bell is rung.",
+      "description": "Audience member is brought to the stage. The Improvisers ask them to describe their family or workplace and then play a scene with those characters. When the audience member feels the offer made by a character is accurate, they ring a bell. If the action is inaccurate, they ring a buzzer and the improviser must continue to make new offers until the bell is rung.",
       "tags": [
         "audience",
         "bell",
@@ -956,6 +956,18 @@
         "timed"
       ],
       "uid": 67
+    },
+    {
+      "name": "Five Things Endowment",
+      "description": "One improviser leaves the playing area while his partners get 5 activities from the audience. The improviser is then brought back to the stage where he is endowed to perform the 5 activities. The activities should be unrelated BUT the improvisers should attempt to incorporate the activities into a linear narrative. The scene is most successful if the person trying to guess the activities does whatever comes to mind. It is up to the improvisers \"in the know\" to guide the one guessing.",
+      "notes": "This is not a game of charades. Never forget narrative.",
+      "tags": [
+        "endowment",
+        "game",
+        "shortform",
+        "timed"
+      ],
+      "uid": 287
     },
     {
       "name": "Foley Room",
@@ -1489,7 +1501,7 @@
     },
     {
       "name": "Kitty Wants a Corner",
-      "description": "Players stand in a circle, one player stands in the center and is “it”. The player goes to someone in the circle and says, “Kitty wants a corner,” and the player responds, “Go see my neighbor.” Indicating one direction or another. The player then moves to the next person in the circle and the direction and asks the question again to the receive the same response, etc.  While this is taking place, players standing in the circle establish eye contact with each other and then quickly change places. The “Kitty” in the center tries to get to someone's spot before  it is filled. If he succeeds, then the person who didn't make it becomes it.",
+      "description": "Players stand in a circle, one player stands in the center and is “it”. The player goes to someone in the circle and says, “Kitty wants a corner,” and the player responds, “Go see my neighbor.” Indicating one direction or another. The player then moves to the next person in the circle and the direction and asks the question again to the receive the same response, etc.  While this is taking place, players standing in the circle establish eye contact with each other and then quickly change places. The “Kitty” in the center tries to get to someone's spot before  it is filled. If they succeed, then the person who didn't make it becomes it.",
       "tags": [
         "exercise",
         "warm-up"
@@ -1647,7 +1659,7 @@
     },
     {
       "name": "Making Faces",
-      "description": "Three Improvisers sit shoulder to shoulder, the one in the middle is the master, the outer two are the servants. The master is planning a gathering and is giving the servants orders.  He may only speak to one servant at a time. When the master is not looking at them the servants make faces behind his back, trying not to get caught. If the master catches them, he fires them instantly and they are replaced with another servant. The idea is for the servants to take bigger and bigger risks with making faces. If they play it safe the audience will lose interest. They want to see the servants misbehave. The master should play this strictly, showing no mercy, to create a sense of danger.",
+      "description": "Three Improvisers sit shoulder to shoulder, the one in the middle is the master, the outer two are the servants. The master is planning a gathering and is giving the servants orders. They may only speak to one servant at a time. When the master is not looking at them the servants make faces behind his back, trying not to get caught. If the master catches them, he fires them instantly and they are replaced with another servant. The idea is for the servants to take bigger and bigger risks with making faces. If they play it safe the audience will lose interest. They want to see the servants misbehave. The master should play this strictly, showing no mercy, to create a sense of danger.",
       "variations": [
         "Add chairs to the outer servants and continue to play the game that when the person next to you is not looking, you should make faces. You may keep adding people to the outer edge."
       ],
@@ -1669,7 +1681,7 @@
     },
     {
       "name": "Marriage Counselor Endowments",
-      "description": "An improviser leaves the playing area. Two “relationship problems” are gotten from the audience. The offstage improviser returns as a counselor and two fellow players try to endow him to guess at the problems in the relationship by playing a couple in a therapy session.",
+      "description": "An improviser leaves the playing area. Two “relationship problems” are gotten from the audience. The offstage improviser returns as a counselor and two fellow players try to endow the counselor to guess at the problems in the relationship by playing a couple in a therapy session.",
       "tags": [
         "endowment",
         "game",
@@ -1677,7 +1689,10 @@
         "shortform",
         "timed"
       ],
-      "uid": 127
+      "uid": 127,
+      "variations": [
+        "In the popular variant at Unexpected Productions, the counselor and the partner know the other partner's problem (for both partners): the counselor and each partner work together to get the other partner to guess their own problem while also helping their own partner to guess their own."
+      ]
     },
     {
       "name": "Masterpiece Theater",
@@ -1751,6 +1766,20 @@
       "uid": 132
     },
     {
+      "name": "Monarch Game",
+      "description": "One improviser is the monarch and one improviser is the Servant. The two play a scene; if at any time the Monarch is dissatisfied with the Servant, they claps their hands and the Servant instantly dies, replaced by a new Servant. You may wish to time the Servants to see how long they last. This game is for learning how to be a good servant. Being a servant is an acquired skill.",
+      "notes": "If a servant makes mistakes, the Monarch may still enjoy being on stage with them, because they've learned good servant skills. If a servant can keep the monarch involved and interested, then you can keep the audience involved as well. \n\nMonarchs are annoyed by open ended offers like, \"What shall we do now?\" They like specific things to do, \"Time for your tea, just the way you like it, Sir,\" is a more solid offer. Monarchs will sometimes kill for no reason at all, but the game is still worthwhile.",
+      "aliases": [
+        "King Game"
+      ],
+      "tags": [
+        "exercise",
+        "game",
+        "shortform"
+      ],
+      "uid": 288
+    },
+    {
       "name": "Motivational Exit",
       "description": "Three improvisers are onstage. Without speaking, they leave together for the same reason. Go with the first simple offer - don't try to be original. A twitch or throat clearing can evolve into a reason to leave. Beginners will always try to be clever, instead of letting the reason evolve. Don't reject anything, use it to develop a reason to leave. After playing this for a while, introduce dialogue. Improvisers may talk, but can't leave for the reason they're discussing.",
       "tags": [
@@ -1803,7 +1832,7 @@
       "name": "Moving Bodies",
       "description": "Audience members or teammates provide the locomotion for the improvisers on stage. Improvisers may not move any part of their own bodies (except to provide dialogue by moving their mouths). Movers should put the \"puppets\" in challenging positions and puppets should challenge the puppeteers with their verbal endowments.",
       "variations": [
-        "Moving Boxes: The stage chairs, which are often black boxes, become the \"floor\" and a player moves the floor as the improviser walks on it. The mover's ultimate job is to take care of the improviser above and keep him from falling.",
+        "Moving Boxes: The stage chairs, which are often black boxes, become the \"floor\" and a player moves the floor as the improviser walks on it. The mover's ultimate job is to take care of the improviser above and keep them from falling.",
         "Mutual Moving Bodies: Like regular Moving Bodies with one notable exception, all the movers are in the scene. Improviser A moves Improviser B, Improviser B moves Improviser C, Improviser C moves Improviser A. When a character onstage has to move another character, they simply break their position, move the other character, then resume their position to be moved.",
         "Puppets a la Ruse: Moving Bodies with a twist, when the \"puppets\" are moved, they continue to move with their momentum until sent into another direction, or stopped. If the mover taps the puppets arm, that arm begins to move in slow motion. If the arm is not stopped, or tapped in another direction, the movement would begin to affect the whole body. For instance, if tapped outward, the arm would eventually begin pulling the whole body outward in that direction. The whole scene generally takes on a \"weightless\" quality, with puppets floating through the air."
       ],
@@ -1821,7 +1850,7 @@
     },
     {
       "name": "Murder Endowments",
-      "description": "The audience chooses a murderer from the playing team. The murderer then leaves the playing area. The remaining improvisers then get a location, a murder weapon, and a victim. The off stage improviser returns and the scene is played with the partners endowing the murderer with information so that he kills the right person, in the right place, with the right weapon.",
+      "description": "The audience chooses a murderer from the playing team. The murderer then leaves the playing area. The remaining improvisers then get a location, a murder weapon, and a victim. The off stage improviser returns and the scene is played with the partners endowing the murderer with information so that they kill the right person, in the right place, with the right weapon.",
       "tags": [
         "endowment",
         "game",
@@ -1863,7 +1892,7 @@
     },
     {
       "name": "Narrated Scene",
-      "description": "One improviser adopts a style of narrative, title of a story, etc. Narrator tells the story which he may or may not be a part of. Such scenes may be Tall tales, bedtime stories, courtroom testimonies, or any other situation where a story may be narrated.",
+      "description": "One improviser adopts a style of narrative, title of a story, etc. Narrator tells the story which they may or may not be a part of. Such scenes may be tall-tales, bedtime stories, courtroom testimonies, or any other situation where a story may be narrated.",
       "tags": [
         "narrated",
         "scene",
@@ -2117,7 +2146,7 @@
     },
     {
       "name": "Party Quirks",
-      "description": "One improviser leaves the stage and the remaining improvisers get character traits, habits, etc. The offstage improviser returns and a party scene is played. The improviser tries to guess everyone's “party quirks”. When he guesses correctly he throws them out of the party.",
+      "description": "One improviser leaves the stage and the remaining improvisers get character traits, habits, etc. The offstage improviser returns and a party scene is played. The improviser tries to guess everyone's “party quirks”. When they guess correctly, the the guest leaves or is thrown out of the party.",
       "tags": [
         "endowment",
         "game",
@@ -2204,7 +2233,7 @@
       "name": "Pivot",
       "description": "Imagine that the stage is a large disk, balanced on a single point. As an improviser moves around on the stage, the balance of the stage is effected. Improvisers must compensate for each other's movements, making sure that the stage is always balanced.",
       "variations": [
-        "Hero/Chorus: Improvisers stand in a circle (the disc). One of the improvisers steps onto the disc. He is now the HERO. He moves about the disc not speaking but playing his status. When he stops, someone else steps onto the disc to become the new HERO. The old HERO is now the CHORUS. When the New HERO stops, the CHORUS rushes to balance the disc opposite the HERO. At some point, the CHORUS decides not to move. When the CHORUS refuses to move, another HERO steps onto the disc, and the former HEROES join the CHORUS, moving to balance the HERO. Remember, the HERO and CHORUS cannot move at the same time, the chorus must wait for the HERO to stop. The CHORUS will decide not to move without consultation. They simply will not move. If one member of the CHORUS moves, then all must move. The CHORUS, when even in number can spilt into different combinations to balance the stage. For instance, a CHORUS of 6 could split into two groups 3, three groups of 2, six individuals, or remain as 6 person CHORUS. If the CHORUS is an odd number, they must stay whole. It is important to remember that the entire CHORUS is equal to one HERO. The game is about status being given, not taken. You can't be the HERO, if the CHORUS won't let you, and you can't be in the CHORUS till you've been the HERO."
+        "Hero/Chorus: Improvisers stand in a circle (the disc). One of the improvisers steps onto the disc. They are now the HERO. They move about the disc not speaking but playing their status. When they stops, someone else steps onto the disc to become the new HERO. The old HERO is now the CHORUS. When the New HERO stops, the CHORUS rushes to balance the disc opposite the HERO. At some point, the CHORUS decides not to move. When the CHORUS refuses to move, another HERO steps onto the disc, and the former HEROES join the CHORUS, moving to balance the HERO. Remember, the HERO and CHORUS cannot move at the same time, the chorus must wait for the HERO to stop. The CHORUS will decide not to move without consultation. They simply will not move. If one member of the CHORUS moves, then all must move. The CHORUS, when even in number can spilt into different combinations to balance the stage. For instance, a CHORUS of 6 could split into two groups 3, three groups of 2, six individuals, or remain as 6 person CHORUS. If the CHORUS is an odd number, they must stay whole. It is important to remember that the entire CHORUS is equal to one HERO. The game is about status being given, not taken. You can't be the HERO, if the CHORUS won't let you, and you can't be in the CHORUS till you've been the HERO."
       ],
       "tags": [
         "physical",
@@ -3088,7 +3117,7 @@
     },
     {
       "name": "Story Story Die",
-      "description": "Three or four improvisers stand in line on stage. MC/Narrator kneels just downstage of them, facing the line. The MC/Narrator points randomly to individuals in the line. When he points to Improviser 1, Improviser 1 speaks, when he moves to Improviser 2, Improviser 1 stops (mid syllable, if necessary), Improviser 2 picks up the story at exactly the same place. If Improviser 2 stutters, repeats a word or two from Improviser 1, or says something completely incongruous, the audience shouts, \"DIE!\" The improviser dies and a new story begins. This continues until only one person remains.",
+      "description": "Three or four improvisers stand in line on stage. MC/Narrator kneels just downstage of them, facing the line. The MC/Narrator points randomly to individuals in the line. When they points to Improviser 1, Improviser 1 speaks, when they moves to Improviser 2, Improviser 1 stops (mid syllable, if necessary), Improviser 2 picks up the story at exactly the same place. If Improviser 2 stutters, repeats a word or two from Improviser 1, or says something completely incongruous, the audience shouts, \"DIE!\" The improviser dies and a new story begins. This continues until only one person remains.",
       "variations": [
         "Get styles for each one as in Storyline.",
         "Storyline: Story, Story Die, without the deaths. Each improviser may request their own movie style, magazine style, -ism, etc. in which to tell the story. When the finger is pointing at them. The story told is usually a familiar fairy tale."
