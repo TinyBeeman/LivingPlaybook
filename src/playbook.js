@@ -74,9 +74,8 @@ class SearchNode {
     }
 
     static GameIncludesTerm(game, searchTerm) {
-        if (!searchTerm || searchTerm.trim() === '') {
+        if (!searchTerm)
             return true;
-        }
 
         const termLowerCase = searchTerm.toLowerCase();
         return Object.entries(game).some(([key, value]) => {
@@ -281,7 +280,7 @@ class SearchNode {
                 continue;
             
             if (quoted) {
-                searchNodes.push(new SearchNode(SearchOp.Term, match[2].trim()));
+                searchNodes.push(new SearchNode(SearchOp.Term, match[2]));
                 continue;
             }
 
@@ -322,6 +321,11 @@ class SearchNode {
         // Parse the search terms into a tree structure
         return SearchNode.ParseFromFlatList(searchNodes);
     }
+
+    static GetSearchType(searchString) {
+        let rootNode = SearchNode.ParseFromString(searchString);
+        return rootNode.operator;
+    }
 }
 
 class SearchFilter {
@@ -340,7 +344,7 @@ class SearchFilter {
 
     parseString(searchString) {
         this.searchTree = SearchNode.ParseFromString(searchString);
-        console.log(this.searchTree.getTreeAsString());
+        // console.log(this.searchTree.getTreeAsString());
     }
 
     matchTerm(game) {
@@ -406,8 +410,11 @@ class LocalStore {
         for (let i = 0; i < this.storage.length; i++) {
             const key = this.storage.key(i);
             if (key.startsWith('gamelist-')) {
-                if (includeFavorites || key !== 'gamelist-Favorites') {
-                    gameListNames.push(key.slice(9));
+                if (includeFavorites || key !== 'gamelist-favorites') {
+                    let saveObj = this.retrieveItem(key);
+                    if (saveObj) {
+                        gameListNames.push(saveObj.name);
+                    }
                 }
             }
         }
@@ -417,21 +424,36 @@ class LocalStore {
 
 class GameList {
     constructor(name) {
-        this.name = name;
-        // Replace Spaces With Hyphens
-        this.storageName = "gamelist-" + name.replace(/\s+/g, '-');
+        this.name = GameList.SanitizeGameName(name);
         this.localStorage = new LocalStore();
         this.games = [];
     }
 
+    static SanitizeGameName(name) {
+        name = name.replace(/\s+/g, '-');
+        return name.replace(/[^A-Za-z0-9-]+/g, '');
+    }
+
+    getStorageName() {
+        return "gamelist-" + this.name.toLowerCase();
+    }
+
     static fromLocalStorage(name) {
         const gameList = new GameList(name);
-        gameList.games = gameList.localStorage.retrieveArray(gameList.storageName);
+        let saveObj = gameList.localStorage.retrieveItem(gameList.getStorageName());
+        if (saveObj) {
+            gameList.name = saveObj.name;
+            gameList.games = saveObj.games;
+        }
         return gameList;
     }
 
     saveToLocalStorage() {
-        localStorage.setItem(this.storageName, JSON.stringify(this.games));
+        let saveObj = {
+            name: this.name,
+            games: this.games
+        };
+        localStorage.setItem(this.getStorageName(), JSON.stringify(saveObj));
     }
 
      // Add static method to create a GameList from an array
@@ -454,6 +476,11 @@ class GameList {
 
     getGames() {
         return this.games;
+    }
+
+    static GetAllGameListNames() {
+        const localStore = new LocalStore();
+        return localStore.getGameListNames();
     }
 
 }
@@ -552,8 +579,7 @@ class Playbook {
 
                 return true;
             })
-        .map(game => game.name)
-        .sort((a, b) => a.localeCompare(b));
+        .sort((a, b) => a.name.localeCompare(b.name));
     }
 
     getNextUid(inc=true) {
@@ -698,6 +724,7 @@ class PlaybookPage {
         this.lazyTimer = null;
         this.editMode = false;
         this.favoriteList = GameList.fromLocalStorage("Favorites");
+        this.currentGames = [];
     }
 
     onDatabaseLoad() {
@@ -782,11 +809,11 @@ class PlaybookPage {
         const tagContent = document.createElement('div');
         tagContent.className = 'collapsible-content';
         
-        const paragraph = document.createElement('p');
+        // const paragraph = document.createElement('p');
         
         const tagsContainer = document.createElement('div');
         tagsContainer.id = 'tags-container';
-        paragraph.appendChild(tagsContainer);
+        tagContent.appendChild(tagsContainer);
         
         const tagInstructions = document.createElement('span');
         
@@ -803,8 +830,8 @@ class PlaybookPage {
         excludeSpan.textContent = 'Red to exclude games with this tag.';
         tagInstructions.appendChild(excludeSpan);
         
-        paragraph.appendChild(tagInstructions);
-        tagContent.appendChild(paragraph);
+        //paragraph.appendChild(tagInstructions);
+        tagContent.appendChild(tagInstructions);
 
         const tagFilterSection = document.createElement('div');
         tagFilterSection.id = 'tag-filter-section';
@@ -812,6 +839,79 @@ class PlaybookPage {
         tagFilterSection.appendChild(tagHeader);
         tagFilterSection.appendChild(tagContent);
         return tagFilterSection;
+    }
+
+    populateListsDiv(listsDiv = null) {
+        if (listsDiv == null)
+            listsDiv = document.getElementById('lists-container');
+
+        let listName = null;
+        console.log(this.searchTerm);
+        if (this.searchTerm && this.searchTerm.startsWith("list:")) {
+            if (SearchNode.GetSearchType(this.searchTerm) == SearchOp.List) {
+                listName = this.searchTerm.slice(5);
+            }
+        }
+        listsDiv.innerHTML = '';
+
+        GameList.GetAllGameListNames().forEach(name => {
+            const button = document.createElement('button');
+            button.className = 'tag-button';
+            button.textContent = name;
+            if (listName != null && name.toLowerCase() === listName.toLowerCase()) {
+                button.classList.add('checked');
+            }
+
+            button.addEventListener('click', () => {
+                const game = GameList.fromLocalStorage(name);
+                if (button.classList.contains('checked')) {
+                    this.updateSearchString("", true);
+                }
+                else
+                {
+                    this.updateSearchString("list:" + name, true);
+                }
+                this.populateListsDiv(listsDiv);
+            });
+            listsDiv.appendChild(button);
+        });
+    }
+
+    createListSection() {
+        const listHeader = document.createElement('div');
+        listHeader.className = 'collapsible-header';
+        listHeader.textContent = 'Lists and Favorites';
+
+        const listContent = document.createElement('div');
+        listContent.className = 'collapsible-content';
+
+        const listsContainer = document.createElement('div');
+        listsContainer.id = 'lists-container';
+        this.populateListsDiv(listsContainer);
+        listContent.appendChild(listsContainer);
+
+        const createListFromCurrentBtn = document.createElement('button'); 
+        createListFromCurrentBtn.className = 'tag-button';
+        createListFromCurrentBtn.textContent = 'Create List From Current Games';
+
+        createListFromCurrentBtn.addEventListener('click', () => {
+            const listName = prompt('Enter a name for the new list:');
+            if (listName) {
+                const gameList = new GameList(listName);
+                gameList.games = this.currentGames.map(game => game.uid);
+                gameList.saveToLocalStorage();
+                this.populateListsDiv();
+            }
+        });
+
+        listContent.appendChild(createListFromCurrentBtn);
+
+        const listSection = document.createElement('div');
+        listSection.id = 'list-section';
+        listSection.className = 'list-section';
+        listSection.appendChild(listHeader);
+        listSection.appendChild(listContent);
+        return listSection;
     }
 
     populateControlPane() {
@@ -857,6 +957,7 @@ class PlaybookPage {
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
         controlPane.appendChild(this.createTagFilterSection());
+        controlPane.appendChild(this.createListSection());
     }
 
 
@@ -906,6 +1007,15 @@ class PlaybookPage {
         });
     }
 
+    updateSearchString(searchString, updateGames=false)
+    {
+        const searchBox = document.getElementById('search-box');
+        searchBox.value = searchString;
+        this.searchTerm = searchString;
+        if (updateGames)
+            this.populateGameList();
+    }
+
     describeSearch(count) {
         const yesTags = this.filter.getYesTags();
         const noTags = this.filter.getNoTags();
@@ -935,8 +1045,8 @@ class PlaybookPage {
     }
 
     populateGameList() {
-        const games = this.playbook.searchGames(this.searchTerm, this.filter);
-        const searchDescription = this.describeSearch(games.length);
+        this.currentGames = this.playbook.searchGames(this.searchTerm, this.filter);
+        const searchDescription = this.describeSearch(this.currentGames.length);
         const searchDescriptionElement = document.getElementById('search-desc');
             searchDescriptionElement.textContent = searchDescription;
 
@@ -944,10 +1054,9 @@ class PlaybookPage {
         gamesContainer.innerHTML = '';
     
         let lastLetter = '';
-        games.forEach(name => {
-            const gameDetails = this.playbook.getGameDetailsByName(name);
-            if (name[0].toLowerCase() !== lastLetter) {
-                lastLetter = name[0].toLowerCase();
+        this.currentGames.forEach(gameDetails => {
+            if (gameDetails.name[0].toLowerCase() !== lastLetter) {
+                lastLetter = gameDetails.name[0].toLowerCase();
                 const divLetter = document.createElement('div');
                 divLetter.classList.add('game-letter-rule-line');
                 divLetter.textContent = lastLetter.toUpperCase();

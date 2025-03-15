@@ -137,6 +137,7 @@ body {
 .control-pane {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
 .search-container {
@@ -145,7 +146,6 @@ body {
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-bottom: 20px;
 }
 
 .search-textbox {
@@ -363,7 +363,7 @@ body {
 
 .include-only {
     font-size: var(--font-size-game-tag);
-    color: var(----padding-page);
+    color: var(--include-tag-bg);
 }
 
 .exclude-only {
