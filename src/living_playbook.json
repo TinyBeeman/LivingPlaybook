@@ -947,17 +947,6 @@
       "uid": 66
     },
     {
-      "name": "Five Things",
-      "description": "One improviser leaves the playing area while his partners get 5 activities from the audience. Improviser is then brought back to the stage where he is endowed to perform the 5 activities. The activities should be unrelated BUT the improvisers should attempt to incorporate the activities into a linear narrative. The scene is most successful if the person trying to guess the activities does whatever comes to mind. It is up to the improvisers \"in the know\" to guide the one guessing. Again, this is not a game of charades. Never forget narrative.",
-      "tags": [
-        "endowment",
-        "game",
-        "shortform",
-        "timed"
-      ],
-      "uid": 67
-    },
-    {
       "name": "Five Things Endowment",
       "description": "One improviser leaves the playing area while his partners get 5 activities from the audience. The improviser is then brought back to the stage where he is endowed to perform the 5 activities. The activities should be unrelated BUT the improvisers should attempt to incorporate the activities into a linear narrative. The scene is most successful if the person trying to guess the activities does whatever comes to mind. It is up to the improvisers \"in the know\" to guide the one guessing.",
       "notes": "This is not a game of charades. Never forget narrative.",
@@ -967,7 +956,7 @@
         "shortform",
         "timed"
       ],
-      "uid": 287
+      "uid": 67
     },
     {
       "name": "Foley Room",
@@ -1490,16 +1479,6 @@
       "uid": 112
     },
     {
-      "name": "King Game",
-      "description": "One improviser is the King and one improviser is the Servant. The two play a scene; if at any time the King is dissatisfied with the Servant, he claps his hands and the Servant instantly dies, replaced by a new Servant. You may wish to time the Servants to see how long they last. This game is for learning how to be a good servant. You assume most people will put up with you, but being a servant is an acquired skill. If as servant you make mistakes, but the king enjoys being on stage with you, then you're learning good servant skills. If you can keep the person onstage involved, then you can keep the audience involved as well. Kings are annoyed by open ended offers like, \"What shall we do now?\" They like specific things to do, \"Time for your tea, just the way you like it, Sir,\" is a more solid offer. Kings will sometimes kill for no reason at all, but the game is still worthwhile.",
-      "tags": [
-        "exercise",
-        "game",
-        "shortform"
-      ],
-      "uid": 113
-    },
-    {
       "name": "Kitty Wants a Corner",
       "description": "Players stand in a circle, one player stands in the center and is “it”. The player goes to someone in the circle and says, “Kitty wants a corner,” and the player responds, “Go see my neighbor.” Indicating one direction or another. The player then moves to the next person in the circle and the direction and asks the question again to the receive the same response, etc.  While this is taking place, players standing in the circle establish eye contact with each other and then quickly change places. The “Kitty” in the center tries to get to someone's spot before  it is filled. If they succeed, then the person who didn't make it becomes it.",
       "tags": [
@@ -1777,7 +1756,7 @@
         "game",
         "shortform"
       ],
-      "uid": 288
+      "uid": 113
     },
     {
       "name": "Motivational Exit",
