@@ -17,7 +17,12 @@
   - can use tag:tag-name
     - *Example*: tag:audience and not tag:justification
 - **Added the Ability to Add Favorites and Create Lists**
-    - These are stored locally in a cookie, so they aren't available from another device. I'll eventually add the ability to share lists.
+    - Each game has a heart icon that can used to select favorites.
+    - Favorites shows up as a list under the new Lists and Favorites section.
+    - You can also add a game to a new or existing list.
+    - You can also create a list from a search result.
+    - You can use lists in search via the "list:name-of-list" search term.
+    - You can share a list from the "lists and favorites" section, which will copy a URL to your clipboard that you can share or bookmark.
 - Added ability to add createdBy field to games, when we know who created a game.
   - A lot of work needed to document game creators.
 - Added contributors (listed at the bottom) and included all the contributors listed in the original living playbook.

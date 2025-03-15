@@ -224,6 +224,7 @@ body {
 .tag-list {
     margin-bottom: 20px;
 }
+
 .tag-button {
     padding: 5px 10px;
     margin: 5px;
@@ -239,6 +240,48 @@ body {
     background-color: var(--exclude-tag-bg);
     color: white;
 }
+
+.lists-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.lists-container .row {
+    display: flex;
+    flex-direction: row;
+}
+
+.list-button {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size:contain;
+    border-radius: 5px;
+    border: 1px solid var(--unsel-tag-bg);
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px 10px;
+    /* Make aspect ration 1:1 */
+    width: 30px;
+    height: 30px;
+}
+
+.list-delete-button {
+    background-image: url(./img/icons/trash-red.svg);
+}
+
+.list-delete-button:hover {
+    background-image: url(./img/icons/trash-black.svg);
+}
+
+.list-share-button {
+    background-image: url(./img/icons/send-to-black.svg);
+}
+
+.list-share-button:hover {
+    background-image: url(./img/icons/send-to-blue.svg);
+}
+
+
 .game-list {
     margin-top: 20px;
 }
@@ -498,11 +541,11 @@ body {
 }
 
 .share-button {
-    background-image: url(./img/icons/share-gray.svg);
+    background-image: url(./img/icons/send-to-gray.svg);
 }
 
 .share-button:hover {
-    background-image: url(./img/icons/share-black.svg);
+    background-image: url(./img/icons/send-to-blue.svg);
 }
 
 .add-to-list-div {

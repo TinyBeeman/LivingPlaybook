@@ -1,3 +1,58 @@
+class Util {
+
+    static BytesToBase64(bytes) {
+        const binString = String.fromCodePoint(...bytes);
+        return btoa(binString);
+    }
+
+    static UrlEncodeByteArray(bytes) {
+        return encodeURIComponent(String.fromCharCode(...bytes));
+    }
+
+    static EncodeIntegerSet(setInt) {
+        // Let's assume setInt is a Set of integers which are > 0 and < 2048.
+        // We can use a bitmask to encode the set into a string.
+        // The bitmask will be an 8-bit integer, so we can use a single integer
+        // to represent each 8-number chunk of the set.
+        
+        // Get the max value in the set
+        const maxVal = Math.max(...setInt);
+        // Calculate the number of bitmasks needed
+        const numBitmasks = Math.ceil((maxVal + 1) / 8);
+        
+        // Create a bitmask array of 8-bit integers
+        let bitmasks = [];
+        for (let range = 0; range < numBitmasks; range++) {
+            let i = range * 8;
+            let mask = 0;
+            for (let j = 0; j < 8; j++) {
+                if (setInt.has(i + j)) {
+                    mask |= (1 << j);
+                }
+            }
+            bitmasks.push(mask);
+        }
+
+        return encodeURIComponent(String.fromCharCode(...bitmasks));
+    }
+
+    static DecodeIntegerSet(encodedString) {
+        const decodedString = decodeURIComponent(encodedString);
+        const bitmasks = Array.from(decodedString).map(char => char.charCodeAt(0));
+
+        let setInt = new Set();
+        bitmasks.forEach((mask, index) => {
+            for (let j = 0; j < 8; j++) {
+                if (mask & (1 << j)) {
+                    setInt.add(index * 8 + j);
+                }
+            }
+        });
+
+        return setInt;
+    }
+}
+
 function mdToHtml(markdown) {
     if (typeof marked !== 'undefined') {
         if (markdown.indexOf('\n') === -1) {
@@ -45,6 +100,7 @@ const SearchOp = {
     Tag: "tag",
     Id: "id",
     Uid: "uid",
+    Uids: "uids",
     StartGroup: "startGroup",
     EndGroup: "endGroup"
 };
@@ -62,7 +118,8 @@ class SearchNode {
             || this.operator === SearchOp.List
             || this.operator === SearchOp.Tag
             || this.operator === SearchOp.Id
-            || this.operator === SearchOp.Uid;
+            || this.operator === SearchOp.Uid
+            || this.operator === SearchOp.Uids;
     }
 
     isBinary() {
@@ -126,6 +183,10 @@ class SearchNode {
                 if (this.left == null || this.left === '')
                     return false;
                 return Number.parseInt(game.uid) === Number.parseInt(this.left);
+            case SearchOp.Uids:
+                if (this.left == null || this.left === '')
+                    return false;
+                return this.left.includes(game.uid);
             default:
                 return true;
         }
@@ -310,6 +371,8 @@ class SearchNode {
                         searchNodes.push(new SearchNode(SearchOp.Id, term.slice(3)));
                     } else if (term.startsWith('uid:')) {
                         searchNodes.push(new SearchNode(SearchOp.Uid, parseInt(term.slice(4))));
+                    } else if (term.startsWith('uids:')) {
+                        searchNodes.push(new SearchNode(SearchOp.Uids, term.slice(5).split(',').map(uid => parseInt(uid))));
                     } else {
                         searchNodes.push(new SearchNode(SearchOp.Term, term));
                     }
@@ -772,7 +835,11 @@ class PlaybookPage {
         this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
         this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
         this.uid = urlParams.get('uid');
-        this.list = urlParams.get('list');
+        this.uids = urlParams.get('uids');
+        if (this.uids) {
+            let set = Util.DecodeIntegerSet(this.uids);
+            this.uids = Array.from(set);
+        }
 
         if (this.searchTerm != null) {
             this.pageMode = PageMode.SearchFilter;
@@ -781,8 +848,12 @@ class PlaybookPage {
             this.pageMode = PageMode.Uid;
             this.searchTerm = "uid:" + this.uid;
         }
-        else if (this.list != null) {
-            this.pageMode = PageMode.List;
+        else if (this.uids != null) {
+            this.pageMode = PageMode.Uids;
+            this.searchTerm = "uids:" + this.uids.join(',');
+        }
+        else if (this.dbId == null) {
+            this.dbId = "2001";
         }
 
         this.editMode = urlParams.get('edit') === '1';
@@ -854,27 +925,92 @@ class PlaybookPage {
         }
         listsDiv.innerHTML = '';
 
-        GameList.GetAllGameListNames().forEach(name => {
-            const button = document.createElement('button');
-            button.className = 'tag-button';
-            button.textContent = name;
-            if (listName != null && name.toLowerCase() === listName.toLowerCase()) {
-                button.classList.add('checked');
-            }
+        const listNames = GameList.GetAllGameListNames();
+        // Move "Favorites" to the front of the list
+        const favoritesIndex = listNames.indexOf("Favorites");
+        if (favoritesIndex > -1) {
+            listNames.splice(favoritesIndex, 1);
+            listNames.unshift("Favorites");
+        }
 
-            button.addEventListener('click', () => {
-                const game = GameList.fromLocalStorage(name);
-                if (button.classList.contains('checked')) {
-                    this.updateSearchString("", true);
+        if (listNames.length === 0) {
+            const listRow = document.createElement('div');
+            listRow.className = 'row';
+            listsDiv.appendChild(listRow);
+
+            const noListsMessage = document.createElement('div');
+            noListsMessage.className = 'no-lists-message';
+            noListsMessage.textContent = "You don't have any lists or favorited games. Click some 💖's, add a game to a new list, or create a list from a search using the button below.";
+            listRow.appendChild(noListsMessage);
+            return;
+        }
+        else {
+            listNames.forEach(name => {
+                const listRow = document.createElement('div');
+                listRow.className = 'row';
+                listsDiv.appendChild(listRow);
+
+                const listButton = document.createElement('button');
+                listButton.className = 'tag-button';
+                listButton.textContent = name;
+                if (listName != null && name.toLowerCase() === listName.toLowerCase()) {
+                    listButton.classList.add('checked');
                 }
-                else
-                {
-                    this.updateSearchString("list:" + name, true);
+
+                listButton.addEventListener('click', () => {
+                    const game = GameList.fromLocalStorage(name);
+                    if (listButton.classList.contains('checked')) {
+                        this.updateSearchString("", true);
+                    }
+                    else
+                    {
+                        this.updateSearchString("list:" + name, true);
+                    }
+                    this.populateListsDiv(listsDiv);
+                });
+
+
+                listRow.appendChild(listButton);
+                if (name !== "Favorites") {
+                    const deleteListButton = document.createElement('button');
+                    deleteListButton.classList.add('list-delete-button');
+                    deleteListButton.classList.add('list-button');
+                    deleteListButton.attributes['title'] = 'Delete List';
+                    deleteListButton.addEventListener('click', (event) => {
+                        event.stopPropagation();
+                        const gameList = GameList.fromLocalStorage(name);
+
+                        // Prompt for confirmation before deleting
+                        if (!confirm(`Are you sure you want to delete the list "${name}"?`))
+                            return;
+                        gameList.localStorage.forgetItem(gameList.getStorageName());
+                        this.populateListsDiv(listsDiv);
+                    });
+                    listRow.appendChild(deleteListButton);
                 }
-                this.populateListsDiv(listsDiv);
+
+                const shareListButton = document.createElement('button');
+                shareListButton.classList.add('list-share-button');
+                shareListButton.classList.add('list-button');
+                shareListButton.attributes['title'] = 'Share List';
+                shareListButton.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    const gameList = GameList.fromLocalStorage(name);
+                    
+                    let gamesSet = new Set(gameList.games);
+                    // Encode gamesSet to a UTF-8 string
+                    const gamesSetString = Util.EncodeIntegerSet(gamesSet);
+
+                    const shareLink = `${window.location.origin}${window.location.pathname}?${this.dbId ? 'dbId=' + this.dbId + '&' : ''}uids=${gamesSetString}`;
+                    navigator.clipboard.writeText(shareLink).then(() => {
+                        alert(`Shared link copied to clipboard: ${shareLink}`);
+                    }).catch(err => {
+                        console.error('Error copying link: ', err);
+                    });
+                });
+                listRow.appendChild(shareListButton);
             });
-            listsDiv.appendChild(button);
-        });
+        }
     }
 
     createListSection() {
@@ -886,6 +1022,7 @@ class PlaybookPage {
         listContent.className = 'collapsible-content';
 
         const listsContainer = document.createElement('div');
+        listsContainer.className = 'lists-container';
         listsContainer.id = 'lists-container';
         this.populateListsDiv(listsContainer);
         listContent.appendChild(listsContainer);
@@ -1150,6 +1287,7 @@ class PlaybookPage {
             } else {
                 this.favoriteList.addGame(gameDetails.uid);
             }
+            this.populateListsDiv();
             favButton.classList.toggle('favorited');
             
             updateFavoriteButton(favButton);
@@ -1232,6 +1370,7 @@ class PlaybookPage {
             document.addEventListener('click', removeAddToListDiv);  
             
 
+
         });
 
         return addToListButton;
@@ -1250,7 +1389,7 @@ class PlaybookPage {
             shareDiv.classList.add('share-div');
             const shareLink = document.createElement('input');
             shareLink.type = 'text';
-            shareLink.value = `${window.location.origin}?${this.dbId ? 'dbId=' + this.dbId : ''}&uid=${gameDetails.uid}`;
+            shareLink.value = `${window.location.origin}${window.location.pathname}?${this.dbId ? 'dbId=' + this.dbId + '&' : ''}uid=${gameDetails.uid}`;
             shareLink.readOnly = true;
             shareDiv.appendChild(shareLink);
 
