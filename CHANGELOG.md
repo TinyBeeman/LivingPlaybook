@@ -32,6 +32,71 @@
   - id:AnchorName
     - Obsolete, but still used by related game links.
 
+**Games Added**
+- The Moon (Split off from Pivot)
+
+**Games Updated**
+- Advance and Expand
+  - Tags Updated
+- Before or After
+  - Tags Updated
+- Black Box
+  - Tags Updated
+- Chance of a Lifetime
+  - Description Updated
+- Consciences
+  - Tags Updated
+- Crime Endowments
+  - Description Updated
+- Experts
+  - Related Updated
+- Family Dinner
+  - Description Updated
+- Famous Person Endowments
+  - Description Updated
+  - Notes Added
+- Five Things Endowment
+  - Renamed from 'Five Things' to 'Five Things Endowment'
+  - Description Updated
+  - Notes Added
+- Gibberish Reunion
+  - Tags Updated
+- Monarch Game
+  - Renamed from 'King Game' to 'Monarch Game'
+  - Description Updated
+  - Notes Added
+  - Aliases Added
+- Kitty Wants a Corner
+  - Description Updated
+- List Endowment
+  - Aliases Updated
+- Making Faces
+  - Description Updated
+- Marriage Counselor Endowments
+  - Description Updated
+  - Variations Added
+- Moving Bodies
+  - Variations Updated
+- Murder Endowments
+  - Description Updated
+- Narrated Scene
+  - Description Updated
+- Party Quirks
+  - Description Updated
+- Pecking Order
+  - Createdby Added
+- Pivot
+  - Variations Updated
+- Rapid Musicals
+  - Createdby Added
+  - Tags Updated
+- Rapid Scenes
+  - Createdby Added
+- Sideways Scene
+  - Tags Updated
+- Story Story Die
+  - Description Updated
+
 ## Version 2025.0001.0000
 
 **Games Added**
