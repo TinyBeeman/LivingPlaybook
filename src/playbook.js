@@ -73,24 +73,60 @@ class SearchNode {
         return this.operator === SearchOp.Not;
     }
 
+    static GameIncludesTerm(game, searchTerm) {
+        if (!searchTerm || searchTerm.trim() === '') {
+            return true;
+        }
+
+        const termLowerCase = searchTerm.toLowerCase();
+        return Object.entries(game).some(([key, value]) => {
+            if (key === 'related'
+                || key === 'uid')
+                return false;
+
+            if (Array.isArray(value)) {
+                return value.some(item => item.toLowerCase().includes(termLowerCase));
+            } else if (typeof value === 'string') {
+                return value.toLowerCase().includes(termLowerCase);
+            }
+            return false;
+        });
+    }
+
     match(game) {
         switch (this.operator) {
             case SearchOp.And:
+                // If an argument is left out, treat it as true, so the other operator is what counts.
                 return (this.left?.match(game) ?? true) && (this.right?.match(game) ?? true);
             case SearchOp.Or:
-                return (this.left?.match(game) ?? true) || (this.right?.match(game) ?? true);
+                // If an argument is left out, treat it as false, so the other operator is what counts.
+                return (this.left?.match(game) ?? false) || (this.right?.match(game) ?? false);
             case SearchOp.Not:
-                return !this.left.match(game);
+                // If the argument is left out, return false.
+                return !(this.left?.match(game) ?? true);
             case SearchOp.Term:
-                return SearchFilter.gameIncludesTerm(game, this.left);
+                // An empty term is like a space, so it matches everything.
+                if (this.left == null || this.left === '')
+                    return true;
+                return SearchNode.GameIncludesTerm(game, this.left);
             case SearchOp.List:
+                // Empty list: no match.
+                if (this.left == null || this.left === '')
+                    return false;
                 return GameList.fromLocalStorage(this.left).includes(game.uid);
             case SearchOp.Tag:
-                return game.tags.includes(this.left);
+                // Empty tag?: no match.
+                if (this.left == null || this.left === '')
+                    return false;
+                return game.tags?.includes(this.left) ?? false;
             case SearchOp.Id:
+                if (this.left == null || this.left === '')
+                    return false;
                 return game.anchorName === this.left;
             case SearchOp.Uid:
-                return game.uid === this.left;
+                if (this.left == null || this.left === '')
+                    return false;
+                return Number.parseInt(game.uid) === Number.parseInt(this.left);
             default:
                 return true;
         }
@@ -301,25 +337,6 @@ class SearchFilter {
         return filter;
     }
 
-    static gameIncludesTerm(game, searchTerm) {
-        if (!searchTerm || searchTerm.trim() === '') {
-            return true;
-        }
-
-        const termLowerCase = searchTerm.toLowerCase();
-        return Object.entries(game).some(([key, value]) => {
-            if (key === 'related'
-                || key === 'uid')
-                return false;
-
-            if (Array.isArray(value)) {
-                return value.some(item => item.toLowerCase().includes(termLowerCase));
-            } else if (typeof value === 'string') {
-                return value.toLowerCase().includes(termLowerCase);
-            }
-            return false;
-        });
-    }
 
     parseString(searchString) {
         this.searchTree = SearchNode.ParseFromString(searchString);

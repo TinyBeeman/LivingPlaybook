@@ -1,7 +1,22 @@
 ## Version 2025.0002.0000
 
 **User-Friendly Features**
-- Added the ability to add favorites and create lists
+- **Major Improvements To Search**
+  - can use 'and', 'or', and 'not' between words
+    - *Example*: justification and not animal
+  - can use parenthesis
+    - emotion or attitude and game
+      - This would return all games with emotion along with any games that have both attitude and game (because "and" has precendence over "or")...
+    - (emotion or attitude) and game
+      - This is probably what you wanted: anything with both game and either emotion or attitude.
+  - can put things in quotes
+    - yes and
+      - This returns any game with both 'yes' and 'and' in it.
+    - "yes and"
+      - This returns any game where "yes and" appears as a whole string.
+    - can use tag:tag-name
+      - *Example*: tag:audience and not tag:justification
+- **Added the Ability to Add Favorites and Create Lists**
     - These are stored locally in a cookie, so they aren't available from another device. I'll eventually add the ability to share lists.
 - Added ability to add createdBy field to games, when we know who created a game.
 - Added contributors (listed at the bottom) and included all the contributors listed in the original living playbook.
