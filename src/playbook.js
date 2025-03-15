@@ -34,16 +34,96 @@ class TagFilter {
     }
 }
 
+// Enum for page mode
+const SearchOp = {
+    Everything: "everything",
+    Term: "term",
+    And: "and",
+    Or: "or",
+    Not: "not",
+    List: "list",
+    Tag: "tag",
+    Id: "id",
+    Uid: "uid",
+    StartGroup: "startGroup",
+    EndGroup: "endGroup"
+};
+
+
+class SearchNode {
+    constructor(operator, left=null, right=null) {
+        this.left = left;
+        this.right = right;
+        this.operator = operator;
+    }
+
+    isTerminal() {
+        return this.operator === SearchOp.Term
+            || this.operator === SearchOp.List
+            || this.operator === SearchOp.Tag
+            || this.operator === SearchOp.Id
+            || this.operator === SearchOp.Uid;
+    }
+
+    isBinary() {
+        return this.operator === SearchOp.And || this.operator === SearchOp.Or;
+    }
+
+    isUnary() {
+        return this.operator === SearchOp.Not;
+    }
+
+    match(game) {
+        switch (this.operator) {
+            case SearchOp.And:
+                return (this.left?.match(game) ?? true) && (this.right?.match(game) ?? true);
+            case SearchOp.Or:
+                return (this.left?.match(game) ?? true) || (this.right?.match(game) ?? true);
+            case SearchOp.Not:
+                return !this.left.match(game);
+            case SearchOp.Term:
+                return SearchFilter.gameIncludesTerm(game, this.left);
+            case SearchOp.List:
+                return GameList.fromLocalStorage(this.left).includes(game.uid);
+            case SearchOp.Tag:
+                return game.tags.includes(this.left);
+            case SearchOp.Id:
+                return game.anchorName === this.left;
+            case SearchOp.Uid:
+                return game.uid === this.left;
+            default:
+                return true;
+        }
+    }
+
+    getTreeAsString() {
+        if (this.isTerminal()) {
+            return `(${this.operator}: "${this.left}")`;
+        }
+        else {
+            if (this.right != null)
+                return `(${this.operator}: ${this.left.getTreeAsString()}, ${this.right.getTreeAsString()})`;
+            else if (this.left != null) {
+                console.log(this);
+                console.log(this.left);
+                return `(${this.operator}: ${this.left.getTreeAsString()})`;
+            }
+            else
+                return `[${this.operator}]` // Everything or StartGroup
+        }
+    }
+}
+
 class SearchFilter {
     constructor() {
         this.searchTerms = [];
         this.tagFilter = new TagFilter();
+        this.searchTree = new SearchNode(SearchOp.Everything);
     }
 
     static fromSearchString(searchString) {
         let filter = new SearchFilter();
         filter.parseString(searchString);
-        console.log(filter);
         return filter;
     }
 
@@ -53,23 +133,9 @@ class SearchFilter {
         }
 
         const termLowerCase = searchTerm.toLowerCase();
-        // Check to see if term starts with id:
-        if (termLowerCase.startsWith("id:")) {
-            return game.anchorName === termLowerCase.slice(3);
-        }
-
-        // Check to see if term starts with uid:
-        if (termLowerCase.startsWith("uid:")) {
-            return game.uid === parseInt(termLowerCase.slice(4));
-        }
-
-        if (termLowerCase.startsWith("list:")) {
-            let gameList = GameList.fromLocalStorage(termLowerCase.slice(5));
-            return gameList.includes(game.uid);
-        }
-
         return Object.entries(game).some(([key, value]) => {
-            if (key === 'related')
+            if (key === 'related'
+                || key === 'uid')
                 return false;
 
             if (Array.isArray(value)) {
@@ -82,29 +148,208 @@ class SearchFilter {
     }
 
     parseString(searchString) {
-        this.searchTerms = [];
         if (!searchString || searchString.trim() === '')
             return;
 
         // Split the search string into terms, consider any whitespace as a
         // separator unless it's inside quotes.
-        const regex = /"([^"]+)"|(\S+)/g;
+        // Parentheses should be treated as individual terms.
+        // Create a list of search nodes from the terms
+        let searchNodes = [];
+
+        const regex = /(?:\s+|^)(?:"([^"]+)"|(\S+))/g;
         let match;
         while ((match = regex.exec(searchString)) !== null) {
-            if (match[1]) {
-                this.searchTerms.push(match[1]);
-            } else {
-                this.searchTerms.push(match[2]);
+            let term = match[1] || match[2];
+            term = term.trim();
+            let quoted = match[1] !== undefined;
+
+            if (term === '')
+                continue;
+            
+            if (quoted) {
+                searchNodes.push(new SearchNode(SearchOp.Term, term));
+                continue;
             }
+
+            switch (term.toLowerCase()) {
+                case 'and':
+                    searchNodes.push(new SearchNode(SearchOp.And));
+                    break;
+                case 'or':
+                    searchNodes.push(new SearchNode(SearchOp.Or));
+                    break;
+                case 'not':
+                    searchNodes.push(new SearchNode(SearchOp.Not));
+                    break;
+                case '(':
+                    searchNodes.push(new SearchNode(SearchOp.StartGroup));
+                    break;
+                case ')':
+                    searchNodes.push(new SearchNode(SearchOp.EndGroup));
+                    break;
+                default:
+                    if (term.startsWith('list:')) {
+                        searchNodes.push(new SearchNode(SearchOp.List, term.slice(5)));
+                    } else if (term.startsWith('tag:')) {
+                        const tag = term.slice(4);
+                        searchNodes.push(new SearchNode(SearchOp.Tag, tag));
+                    } else if (term.startsWith('id:')) {
+                        searchNodes.push(new SearchNode(SearchOp.Id, term.slice(3)));
+                    } else if (term.startsWith('uid:')) {
+                        searchNodes.push(new SearchNode(SearchOp.Uid, parseInt(term.slice(4))));
+                    } else {
+                        searchNodes.push(new SearchNode(SearchOp.Term, term));
+                    }
+                    break;
+            }
+
         }
+
+        // Parse the search terms into a tree structure
+        this.searchTree = this.createSearchTree(searchNodes);
+
+        console.log(this.searchTree.getTreeAsString());
     }
 
-    matchTerm(game) {
-        if (this.searchTerms.length === 0) {
-            return true;
+    createSearchTree(searchNodes) {
+        if (searchNodes.length === 0) {
+            return new SearchNode(SearchOp.Everything);
         }
 
-        return this.searchTerms.every(term => SearchFilter.gameIncludesTerm(game, term));
+        // Create a tree of ParseNodes from the searchNodes array.
+        // Sequences such as "A and B or C" will be parsed as "(A and B) or C)"
+        // according to operator precedence. The precedence is:
+        // 1. Not (Highest)
+        // 2. And
+        // 3. Or
+
+        // Helper to check if an index is within any group
+        function isIndexInGroup(index, groups) {
+            return groups.some(group => index > group.start && index < group.end);
+        };
+
+        // Helper function to recursively parse a section of the searchNodes array
+        function parseExpression(tokens, startIndex, endIndex) {
+            if (startIndex > endIndex) {
+                return null;
+            }
+
+            // Check for parenthesized expressions first
+            const groups = findGroups(tokens, startIndex, endIndex);
+            
+            // Find OR operators (lowest precedence)
+            let orIndex = findOperatorIndex(tokens, SearchOp.Or, groups, startIndex, endIndex);
+            if (orIndex !== -1) {
+                const left = parseExpression(tokens, startIndex, orIndex - 1);
+                const right = parseExpression(tokens, orIndex + 1, endIndex);
+                return new SearchNode(SearchOp.Or, left, right);
+            }
+            
+            // Find AND operators (medium precedence)
+            let andIndex = findOperatorIndex(tokens, SearchOp.And, groups, startIndex, endIndex);
+            if (andIndex !== -1) {
+                const left = parseExpression(tokens, startIndex, andIndex - 1);
+                const right = parseExpression(tokens, andIndex + 1, endIndex);
+                return new SearchNode(SearchOp.And, left, right);
+            }
+            
+            // Find NOT operators (highest precedence)
+            if (tokens[startIndex].operator === SearchOp.Not) {
+                const operand = parseExpression(tokens, startIndex + 1, endIndex);
+                return new SearchNode(SearchOp.Not, operand);
+            }
+
+            // Handle parenthesized groups
+            if (tokens[startIndex].operator === SearchOp.StartGroup && 
+                tokens[endIndex].operator === SearchOp.EndGroup) {
+                return parseExpression(tokens, startIndex + 1, endIndex - 1);
+            }
+            
+            // Base case: terminal node
+            if (startIndex === endIndex) {
+                return tokens[startIndex];
+            }
+
+            // If we have a single group, process its contents
+            const groupStart = findGroupStart(tokens, startIndex, endIndex);
+            if (groupStart !== -1) {
+                const groupEnd = findMatchingEndGroup(tokens, groupStart);
+                if (groupEnd !== -1 && groupEnd <= endIndex) {
+                    return parseExpression(tokens, groupStart + 1, groupEnd - 1);
+                }
+            }
+            
+            // Fallback: treat as a sequence of AND operations
+            const left = tokens[startIndex];
+            const right = parseExpression(tokens, startIndex + 1, endIndex);
+            return new SearchNode(SearchOp.And, left, right);
+        };
+
+        // Helper function to find operator indices while respecting groups
+        function findOperatorIndex(tokens, opType, groups, start, end) {
+            for (let i = end; i >= start; i--) {
+                // Skip if this index is inside a group
+                if (isIndexInGroup(i, groups)) {
+                    continue;
+                }
+                
+                if (tokens[i].operator === opType) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+                        
+        // Find all parenthesized groups
+        function findGroups(tokens, start, end) {
+            const groups = [];
+            for (let i = start; i <= end; i++) {
+                if (tokens[i].operator === SearchOp.StartGroup) {
+                    const matchingEnd = findMatchingEndGroup(tokens, i);
+                    if (matchingEnd !== -1 && matchingEnd <= end) {
+                        groups.push({ start: i, end: matchingEnd });
+                    }
+                }
+            }
+            return groups;
+        };
+        
+        // Find the matching end group for a start group
+        function findMatchingEndGroup(tokens, startIndex) {
+            let depth = 1;
+            for (let i = startIndex + 1; i < tokens.length; i++) {
+                if (tokens[i].operator === SearchOp.StartGroup) {
+                    depth++;
+                } else if (tokens[i].operator === SearchOp.EndGroup) {
+                    depth--;
+                    if (depth === 0) {
+                        return i;
+                    }
+                }
+            }
+            return -1;
+        };
+        
+        // Find the first start group in the range
+        function findGroupStart(tokens, start, end) {
+            for (let i = start; i <= end; i++) {
+                if (tokens[i].operator === SearchOp.StartGroup) {
+                    return i;
+                }
+            }
+            return -1;
+        };
+
+        return parseExpression(searchNodes, 0, searchNodes.length - 1);
+    }
+
+
+    matchTerm(game) {
+        if (this.searchTree) {
+            return this.searchTree.match(game);
+        }
+        return true;
     }
 
 }
