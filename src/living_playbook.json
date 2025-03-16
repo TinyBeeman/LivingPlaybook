@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0002",
-    "minor": "0000"
+    "minor": "0001"
   },
   "contributors": [
     "Kris Anderson",
@@ -13,6 +13,7 @@
     "Josh Conescu",
     "Keith Dahlgren",
     "Randy Dixon",
+    "Alex Engelberg",
     "Max Fedchenko",
     "Lisa Fredrickson",
     "William Hall",
