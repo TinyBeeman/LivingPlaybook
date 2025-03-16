@@ -1527,7 +1527,7 @@
       "name": "Light Booth",
       "description": "Scene is driven by changing the lights. Light changes are made at the light board operators discretion. Improvisers must keep up with - and justify - the changes.",
       "related": [
-        "Spotlight"
+        "Pools of Light"
       ],
       "tags": [
         "justification",
@@ -2297,6 +2297,23 @@
       "uid": 176
     },
     {
+      "name": "Pools of Light",
+      "description": "Different scenes take place in different pools of light that are changed at the lighting operator's discretion. When the lights change a new scene begins in the lit area; whenever the lights return to a previous area the scene that took place there previously resumes.",
+      "related": [
+        "Light Booth"
+      ],
+      "tags": [
+        "active",
+        "scene",
+        "shortform",
+        "tech"
+      ],
+      "aliases": [
+        "Spotlight"
+      ],
+      "uid": 233
+    },
+    {
       "name": "Pop Up Storybook",
       "description": "As above, except the on stage actors \"pop up\" from a lying position and the narrator may manipulate one or more of the actors body parts in order to illustrate parts of the story.",
       "tags": [
@@ -2963,23 +2980,6 @@
         "shortform"
       ],
       "uid": 232
-    },
-    {
-      "name": "Pools of Light",
-      "description": "Different scenes take place in different pools of light that are changed at the lighting operator's discretion. When the lights change a new scene begins in the lit area; whenever the lights return to a previous area the scene that took place there previously resumes.",
-      "related": [
-        "Light Booth"
-      ],
-      "tags": [
-        "active",
-        "scene",
-        "shortform",
-        "tech"
-      ],
-      "aliases": [
-        "Spotlight"
-      ],
-      "uid": 233
     },
     {
       "name": "Stage Directions",
