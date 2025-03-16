@@ -2965,7 +2965,7 @@
       "uid": 232
     },
     {
-      "name": "Spotlight",
+      "name": "Pools of Light",
       "description": "Different scenes take place in different pools of light that are changed at the lighting operator's discretion. When the lights change a new scene begins in the lit area; whenever the lights return to a previous area the scene that took place there previously resumes.",
       "related": [
         "Light Booth"
@@ -2975,6 +2975,9 @@
         "scene",
         "shortform",
         "tech"
+      ],
+      "aliases": [
+        "Spotlight"
       ],
       "uid": 233
     },
