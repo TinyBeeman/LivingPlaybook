@@ -586,7 +586,9 @@ class GameDiff {
         // Compare each field and return the differences
         const diff = {};
         for (const key in this.newGame) {
-            if (this.fieldChanged(key)) {
+            if (key === 'uid') {
+                diff[key] = this.newGame[key];
+            } else if (this.fieldChanged(key)) {
                 diff[key] = {
                     old: this.oldGame[key],
                     new: this.newGame[key]
@@ -697,9 +699,15 @@ class PlaybookDiff {
         });
 
         this.#modifiedGames.forEach(modifiedGame => {
-            const index = games.findIndex(g => g.uid === modifiedGame.old.uid);
+            // modified game is an obj which contains a uid and the fields that changed.
+            const index = games.findIndex(g => g.uid === modifiedGame.uid);
             if (index !== -1) {
-                games[index] = modifiedGame.new;
+                const game = games[index];
+                for (const key in modifiedGame) {
+                    if (key !== 'uid') {
+                        game[key] = modifiedGame[key].new;
+                    }
+                }
             }
         });
 
