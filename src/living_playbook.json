@@ -2,7 +2,7 @@
   "version": {
     "year": "2025",
     "major": "0002",
-    "minor": "0001"
+    "minor": "0002"
   },
   "contributors": [
     "Kris Anderson",
@@ -470,12 +470,13 @@
     },
     {
       "name": "Call From Ray",
-      "description": "A scene is begun in a given location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene. The \"call\" may come in any form (smoke signal, Morse code, etc.), and Ray may not appear in the scene.",
+      "description": "A scene is begun from a suggested location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene.",
       "tags": [
         "scene",
         "shortform"
       ],
-      "uid": 27
+      "uid": 27,
+      "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc."
     },
     {
       "name": "Called Movie",
