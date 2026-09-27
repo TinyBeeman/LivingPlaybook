@@ -24,7 +24,6 @@
     "Henk Hoffman",
     "Keith Johnstone",
     "Paul Killam",
-    "Paul Killam",
     "Bob Kramer",
     "Laura Livingston",
     "Brian Michael",
@@ -68,6 +67,7 @@
     {
       "name": "Actor Switch",
       "description": "The improvisers begin a scene from a suggestion. Whenever an offstage improviser rings a bell, all of the improvisers switch characters while continuing the scene. The rotation can include any offstage improvisers.",
+      "notes": "This game benefits from strong character choices, especially with physical traits. It is recommended to allow the scene to establish itself before escalating into faster switches.",
       "variations": [
         "Blind Switch: One \"offstage\" actor turns around and covers their ears/hums. They must switch in when the bell rings and catch up."
       ],
@@ -87,12 +87,15 @@
         "shortform",
         "switch"
       ],
-      "notes": "This game benefits from strong character choices, especially with physical traits. It is recommended to allow the scene to establish itself before escalating into faster switches.",
       "uid": 2
     },
     {
       "name": "Adjective Scene",
       "description": "Improvisers ask for an adjective (eg: 'sad'). Must play the scene with as much 'sadness' as possible, or each player may ask for a different adjective.",
+      "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
+      "aliases": [
+        "List Endowment"
+      ],
       "tags": [
         "emotions",
         "endowment",
@@ -100,50 +103,46 @@
         "scene",
         "shortform"
       ],
-      "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
-      "aliases": [
-        "List Endowment"
-      ],
       "uid": 3
     },
     {
       "name": "Advance and Expand",
       "description": "An improviser tells a monologue or performs a scene. A director calls \"Advance,\" at which point the improviser may advance the story, or \"Expand,\" at which point the improviser stops advancing and explores the current action or moment.\n\nIf a performer is scratching their nose and asked to expand, they should find ways to make that activity more interesting. They can't blow their nose, because that would change the action. They might slow down, speed up, change angles, etc.\n\nIf a monologist is telling a story about their morning, and they are asked to expand as they say, \"I made some coffee,\" they may describe their coffee cup, explain where they got it, talk about why they like coffee, etc. They may not advance in the story.",
+      "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
+      "variations": [
+        "Bell Game: This game can be played with a bell alternating between advance and expand.",
+        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
+      ],
       "aliases": [
         "Advancing Game"
       ],
       "tags": [
         "bell",
         "directed",
-        "directed",
         "exercise",
         "narrated",
         "scene",
         "shortform"
-      ],
-      "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
-      "variations": [
-        "Bell Game: This game can be played with a bell alternating between advance and expand.",
-        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
       ],
       "uid": 4
     },
     {
       "name": "Airplane",
       "description": "A rectangular area is marked off with chairs or tape, etc. Two improvisers stand at opposite ends of the area. One is blindfolded. An obstacle course of improvisers, chairs, and props is assembled in the area. The sighted improviser guides the other through the course without touching any of the obstacles. Three touches and the game is over. It is good to have a time limit on this exercise.",
-      "tags": [
-        "exercise",
-        "teamwork"
-      ],
       "variations": [
         "Touch: The guide is limited to a light touch, maybe one hand on the airplane's back. They must learn to communicate.",
         "Verbal: The guide may not touch the airplane, and must communicate by voice."
+      ],
+      "tags": [
+        "exercise",
+        "teamwork"
       ],
       "uid": 5
     },
     {
       "name": "Alliances",
       "description": "A two-minute, four-person scene. At the end of the two minutes, one person needs to have been excluded from the rest of the group.",
+      "notes": "This game used to be called Exclusion, but Alliances is a better fit. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded--don't fight it--be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific.",
       "aliases": [
         "Exclusion"
       ],
@@ -152,12 +151,12 @@
         "scene",
         "timed"
       ],
-      "notes": "This game used to be called Exclusion, but Alliances is a better fit. The object of this scene is not to exclude someone else, but to align oneself with the others. If you have an ally with you, you can't be excluded. If you are the one being excluded--don't fight it--be excluded. The challenge is in trying to get an ally to join you. It is best to keep this scene physical and very specific.",
       "uid": 6
     },
     {
       "name": "Alliteration",
       "description": "Improvisers ask for a letter of the alphabet and incorporate as many words beginning with the sound of that letter into the scene as possible.",
+      "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words.",
       "variations": [
         "Each improviser asks for their \"own\" letter.",
         "Every word spoken begins with that letter. Using the letter “T”, “Hello, How are you?” becomes “Tello, Tow Tar Tou?”",
@@ -168,12 +167,12 @@
         "shortform",
         "verbal"
       ],
-      "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words.",
       "uid": 7
     },
     {
       "name": "Alphabet Game",
       "description": "Improvisers play a scene in which each *sentence* they speak begins with the next sequential letter of the alphabet from A to Z.\n\nPerson A: Anyone home? Best to say so, if you are! Candy for the first kid downstairs!\nPerson B: Daddy! Edmund has been hitting me!\nPerson C: Francis is a tattletale!",
+      "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends.",
       "variations": [
         "Audience: Include an audience member: they must speak three lines during the scene.",
         "Different Letter: The audience chooses a letter to start on. You go until you get back to that letter.",
@@ -188,14 +187,21 @@
         "shortform",
         "verbal"
       ],
-      "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends.",
       "uid": 8
     },
     {
       "name": "Animal People",
       "description": "The improvisers ask for animals and play the scene as a human with that animal's characteristics.",
+      "notes": "The improvisers are not the animal, they are humans. The endowment should affect physicality, speed, emotions, ways of speaking, wants and desires, interactions with others, etc.",
+      "variations": [
+        "One Animal: All improvisers are endowed with the same animal.",
+        "Toss-up: Two improvisers compete for who best endowed the animal in the audience's opinion."
+      ],
       "aliases": [
         "Animal Characters"
+      ],
+      "related": [
+        "List Endowment"
       ],
       "tags": [
         "animal",
@@ -204,23 +210,19 @@
         "shortform",
         "tossup"
       ],
-      "notes": "The improvisers are not the animal, they are humans. The endowment should affect physicality, speed, emotions, ways of speaking, wants and desires, interactions with others, etc.",
-      "variations": [
-        "One Animal: All improvisers are endowed with the same animal.",
-        "Toss-up: Two improvisers compete for who best endowed the animal in the audience's opinion."
-      ],
-      "related": [
-        "List Endowment"
-      ],
       "uid": 9
     },
     {
       "name": "Arms",
       "description": "One improviser stands in front of another improviser. The improviser in front wraps their arms around the improviser behind. The improviser behind then uses their own arms as the front improvisers arms.",
+      "notes": "Offers should go both ways. The speaker should take offers from their arms and the \"arms\" should take offers from the speaker.",
       "variations": [
         "Arms Debate: Four improvisers perform a debate. A fifth improviser is the moderator.",
         "One improvisers provides all the arms for the scene",
         "Two improvisers each play an arm of a third improviser."
+      ],
+      "aliases": [
+        "Arms Debate"
       ],
       "related": [
         "Experts"
@@ -230,10 +232,6 @@
         "physical",
         "scene",
         "shortform"
-      ],
-      "notes": "Offers should go both ways. The speaker should take offers from their arms and the \"arms\" should take offers from the speaker.",
-      "aliases": [
-        "Arms Debate"
       ],
       "uid": 10
     },
@@ -287,6 +285,10 @@
     {
       "name": "Ballet",
       "description": "An appropriate suggestion, such as a \"change\" or a meeting of two people or things is performed in the style of a ballet with no dialog.",
+      "notes": "Good suggestions are typically not overly complicated and leave room for interpretation. The change in Seattle from Summer to Fall, or The Meeting of Two Ex-Lovers are good examples.\n\nIn the narrated variant, offers should go back and forth: the narrator may suggest what we are about to see and may interpret things. Care should be taken to not rob the audience of their own chance to interpret what is happening.",
+      "variations": [
+        "Narrated Ballet: A Narrator \"helps\" the audience by suggesting what they are seeing."
+      ],
       "tags": [
         "cultural",
         "dance",
@@ -296,10 +298,6 @@
         "shortform",
         "silence",
         "styles"
-      ],
-      "notes": "Good suggestions are typically not overly complicated and leave room for interpretation. The change in Seattle from Summer to Fall, or The Meeting of Two Ex-Lovers are good examples.\n\nIn the narrated variant, offers should go back and forth: the narrator may suggest what we are about to see and may interpret things. Care should be taken to not rob the audience of their own chance to interpret what is happening.",
-      "variations": [
-        "Narrated Ballet: A Narrator \"helps\" the audience by suggesting what they are seeing."
       ],
       "uid": 14
     },
@@ -322,20 +320,24 @@
     {
       "name": "Beyond Words",
       "description": "Scene in which the emotions are so profound words cannot express the emotions and therefore, are not used.",
+      "notes": "A typical suggestion we use at Unexpected Productions is, \"what has just happened?\"",
+      "variations": [
+        "One Line: One line of dialog may be spoken, which immediately ends the scene."
+      ],
       "tags": [
         "scene",
         "shortform",
         "silence"
-      ],
-      "notes": "A typical suggestion we use at Unexpected Productions is, \"what has just happened?\"",
-      "variations": [
-        "One Line: One line of dialog may be spoken, which immediately ends the scene."
       ],
       "uid": 16
     },
     {
       "name": "Black Box",
       "description": "* Improviser A is sitting on a chair, in a location to be determined. They hold a small, black box on their lap. This box controls parts of the body - push one button, the leg bounces, push another and the shoulder twitches, etc.\n* Improviser B enters, notices the box and asks to use it. A says, \"OK, but be sure you don't press the RED button.\" B plays with it, \"controlling\" A.\n* Starting slowly, B becomes more and more sadistic. Don't decide beforehand what the red button does. It might be a Song Button, or an Emotional Release Button, or a Falling in Love Button, etc.",
+      "notes": "A useful exercise for playing with \"control\": Narratively, B is in charge, while in reality, A remains in control of everything that happens to their own body.",
+      "related": [
+        "Boris"
+      ],
       "tags": [
         "exercise",
         "justification",
@@ -343,22 +345,18 @@
         "pimping",
         "shortform"
       ],
-      "notes": "A useful exercise for playing with \"control\": Narratively, B is in charge, while in reality, A remains in control of everything that happens to their own body.",
-      "related": [
-        "Boris"
-      ],
       "uid": 17
     },
     {
       "name": "Blank Family",
       "description": "Improvisers ask for a verb, adjective or emotion and then play a family of characters who are that verb or adjective.",
+      "notes": "This game benefits from improvisers looking to vary the way they play the blank word. The game quickly becomes boring without variance and change.",
       "tags": [
         "blank challenge",
         "endowment",
         "scene",
         "shortform"
       ],
-      "notes": "This game benefits from improvisers looking to vary the way they play the blank word. The game quickly becomes boring without variance and change.",
       "uid": 18
     },
     {
@@ -394,16 +392,16 @@
     {
       "name": "Blindfold Scene",
       "description": "All onstage improvisers wear blindfolds while playing the scene. They act as though they were sighted and the scene was a normal scene.",
+      "notes": "For the sake of safety, the stage should be lined with spotters to make sure the onstage players do not walk off the edge of the stage. Players should take risks, such as committing to where the believe other players are, but avoid risks that endanger anyone's safety.",
+      "variations": [
+        "One Blindfold: Only one player is blindfolded.",
+        "Sighter: All but one players are blindfolded. The -sighter- must justify the blindfolded performers' choices."
+      ],
       "tags": [
         "risky",
         "scene",
         "shortform",
         "spectacle"
-      ],
-      "notes": "For the sake of safety, the stage should be lined with spotters to make sure the onstage players do not walk off the edge of the stage. Players should take risks, such as committing to where the believe other players are, but avoid risks that endanger anyone's safety.",
-      "variations": [
-        "One Blindfold: Only one player is blindfolded.",
-        "Sighter: All but one players are blindfolded. The -sighter- must justify the blindfolded performers' choices."
       ],
       "uid": 22
     },
@@ -422,6 +420,12 @@
     {
       "name": "Body Parts",
       "description": "A body part is given focus or endowed with a trait.",
+      "notes": "The point of this exercise is to allow it to develop into a character: as such, performers should not make the scene about the body part, but allow the choice to inform the whole of the character. The performer should *discover* this, though, by starting with the physical choice rather than the idea of what it might mean.",
+      "variations": [
+        "Body Leads: Each performer is given a body part and their physicality must be focused on that body part. It might lead, or drag behind, or be tense while the rest of the body is relaxed, or be relaxed while the rest of the body is tense, for instance.",
+        "Body Wire: Each perform has a body part and a direction. The body part is \"tugged\" in that direction. A player whose chin is tugged upward might discover they are haughty... or joyful. A character whose chin is tugged downward might turn out to be depressed, or a tracker, or a contemplative person.",
+        "Emotional Body Parts: Each performer is given a body part and an emotion, such as sad elbows."
+      ],
       "aliases": [
         "Body Leads",
         "Body Wire"
@@ -432,29 +436,26 @@
         "scene",
         "shortform"
       ],
-      "notes": "The point of this exercise is to allow it to develop into a character: as such, performers should not make the scene about the body part, but allow the choice to inform the whole of the character. The performer should *discover* this, though, by starting with the physical choice rather than the idea of what it might mean.",
-      "variations": [
-        "Body Leads: Each performer is given a body part and their physicality must be focused on that body part. It might lead, or drag behind, or be tense while the rest of the body is relaxed, or be relaxed while the rest of the body is tense, for instance.",
-        "Body Wire: Each perform has a body part and a direction. The body part is \"tugged\" in that direction. A player whose chin is tugged upward might discover they are haughty... or joyful. A character whose chin is tugged downward might turn out to be depressed, or a tracker, or a contemplative person.",
-        "Emotional Body Parts: Each performer is given a body part and an emotion, such as sad elbows."
-      ],
       "uid": 24
     },
     {
       "name": "Body Reversal",
       "description": "Improvisers play the scene as though the back of their body is the front. The scene is played without mention of this, of course, as if all is normal.",
+      "notes": "Players can add risk by interacting with each other: hugging, handing things to each other, performing shared activities, etc.",
       "tags": [
         "justification",
         "physical",
         "scene",
         "shortform"
       ],
-      "notes": "Players can add risk by interacting with each other: hugging, handing things to each other, performing shared activities, etc.",
       "uid": 25
     },
     {
       "name": "Boris",
       "description": "Scene in which an improviser is interrogated. The improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris).\n\nWhenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the Interrogator is a cruel one.\n\nThe players should work together to tell a story through the interrogation, rather than letting the dialog be about the physical action.",
+      "related": [
+        "Black Box"
+      ],
       "tags": [
         "active",
         "game",
@@ -463,20 +464,17 @@
         "shortform",
         "teamwork"
       ],
-      "related": [
-        "Black Box"
-      ],
       "uid": 26
     },
     {
       "name": "Call From Ray",
       "description": "A scene is begun from a suggested location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene.",
+      "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc.",
       "tags": [
         "scene",
         "shortform"
       ],
-      "uid": 27,
-      "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc."
+      "uid": 27
     },
     {
       "name": "Called Movie",
@@ -686,6 +684,7 @@
     {
       "name": "Director",
       "description": "Title is given for the scene. \"Actors\" begin a \"rehearsal\" of the piece. Periodically, they are stopped by the \"director\", who gives new emphasis or emotional focus to the scene.",
+      "notes": "The director can go to the audience as a consultant or producer: When the \"director\" needs an emotion, a physical direction, etc. they consult the audience to fill in the blanks.",
       "tags": [
         "audience",
         "directed",
@@ -694,7 +693,6 @@
         "scene",
         "shortform"
       ],
-      "notes": "The director can go to the audience as a consultant or producer: When the \"director\" needs an emotion, a physical direction, etc. they consult the audience to fill in the blanks.",
       "uid": 45
     },
     {
@@ -890,6 +888,7 @@
     {
       "name": "Famous Person Endowments",
       "description": "Two improvisers leave the stage area, while a third improviser asks for two famous people.\n\nThe two improvisers are called back to the playing area. Whispering, the third improviser assigns to each improviser who the OTHER improviser is (eg: A has to endow B with being Mickey Mantle, B endows A with being Marie Antoinette).\n\nThe improvisers must make offers that suggest a guess as to who they are. \"Ah, yes, I DO enjoy eating both bread AND cake.\"",
+      "notes": "The characters speak in every-day vernacular. Like all endowment scenes, this is not a charades scene.",
       "tags": [
         "endowment",
         "game",
@@ -899,8 +898,7 @@
         "shortform",
         "timed"
       ],
-      "uid": 62,
-      "notes": "The characters speak in every-day vernacular. Like all endowment scenes, this is not a charades scene."
+      "uid": 62
     },
     {
       "name": "Film Rollback",
@@ -1316,12 +1314,12 @@
     {
       "name": "In A _____, With A ____, While _____",
       "description": "Improvisers get audience suggestions to fill in the blanks IN A toaster WITH A Marine WHILE a hurricane is approaching. Scene does not necessarily have to begin with the suggestions but may move toward that moment. Or it may begin at the suggestion and proceed wherever it might. variations of the game are single blanks or combining two of the three.",
+      "variations": [
+        "Use single blanks or combining two of the three."
+      ],
       "tags": [
         "scene",
         "shortform"
-      ],
-      "variations": [
-        "Use single blanks or combining two of the three."
       ],
       "uid": 98
     },
@@ -1542,10 +1540,18 @@
     {
       "name": "List Endowment",
       "description": "A list of endowments in a category is gathered from the audience before the scene starts. The director calls out different endowments through the game. They may assign an endowment to one improviser, multiple improvisers, or all the improvisers.\n\nCommon Categories: Animals, Attitudes/Emotions, Genres/Styles, Isms (Commun-ism, Vegetarian-ism, etc).",
+      "notes": "For some categories (emotions), it may make sense to start in neutral. For others (animals), it might make sense to start with an endowment. The director should make sure and encourage a variety of suggestions from the audience: they may get stuck on one type of emotion, for instance.",
       "variations": [
         "Double Lists: A list scene where two lists are used to change the improvisers in a single scene. For instance, Emotions and Film Styles, a scene begins neutral, then the emotion \"Happy\" is called. The scene becomes \"Happy\", after awhile, the film style \"Sci-Fi\" is called. The scene becomes a \"Happy, Sci-Fi\" scene, if the emotion changes to \"Sad\", then the scene becomes a \"Sad Sci-Fi\" scene. If the film style changes to \"Film Noir\", it becomes a \"Sad, Film Noir\", etc. Take your time with this game and make the transitions slowly.",
         "Everyman/Neutral Ground: One improviser remains \"neutral\" and the others taking on the endowments.",
         "Potpourri Lists: A list scene that incorporates many of the items from the above lists."
+      ],
+      "aliases": [
+        "Animal",
+        "Animal List",
+        "Emotional List",
+        "Emotions",
+        "List Game"
       ],
       "related": [
         "Animal People",
@@ -1560,16 +1566,7 @@
         "list",
         "scene",
         "shortform",
-        "styles",
         "styles"
-      ],
-      "notes": "For some categories (emotions), it may make sense to start in neutral. For others (animals), it might make sense to start with an endowment. The director should make sure and encourage a variety of suggestions from the audience: they may get stuck on one type of emotion, for instance.",
-      "aliases": [
-        "Animal",
-        "Animal List",
-        "Emotional List",
-        "Emotions",
-        "List Game"
       ],
       "uid": 119
     },
@@ -1663,6 +1660,9 @@
     {
       "name": "Marriage Counselor Endowments",
       "description": "An improviser leaves the playing area. Two “relationship problems” are gotten from the audience. The offstage improviser returns as a counselor and two fellow players try to endow the counselor to guess at the problems in the relationship by playing a couple in a therapy session.",
+      "variations": [
+        "In the popular variant at Unexpected Productions, the counselor and the partner know the other partner's problem (for both partners): the counselor and each partner work together to get the other partner to guess their own problem while also helping their own partner to guess their own."
+      ],
       "tags": [
         "endowment",
         "game",
@@ -1670,10 +1670,7 @@
         "shortform",
         "timed"
       ],
-      "uid": 127,
-      "variations": [
-        "In the popular variant at Unexpected Productions, the counselor and the partner know the other partner's problem (for both partners): the counselor and each partner work together to get the other partner to guess their own problem while also helping their own partner to guess their own."
-      ]
+      "uid": 127
     },
     {
       "name": "Masterpiece Theater",
@@ -2076,14 +2073,14 @@
     {
       "name": "Panel Expert Endowment",
       "description": "You have three experts on a given topic. Each expert is introduced by the expert before them. During the introduction, the upcoming expert is endowed with a particular trait. This may be a speech pattern, a nervous tick, a physical limitation, an obsession, etc. The upcoming expert then plays the endowment for the remainder of the scene and endows the next expert.",
+      "related": [
+        "Word-at-a-Time Expert"
+      ],
       "tags": [
         "endowment",
         "game",
         "shortform",
         "timed"
-      ],
-      "related": [
-        "Word-at-a-Time Expert"
       ],
       "uid": 159
     },
@@ -2149,8 +2146,8 @@
         "shortform",
         "status"
       ],
-      "uid": 164,
-      "createdBy": "Keith Johnstone"
+      "createdBy": "Keith Johnstone",
+      "uid": 164
     },
     {
       "name": "Phone Bank",
@@ -2301,6 +2298,9 @@
     {
       "name": "Pools of Light",
       "description": "Different scenes take place in different pools of light that are changed at the lighting operator's discretion. When the lights change a new scene begins in the lit area; whenever the lights return to a previous area the scene that took place there previously resumes.",
+      "aliases": [
+        "Spotlight"
+      ],
       "related": [
         "Light Booth"
       ],
@@ -2309,9 +2309,6 @@
         "scene",
         "shortform",
         "tech"
-      ],
-      "aliases": [
-        "Spotlight"
       ],
       "uid": 233
     },
@@ -2405,7 +2402,6 @@
     },
     {
       "name": "Rapid Musicals",
-      "createdBy": "Tony Beeman",
       "description": "Players get a suggestion of a starting musical style. They start a song from the middle of a musical. A director rings a bell as *soon* as they feel we have a good idea what the musical is about. The musician should immediately starting playing a new style, while the performers justify both their position and the new musical by discovering what new musical they are in the middle of.",
       "notes": "This game benefits from the musician and the performers commiting heavily to the music, the dance, and the singing.",
       "related": [
@@ -2418,11 +2414,11 @@
         "scene",
         "shortform"
       ],
+      "createdBy": "Tony Beeman",
       "uid": 184
     },
     {
       "name": "Rapid Scenes",
-      "createdBy": "Obadiah Freeman, Issiah Harris",
       "description": "Players start a scene from audience suggestion. After just a few seconds, the MC rings a bell. The performers must justify whatever position they are in by starting a new scene. Scenes rarely last longer than about 30 seconds.",
       "notes": "Once we know what is going on in a scene, there's little reason not to ring the bell. But the MC may let scenes breath a few seconds longer sometimes just to keep the performers on their toes. Good training for improvisers who are more used to long-form and less used to starting scenes in the middle of the action.",
       "related": [
@@ -2434,6 +2430,7 @@
         "shortform",
         "timed"
       ],
+      "createdBy": "Obadiah Freeman, Issiah Harris",
       "uid": 185
     },
     {
@@ -2703,16 +2700,16 @@
     {
       "name": "Should Have Said",
       "description": "A scene is played and when an offstage improviser calls “Should have said” or rings a bell.  The last improviser to speak must make a substitute for the last offer they made.",
+      "notes": "Improvisers should not be allowed to get away with variations on the original line. \"I'd like a pizza\" should not be followed with \"I'd like spaghetti\".\n\nThis game is often misunderstood as a game of \"clever ideas\". At Unexpected Productions, we like to use it to get through all those ideas until the improviser is out of ideas, and their honest or unplanned offers start to emerge.",
+      "aliases": [
+        "New Choice"
+      ],
       "tags": [
         "bell",
         "directed",
         "justification",
         "scene",
         "shortform"
-      ],
-      "notes": "Improvisers should not be allowed to get away with variations on the original line. \"I'd like a pizza\" should not be followed with \"I'd like spaghetti\".\n\nThis game is often misunderstood as a game of \"clever ideas\". At Unexpected Productions, we like to use it to get through all those ideas until the improviser is out of ideas, and their honest or unplanned offers start to emerge.",
-      "aliases": [
-        "New Choice"
       ],
       "uid": 209
     },
@@ -2751,13 +2748,13 @@
     {
       "name": "Sing Speak",
       "description": "As a scene is played, the improviser must begin singing their dialogue when an accompanist begins playing. They return to regular dialogue when the music stops, then sing when music plays, and then speak, etc.",
+      "aliases": [
+        "Piano Torture"
+      ],
       "tags": [
         "musical",
         "scene",
         "shortform"
-      ],
-      "aliases": [
-        "Piano Torture"
       ],
       "uid": 213
     },
@@ -3433,13 +3430,13 @@
     {
       "name": "Wallpaper Drama",
       "description": "Improvisers begin a scene. At the discretion of an off stage improviser, \"Positive\", \"Negative\", or \"Neutral\" are called and slowly effect the emotional content of the scene on stage accordingly.",
+      "variations": [
+        "No off stage caller, the improvisers on stage move through levels of neutral, positive, and negative at their own discretion."
+      ],
       "tags": [
         "directed",
         "scene",
         "shortform"
-      ],
-      "variations": [
-        "No off stage caller, the improvisers on stage move through levels of neutral, positive, and negative at their own discretion."
       ],
       "uid": 273
     },
