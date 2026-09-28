@@ -1,3 +1,12 @@
+## Version 2026.0001.0000
+
+**Technical Improvements**
+- Normalized `living_playbook.json` to one canonical format, so future edits (including exports from UPTime's Living Playbook editor) produce small, reviewable diffs:
+  - Every game's fields now appear in the same order: name, description, notes, variations, aliases, related, tags, createdBy, uid.
+  - Removed a duplicate "Paul Killam" from the contributors list.
+  - Removed a tag listed twice on a game: "directed" on Advance and Expand, and "styles" on List Endowment.
+- No games were added, removed, or changed in content.
+
 ## Version 2025.0002.0000
 
 **User-Friendly Features**
