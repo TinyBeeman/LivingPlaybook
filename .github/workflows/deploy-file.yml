@@ -1,0 +1,28 @@
+name: Deploy Full Playbook Directory
+
+on:
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+jobs:
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trust Remote Server Host Key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.SFTP_SERVER }} >> ~/.ssh/known_hosts
+
+      - name: Sync Directory via Rsync with Password
+        env:
+          SSHPASS: ${{ secrets.SFTP_PASSWORD }}
+        run: |
+          sshpass -e rsync -avz --delete \
+            ./src/ \
+             ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }}:/home/${{ secrets.SFTP_USERNAME }}/unexpectedproductions.org/playbook/
