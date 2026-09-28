@@ -204,7 +204,12 @@ The deploy step stays the same: `rsync -avz --delete ./src/` to the same path.
 - **Pin the server's host key.** Store the known host line as a secret (for example `SFTP_KNOWN_HOSTS`) and write it to `~/.ssh/known_hosts`, instead of running `ssh-keyscan` inside the job.
 - **Switch from `sshpass` to an SSH deploy key**, if the host allows key logins. The job then never holds the account password.
 
-Both need a one-time secrets setup on GitHub (and a key installed on the host), so they're a separate PR from the trigger change.
+Both need a one-time secrets setup on GitHub (and a key installed on the host), so they're a separate PR from the trigger change. The deploy-key switch is deferred for now.
+
+**Done (2026-09-28):**
+- The trigger change merged as [#9](https://github.com/TinyBeeman/LivingPlaybook/pull/9).
+- A follow-up moved to `actions/checkout@v7` (v4 still declared Node 20, which GitHub now warns about).
+- The same follow-up installs `rsync`/`sshpass` explicitly instead of assuming the runner image has them. `ubuntu-latest` moves to Ubuntu 26 on 2026-10-19, and nothing guarantees `sshpass` is preinstalled there.
 
 ---
 
