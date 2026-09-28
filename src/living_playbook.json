@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0001",
-    "minor": "0002"
+    "minor": "0003"
   },
   "contributors": [
     "Kris Anderson",
@@ -47,7 +47,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 291,
+  "nextUid": 293,
   "games": [
     {
       "name": "Accepting Game",
@@ -649,17 +649,6 @@
         "verbal"
       ],
       "uid": 41
-    },
-    {
-      "name": "Culture",
-      "description": "As if seen on PBS - may use Opera, Ballet, Shakespeare, Masterpiece Theater, etc.",
-      "tags": [
-        "cultural",
-        "scene",
-        "shortform",
-        "styles"
-      ],
-      "uid": 42
     },
     {
       "name": "Cutting Room",
@@ -1680,10 +1669,7 @@
     },
     {
       "name": "Masterpiece Theater",
-      "description": "Scene is played in the style of Masterpiece Theater.",
-      "related": [
-        "Culture"
-      ],
+      "description": "Scene is played in the style of Masterpiece Theater. Usually with British accents, and often with a host explaining exactly what piece of theatre you are about to see.",
       "tags": [
         "cultural",
         "scene",
@@ -1881,22 +1867,6 @@
       ],
       "createdBy": "Tony Beeman",
       "uid": 289
-    },
-    {
-      "name": "My Ball",
-      "description": "Improvisers stand in a circle and, similar to Word Ball. An improviser passes \"something which is mine\" to another specific improviser. That improviser free associates and sends the first \"my\" thing that comes to mind to the next improviser.\n\n\"My Curious George coffee cup with a chip in the rim\" -> \"The time my father broke my mother's pink china\" -> \"My mother-in-law crying at my wedding and smearing her mascara\" -> \"The make-up kit my aunt gave me that my parents wouldn't let me wear\".\n\nThe offers should be specific but still short. Don't try to tell the whole story, but offer enough specifics to paint a picture. Let us guess at the rest.",
-      "notes": "Games like Word Ball can put us in an \"intellectual\" place where we make abstract associations, but My Ball is intended to put performers in an emotional, personal place.\n\nThis is a great \"getting to know you\" game. It's also a good exercise for working on Static Walks in Harold: giving meaningful personal associations and not just abstract ones.",
-      "related": [
-        "Word Ball"
-      ],
-      "tags": [
-        "exercise",
-        "free association",
-        "group game",
-        "warm-up"
-      ],
-      "createdBy": "Tony Beeman",
-      "uid": 290
     },
     {
       "name": "Name Game",
@@ -2562,6 +2532,25 @@
         "shortform"
       ],
       "uid": 192
+    },
+    {
+      "name": "Rock Opera",
+      "description": "A story from the audience is retold as a rock opera. A rock opera is a collection of songs that tell a cohesive story, or a fully-sung-through musical.\n\nExamples of rock operas: Jesus Christ Superstar, Tommy (The Who), American Idiot (Green Day).",
+      "notes": "Rock operas never have spoken dialogue; with dialogue it becomes a \"rock musical\".",
+      "variations": [
+        "Rock Musical: It's a Rock Opera... with dialog!"
+      ],
+      "related": [
+        "Musical",
+        "Opera"
+      ],
+      "tags": [
+        "cultural",
+        "musical",
+        "scene",
+        "shortform"
+      ],
+      "uid": 292
     },
     {
       "name": "Scene By Numbers",
