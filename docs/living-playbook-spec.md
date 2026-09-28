@@ -87,7 +87,8 @@ UIDs line up across files by game identity: a game keeps its UID across editions
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](...) ...",
   "nextUid": 293,
-  "games": [ /* Game objects */ ]
+  "games": [ /* Game objects */ ],
+  "glossary": [ /* Glossary entries (optional) */ ]
 }
 ```
 
@@ -99,6 +100,7 @@ UIDs line up across files by game identity: a game keeps its UID across editions
 | `license` | string (Markdown) | no | License text. **The app never displays it.** The footer license text is hard-coded in `playbook.js`. **⚠ Quirk:** so metadata edits made in UPTime never reach the page, e.g. the file says © 2026 but the footer says © 2025. |
 | `nextUid` | integer | yes (in practice) | The next free UID. Must be greater than every existing `uid`. If it's missing or not a number, the code falls back to `1`. |
 | `games` | Game[] | yes | See below. The file is sorted by name (`localeCompare`) on export, but the app re-sorts on display anyway, so file order doesn't matter. |
+| `glossary` | GlossaryEntry[] | no | Terms and definitions (see [§3.4](#34-glossary-entry)). Missing means empty; the 2001 file has none. Sorted by term on export. |
 
 The 2001 file also has a legacy key `"contributers"` (misspelled) holding one string. It isn't used, and its `contributors` entries include annotations like `"Tony Beeman (Post 2001 Technical Updates)"`.
 
@@ -110,7 +112,10 @@ The 2001 file also has a legacy key `"contributers"` (misspelled) holding one st
   "name": "Monarch Game",
   "description": "One improviser is the monarch ...",
   "notes": "If a servant makes mistakes ...\n\nMonarchs are annoyed by ...",
-  "variations": ["Hero/Chorus: Improvisers stand in a circle ..."],
+  "variations": [
+    "Play it as a long form.",
+    { "name": "Hero/Chorus", "description": "Improvisers stand in a circle ..." }
+  ],
   "aliases": ["King Game"],
   "related": ["Pecking Order"],
   "tags": ["exercise", "game", "shortform"],
@@ -124,7 +129,7 @@ The 2001 file also has a legacy key `"contributers"` (misspelled) holding one st
 | `name` | string | yes | Plain text title. **Must be unique**, because `related` references games by name. | 284/284 |
 | `description` | string (Markdown) | yes | Markdown | 284/284 |
 | `notes` | string (Markdown) | no | Markdown, with a "notes" header | 33 |
-| `variations` | string[] (each Markdown) | no | Each item is rendered as Markdown with a `‣` bullet | 75 |
+| `variations` | (string \| object)[] | no | Each item is a plain Markdown string (an unnamed variation) or `{ "name", "description" }` (a named one; either key may be left out, but not both). Rendered with a `‣` bullet; a name is shown in bold before the text. See the note below. | 75 |
 | `aliases` | string[] | no | Plain-text chips | 36 |
 | `related` | string[] (game **names**) | no | Links that run the search `id:<anchor of name>` | 44 |
 | `tags` | string[] | effectively yes | Plain-text chips. Also drive the tag filter. | 283 (only "Song in a Style" has none) |
@@ -134,6 +139,7 @@ Conventions and constraints:
 
 - **Missing vs. empty.** Optional fields are omitted when empty. The exporter strips empty strings and empty arrays.
 - **Key order and sorting.** Each game's keys are in the order `name, description, notes, variations, aliases, related, tags, createdBy, uid`. `aliases`, `related` and `tags` are sorted and de-duplicated. `variations` keep their authored order. The 2001 file doesn't follow this yet.
+- **Named variations.** An unnamed variation is always written as a plain string, never `{ "description": … }`, so files without names (including the 2001 file) look exactly as they always have. Named variations use the keys `name` then `description`. Many older variations carry a name informally as a `Name: text` prefix; UPTime can turn those into real names through reviewed proposals.
 - **Markdown.** Multi-line text uses `\n`, and paragraphs use `\n\n`. Lists (`- item`), `*italic*`, `**bold**` and links all appear in the data. Strings without a newline are rendered inline, so no `<p>` wrapper.
 - **Tags** are lower-case free text, and some contain spaces (`"blank challenge"`, `"group game"`, `"stage picture"`). There's no controlled vocabulary. UPTime has a bulk rename/merge tool, used in 2026.0001.0001 to merge `tossup` into `toss-up` and rename `animal`, `pop-culture` and `yes-and`. The tag list in the UI is built from whatever tags appear in the data.
 - **Related** entries are game names, not UIDs, so they break when the target is renamed. Currently `"Panel Experts Endowment"` (in Experts) is a typo for the game "Panel Expert Endowment". UPTime stores `related` as UIDs internally and writes the current names on export, so renames no longer break links in the main file.
@@ -152,11 +158,28 @@ interface Game {
   name: string;
   description: string;       // markdown
   notes?: string;            // markdown
-  variations?: string[];     // markdown each
+  variations?: Variation[];
   aliases?: string[];
   related?: string[];        // game names
   tags?: string[];
   createdBy?: string;        // markdown
+}
+
+type Variation =
+  | string                                    // unnamed; markdown
+  | { name?: string; description?: string };  // named; description is markdown
+
+type GlossaryRelated =
+  | string                                    // a game name
+  | { game: string; variation: string }       // a named variation of a game
+  | { term: string };                         // another glossary term
+
+interface GlossaryEntry {
+  uid: number;                // shares the uid / nextUid counter with games
+  term: string;
+  definition: string;         // markdown
+  aliases?: string[];
+  related?: GlossaryRelated[];
 }
 
 interface PlaybookFile {
@@ -166,9 +189,31 @@ interface PlaybookFile {
   license?: string;          // markdown
   nextUid: number;
   games: Game[];
+  glossary?: GlossaryEntry[];
   contributers?: string;     // legacy typo, 2001 file only; ignore
 }
 ```
+
+### 3.4 Glossary entry
+
+```jsonc
+{
+  "term": "Endowment",
+  "definition": "Giving another player a trait or fact that they then play.",
+  "aliases": ["Endow"],
+  "related": [
+    "Adjective Scene",
+    { "game": "Actor Switch", "variation": "Blind Switch" },
+    { "term": "Offer" }
+  ],
+  "uid": 301
+}
+```
+
+- Keys are in the order `term, definition, aliases, related, uid`. `aliases` are sorted and de-duplicated; `related` keeps its authored order.
+- `uid`s come from the same counter as games, so a uid is unique across games and terms.
+- `term` must be unique among terms (a term may share a name with a game).
+- `related` refers to games and terms **by name**, and to a variation by its game's name plus the variation's name, so a link survives reordering the variations. UPTime stores these as uids and rewrites the current names on export.
 
 ---
 
@@ -178,6 +223,8 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
 
 - `anchorName`: `name.replace(/[^A-Za-z0-9]+/g, '').toLowerCase()`. For example, `"Word-at-a-Time Story"` becomes `"wordatatimestory"`. It's used as the card's DOM `id` and as the target of `id:` searches and related-game links.
 - `anchorAliases`: the same transform applied to each alias.
+- Glossary entries get `anchorName = "term-" + anchor(term)`. The hyphen can't appear in a game's anchor, so term and game ids never clash (`id:term-endowment`).
+- `Playbook.termMatcher`: one case-insensitive regular expression over every term and alias, longest first, whole words only.
 
 **⚠ Quirk:** Free-text search looks at *all* string and array fields except `related` and `uid`, and that includes `anchorName` and `anchorAliases`. So searching `monarchgame` finds "Monarch Game". It's mostly harmless. (UPTime's viewer doesn't do this.)
 
@@ -193,10 +240,11 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
    - Subtitle on the right: `The Unexpected Productions Improv Game List`.
 2. **Control pane** (hidden when printing):
    - **Search box** (`type="search"`, placeholder "Search games...").
+   - **"Show:"** toggle buttons: Games, Variations and Glossary (see [§5.6](#56-show-games-variations-glossary)). Variations and Glossary are hidden when the edition has no named variations or no glossary; the whole row is hidden when it has neither.
    - **"Filter By Tags"**: a collapsible section, collapsed by default.
    - **"Lists and Favorites"**: a collapsible section, collapsed by default.
 3. **Search description bar**: a horizontal rule with a label describing the current query and result count (see [§5.3](#53-search-description)).
-4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive).
+4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive). With Variations on, entries for named variations are sorted in among them. With Glossary on, a "Glossary" section with its own letter dividers follows the games.
 5. **Footer**: license and copyright text, links to the GitHub repo, the PDF and `?dbId=2001`, and "Contributors to this database include {contributors joined by ', '} and many friends, company members, teachers and supporters of Unexpected Productions." When there are no contributors, the list and the "and" are left out.
 
 ### 5.2 Live filtering
@@ -214,7 +262,7 @@ The description is built from three parts, joined with `"| "`:
 - `Tags: {yesTags joined by '; '}` when any tags are included.
 - `Excluded tags: {noTags joined by '; '}` when any tags are excluded.
 
-When all three are empty, it shows `All Games, Exercises and Formats`. It always ends with ` (1 entry)` or ` ({n} entries)`.
+When all three are empty, it shows `All Games, Exercises and Formats` (or `The Glossary`, or both, depending on what's shown). It ends with a count of each kind that's shown, e.g. ` (284 games, 68 variations, 12 glossary terms)`.
 
 ### 5.4 Collapsible sections
 
@@ -222,7 +270,19 @@ Clicking a section header toggles an `active` class and shows or hides the next 
 
 ### 5.5 Printing
 
-`@media print` hides the control pane and removes the page chrome, so a filtered list prints as a clean game list.
+`@media print` hides the control pane, the card buttons and any open glossary overlay, drops the glossary underline, and keeps each card on one page, so a filtered list prints as a clean game list. With Show set to Glossary only, the page prints just the glossary.
+
+### 5.6 Show: Games, Variations, Glossary
+
+- **Games** lists each matching game under its own name (the default).
+- **Variations** also lists each matching game once more under the name of each of its **named** variations. That entry is the full game card, titled with the variation name, with an "A variation of *Game*" link, and with that variation highlighted. It has no DOM `id`, so ids stay unique. Unnamed variations never get their own entry.
+- **Glossary** adds the glossary section. The search box filters it too (by term, alias or definition); tag filters don't, since terms have no tags.
+
+The buttons are independent: turning Games off while Variations is on lists games only under their variations' names.
+
+### 5.7 Glossary terms in text
+
+After a card is built, the first appearance on that card of each glossary term (or alias) in its description, notes, variations or definition becomes a `<button class="glossary-term">` with a dashed underline. Text inside links, code and variation names is skipped, and a glossary card never marks its own term. Clicking or tapping one opens a single overlay with the term, its definition, "also called", "see also" links and "Open in the glossary". It closes on Escape, the × button, or a click outside. It sits under the term (kept inside the window) and becomes a bottom sheet on screens narrower than 600px.
 
 ---
 
@@ -360,6 +420,7 @@ This opens a small popup menu positioned at the button:
 | `uids` | yes | **never removed** | A shared list (bitmask-encoded, see below). On load it becomes the search `uids:1,2,3,…`. |
 | `yesTags` | yes | yes | Included tags, joined with `;`. |
 | `noTags` | yes | yes | Excluded tags, joined with `;`. |
+| `show` | yes | yes | What's listed: any of `games`, `variations`, `glossary`, joined with `;` (see [§5.6](#56-show-games-variations-glossary)). Omitted means `games` only, and is left out of the URL in that case. Links in the glossary add what their target needs, e.g. a link to a term adds `glossary`. |
 | `edit` | no | removed | Leftover from the old editor. Deleted on write, never set. |
 | `list` | no | removed | Leftover. Deleted on write, never set. |
 
