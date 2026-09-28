@@ -99,7 +99,7 @@ Items 1–7 in §16 were editor, export and diff bugs. They go away with Phase 1
 | **A tag in the URL that no longer exists shows 0 results, and the visitor can't clear it.** | `?yesTags=pop-culture`. That tag was renamed to `pop culture` in 2026.0001.0001, so old bookmarks now do this. No button exists for the tag, so there's nothing to click to turn it off. | When the data loads, drop any URL tag that isn't in the tag list. Rewrite the URL too. |
 | **A failed data load leaves a blank page with no message.** | Serve the page with the JSON missing. `loadFromURL` swallows the error, then `onDatabaseLoad` throws on `null.version`, which is only logged to the console. | Show an inline "Couldn't load the playbook, try reloading" message. |
 | **The footer's license text ignores the data file.** | The file's `license` field says © 2026 (changed in 2026.0001.0001, "License updated"). The footer hard-codes © 2025 (1321). Metadata edits made in UPTime never reach the site. | Render the footer's license paragraph from `data.license` (as sanitized Markdown), keeping the hard-coded text as a fallback. The 2001 notice and the PDF link stay as they are. |
-| **The version is shown without the year.** | The header reads `Version 0001.0003`. Versions now restart every year (2026.0001.0000), so without the year the number is ambiguous. The zero-padding is also noise. | Show `Version 2026.1.3`. |
+| **The version is shown without the year.** (Requested by the maintainer.) | The header reads `Version 0001.0003` (`${major}.${minor}`, 992). Versions now restart every year: 2025.0002.0002 was followed by 2026.0001.0000. So the site's version number went *down* from 0002.0002 to 0001.0000 with no visible reason, and a number like `0001.0003` doesn't say which year it belongs to. The zero-padding is also noise. | Show `Version 2026.1.3`: the year, then major and minor without padding. The 2001 edition then reads `Version 2001.1.1`. `CHANGELOG.md` headings keep the padded `2026.0001.0003` form, and that's fine, because the two parse to the same numbers. |
 | **Popups stack.** | Click "Add to List" or Share twice. Each click adds another popup, because the outside-click handler deliberately ignores clicks on the button itself (1566, 1614). | Clicking the button again closes its popup. Only one popup is ever open, and Escape closes it. |
 | **The delete-list and share-list buttons have no tooltip.** | `deleteListButton.attributes['title'] = …` (1168, 1185) sets a property on the attribute map, not an attribute. | Use `setAttribute('title', …)` plus an `aria-label`. |
 | **The favicon is a 404.** | `index.html` line 11 links `android-chrome-192x192.png`, but the file is `favicon-192x192.png`. | Fix the path. |
@@ -279,7 +279,7 @@ Change it to the main file's canonical format: LF, literal UTF-8, the same key o
 2. **§7.2 format normalization of the 2001 file:** no content change.
 3. **§7.2 fixes to the 2001 file:** the UIDs, related-link typos and contributors.
 4. **§5.1 module split and §5.2 test scaffolding:** no behavior change.
-5. **Phase 2 fixes**, each with a regression test. The two blank-page bugs and the unclearable-tag bug first, because visitors can hit them today.
+5. **Phase 2 fixes**, each with a regression test. First the two blank-page bugs, the unclearable-tag bug, and the version-year display, because visitors can hit them today. The version display is a one-line change and could even go in with Phase 1.
 6. **§5.3 CI guards.**
 7. **Phase 3 improvements**, one or two per PR, including the edition switcher.
 
