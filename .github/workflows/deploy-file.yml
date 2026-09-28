@@ -1,14 +1,24 @@
 name: Deploy Full Playbook Directory
 
+# Deploy whenever something the site serves (src/) changes on main, whether it
+# arrived by a merged PR or a direct push. Pushes that only touch docs/, CI,
+# etc. don't deploy. "Run workflow" (workflow_dispatch) redeploys by hand.
 on:
-  pull_request:
-    types: [closed]
+  push:
     branches:
       - main
+    paths:
+      - 'src/**'
+  workflow_dispatch:
+
+# Queue back-to-back deploys (e.g. two quick export PRs) instead of running
+# two rsyncs against the server at once.
+concurrency:
+  group: deploy-playbook
+  cancel-in-progress: false
 
 jobs:
   deploy:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
