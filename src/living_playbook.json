@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0001",
-    "minor": "0000"
+    "minor": "0001"
   },
   "contributors": [
     "Kris Anderson",
@@ -46,8 +46,8 @@
     "John Wood-Ingram"
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
-  "license": "The Online Living Playbook © 2025, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 289,
+  "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
+  "nextUid": 290,
   "games": [
     {
       "name": "Accepting Game",
@@ -59,8 +59,10 @@
       "tags": [
         "audience",
         "exercise",
+        "game",
         "scene",
-        "shortform"
+        "shortform",
+        "yes and"
       ],
       "uid": 1
     },
@@ -204,11 +206,11 @@
         "List Endowment"
       ],
       "tags": [
-        "animal",
+        "animals",
         "character",
         "scene",
         "shortform",
-        "tossup"
+        "toss-up"
       ],
       "uid": 9
     },
@@ -258,9 +260,13 @@
     {
       "name": "At The Movies",
       "description": "Two critics review either a single film or multiple films. As they review, clips from the fictitious movie are acted out onstage.",
+      "notes": "The movie critics can have a theme: \"Two Women Going Through A Divorce Review The Movies!\", etc, and give commentary from their points-of-view.\n\nAt UP, we often follow a \"rule of threes\" model and show three scenes: a beginning, middle and end scene.\n\nThis game (or its variants) can be the seed for a mid-form or long-form: The actors can then play the whole movie trying to connect the scenes from the review or from trailer.",
       "variations": [
-        "Can be done as a “tribute” to a fictitious actor or director.",
-        "Rather than critics, the improvisers can play a trailer to an upcoming feature. Then they can play the whole movie trying to connect the scenes from the trailer."
+        "Movie Tribute: Can be done as a “tribute” to a fictitious actor or director.",
+        "Movie Trailer: Rather than critics, the improvisers can play a trailer to an upcoming feature."
+      ],
+      "aliases": [
+        "Movie Critics"
       ],
       "tags": [
         "game",
@@ -413,7 +419,7 @@
         "blocking",
         "exercise",
         "scene",
-        "yes-and"
+        "yes and"
       ],
       "uid": 23
     },
@@ -725,7 +731,7 @@
       "tags": [
         "endowment",
         "historical",
-        "pop-culture",
+        "pop culture",
         "scene",
         "shortform"
       ],
@@ -894,7 +900,7 @@
         "game",
         "guessing",
         "historical",
-        "pop-culture",
+        "pop culture",
         "shortform",
         "timed"
       ],
@@ -1200,7 +1206,7 @@
       "description": "A headline, real or imagined, is asked of the audience. The scene is played illustrating the headline.",
       "tags": [
         "news",
-        "pop-culture",
+        "pop culture",
         "scene",
         "shortform"
       ],
@@ -1588,7 +1594,7 @@
       "tags": [
         "game",
         "musical",
-        "pop-culture",
+        "pop culture",
         "shortform",
         "toss-up"
       ],
@@ -1598,7 +1604,7 @@
       "name": "Lyric Speak",
       "description": "All the characters onstage speak in song lyrics from actual songs.",
       "tags": [
-        "pop-culture",
+        "pop culture",
         "scene",
         "shortform",
         "verbal"
@@ -1714,7 +1720,7 @@
       "description": "Scene is based on some kind of published material. Maybe in the form of a newspaper headline (real or imagined), personal ad, letter to Dear Abby, TV Guide Synopsis, Movie or Video Guide Synopsis, entry from Ripley's Believe it or Not, Guiness Book of World Records, etc. The internet is another great resource for this game. The shorter the original source, the better.",
       "tags": [
         "news",
-        "pop-culture",
+        "pop culture",
         "props",
         "scene",
         "shortform"
@@ -1859,6 +1865,22 @@
         "toss-up"
       ],
       "uid": 140
+    },
+    {
+      "name": "My Ball",
+      "description": "Improvisers stand in a circle and, similar to Word Ball. An improviser passes \"something which is mine\" to another specific improviser. That improviser free associates and sends the first \"my\" thing that comes to mind to the next improviser.\n\n\"My Curious George coffee cup with a chip in the rim\" -> \"The time my father broke my mother's pink china\" -> \"My mother-in-law crying at my wedding and smearing her mascara\" -> \"The make-up kit my aunt gave me that my parents wouldn't let me wear\".\n\nThe offers should be specific but still short. Don't try to tell the whole story, but offer enough specifics to paint a picture. Let us guess at the rest.",
+      "notes": "Games like Word Ball can put us in an \"intellectual\" place where we make abstract associations, but My Ball is intended to put performers in an emotional, personal place.\n\nThis is a great \"getting to know you\" game. It's also a good exercise for working on Static Walks in Harold: giving meaningful personal associations and not just abstract ones.",
+      "related": [
+        "Word Ball"
+      ],
+      "tags": [
+        "exercise",
+        "free association",
+        "group game",
+        "warm-up"
+      ],
+      "createdBy": "Tony Beeman",
+      "uid": 289
     },
     {
       "name": "Name Game",
@@ -3502,8 +3524,15 @@
     {
       "name": "Word Ball",
       "description": "Improvisers stand in a circle. One improviser \"tosses\" any word they want to anybody else in the circle, that person in turn \"tosses\" another free associated word to another person in the circle. This warm up should be played at a fast pace and the improvisers should not think ahead, simply free associate on the word they're tossed.",
+      "variations": [
+        "Double Jump Word Ball: Improvisers silently free-associate off the first word that comes to mind and say the next word. If someone sends, \"Dog\", the next improviser thinks (silently) \"Cat, which makes me think of...\" and throws \"Mouse\" to the next person."
+      ],
+      "related": [
+        "My Ball"
+      ],
       "tags": [
         "exercise",
+        "free association",
         "warm-up"
       ],
       "uid": 278
