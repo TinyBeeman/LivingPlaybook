@@ -17,7 +17,6 @@
     --font-size-game-tag: smaller;
     --font-size-game-alias: smaller;
     --font-size-game-related-link: smaller;
-    --font-size-game-edit-button: smaller;
 
     --horizontal-rule-color: #aaaaaa;
     --horizontal-rule-width: 1px;
@@ -396,14 +395,6 @@ body {
     background-color: var(--color-game-related-link-hover-bg);
 }
 
-.game-edit-button {
-    font-size: var(--font-size-game-edit-button);
-    padding: var(--padding-small);
-    margin: var(--padding-small);
-    background-color: var(--default-bg);
-    border: var(--tag-border-width) solid black;
-}
-
 .include-only {
     font-size: var(--font-size-game-tag);
     color: var(--include-tag-bg);
@@ -426,52 +417,6 @@ body {
     margin-block-start: 0px;;
 }
 
-
-.game-edit {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid black;
-    background-color: white;
-    height: 90%;
-    overflow-y: auto;
-}
-
-.field_edit {
-    width: 100%;
-    resize: none;
-    font-size: var(--font-size-game-row)
-}
-
-.preview-details-container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
-
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.overlay-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    max-width: 90%;
-    max-height: 90%;
-    overflow-y: auto;
-}
 
 .card-title-button {
     border: none;
@@ -530,14 +475,6 @@ body {
 
 .add-to-list-button:hover {
     background-image: url(./img/icons/add-to-playlist-black.svg);
-}
-
-.edit-button {
-    background-image: url(./img/icons/edit-gray.svg);
-}
-
-.edit-button:hover {
-    background-image: url(./img/icons/edit-black.svg);
 }
 
 .share-button {

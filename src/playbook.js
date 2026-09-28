@@ -419,25 +419,6 @@ class SearchFilter {
 
 }
 
-const DatabaseField = {
-    Games: "games",
-    Contributors: "contributors",
-    NextUid: "nextUid",
-    Version: "version"
-}
-
-const GameField = {
-    Name: "name",
-    CreatedBy: "createdBy",
-    Description: "description",
-    Notes: "notes",
-    Variations: "variations",
-    Aliases: "aliases",
-    Related: "related",
-    Tags: "tags",
-    Uid: "uid"
-};
-
 // Enum for page mode
 const PageMode = {
     Default: "default",
@@ -547,189 +528,9 @@ class GameList {
     }
 }
 
-class GameDiff {
-    constructor(newGame, oldGame) {
-        this.oldGame = oldGame;
-        this.newGame = newGame;
-    }
-
-    static gameFieldNull(key, game) {
-        if (game == null || game[key] == null) {
-            return true;
-        }
-        
-        // if the key is a string, trim it and check if it's empty
-        if (typeof game[key] === 'string') {
-            return game[key].trim() === '';
-        }
-
-        // if the key is an array, check if it's empty
-        if (Array.isArray(game[key])) {
-            return game[key].length === 0;
-        }
-
-        // if the key is an object, check if it's empty
-        if (typeof game[key] === 'object') {
-            return Object.keys(game[key]).length === 0;
-        }
-
-        return false;
-    }
-    
-    fieldChanged(key) {
-        let oldValue = GameDiff.gameFieldNull(key, this.oldGame) ? null : this.oldGame[key];
-        let newValue = GameDiff.gameFieldNull(key, this.newGame) ? null : this.newGame[key];
-        return (JSON.stringify(newValue) !== JSON.stringify(oldValue));
-    }
-
-    toJsonObj() {
-        // Compare each field and return the differences
-        const diff = {};
-        for (const key in this.newGame) {
-            if (key === 'uid') {
-                diff[key] = this.newGame[key];
-            } else if (this.fieldChanged(key)) {
-                diff[key] = {
-                    old: this.oldGame[key],
-                    new: this.newGame[key]
-                };
-            }
-        }
-        return diff;
-    }
-}
-
-class PlaybookDiff {
-    #newGames = [];
-    #delGames = [];
-    #modifiedGames = [];
-    #newContributors = [];
-    #delContributors = [];
-    #oldVersion = null;
-
-    constructor(oldVersion, newGames, delGames, modifiedGames, newContributors, delContributors) {
-        this.#newGames = newGames;
-        this.#delGames = delGames;
-        this.#modifiedGames = modifiedGames;
-        this.#newContributors = newContributors;
-        this.#delContributors = delContributors;
-        this.#oldVersion = oldVersion;
-    }
-
-    toJson() {
-        return JSON.stringify({
-            oldVersion: this.#oldVersion,
-            newGames: this.#newGames,
-            delGames: this.#delGames,
-            modifiedGames: this.#modifiedGames.map(gameDiff => gameDiff.toJsonObj()),
-            newContributors: this.#newContributors,
-            delContributors: this.#delContributors
-        }, null, 2);
-    }
-
-    static getDiff(playbookNew, playbookOld) {
-        
-        const diff = {
-            added: [],
-            removed: [],
-            modified: [],
-            contributorsAdded: [],
-            contributorsRemoved: []
-        };
-
-        const gamesNew = playbookNew.getDatabaseValue(DatabaseField.Games);
-        const gamesOld = playbookOld.getDatabaseValue(DatabaseField.Games);
-        const oldVersion = playbookOld.getDatabaseValue(DatabaseField.Version);
-
-        const gameMapNew = new Map(gamesNew.map(game => [game.uid, game]));
-        const gameMapOld = new Map(gamesOld.map(game => [game.uid, game]));
-
-        // Find added and removed games
-        for (const uid of gameMapNew.keys()) {
-            if (!gameMapOld.has(uid)) {
-                diff.removed.push(gameMapNew.get(uid));
-            }
-        }
-
-        for (const uid of gameMapOld.keys()) {
-            if (!gameMapNew.has(uid)) {
-                diff.added.push(gameMapOld.get(uid));
-            } else {
-                const gameNew = gameMapNew.get(uid);
-                const gameOld = gameMapOld.get(uid);
-                if (JSON.stringify(gameNew) !== JSON.stringify(gameOld)) {
-                    diff.modified.push(new GameDiff(gameNew,gameOld));
-                }
-            }
-        }
-
-        // Find added and removed contributors
-        const contributorsA = playbookNew.getDatabaseValue(DatabaseField.Contributors) || [];
-        const contributorsB = playbookOld.getDatabaseValue(DatabaseField.Contributors) || [];
-        const contributorsSetA = new Set(contributorsA.map(contributor => contributor.toLowerCase()));
-        const contributorsSetB = new Set(contributorsB.map(contributor => contributor.toLowerCase()));
-
-        contributorsSetA.forEach(contributor => {
-            if (!contributorsSetB.has(contributor)) {
-                diff.contributorsRemoved.push(contributor);
-            }
-        });
-        contributorsSetB.forEach(contributor => {
-            if (!contributorsSetA.has(contributor)) {
-                diff.contributorsAdded.push(contributor);
-            }
-        });
-
-        return new PlaybookDiff(oldVersion, diff.added, diff.removed, diff.modified, diff.contributorsAdded, diff.contributorsRemoved);
-    }
-
-    applyToPlaybook(playbook) {
-        const games = playbook.getDatabaseValue(DatabaseField.Games);
-        const contributors = playbook.getDatabaseValue(DatabaseField.Contributors) || [];
-
-        this.#newGames.forEach(game => {
-            games.push(game);
-        });
-
-        this.#delGames.forEach(game => {
-            const index = games.findIndex(g => g.uid === game.uid);
-            if (index !== -1) {
-                games.splice(index, 1);
-            }
-        });
-
-        this.#modifiedGames.forEach(modifiedGame => {
-            // modified game is an obj which contains a uid and the fields that changed.
-            const index = games.findIndex(g => g.uid === modifiedGame.uid);
-            if (index !== -1) {
-                const game = games[index];
-                for (const key in modifiedGame) {
-                    if (key !== 'uid') {
-                        game[key] = modifiedGame[key].new;
-                    }
-                }
-            }
-        });
-
-        this.#newContributors.forEach(contributor => {
-            if (!contributors.includes(contributor)) {
-                contributors.push(contributor);
-            }
-        });
-
-        this.#delContributors.forEach(contributor => {
-            const index = contributors.indexOf(contributor);
-            if (index !== -1) {
-                contributors.splice(index, 1);
-            }
-        });
-    }
-}
-
 class Playbook {
     constructor() {
         this.data = null;
-        this.originalUrl = null;
     }
 
     async loadFromURL(url) {
@@ -740,7 +541,6 @@ class Playbook {
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
-            this.originalUrl = url;
             this.data = await response.json();
 
             // Walk through games and add anchorName
@@ -766,13 +566,6 @@ class Playbook {
             });
         }
         return Array.from(tagsSet).sort((a, b) => a.localeCompare(b));
-    }
-
-    getGameDetailsByName(name) {
-        if (this.data && this.data.games) {
-            return this.data.games.find(game => game.name === name) || null;
-        }
-        return null;
     }
 
     getAnchorName(name) {
@@ -823,152 +616,6 @@ class Playbook {
             })
         .sort((a, b) => a.name.localeCompare(b.name));
     }
-
-    getNextUid(inc=true) {
-        // Check if nextUid exists and use its value if it's a number, otherwise default to 1
-        const uid = (typeof this.data.nextUid === 'number') ? this.data.nextUid : 1;
-        this.data.nextUid = inc ? uid + 1 : uid;
-        return uid;
-    }
-
-    sanitizeDatabase() {
-        if (!this.data || !this.data.games) {
-            return;
-        }
-
-        function sanitizeArray(arrayValue) {
-            if (arrayValue == null || !Array.isArray(arrayValue))
-                return undefined;
-    
-            return arrayValue.filter(value => value.trim() !== '').sort((a, b) => a.localeCompare(b));
-        }
-
-        function sanitizeString(stringValue) {
-            return stringValue? stringValue.trim() : undefined;
-        }
-    
-        // Create a list to hold games which need new uids.
-        const gamesWithNoUid = [];
-        // Create a set to ensure unique uids.
-        const uids = new Set();
-
-        this.data.games.forEach(game => {
-            // If a game does not have a unique ID integer in game.uid, give it one.
-            if (!game.uid || typeof game.uid !== 'number') {
-                gamesWithNoUid.push(game);    
-            }
-            else
-            {
-                if (game.uid == -1 || uids.has(game.uid)) {
-                    game.uid = undefined;
-                    gamesWithNoUid.push(game);
-                }
-                else {
-                    uids.add(game.uid);
-                    if (game.uid >= this.data.nextUid) {
-                        this.data.nextUid = game.uid + 1;
-                    }
-                }
-            }
-
-            game.name = sanitizeString(game.name);
-            game.createdBy = sanitizeString(game.createdBy);
-            game.description = sanitizeString(game.description);
-            game.notes = sanitizeString(game.notes);
-            game.variations = sanitizeArray(game.variations);
-            game.aliases = sanitizeArray(game.aliases);
-            game.related = sanitizeArray(game.related);
-            game.tags = sanitizeArray(game.tags);
-        });
-
-        gamesWithNoUid.forEach(game => {
-            game.uid = this.getNextUid();
-        });
-
-        this.data.games = this.data.games.sort((a, b) => a.name.localeCompare(b.name));
-
-        let unknownRelatedGames = new Set();
-        this.data.games.forEach(game => {
-            if (!game.related || game.related.length === 0) {
-                return;
-            }
-
-            game.related.forEach(relatedGame => {
-                if (!this.data.games.some(game => game.name === relatedGame)) {
-                    unknownRelatedGames.add(relatedGame);
-                }
-            });
-        });
-
-        if (unknownRelatedGames.size > 0)
-            console.log('Unknown related games:', Array.from(unknownRelatedGames).sort());
-    
-        // If there is a this.data.contributors array, sort it by the last word in the string (last name).
-        if (this.data.contributors) {
-            this.data.contributors = this.data.contributors.sort((a, b) => {
-                const aName = a.split(' ').pop();
-                const bName = b.split(' ').pop();
-                return aName.localeCompare(bName);
-            });
-        }
-    }
-
-    getDatabaseValue(databaseField) {
-        switch (databaseField) {
-            case DatabaseField.Games:
-                return this.data.games;
-            case DatabaseField.Contributors:
-                return this.data.contributors;
-            case DatabaseField.NextUid:
-                return this.data.nextUid;
-            case DatabaseField.Version:
-                return this.data.version;
-            default:
-                return null;
-        }
-    }
-
-    exportJson() {
-        this.sanitizeDatabase();
-        // Increment minor version number, maintaining leading zeros
-        const minorVersion = parseInt(this.data.version.minor, 10) + 1;
-        this.data.version.minor = minorVersion.toString().padStart(4, '0');
-
-        const dataWithoutAnchorNames = JSON.stringify(this.data, (key, value) => {
-            if (key.toLowerCase() === 'anchorname' || key.toLowerCase() === 'anchoraliases') {
-                return undefined;
-            }
-            return value;
-        }, 2);
-        return dataWithoutAnchorNames;
-    }
-
-    downloadJson() {
-        const data = this.exportJson();
-
-        const blob = new Blob([data], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'living_playbook.json';
-        a.click();
-        URL.revokeObjectURL(url);
-    }
-
-    downloadDiffJson() {
-        const playbookOld = new Playbook();
-        playbookOld.loadFromURL(this.originalUrl).then(() => {
-            const diff = PlaybookDiff.getDiff(this, playbookOld);
-            const data = diff.toJson();
-            const blob = new Blob([data], { type: 'application/json' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'living_playbook_diff.json';
-            a.click();
-            URL.revokeObjectURL(url);
-        });
-    }
 }
 
 class PlaybookPage {
@@ -979,17 +626,16 @@ class PlaybookPage {
         this.playbook = new Playbook();
         this.searchTerm = null;
         this.lazyTimer = null;
-        this.editMode = false;
         this.favoriteList = GameList.fromLocalStorage("Favorites");
         this.currentGames = [];
     }
 
     onDatabaseLoad() {
-        const version = this.playbook.getDatabaseValue(DatabaseField.Version);
+        const version = this.playbook.data.version;
         this.populatePageHeader(
             `The (${this.dbId === "2001" ? "2001" : "Online"}) Living Playbook`,
             `The Unexpected Productions Improv Game List`,
-            `Version ${version.major}.${version.minor}` // Add version number
+            `Version ${version.year}.${Number(version.major)}.${Number(version.minor)}`
         );
 
         const tags = this.playbook.getTags();
@@ -1047,8 +693,6 @@ class PlaybookPage {
             this.searchTerm = "uids:" + this.uids.join(',');
         }
 
-        this.editMode = urlParams.get('edit') === '1';
-    
         // Populate the control-pane div
         this.populateControlPane();
         this.initializeCollapsibles();
@@ -1267,31 +911,6 @@ class PlaybookPage {
             this.updateUrlFromState();
         });
 
-        if (this.editMode) {
-            // Create download button (hidden by default)
-            const downloadButton = document.createElement('button');
-            downloadButton.id = 'download-json';
-            downloadButton.className = 'game-edit-button';
-            downloadButton.textContent = 'Download Json';
-            searchSection.appendChild(downloadButton);
-            downloadButton.classList.remove('hidden');
-            downloadButton.addEventListener('click', () => {
-                this.playbook.downloadJson();
-            });
-
-            // Create download diff button (hidden by default)
-            const downloadDiffButton = document.createElement('button');
-            downloadDiffButton.id = 'download-diff-json';
-            downloadDiffButton.className = 'game-edit-button';
-            downloadDiffButton.textContent = 'Download Diff Json';
-            searchSection.appendChild(downloadDiffButton);
-            downloadDiffButton.classList.remove('hidden');
-            downloadDiffButton.addEventListener('click', () => {
-                this.playbook.downloadDiffJson();
-            });
-        }
-        
-                
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
         controlPane.appendChild(this.createTagFilterSection());
@@ -1302,7 +921,7 @@ class PlaybookPage {
     populateFooter() {
         // combine this.data.contributors array into one comma-separated string
         let conStr = "";
-        const contributors = this.playbook.getDatabaseValue(DatabaseField.Contributors);
+        const contributors = this.playbook.data.contributors;
         if (contributors)
         {
             contributors.forEach( (contributor, index) => {
@@ -1401,7 +1020,7 @@ class PlaybookPage {
                 gamesContainer.appendChild(divLetter);
             }
 
-            gamesContainer.appendChild(this.createGameCardDiv(gameDetails, this.editMode));
+            gamesContainer.appendChild(this.createGameCardDiv(gameDetails));
         });
     }
 
@@ -1412,6 +1031,7 @@ class PlaybookPage {
         url.searchParams.delete('yesTags');
         url.searchParams.delete('noTags');
         url.searchParams.delete('list');
+        url.searchParams.delete('edit');
 
         if (this.searchTerm) {
             // If the search term includes uid:[integer] as a substring, set the uid parameter
@@ -1622,7 +1242,7 @@ class PlaybookPage {
         return shareButton;
     }
 
-    createGameCardDiv(gameDetails, editMode = false) {
+    createGameCardDiv(gameDetails) {
 
         function createGameRowContainer(class_name) {
             const divRowContainer = document.createElement('div');
@@ -1669,15 +1289,6 @@ class PlaybookPage {
         divTitle.appendChild(this.createFavoriteButton(gameDetails));
         divTitle.appendChild(this.createAddToListButton(gameDetails));
         divTitle.appendChild(this.createShareButton(gameDetails));
-
-        if (editMode) {
-            const editButton = document.createElement('button');
-            editButton.classList.add('edit-button');
-            editButton.classList.add('card-title-button');
-            editButton.onclick = () => this.showEditOverlay(gameDetails);
-            editButton.setAttribute('title', 'Edit Game');
-            divTitle.appendChild(editButton);
-        }
 
         const divCardContent = document.createElement('div');
         divCardContent.classList.add('game-card-content');
@@ -1765,252 +1376,6 @@ class PlaybookPage {
         headerElement.classList.add('page-header');
         headerElement.innerHTML = headerHtml;
 
-    }
-
-    fitTextAreaToContent(textArea) {
-        textArea.style.height = 'auto';
-        textArea.style.height = (textArea.scrollHeight) + 'px';
-    }
-
-    fitAllTextAreasToContent() {
-        const textareas = document.querySelectorAll('.field_edit');
-        textareas.forEach(textarea => { this.fitTextAreaToContent(textarea); }); 
-    }
-
-    getEditId(gameId, field) {
-        return `edit-${gameId}-${field}`;
-    }
-
-    createEditRow(field_type,
-        field_label,
-        game_field,
-        game_id,
-        initialValue = null)
-    {
-        let divRow = document.createElement('div');
-        divRow.classList.add('game-row');
-        let label = document.createElement('label');
-        label.textContent = field_label;
-        divRow.appendChild(label);
-
-        switch (field_type) {
-            case 'text':
-                let input = document.createElement('input');
-                input.type = 'text';
-                input.id = this.getEditId(game_id, game_field);
-                input.classList.add('field_edit');
-                input.value = initialValue || '';
-                divRow.appendChild(input);
-                break;
-            case 'textarea':
-                let textarea = document.createElement('textarea');
-                textarea.id = this.getEditId(game_id, game_field);
-                textarea.classList.add('field_edit');
-                divRow.appendChild(textarea);
-                textarea.oninput = () => this.fitTextAreaToContent(textarea);
-                textarea.value = initialValue || '';
-                break;
-        }
-
-        return divRow;
-    }
-
-    createCommitRow(gameId,
-        commitLabel,
-        commitCallback,
-        resetLabel,
-        resetCallback) {
-        let divCommitRow = document.createElement('div');
-        divCommitRow.classList.add('game-row');
-        let previewButton = document.createElement('button');
-        previewButton.id = 'preview-button-' + gameId;
-        previewButton.textContent = commitLabel;
-        previewButton.onclick = commitCallback;
-        divCommitRow.appendChild(previewButton);
-        let resetButton = document.createElement('button');
-        resetButton.id = 'reset-button-' + gameId;
-        resetButton.textContent = resetLabel;
-        resetButton.onclick = resetCallback;
-        divCommitRow.appendChild(resetButton);
-        return divCommitRow;
-    }
-
-    getDetailsFromDocEditFields(gameId) {
-        const getValue = (id, delim = null) => {
-            const value = document.getElementById(id).value.trim();
-            if (delim != null)
-                return value ? value.split(delim).map(v => v.trim()) : null;
-            return value;
-        };
-
-        const newDetails = {
-            name: getValue(this.getEditId(gameId, GameField.Name)),
-            description: getValue(this.getEditId(gameId, GameField.Description)),
-            notes: getValue(this.getEditId(gameId, GameField.Notes)),
-            variations: getValue(this.getEditId(gameId, GameField.Variations), '\n'),
-            aliases: getValue(this.getEditId(gameId, GameField.Aliases), ';'),
-            related: getValue(this.getEditId(gameId, GameField.Related), ';'),
-            tags: getValue(this.getEditId(gameId, GameField.Tags), ';'),
-            createdBy: getValue(this.getEditId(gameId, GameField.CreatedBy))
-        };
-
-        return newDetails;
-    }
-
-    previewGameEdit(newDetails) {
-        const overlayElement = this.createOverlay();
-
-        const oldDetails = this.playbook.getGameDetailsByName(newDetails.name);
-        const gameId = this.playbook.getAnchorName(newDetails.name);
-        this.populatePreviewOverlay(overlayElement, oldDetails, newDetails);
-        document.body.appendChild(overlayElement);
-    }
-
-    createEditDiv(gameDetails,
-        commitLabel = "Commit",
-        commitCallback = () => { },
-        resetLabel = "Reset",
-        resetCallback = () => { }) {
-        let gameId = this.playbook.getAnchorName(gameDetails.name);
-        let divEditGame = document.createElement('div');
-        divEditGame.classList.add('game-edit');
-        divEditGame.id = `game-edit-${gameId}`;
-        divEditGame.appendChild(this.createEditRow('text', 'Name:', GameField.Name, gameId, gameDetails.name));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Description:', GameField.Description, gameId, gameDetails.description));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Notes:', GameField.Notes, gameId, gameDetails.notes));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Variations (one per line):', GameField.Variations, gameId, (gameDetails.variations || []).join('\n')));
-        divEditGame.appendChild(this.createEditRow('text', 'Aliases (semi-colon-separated):', GameField.Aliases, gameId, (gameDetails.aliases || []).join('; ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Related Games (semi-color-separated):', GameField.Related, gameId, (gameDetails.related || []).join('; ')));
-        divEditGame.appendChild(this.createEditRow('text', 'Tags (semi-colon-separated):', GameField.Tags, gameId, (gameDetails.tags || []).join('; ')));
-        divEditGame.appendChild(this.createEditRow('textarea', 'Created By:', GameField.CreatedBy, gameId, gameDetails.createdBy));
-        divEditGame.appendChild(this.createCommitRow(
-            gameId,
-            commitLabel,
-            commitCallback,
-            resetLabel,
-            resetCallback));
-                
-        return divEditGame;
-    }
-
-    createOverlay(hidden = false) {
-        const overlayElement = document.createElement('div');
-        overlayElement.id = 'overlay';
-        overlayElement.classList.add('overlay');
-        if (hidden)
-            overlayElement.classList.add('hidden');
-        return overlayElement;
-    }
-
-    populatePreviewOverlay(overlayElement, oldDetails, newDetails) {
-        const overlayContent = document.createElement('div');
-        overlayContent.classList.add('overlay-content');
-        overlayElement.appendChild(overlayContent);
-        
-        const h2 = document.createElement('h2');
-        h2.textContent = 'Confirm Changes';
-        overlayContent.appendChild(h2);
-
-        const detailsDiv = document.createElement('div');
-        detailsDiv.classList.add('preview-details-container');
-        overlayContent.appendChild(detailsDiv);
-
-        const newDetailsDiv = document.createElement('div');
-        newDetailsDiv.id = 'new-details';
-        detailsDiv.appendChild(newDetailsDiv);
-
-        const newDetailsHeader = document.createElement('h3');
-        
-        newDetailsHeader.textContent = oldDetails ? 'Edited Details' : "New Game";
-        newDetailsDiv.appendChild(newDetailsHeader);
-
-        const newDetailsContent = document.createElement('div');
-        newDetailsContent.id = 'new-details-content';
-        newDetailsContent.appendChild(this.createGameCardDiv(newDetails));
-        newDetailsDiv.appendChild(newDetailsContent);
-
-        if (oldDetails) {
-            const oldDetailsDiv = document.createElement('div');
-            oldDetailsDiv.id = 'old-details';
-            detailsDiv.appendChild(oldDetailsDiv);
-
-            const oldDetailsHeader = document.createElement('h3');
-            oldDetailsHeader.textContent = 'Old Details';
-            oldDetailsDiv.appendChild(oldDetailsHeader);
-
-            const oldDetailsContent = document.createElement('div');
-            oldDetailsContent.id = 'old-details-content';
-            oldDetailsContent.appendChild(this.createGameCardDiv(oldDetails));
-            oldDetailsDiv.appendChild(oldDetailsContent);
-        }
-
-        const confirmButton = document.createElement('button');
-        confirmButton.id = 'confirm-button';
-        confirmButton.textContent = 'Confirm';
-        confirmButton.addEventListener('click', () => {
-            const name = oldDetails ? oldDetails.name : newDetails.name;
-            let gameDetails = this.playbook.getGameDetailsByName(name);
-            if (gameDetails == null) {
-                gameDetails = {};
-                this.playbook.data.games.push(gameDetails);
-            }
-
-            const fieldAssign = (value) => {
-                // If value is an array...
-                if (Array.isArray(value) && value.length === 0)
-                    return null;
-                // If value is a string...
-                if (typeof value === 'string' && value.trim() === '')
-                    return null;
-
-                return value;
-            }
-
-            gameDetails.name = fieldAssign(newDetails.name);
-            gameDetails.createdBy = fieldAssign(newDetails.createdBy);
-            gameDetails.description = fieldAssign(newDetails.description);
-            gameDetails.notes = fieldAssign(newDetails.notes);
-            gameDetails.variations = fieldAssign(newDetails.variations);
-            gameDetails.aliases = fieldAssign(newDetails.aliases);
-            gameDetails.related = fieldAssign(newDetails.related);
-            gameDetails.tags = fieldAssign(newDetails.tags);
-            gameDetails.anchorName = this.playbook.getAnchorName(gameDetails.name); 
-            gameDetails.anchorAliases = gameDetails.aliases ? gameDetails.aliases.map(alias => this.playbook.getAnchorName(alias)) : null;
-            overlayElement.remove();
-            this.populateGameList();
-        });
-        overlayContent.appendChild(confirmButton);
-
-        const cancelButton = document.createElement('button');
-        cancelButton.id = 'cancel-button';
-        cancelButton.textContent = 'Return to Edit';
-        cancelButton.addEventListener('click', () => {
-            overlayElement.remove();
-            this.showEditOverlay(newDetails);
-        });
-        overlayContent.appendChild(cancelButton);
-
-        overlayElement.appendChild(overlayContent);
-        return overlayContent;
-    }
-
-
-    showEditOverlay(gameDetails) {
-        const overlayElement = this.createOverlay();
-        const gameId = this.playbook.getAnchorName(gameDetails.name);
-        const editDiv = this.createEditDiv(gameDetails,
-            "Preview Changes",
-            () => {
-                const newDetails = this.getDetailsFromDocEditFields(gameId);
-                overlayElement.remove();
-                this.previewGameEdit(newDetails);
-            },
-            "Cancel",
-            () => { overlayElement.remove(); });
-
-        overlayElement.appendChild(editDiv);
-        document.body.appendChild(overlayElement);
-        this.fitAllTextAreasToContent();
     }
 }
 
