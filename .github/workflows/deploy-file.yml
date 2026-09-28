@@ -22,7 +22,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
+
+      # Don't rely on the runner image shipping these: ubuntu-latest moves to
+      # new Ubuntu releases over time, and sshpass isn't guaranteed to be on them.
+      - name: Install rsync and sshpass
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rsync sshpass
 
       - name: Trust Remote Server Host Key
         run: |
