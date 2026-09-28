@@ -395,6 +395,26 @@ body {
     background-color: var(--color-game-related-link-hover-bg);
 }
 
+/* Notices above the game list: ignored link parameters, or a failed data load. */
+.page-notice {
+    margin: 10px 0;
+    padding: 8px 12px;
+    border-left: 4px solid var(--color-game-related-link-border);
+    background-color: #f3f4fa;
+    font-size: smaller;
+}
+
+.page-notice-error {
+    border-left-color: var(--exclude-tag-bg);
+    background-color: #fdecea;
+}
+
+@media print {
+    .page-notice {
+        display: none;
+    }
+}
+
 .include-only {
     font-size: var(--font-size-game-tag);
     color: var(--include-tag-bg);

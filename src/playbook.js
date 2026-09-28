@@ -36,9 +36,11 @@ class Util {
         return encodeURIComponent(String.fromCharCode(...bitmasks));
     }
 
+    // encodedString comes from URLSearchParams.get(), which has already undone the
+    // encodeURIComponent above. Decoding it a second time corrupted, or threw on, any list
+    // whose bitmask contained a '%' byte (0x25).
     static DecodeIntegerSet(encodedString) {
-        const decodedString = decodeURIComponent(encodedString);
-        const bitmasks = Array.from(decodedString).map(char => char.charCodeAt(0));
+        const bitmasks = Array.from(encodedString).map(char => char.charCodeAt(0));
 
         let setInt = new Set();
         bitmasks.forEach((mask, index) => {
@@ -533,27 +535,23 @@ class Playbook {
         this.data = null;
     }
 
+    // Throws if the file can't be fetched or parsed, so the page can say so.
     async loadFromURL(url) {
-        try {
-            // Load data from URL, avoiding any cache
-            const response = await fetch(url, { cache: 'no-store' });
+        // Load data from URL, avoiding any cache
+        const response = await fetch(url, { cache: 'no-store' });
 
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            this.data = await response.json();
-
-            // Walk through games and add anchorName
-            this.data.games.forEach(game => {
-                game.anchorName = this.getAnchorName(game.name);
-                if (game.aliases) {
-                    game.anchorAliases = game.aliases.map(alias => this.getAnchorName(alias));
-                }
-            });
-
-        } catch (error) {
-            console.error(`Error loading data from URL: ${error}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        this.data = await response.json();
+
+        // Walk through games and add anchorName
+        this.data.games.forEach(game => {
+            game.anchorName = this.getAnchorName(game.name);
+            if (game.aliases) {
+                game.anchorAliases = game.aliases.map(alias => this.getAnchorName(alias));
+            }
+        });
     }
 
     getTags() {
@@ -639,6 +637,7 @@ class PlaybookPage {
         );
 
         const tags = this.playbook.getTags();
+        this.dropUnknownTags(tags);
         if (this.searchTerm)
             document.getElementById('search-box').value = this.searchTerm;
 
@@ -667,7 +666,56 @@ class PlaybookPage {
         this.populateGameList();
         this.populateFooter();
     }
-    
+
+    // A link can name a tag that no longer exists (renamed or merged since, or from the other
+    // edition). With no button for it, it would filter out every game and couldn't be turned
+    // off, so ignore it, say so, and fix the URL.
+    dropUnknownTags(knownTags) {
+        const known = new Set(knownTags);
+        const dropped = [];
+        for (const set of [this.filter.yesTags, this.filter.noTags]) {
+            for (const tag of Array.from(set)) {
+                if (!known.has(tag)) {
+                    set.delete(tag);
+                    if (tag !== '')
+                        dropped.push(tag);
+                }
+            }
+        }
+        if (dropped.length === 0)
+            return;
+
+        const url = new URL(window.location);
+        for (const [param, set] of [['yesTags', this.filter.yesTags], ['noTags', this.filter.noTags]]) {
+            const value = Array.from(set).join(';');
+            if (value)
+                url.searchParams.set(param, value);
+            else
+                url.searchParams.delete(param);
+        }
+        window.history.replaceState({}, '', url);
+
+        const plural = dropped.length === 1 ? 'tag' : 'tags';
+        this.showNotice(`This link used the ${plural} “${dropped.join('”, “')}”, which ${dropped.length === 1 ? "isn't" : "aren't"} in this playbook any more, so ${dropped.length === 1 ? 'it was' : 'they were'} ignored.`);
+    }
+
+    showNotice(text, isError = false) {
+        const notice = document.getElementById('page-notice');
+        notice.textContent = text;
+        notice.classList.toggle('page-notice-error', isError);
+        notice.setAttribute('role', isError ? 'alert' : 'status');
+        notice.hidden = false;
+    }
+
+    onDatabaseLoadFailed(error) {
+        console.error("Error loading database:", error);
+        this.populatePageHeader(
+            `The (${this.dbId === "2001" ? "2001" : "Online"}) Living Playbook`,
+            `The Unexpected Productions Improv Game List`);
+        document.getElementById('search-desc').textContent = '';
+        this.showNotice("Sorry, the playbook couldn't be loaded. Please check your connection and reload the page.", true);
+    }
+
     async onPageLoad() {
         let urlParams = new URLSearchParams(window.location.search);
         this.dbId = urlParams.get('dbId');
@@ -675,11 +723,9 @@ class PlaybookPage {
         this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
         this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
         this.uid = urlParams.get('uid');
-        this.uids = urlParams.get('uids');
-        if (this.uids) {
-            let set = Util.DecodeIntegerSet(this.uids);
-            this.uids = Array.from(set);
-        }
+        // An empty uids= (e.g. a link to an empty list) is treated as no list at all.
+        const uidsParam = urlParams.get('uids');
+        this.uids = uidsParam ? Array.from(Util.DecodeIntegerSet(uidsParam)) : null;
 
         if (this.searchTerm != null) {
             this.pageMode = PageMode.SearchFilter;
@@ -702,7 +748,7 @@ class PlaybookPage {
                 this.onDatabaseLoad();
             })
             .catch(error => {
-                console.error("Error loading database:", error);
+                this.onDatabaseLoadFailed(error);
             });
     }
 
@@ -830,7 +876,11 @@ class PlaybookPage {
                 shareListButton.addEventListener('click', (event) => {
                     event.stopPropagation();
                     const gameList = GameList.fromLocalStorage(name);
-                    
+                    if (gameList.games.length === 0) {
+                        alert(`"${name}" is empty, so there's nothing to share yet.`);
+                        return;
+                    }
+
                     let gamesSet = new Set(gameList.games);
                     // Encode gamesSet to a UTF-8 string
                     const gamesSetString = Util.EncodeIntegerSet(gamesSet);
