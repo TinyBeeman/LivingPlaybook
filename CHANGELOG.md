@@ -1,3 +1,31 @@
+## Version 2026.0001.0001
+
+**Games Added**
+- My Ball
+
+**Games Updated**
+- Accepting Game
+  - Tags Updated
+- At The Movies
+  - Notes Added
+  - Variations Updated
+  - Aliases Added
+- Word Ball
+  - Variations Added
+  - Related Added
+  - Tags Updated
+
+**Tags Renamed**
+- 'animal' to 'animals'
+- 'pop-culture' to 'pop culture'
+- 'yes-and' to 'yes and'
+
+**Tags Merged**
+- 'tossup' into 'toss-up'
+
+**Other Changes**
+- License updated
+
 ## Version 2026.0001.0000
 
 **Technical Improvements**
