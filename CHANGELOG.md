@@ -1,3 +1,19 @@
+## Version 2026.0001.0002
+
+**Games Added**
+- My Ball
+
+**Games Removed**
+- The Moon
+
+**Games Updated**
+- Piano Torture
+  - Renamed from 'Sing Speak' to 'Piano Torture'
+  - Aliases Updated
+- Sounds Like a Song
+  - Renamed from 'Song Cue' to 'Sounds Like a Song'
+  - Aliases Updated
+
 ## Version 2026.0001.0001
 
 **Games Added**

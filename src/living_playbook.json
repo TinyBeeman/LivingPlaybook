@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0001",
-    "minor": "0001"
+    "minor": "0002"
   },
   "contributors": [
     "Kris Anderson",
@@ -47,7 +47,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 290,
+  "nextUid": 291,
   "games": [
     {
       "name": "Accepting Game",
@@ -1883,6 +1883,22 @@
       "uid": 289
     },
     {
+      "name": "My Ball",
+      "description": "Improvisers stand in a circle and, similar to Word Ball. An improviser passes \"something which is mine\" to another specific improviser. That improviser free associates and sends the first \"my\" thing that comes to mind to the next improviser.\n\n\"My Curious George coffee cup with a chip in the rim\" -> \"The time my father broke my mother's pink china\" -> \"My mother-in-law crying at my wedding and smearing her mascara\" -> \"The make-up kit my aunt gave me that my parents wouldn't let me wear\".\n\nThe offers should be specific but still short. Don't try to tell the whole story, but offer enough specifics to paint a picture. Let us guess at the rest.",
+      "notes": "Games like Word Ball can put us in an \"intellectual\" place where we make abstract associations, but My Ball is intended to put performers in an emotional, personal place.\n\nThis is a great \"getting to know you\" game. It's also a good exercise for working on Static Walks in Harold: giving meaningful personal associations and not just abstract ones.",
+      "related": [
+        "Word Ball"
+      ],
+      "tags": [
+        "exercise",
+        "free association",
+        "group game",
+        "warm-up"
+      ],
+      "createdBy": "Tony Beeman",
+      "uid": 290
+    },
+    {
       "name": "Name Game",
       "description": "Improvisers roam around the room pointing at different objects, calling them by a name other than what they actually are. Example: An improviser points at a cat and declares, \"A Walnut!\", then points at a chair and says, “A hat!\", etc. Best played at a fast pace with everyone speaking at once.",
       "tags": [
@@ -2217,6 +2233,19 @@
         "shortform"
       ],
       "uid": 168
+    },
+    {
+      "name": "Piano Torture",
+      "description": "As a scene is played, the improviser must begin singing their dialogue when an accompanist begins playing. They return to regular dialogue when the music stops, then sing when music plays, and then speak, etc.",
+      "aliases": [
+        "Sing Speak"
+      ],
+      "tags": [
+        "musical",
+        "scene",
+        "shortform"
+      ],
+      "uid": 213
     },
     {
       "name": "Pillars",
@@ -2768,19 +2797,6 @@
       "uid": 212
     },
     {
-      "name": "Sing Speak",
-      "description": "As a scene is played, the improviser must begin singing their dialogue when an accompanist begins playing. They return to regular dialogue when the music stops, then sing when music plays, and then speak, etc.",
-      "aliases": [
-        "Piano Torture"
-      ],
-      "tags": [
-        "musical",
-        "scene",
-        "shortform"
-      ],
-      "uid": 213
-    },
-    {
       "name": "Slide Show",
       "description": "A great handle for many different formats. Improvisers pose in non specific poses while narrator explains - vacation, area of expertise, etc.",
       "tags": [
@@ -2848,20 +2864,6 @@
       "uid": 219
     },
     {
-      "name": "Song Cue",
-      "description": "As a scene is played, an offstage improviser will occasionally freeze the scene and the last line spoken becomes the title of a song sung by that character. Duets, etc. can be endowed upon the scene.",
-      "aliases": [
-        "Sounds Like a Song"
-      ],
-      "tags": [
-        "directed",
-        "musical",
-        "scene",
-        "shortform"
-      ],
-      "uid": 220
-    },
-    {
       "name": "Song in a Style",
       "description": "A single song is sung in a specific style, based on an audience suggestion.",
       "variations": [
@@ -2886,6 +2888,20 @@
         "tech"
       ],
       "uid": 222
+    },
+    {
+      "name": "Sounds Like a Song",
+      "description": "As a scene is played, an offstage improviser will occasionally freeze the scene and the last line spoken becomes the title of a song sung by that character. Duets, etc. can be endowed upon the scene.",
+      "aliases": [
+        "Song Cue"
+      ],
+      "tags": [
+        "directed",
+        "musical",
+        "scene",
+        "shortform"
+      ],
+      "uid": 220
     },
     {
       "name": "SoundScape",
@@ -3238,19 +3254,6 @@
         "shortform"
       ],
       "uid": 253
-    },
-    {
-      "name": "The Moon",
-      "description": "Improvisers play a scene as though they have very little gravity. This game works best with a mover to help with the weightlessness.",
-      "related": [
-        "Moving Bodies"
-      ],
-      "tags": [
-        "physical",
-        "scene",
-        "shortform"
-      ],
-      "uid": 254
     },
     {
       "name": "Three Lines",
