@@ -1734,6 +1734,21 @@ class PlaybookPage {
         divDefinition.appendChild(divDefinitionText);
         divCardContent.appendChild(divDefinition);
 
+        // Notes hold anything too long for the overlay, so they appear only here.
+        if (term.notes) {
+            const divNotes = document.createElement('div');
+            divNotes.classList.add('game-row', 'game-row-notes');
+            const divNotesHeader = document.createElement('div');
+            divNotesHeader.classList.add('game-row-header');
+            divNotesHeader.textContent = 'notes';
+            divNotes.appendChild(divNotesHeader);
+            const divNotesText = document.createElement('div');
+            divNotesText.classList.add('game-row-content', 'game-row-text', 'game-row-text-notes');
+            divNotesText.innerHTML = mdToHtml(term.notes);
+            divNotes.appendChild(divNotesText);
+            divCardContent.appendChild(divNotes);
+        }
+
         this.appendTermDetails(divCardContent, term);
         this.highlightGlossaryTerms(divCardContent, term);
         return divTermCard;
@@ -1893,7 +1908,9 @@ class PlaybookPage {
 
         this.appendTermDetails(div, term);
 
-        const glossaryLink = this.createSearchLink(`id:${term.anchorName}`, 'Open in the glossary', this.showParamWith('glossary'));
+        // The overlay leaves out a term's notes, so say when the glossary has more.
+        const glossaryLinkText = term.notes ? 'Open in the glossary for more notes…' : 'Open in the glossary';
+        const glossaryLink = this.createSearchLink(`id:${term.anchorName}`, glossaryLinkText, this.showParamWith('glossary'));
         glossaryLink.className = 'term-overlay-glossary-link';
         div.appendChild(glossaryLink);
 
