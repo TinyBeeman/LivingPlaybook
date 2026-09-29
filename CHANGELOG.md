@@ -1,3 +1,86 @@
+## Version 2026.0002.0000
+
+**Games Added**
+- We Are The World
+- Topsy-Turvey
+
+**Games Updated**
+- Advance and Expand
+  - Variations Updated
+- Attitude Scene
+  - Related Updated
+- Ballet
+  - Tags Updated
+- Blank Scene
+  - Renamed from 'Adjective Scene' to 'Blank Scene'
+  - Description Updated
+  - Notes Updated
+  - Variations Added
+  - Aliases Updated
+  - Related Added
+  - Tags Updated
+- Experts
+  - Related Updated
+- Fill In The Blank
+  - Renamed from 'Blank Scene' to 'Fill In The Blank'
+  - Description Updated
+  - Related Added
+  - Tags Updated
+- Gibberish Reunion
+  - Tags Updated
+- Inner Song-alogue
+  - Tags Updated
+- Lounge Lizards
+  - Tags Updated
+- Madrigal
+  - Tags Updated
+- Musical
+  - Description Updated
+  - Notes Added
+  - Variations Added
+  - Aliases Added
+  - Related Added
+  - Tags Updated
+- Opera
+  - Tags Updated
+- Oratorio
+  - Tags Updated
+- Piano Bar
+  - Description Updated
+  - Notes Added
+  - Variations Added
+  - Aliases Added
+  - Tags Updated
+- Piano Torture
+  - Tags Updated
+- Radio Stations
+  - Tags Updated
+- Rapid Musicals
+  - Tags Updated
+- Rock Opera
+  - Tags Updated
+- Scene from Music
+  - Tags Updated
+- Song Circle
+  - Tags Updated
+- Sounds Like a Song
+  - Tags Updated
+
+**Glossary Terms Added**
+- open scene
+- suggestion
+- long-form
+- short-form
+- mid-form
+- yes and
+- block
+- advance
+- expand
+- stakes
+
+**Contributors Added**
+- Cynthia Lair
+
 ## Version 2026.0001.0004
 
 **Games Added**
