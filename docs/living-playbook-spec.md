@@ -178,6 +178,7 @@ interface GlossaryEntry {
   uid: number;                // shares the uid / nextUid counter with games
   term: string;
   definition: string;         // markdown
+  notes?: string;             // markdown; longer material shown only on the glossary card
   aliases?: string[];
   related?: GlossaryRelated[];
 }
@@ -200,6 +201,7 @@ interface PlaybookFile {
 {
   "term": "Endowment",
   "definition": "Giving another player a trait or fact that they then play.",
+  "notes": "Endowments work best when they are specific ...",
   "aliases": ["Endow"],
   "related": [
     "Adjective Scene",
@@ -210,7 +212,8 @@ interface PlaybookFile {
 }
 ```
 
-- Keys are in the order `term, definition, aliases, related, uid`. `aliases` are sorted and de-duplicated; `related` keeps its authored order.
+- Keys are in the order `term, definition, notes, aliases, related, uid`. `aliases` are sorted and de-duplicated; `related` keeps its authored order.
+- `notes` is optional Markdown for anything too long for the overlay (examples, history, advice). It appears only on the term's glossary card, under a "notes" header; the overlay leaves it out and its glossary link reads "Open in the glossary for more notes…" instead of "Open in the glossary".
 - `uid`s come from the same counter as games, so a uid is unique across games and terms.
 - `term` must be unique among terms (a term may share a name with a game).
 - `related` refers to games and terms **by name**, and to a variation by its game's name plus the variation's name, so a link survives reordering the variations. UPTime stores these as uids and rewrites the current names on export.
@@ -276,13 +279,13 @@ Clicking a section header toggles an `active` class and shows or hides the next 
 
 - **Games** lists each matching game under its own name (the default).
 - **Variations** also lists each matching game once more under the name of each of its **named** variations. That entry is the full game card, titled with the variation name, with an "A variation of *Game*" link, and with that variation highlighted. It has no DOM `id`, so ids stay unique. Unnamed variations never get their own entry.
-- **Glossary** adds the glossary section. The search box filters it too (by term, alias or definition); tag filters don't, since terms have no tags.
+- **Glossary** adds the glossary section. The search box filters it too (by term, alias, definition or notes); tag filters don't, since terms have no tags.
 
 The buttons are independent: turning Games off while Variations is on lists games only under their variations' names.
 
 ### 5.7 Glossary terms in text
 
-After a card is built, the first appearance on that card of each glossary term (or alias) in its description, notes, variations or definition becomes a `<button class="glossary-term">` with a dashed underline. Text inside links, code and variation names is skipped, and a glossary card never marks its own term. Clicking or tapping one opens a single overlay with the term, its definition, "also called", "see also" links and "Open in the glossary". It closes on Escape, the × button, or a click outside. It sits under the term (kept inside the window) and becomes a bottom sheet on screens narrower than 600px.
+After a card is built, the first appearance on that card of each glossary term (or alias) in its description, notes, variations or definition becomes a `<button class="glossary-term">` with a dashed underline. Text inside links, code and variation names is skipped, and a glossary card never marks its own term. Clicking or tapping one opens a single overlay with the term, its definition, "also called", "see also" links and "Open in the glossary" (or "Open in the glossary for more notes…" when the term has notes, which the overlay leaves out). It closes on Escape, the × button, or a click outside. It sits under the term (kept inside the window) and becomes a bottom sheet on screens narrower than 600px.
 
 ---
 
