@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0000"
+    "minor": "0001"
   },
   "contributors": [
     "Kris Anderson",
@@ -48,12 +48,12 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 305,
+  "nextUid": 308,
   "games": [
     {
       "name": "Accepting Game",
       "description": "Two improvisers play a scene, but one of them is can only respond with one of the following three lines:\n- *Sounds good to me!*\n- *I'll go along with that!*\n- *O.K., great!*\n\nThe unlimited improviser makes offers and the limited improviser replies. The choices made should be active ones allowing for limited responses.",
-      "notes": "This exercise can help a player who is not in the mood to improvise. They can be active in the scene without blocking or wimping on an idea.",
+      "notes": "This exercise can help a player who is not in the mood to improvise or to \"yes and\". They can be active in the scene without blocking or wimping on an idea.",
       "variations": [
         "This game can be used in performance, with an audience member in the role with only three lines."
       ],
@@ -3712,15 +3712,19 @@
       "uid": 302
     },
     {
-      "term": "block",
-      "definition": "1. A *block* is an offer that \"blocks\" another improviser's offer, stops the action, or denies the reality presented by another performer.\n2. *Blocking* can also refer to *stage blocking*, which refers to the movement of actors upon a stage.",
+      "term": "blocking",
+      "definition": "1. Blocking or \"a block\" refer an offer that *blocks* another improviser's offer, stops the action, or denies the reality presented by another performer.\n2. *Blocking* can also refer to *stage blocking*, which refers to the movement of actors upon a stage.",
       "aliases": [
+        "block",
         "blocking",
         "blocks"
       ],
       "related": [
         {
           "term": "yes and"
+        },
+        {
+          "term": "wimping"
         }
       ],
       "uid": 301
@@ -3795,6 +3799,49 @@
       "uid": 295
     },
     {
+      "term": "The Kitchen Rules",
+      "definition": "**The modern take on this Kitchen Rules is:**\n1. Don't Deny Reality\n2. Whenever Possible, Make a Strong/Active Choice.\n3. You are You / The Actor's Job Is To Justify\n\nAs written by Elaine May and Ted Flicker in 1957 at 4411 Westminster Place in St. Louis.  **The original rules as written, were:**\n\n1. Don't Deny. If Severn says he has a bunny in his hands, he has a bunny in his hands.\n2. Whenever Possible, Make a Strong Choice. The less obvious, the better.\n3. You Are You. What you think of as your \"character\" is really just a magnified piece of you. Therefore, onstage, be you.\n\nEstablished by Elaine May and Ted Flicker in St. Louis, circa 1957, fully known as the Westminster Place Kitchen Rules.\n\nSee the notes for a more expansive explanation.",
+      "notes": "1. Don't Deny. If Severn says he has a bunny in his hands, he has a bunny in his hands.\n\nDon't deny any reality which as been established.  Accept the offers and reality created by your scene partners. (And yourself: it's surprising how many improvisers try to change their previously established character to fit the scene).\n\nThis rule came about when Severn Darden walked onto stage with an imaginary rabbit and said, \"I've got my Bunny.\" Shelley Berman responded with \"What Bunny?\" which got a laugh, but left the scene stranded.\n\n2. Whenever Possible, Make a Strong/Active Choice. [The less obvious, the better.]\n\nStrong active choices are almost always the best choice. Too many weak choices leads to waffling or being a passenger in a scene and forcing your scene partner to do all the work. This is often the \"And\" in Yes, And.\n\nAt UP, we don't really subscribe to \"The less obvious, the better.\" As Keith Johnstone observed, the audience usually wants improvisers to make the obvious choice, and performers who constantly subvert expectations are difficult to play with: they often complicate scenes or play inauthentic characters, which gets in the way of rule 3:\n\n3. You are You. [The Actor's Job Is To Justify]\n\nYou can and should always bring your authentic self to the stage. Even if you're playing a balloon, a duck, or someone with beliefs you find abhorrent, you should learn to bring yourself to those things.\n\nYou can find the third rule sometimes quotes as The Actor's Job Is To Justify. It's not clear if this is a misquote or re-interpretation, but it's a fine rule, and it does combine well with You are You. How are you a donut? It's your job to justify it and find the part of you that is... a donut.",
+      "aliases": [
+        "Kitchen Rules",
+        "Westminster Place Kitchen Rules"
+      ],
+      "uid": 305
+    },
+    {
+      "term": "waffling",
+      "definition": "Waffling is avoiding making a choice. When presented with an offer to kiss someone or slap them, an improviser may think it's dramatic to delay choosing: but the repercussions of either are probably far more interesting than the wait.",
+      "notes": "Improvisers usually do this because they are anxious about the consequences of \"getting it wrong\" or because they aren't sure what will come next.\n\nWe can see subtle forms of waffling in word-at-a-time stories: characters \"think about going to the store\", because thinking about things and going to the store are good ways to delay making a more active choice.",
+      "aliases": [
+        "waffle",
+        "waffled",
+        "waffles"
+      ],
+      "related": [
+        {
+          "term": "The Kitchen Rules"
+        }
+      ],
+      "uid": 306
+    },
+    {
+      "term": "wimping",
+      "definition": "A wimp or wimping refers to the act of accepting offers without adding to them. Keith Johnstone called it \"the politest way to stop a scene\". It is \"Yes, And\" without the And.",
+      "aliases": [
+        "wimp",
+        "wimps"
+      ],
+      "related": [
+        {
+          "term": "yes and"
+        },
+        {
+          "term": "blocking"
+        }
+      ],
+      "uid": 307
+    },
+    {
       "term": "yes and",
       "definition": "*Yes, and...* is shorthand for two of the most important concepts behind improvisational theatre.\n- We ought to agree with our fellow players\n- We ought to then respond with with an offer that relates to their offer.",
       "notes": "**An example of Yes, And...**\n- Player A: Nice hat!\n- Player B: Thanks, I wore it in case there was rain!\n\nPlayer B agrees that they are wearing a hat, and builds off that with a new offer (they are wearing the hat because it might rain).\n\n**Yes Without And...**\n- Player A: Nice hat!\n- Player B: Thanks!\n\nPlayer B agrees they are wearing a hat, but doesn't add anything to it.\n\n**And without Yes...**\n- Player A: Nice hat!\n- Player B: Let's build a robot!\n\nPlayer B responds with their own offer, but doesn't appear to acknowledge Player A's offer.\n\n**Yes, but...**\n- Player A: Nice hat!\n- Player B: Thanks. But anyway, let's build a robot.\n\nPlayer B accepts A's offer, but is apparently unaffected by it and makes an unrelated offer.\n\n**No, but...**\n- Player A: Nice hat!\n- Player B: I'm not wearing a hat. Let's build a robot.\n\nPlayer B blocks Player A's offer and then makes an unrelated offer.\n\n**NOTE: The core of the \"Yes\" is to accept the reality proposed and to make it important. A player can literally say no and still yes-and an offer:**\n\n- Player A: Marry me!\n- Player B: What!?! I wouldn't marry you if you were the last man on Earth.\n\nPlayer B has accepted Player A's offer, made it important, and responded to it with a new offer.",
@@ -3803,7 +3850,7 @@
       ],
       "related": [
         {
-          "term": "block"
+          "term": "blocking"
         }
       ],
       "uid": 300
