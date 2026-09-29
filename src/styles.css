@@ -565,6 +565,142 @@ body {
 }
 
 
+/* Show: Games / Variations / Glossary */
+.show-section {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.show-label {
+    font-size: small;
+    margin-right: 5px;
+}
+
+/* A game listed again under one of its variation's names */
+.game-row-variation-of {
+    font-size: x-small;
+    color: #555555;
+    padding: var(--padding-small) var(--padding-medium);
+}
+
+.game-row-text-variation-listed {
+    background-color: #fff6cc;
+    border-radius: 3px;
+}
+
+.variation-name {
+    font-weight: bold;
+}
+
+/* Glossary */
+.glossary-section {
+    margin-top: 24pt;
+}
+
+.glossary-heading {
+    font-family: var(--font-family-title);
+    font-weight: 400;
+    font-size: x-large;
+    margin: 0 0 6pt 0;
+}
+
+.glossary-empty {
+    font-size: small;
+    color: #555555;
+}
+
+.term-card .game-card-title {
+    font-style: italic;
+}
+
+/* A glossary term in game text: looks like text with a dashed underline */
+.glossary-term {
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: help;
+    text-decoration: underline dashed;
+    text-decoration-color: #7a7a7a;
+    text-underline-offset: 3px;
+}
+
+.glossary-term:hover,
+.glossary-term:focus-visible {
+    text-decoration-color: black;
+    background-color: #eef3ff;
+}
+
+.term-overlay {
+    position: absolute;
+    z-index: 1100;
+    max-width: min(420px, calc(100vw - 16px));
+    box-sizing: border-box;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    padding: var(--padding-large);
+    font-size: small;
+}
+
+.term-overlay:focus {
+    outline: none;
+}
+
+/* On a narrow screen the overlay is a sheet along the bottom of the window */
+.term-overlay.term-overlay-sheet {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: none;
+    max-height: 60vh;
+    overflow-y: auto;
+    border-radius: 10px 10px 0 0;
+}
+
+.term-overlay-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.term-overlay-title {
+    font-weight: bold;
+    font-size: medium;
+}
+
+.term-overlay-close {
+    background: none;
+    border: none;
+    font-size: large;
+    cursor: pointer;
+    padding: 0 4px;
+}
+
+.term-overlay-definition {
+    margin: 6px 0;
+}
+
+.term-overlay-definition p {
+    margin-block-start: 0;
+    margin-block-end: 4px;
+}
+
+.term-overlay-glossary-link {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: x-small;
+}
+
 @media print {
     .inner-body {
         margin: 0px;
@@ -573,7 +709,22 @@ body {
         box-shadow: none;
     }
 
-    .control-pane {
+    .control-pane,
+    .card-title-button,
+    .term-overlay {
         display: none;
+    }
+
+    .glossary-term {
+        text-decoration: none;
+    }
+
+    .game-card,
+    .term-card {
+        break-inside: avoid;
+    }
+
+    .glossary-heading {
+        break-after: avoid;
     }
 }

@@ -68,6 +68,36 @@ function mdToHtml(markdown) {
     }
 }
 
+function escapeHtml(text) {
+    return String(text)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+// A variation is either a plain Markdown string (an unnamed variation) or an object
+// { name, description } where either part may be missing (see docs/living-playbook-spec.md).
+function variationName(variation) {
+    return (variation && typeof variation === 'object') ? (variation.name || '').trim() : '';
+}
+
+function variationText(variation) {
+    if (typeof variation === 'string')
+        return variation;
+    return (variation && typeof variation === 'object') ? (variation.description || '') : '';
+}
+
+// The searchable text of any item in an array field: a string, or the string values of an
+// object (a named variation, or a glossary entry's related link).
+function itemSearchText(item) {
+    if (typeof item === 'string')
+        return item;
+    if (item && typeof item === 'object')
+        return Object.values(item).filter(value => typeof value === 'string').join(' ');
+    return '';
+}
+
 class TagFilter {
     constructor() {
         this.yesTags = new Set();
@@ -143,7 +173,7 @@ class SearchNode {
                 return false;
 
             if (Array.isArray(value)) {
-                return value.some(item => item.toLowerCase().includes(termLowerCase));
+                return value.some(item => itemSearchText(item).toLowerCase().includes(termLowerCase));
             } else if (typeof value === 'string') {
                 return value.toLowerCase().includes(termLowerCase);
             }
@@ -552,6 +582,15 @@ class Playbook {
                 game.anchorAliases = game.aliases.map(alias => this.getAnchorName(alias));
             }
         });
+
+        // The glossary is optional (the 2001 edition has none). Term anchors get a "term-"
+        // prefix, which a game's anchor can never have, so ids and id: searches never clash.
+        if (!Array.isArray(this.data.glossary))
+            this.data.glossary = [];
+        this.data.glossary.forEach(term => {
+            term.anchorName = 'term-' + this.getAnchorName(term.term);
+        });
+        this.termMatcher = this.buildTermMatcher(this.data.glossary);
     }
 
     getTags() {
@@ -614,6 +653,57 @@ class Playbook {
             })
         .sort((a, b) => a.name.localeCompare(b.name));
     }
+
+    // Glossary terms matching the search. Tag filters don't apply: terms have no tags.
+    searchGlossary(searchString) {
+        if (!this.data || !this.data.glossary) {
+            return [];
+        }
+
+        let searchFilter = SearchFilter.fromSearchString(searchString);
+        return this.data.glossary
+            .filter(term => searchFilter.matchTerm(term))
+            .sort((a, b) => a.term.localeCompare(b.term));
+    }
+
+    findGameByName(name) {
+        if (!this.data || !name)
+            return null;
+        const anchor = this.getAnchorName(name);
+        return this.data.games.find(game => game.anchorName === anchor) || null;
+    }
+
+    findTermByName(name) {
+        if (!this.data || !name)
+            return null;
+        const anchor = 'term-' + this.getAnchorName(name);
+        return this.data.glossary.find(term => term.anchorName === anchor) || null;
+    }
+
+    // One regular expression matching every glossary term and alias as a whole word,
+    // case-insensitively, longest first (so "Blind Switch" wins over "Switch").
+    buildTermMatcher(glossary) {
+        const byText = new Map();
+        glossary.forEach(term => {
+            [term.term, ...(term.aliases || [])].forEach(text => {
+                const key = (text || '').trim().replace(/\s+/g, ' ').toLowerCase();
+                if (key && !byText.has(key))
+                    byText.set(key, term);
+            });
+        });
+        if (byText.size === 0)
+            return null;
+
+        const alternatives = Array.from(byText.keys())
+            .sort((a, b) => b.length - a.length)
+            .map(text => text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/\s+/g, '\\s+'));
+        const regex = new RegExp(`(?<![\\p{L}\\p{N}])(?:${alternatives.join('|')})(?![\\p{L}\\p{N}])`, 'giu');
+        return { regex, byText };
+    }
+
+    termForMatch(text) {
+        return this.termMatcher?.byText.get(text.replace(/\s+/g, ' ').toLowerCase()) || null;
+    }
 }
 
 class PlaybookPage {
@@ -626,6 +716,9 @@ class PlaybookPage {
         this.lazyTimer = null;
         this.favoriteList = GameList.fromLocalStorage("Favorites");
         this.currentGames = [];
+        // What the list shows (the show= URL parameter). Games only by default.
+        this.show = { games: true, variations: false, glossary: false };
+        this.termOverlay = null;
     }
 
     onDatabaseLoad() {
@@ -663,6 +756,21 @@ class PlaybookPage {
         });
 
         tagsContainer.style.display = 'block'; // Ensure tags are visible on load
+
+        // Only offer Variations and Glossary when this edition has something to show for them
+        // (the 2001 edition has neither), unless a shared link already turned them on.
+        const hasNamedVariations = this.playbook.data.games.some(game =>
+            (game.variations || []).some(variation => variationName(variation)));
+        const hasGlossary = this.playbook.data.glossary.length > 0;
+        document.querySelectorAll('.show-button').forEach(button => {
+            const available = button.dataset.key === 'variations' ? hasNamedVariations
+                : button.dataset.key === 'glossary' ? hasGlossary : true;
+            button.classList.toggle('hidden', !available && !this.show[button.dataset.key]);
+        });
+        if (!hasNamedVariations && !hasGlossary && this.show.games)
+            document.getElementById('show-section').classList.add('hidden');
+
+        this.initializeGlossaryOverlay();
         this.populateGameList();
         this.populateFooter();
     }
@@ -722,6 +830,15 @@ class PlaybookPage {
         this.searchTerm = urlParams.get('search');
         this.filter.yesTags = new Set(urlParams.get('yesTags')?.split(';'));
         this.filter.noTags = new Set(urlParams.get('noTags')?.split(';'));
+        const show = urlParams.get('show');
+        if (show != null) {
+            const parts = show.split(';').map(part => part.trim().toLowerCase());
+            this.show = {
+                games: parts.includes('games'),
+                variations: parts.includes('variations'),
+                glossary: parts.includes('glossary'),
+            };
+        }
         this.uid = urlParams.get('uid');
         // An empty uids= (e.g. a link to an empty list) is treated as no list at all.
         const uidsParam = urlParams.get('uids');
@@ -963,8 +1080,55 @@ class PlaybookPage {
 
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
+        controlPane.appendChild(this.createShowSection());
         controlPane.appendChild(this.createTagFilterSection());
         controlPane.appendChild(this.createListSection());
+    }
+
+    // "Show: Games / Variations / Glossary". Variations lists each game again under the name of
+    // each of its named variations; Glossary adds the glossary section after the games.
+    createShowSection() {
+        const showSection = document.createElement('div');
+        showSection.id = 'show-section';
+        showSection.className = 'show-section';
+
+        const label = document.createElement('span');
+        label.className = 'show-label';
+        label.textContent = 'Show:';
+        showSection.appendChild(label);
+
+        const options = [
+            { key: 'games', label: 'Games', title: 'List games under their names' },
+            { key: 'variations', label: 'Variations', title: 'Also list each game under the names of its variations' },
+            { key: 'glossary', label: 'Glossary', title: 'Show the glossary of terms' },
+        ];
+        options.forEach(option => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.className = 'tag-button show-button';
+            button.dataset.key = option.key;
+            button.textContent = option.label;
+            button.title = option.title;
+            button.setAttribute('aria-pressed', String(this.show[option.key]));
+            button.classList.toggle('checked', this.show[option.key]);
+            button.addEventListener('click', () => {
+                this.show[option.key] = !this.show[option.key];
+                button.classList.toggle('checked', this.show[option.key]);
+                button.setAttribute('aria-pressed', String(this.show[option.key]));
+                this.updateUrlFromState();
+                this.populateGameList();
+            });
+            showSection.appendChild(button);
+        });
+        return showSection;
+    }
+
+    isDefaultShow() {
+        return this.show.games && !this.show.variations && !this.show.glossary;
+    }
+
+    showParam() {
+        return ['games', 'variations', 'glossary'].filter(key => this.show[key]).join(';');
     }
 
 
@@ -1023,7 +1187,7 @@ class PlaybookPage {
             this.populateGameList();
     }
 
-    describeSearch(count) {
+    describeSearch(counts) {
         const yesTags = this.filter.getYesTags();
         const noTags = this.filter.getNoTags();
         let searchDescription = '';
@@ -1043,35 +1207,104 @@ class PlaybookPage {
             searchDescription += `Excluded tags: ${noTags.join('; ')}`;
         }
 
-        if (searchDescription === '')
-            searchDescription = 'All Games, Exercises and Formats';
-        
-        searchDescription += count == 1 ? ` (1 entry)` : ` (${count} entries)`;
-        
+        if (searchDescription === '') {
+            const listsGames = this.show.games || this.show.variations;
+            searchDescription = listsGames && this.show.glossary ? 'All Games, Exercises, Formats and Glossary Terms'
+                : listsGames ? 'All Games, Exercises and Formats'
+                : this.show.glossary ? 'The Glossary'
+                : 'Nothing selected to show';
+        }
+
+        const plural = (n, one, many) => `${n} ${n == 1 ? one : many}`;
+        const parts = [];
+        if (this.show.games)
+            parts.push(plural(counts.games, 'game', 'games'));
+        if (this.show.variations)
+            parts.push(plural(counts.variations, 'variation', 'variations'));
+        if (this.show.glossary)
+            parts.push(plural(counts.terms, 'glossary term', 'glossary terms'));
+        if (parts.length > 0)
+            searchDescription += ` (${parts.join(', ')})`;
+
         return searchDescription;
     }
 
-    populateGameList() {
-        this.currentGames = this.playbook.searchGames(this.searchTerm, this.filter);
-        const searchDescription = this.describeSearch(this.currentGames.length);
-        const searchDescriptionElement = document.getElementById('search-desc');
-            searchDescriptionElement.textContent = searchDescription;
-
-        const gamesContainer = document.getElementById('games-container');                
-        gamesContainer.innerHTML = '';
-    
+    appendLetterDividers(container, entries, titleOf, createCard) {
         let lastLetter = '';
-        this.currentGames.forEach(gameDetails => {
-            if (gameDetails.name[0].toLowerCase() !== lastLetter) {
-                lastLetter = gameDetails.name[0].toLowerCase();
+        entries.forEach(entry => {
+            const letter = (titleOf(entry)[0] || '').toLowerCase();
+            if (letter !== lastLetter) {
+                lastLetter = letter;
                 const divLetter = document.createElement('div');
                 divLetter.classList.add('game-letter-rule-line');
                 divLetter.textContent = lastLetter.toUpperCase();
-                gamesContainer.appendChild(divLetter);
+                container.appendChild(divLetter);
             }
-
-            gamesContainer.appendChild(this.createGameCardDiv(gameDetails));
+            container.appendChild(createCard(entry));
         });
+    }
+
+    populateGameList() {
+        this.hideTermOverlay();
+        this.currentGames = this.playbook.searchGames(this.searchTerm, this.filter);
+
+        // One entry per game under its own name, plus (with Variations on) one per named variation.
+        const entries = [];
+        if (this.show.games) {
+            this.currentGames.forEach(game => entries.push({ title: game.name, game }));
+        }
+        let variationCount = 0;
+        if (this.show.variations) {
+            this.currentGames.forEach(game => {
+                (game.variations || []).forEach((variation, index) => {
+                    const name = variationName(variation);
+                    if (name) {
+                        entries.push({ title: name, game, variationIndex: index });
+                        variationCount++;
+                    }
+                });
+            });
+        }
+        entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.name.localeCompare(b.game.name));
+
+        const terms = this.show.glossary ? this.playbook.searchGlossary(this.searchTerm) : [];
+
+        const searchDescription = this.describeSearch({
+            games: this.show.games ? this.currentGames.length : 0,
+            variations: variationCount,
+            terms: terms.length,
+        });
+        const searchDescriptionElement = document.getElementById('search-desc');
+        searchDescriptionElement.textContent = searchDescription;
+
+        const gamesContainer = document.getElementById('games-container');
+        gamesContainer.innerHTML = '';
+
+        this.appendLetterDividers(gamesContainer, entries, entry => entry.title,
+            entry => this.createGameCardDiv(entry.game, entry.variationIndex));
+
+        if (this.show.glossary) {
+            const glossarySection = document.createElement('div');
+            glossarySection.id = 'glossary-section';
+            glossarySection.className = 'glossary-section';
+
+            const heading = document.createElement('h2');
+            heading.className = 'glossary-heading';
+            heading.textContent = 'Glossary';
+            glossarySection.appendChild(heading);
+
+            if (terms.length === 0) {
+                const empty = document.createElement('div');
+                empty.className = 'glossary-empty';
+                empty.textContent = this.playbook.data.glossary.length === 0
+                    ? 'This edition of the playbook has no glossary.'
+                    : 'No glossary terms match the search.';
+                glossarySection.appendChild(empty);
+            }
+            this.appendLetterDividers(glossarySection, terms, term => term.term,
+                term => this.createTermCardDiv(term));
+            gamesContainer.appendChild(glossarySection);
+        }
     }
 
     updateUrlFromState() {
@@ -1100,6 +1333,11 @@ class PlaybookPage {
         const noTags = Array.from(this.filter.noTags).join(';');
         if (noTags && noTags.length > 0)
             url.searchParams.set('noTags', noTags);
+
+        if (this.isDefaultShow())
+            url.searchParams.delete('show');
+        else
+            url.searchParams.set('show', this.showParam());
 
         window.history.pushState({}, '', url);
     }
@@ -1292,7 +1530,50 @@ class PlaybookPage {
         return shareButton;
     }
 
-    createGameCardDiv(gameDetails) {
+    // A link that reloads the page searching for one game or term (the pattern related-game
+    // links have always used). `show` overrides the show= parameter; omit it to keep the current one.
+    createSearchLink(searchTerm, text, show = null) {
+        const link = document.createElement('a');
+        const url = new URL(window.location);
+        url.searchParams.set('search', searchTerm);
+        url.searchParams.delete('uid');
+        url.searchParams.delete('uids');
+        if (show != null)
+            url.searchParams.set('show', show);
+        link.href = url;
+        link.classList.add('game-related-link');
+        link.textContent = text;
+        return link;
+    }
+
+    // The show= value a link to a game (or one of its variations) should use: keep what's
+    // shown now, but make sure the target actually appears.
+    showParamWith(...keys) {
+        const show = { ...this.show };
+        keys.forEach(key => { show[key] = true; });
+        return ['games', 'variations', 'glossary'].filter(key => show[key]).join(';');
+    }
+
+    // A glossary entry's related link: a game name, { game, variation }, or { term }.
+    createGlossaryRelatedLink(related) {
+        if (typeof related === 'string') {
+            return this.createSearchLink(`id:${this.playbook.getAnchorName(related)}`, related, this.showParamWith('games'));
+        }
+        if (related && related.term) {
+            const term = this.playbook.findTermByName(related.term);
+            const anchor = term ? term.anchorName : 'term-' + this.playbook.getAnchorName(related.term);
+            return this.createSearchLink(`id:${anchor}`, related.term, this.showParamWith('glossary'));
+        }
+        if (related && related.game) {
+            const text = related.variation ? `${related.game} › ${related.variation}` : related.game;
+            return this.createSearchLink(`id:${this.playbook.getAnchorName(related.game)}`, text,
+                this.showParamWith('games', ...(related.variation ? ['variations'] : [])));
+        }
+        return null;
+    }
+
+    createGameCardDiv(gameDetails, listedVariationIndex = null) {
+        const listedVariation = listedVariationIndex != null ? gameDetails.variations[listedVariationIndex] : null;
 
         function createGameRowContainer(class_name) {
             const divRowContainer = document.createElement('div');
@@ -1330,11 +1611,15 @@ class PlaybookPage {
     
         const divGameCard = document.createElement('div');
         divGameCard.classList.add("game-card");
-        divGameCard.id = `${gameDetails.anchorName}`;
+        // A game listed again under a variation's name gets no id, so ids stay unique.
+        if (listedVariation == null)
+            divGameCard.id = `${gameDetails.anchorName}`;
+        else
+            divGameCard.classList.add('game-card-variation-entry');
 
         const divTitle = document.createElement('div');
         divTitle.classList.add('game-card-title');
-        divTitle.textContent = gameDetails.name;
+        divTitle.textContent = listedVariation != null ? variationName(listedVariation) : gameDetails.name;
 
         divTitle.appendChild(this.createFavoriteButton(gameDetails));
         divTitle.appendChild(this.createAddToListButton(gameDetails));
@@ -1345,7 +1630,14 @@ class PlaybookPage {
         divGameCard.appendChild(divTitle);
         divGameCard.appendChild(divCardContent);
 
-        createGameRow("name", "", gameDetails.name);
+        if (listedVariation != null) {
+            const divVariationOf = document.createElement('div');
+            divVariationOf.classList.add('game-row', 'game-row-variation-of');
+            divVariationOf.appendChild(document.createTextNode('A variation of '));
+            divVariationOf.appendChild(this.createSearchLink(`id:${gameDetails.anchorName}`, gameDetails.name));
+            divCardContent.appendChild(divVariationOf);
+        }
+
         const divDesc = createGameRow("desc", "description", mdToHtml(gameDetails.description));
         divCardContent.appendChild(divDesc);
 
@@ -1356,8 +1648,15 @@ class PlaybookPage {
 
         if (gameDetails.variations) {
             const divVariationsRow = createGameRow("variations", "variations");
-            gameDetails.variations.forEach(variation => {
-                divVariationsRow.appendChild(createGameRowText("variation", mdToHtml(variation)));
+            gameDetails.variations.forEach((variation, index) => {
+                const name = variationName(variation);
+                const text = variationText(variation);
+                const nameHtml = name ? `<strong class="variation-name">${escapeHtml(name)}</strong>` : '';
+                const html = mdToHtml(name && text ? `${nameHtml}: ${text}` : (nameHtml || text));
+                const divVariation = createGameRowText("variation", html);
+                if (index === listedVariationIndex)
+                    divVariation.classList.add('game-row-text-variation-listed');
+                divVariationsRow.appendChild(divVariation);
             });
             divCardContent.appendChild(divVariationsRow);
         }
@@ -1409,7 +1708,216 @@ class PlaybookPage {
             divCardContent.appendChild(divCreatedByRow);
         }
 
+        this.highlightGlossaryTerms(divCardContent);
         return divGameCard;
+    }
+
+    createTermCardDiv(term) {
+        const divTermCard = document.createElement('div');
+        divTermCard.classList.add('game-card', 'term-card');
+        divTermCard.id = term.anchorName;
+
+        const divTitle = document.createElement('div');
+        divTitle.classList.add('game-card-title');
+        divTitle.textContent = term.term;
+
+        const divCardContent = document.createElement('div');
+        divCardContent.classList.add('game-card-content');
+        divTermCard.appendChild(divTitle);
+        divTermCard.appendChild(divCardContent);
+
+        const divDefinition = document.createElement('div');
+        divDefinition.classList.add('game-row', 'game-row-definition');
+        const divDefinitionText = document.createElement('div');
+        divDefinitionText.classList.add('game-row-content', 'game-row-text', 'game-row-text-definition');
+        divDefinitionText.innerHTML = mdToHtml(term.definition || '');
+        divDefinition.appendChild(divDefinitionText);
+        divCardContent.appendChild(divDefinition);
+
+        this.appendTermDetails(divCardContent, term);
+        this.highlightGlossaryTerms(divCardContent, term);
+        return divTermCard;
+    }
+
+    // A term's aliases and related links, shared by the glossary card and the overlay.
+    appendTermDetails(container, term) {
+        const addRow = (className, header, items) => {
+            const divRow = document.createElement('div');
+            divRow.classList.add('game-row', `game-row-${className}`);
+            const divHeader = document.createElement('div');
+            divHeader.classList.add('game-row-header');
+            divHeader.textContent = header;
+            divRow.appendChild(divHeader);
+            const divItems = document.createElement('div');
+            divItems.classList.add('game-row-container', `game-row-${className}-container`);
+            items.forEach(item => divItems.appendChild(item));
+            divRow.appendChild(divItems);
+            container.appendChild(divRow);
+        };
+
+        if (term.aliases && term.aliases.length > 0) {
+            addRow('aliases', 'also called', term.aliases.map(alias => {
+                const divAlias = document.createElement('div');
+                divAlias.classList.add('game-alias');
+                divAlias.textContent = alias;
+                return divAlias;
+            }));
+        }
+
+        const links = (term.related || []).map(related => this.createGlossaryRelatedLink(related)).filter(Boolean);
+        if (links.length > 0)
+            addRow('related', 'see also', links);
+    }
+
+    // Wrap the first appearance on this card of each glossary term (or alias) in a button that
+    // opens its definition. Links, code, buttons and variation names are left alone, and a
+    // term card never marks its own term.
+    highlightGlossaryTerms(root, selfTerm = null) {
+        const matcher = this.playbook.termMatcher;
+        if (!matcher)
+            return;
+
+        const used = new Set();
+        if (selfTerm)
+            used.add(selfTerm);
+
+        root.querySelectorAll('.game-row-text:not(.game-row-text-createdBy)').forEach(element => {
+            const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+            const textNodes = [];
+            while (walker.nextNode())
+                textNodes.push(walker.currentNode);
+
+            textNodes.forEach(textNode => {
+                if (textNode.parentElement.closest('a, code, pre, button, .variation-name'))
+                    return;
+
+                let current = textNode;
+                while (current && current.data) {
+                    matcher.regex.lastIndex = 0;
+                    let found = null;
+                    let match;
+                    while ((match = matcher.regex.exec(current.data)) !== null) {
+                        const term = this.playbook.termForMatch(match[0]);
+                        if (term && !used.has(term)) {
+                            found = { match, term };
+                            break;
+                        }
+                    }
+                    if (!found)
+                        break;
+
+                    used.add(found.term);
+                    const matched = current.splitText(found.match.index);
+                    const rest = matched.splitText(found.match[0].length);
+                    const button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'glossary-term';
+                    button.dataset.term = found.term.anchorName;
+                    button.title = `Glossary: ${found.term.term}`;
+                    button.textContent = matched.data;
+                    matched.replaceWith(button);
+                    current = rest;
+                }
+            });
+        });
+    }
+
+    initializeGlossaryOverlay() {
+        const gamesContainer = document.getElementById('games-container');
+        gamesContainer.addEventListener('click', event => {
+            const button = event.target.closest('.glossary-term');
+            if (!button)
+                return;
+            event.preventDefault();
+            const term = this.playbook.data.glossary.find(t => t.anchorName === button.dataset.term);
+            if (!term)
+                return;
+            if (this.termOverlay && this.termOverlay.trigger === button)
+                this.hideTermOverlay();
+            else
+                this.showTermOverlay(term, button);
+        });
+
+        document.addEventListener('click', event => {
+            if (!this.termOverlay)
+                return;
+            if (this.termOverlay.div.contains(event.target) || event.target.closest('.glossary-term'))
+                return;
+            this.hideTermOverlay();
+        });
+
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape' && this.termOverlay) {
+                const trigger = this.termOverlay.trigger;
+                this.hideTermOverlay();
+                trigger.focus();
+            }
+        });
+
+        window.addEventListener('resize', () => this.hideTermOverlay());
+    }
+
+    // One overlay at a time, showing a term's definition and links. On a narrow screen it is a
+    // bottom sheet; otherwise it sits below the term, kept inside the window.
+    showTermOverlay(term, trigger) {
+        this.hideTermOverlay();
+
+        const div = document.createElement('div');
+        div.className = 'term-overlay';
+        div.setAttribute('role', 'dialog');
+        div.setAttribute('aria-label', `Glossary: ${term.term}`);
+        div.tabIndex = -1;
+
+        const divHeader = document.createElement('div');
+        divHeader.className = 'term-overlay-header';
+        const title = document.createElement('span');
+        title.className = 'term-overlay-title';
+        title.textContent = term.term;
+        divHeader.appendChild(title);
+        const close = document.createElement('button');
+        close.type = 'button';
+        close.className = 'term-overlay-close';
+        close.setAttribute('aria-label', 'Close');
+        close.textContent = '×';
+        close.addEventListener('click', () => {
+            this.hideTermOverlay();
+            trigger.focus();
+        });
+        divHeader.appendChild(close);
+        div.appendChild(divHeader);
+
+        const divDefinition = document.createElement('div');
+        divDefinition.className = 'term-overlay-definition game-row-text';
+        divDefinition.innerHTML = mdToHtml(term.definition || '');
+        div.appendChild(divDefinition);
+
+        this.appendTermDetails(div, term);
+
+        const glossaryLink = this.createSearchLink(`id:${term.anchorName}`, 'Open in the glossary', this.showParamWith('glossary'));
+        glossaryLink.className = 'term-overlay-glossary-link';
+        div.appendChild(glossaryLink);
+
+        document.body.appendChild(div);
+        this.termOverlay = { div, trigger };
+
+        if (window.innerWidth < 600) {
+            div.classList.add('term-overlay-sheet');
+        } else {
+            const rect = trigger.getBoundingClientRect();
+            const margin = 8;
+            const width = div.offsetWidth;
+            const left = Math.min(Math.max(margin, rect.left), window.innerWidth - width - margin);
+            div.style.left = `${left + window.scrollX}px`;
+            div.style.top = `${rect.bottom + window.scrollY + 4}px`;
+        }
+        div.focus();
+    }
+
+    hideTermOverlay() {
+        if (this.termOverlay) {
+            this.termOverlay.div.remove();
+            this.termOverlay = null;
+        }
     }
 
     populatePageHeader(title = "The (Online) Living Playbook",
