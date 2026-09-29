@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0001",
-    "minor": "0003"
+    "minor": "0004"
   },
   "contributors": [
     "Kris Anderson",
@@ -25,6 +25,7 @@
     "Keith Johnstone",
     "Paul Killam",
     "Bob Kramer",
+    "Cynthia Lair",
     "Laura Livingston",
     "Brian Michael",
     "Michael-David",
@@ -47,7 +48,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 293,
+  "nextUid": 302,
   "games": [
     {
       "name": "Accepting Game",
@@ -92,28 +93,13 @@
       "uid": 2
     },
     {
-      "name": "Adjective Scene",
-      "description": "Improvisers ask for an adjective (eg: 'sad'). Must play the scene with as much 'sadness' as possible, or each player may ask for a different adjective.",
-      "notes": "If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see?",
-      "aliases": [
-        "List Endowment"
-      ],
-      "tags": [
-        "emotions",
-        "endowment",
-        "game",
-        "scene",
-        "shortform"
-      ],
-      "uid": 3
-    },
-    {
       "name": "Advance and Expand",
       "description": "An improviser tells a monologue or performs a scene. A director calls \"Advance,\" at which point the improviser may advance the story, or \"Expand,\" at which point the improviser stops advancing and explores the current action or moment.\n\nIf a performer is scratching their nose and asked to expand, they should find ways to make that activity more interesting. They can't blow their nose, because that would change the action. They might slow down, speed up, change angles, etc.\n\nIf a monologist is telling a story about their morning, and they are asked to expand as they say, \"I made some coffee,\" they may describe their coffee cup, explain where they got it, talk about why they like coffee, etc. They may not advance in the story.",
       "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
       "variations": [
+        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored.",
         "Bell Game: This game can be played with a bell alternating between advance and expand.",
-        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
+        "Advance Expand Emotion: Pair Two People: One tells the story of their day, the other asks for expand or advance or emotion. Adding the emotion element teaches the importance of expressing feeling to support the story and make it matter more."
       ],
       "aliases": [
         "Advancing Game"
@@ -279,7 +265,7 @@
       "name": "Attitude Scene",
       "description": "Improvisers ask for attitudes.  For instance, attitudes to have for each other, or a particular topic. Example: if 3 people are initially in the scene, you might get 2 attitudes from the audience (\"impressed\" and \"indignant\"). Then, each improviser plays the scene \"in neutral\" - endowing the other actors with one of the attitudes. Each actor will react indignantly towards one person's comments and impressed with the other. Each actor may assign different attitudes to different characters.",
       "related": [
-        "Adjective Scene"
+        "Blank Scene"
       ],
       "tags": [
         "endowment",
@@ -298,7 +284,7 @@
       "tags": [
         "cultural",
         "dance",
-        "musical",
+        "music",
         "physical",
         "scene",
         "shortform",
@@ -367,13 +353,29 @@
     },
     {
       "name": "Blank Scene",
-      "description": "Any scene based on suggestion that fills in a blank such as “I opened the closet and found a ______?”",
+      "description": "Improvisers ask for an adjective (eg: 'sad', 'vivid', 'hungry'). The performers must play the scene with as much 'whatever'-ness as possible, or each player may ask for a different adjective.\n\nThe adjective may be descriptive of the players, but it might also suggest something about the scene itself. A 'quick' scene, or a",
+      "notes": "This is a good exercise for working on emotional complexity... the game won't work if the get is played as one-note or unchanging. If every performer is affected by the adjective in the same way, the scene can become monotonous. How many different types of sadness can we see? What are all the different ways a person can be hungry?",
+      "variations": [
+        "Emotion Scene: Limited to emotions"
+      ],
+      "aliases": [
+        "Adjective Scene",
+        "List Endowment"
+      ],
+      "related": [
+        "Blank Family",
+        "Fill In The Blank",
+        "Three Scene"
+      ],
       "tags": [
         "blank challenge",
+        "emotions",
+        "endowment",
+        "game",
         "scene",
         "shortform"
       ],
-      "uid": 19
+      "uid": 3
     },
     {
       "name": "Blind Hunt",
@@ -837,7 +839,7 @@
       "name": "Experts",
       "description": "At least one improviser is an expert on a topic of the audiences choosing. Talk shows, lectures, debates, or interviews have been used.",
       "related": [
-        "Panel Experts Endowment",
+        "Panel Expert Endowment",
         "Phone Bank",
         "Word-at-a-Time Expert"
       ],
@@ -894,6 +896,20 @@
         "timed"
       ],
       "uid": 62
+    },
+    {
+      "name": "Fill In The Blank",
+      "description": "An open scene based on suggestion that fills in a blank such as “I opened the closet and found a ______?”",
+      "related": [
+        "Blank Family"
+      ],
+      "tags": [
+        "blank challenge",
+        "scene",
+        "shortform",
+        "suggestion"
+      ],
+      "uid": 19
     },
     {
       "name": "Film Rollback",
@@ -1088,7 +1104,7 @@
         "dance",
         "exercise",
         "gibberish",
-        "musical",
+        "music",
         "physical",
         "scene",
         "shortform"
@@ -1350,7 +1366,7 @@
       "description": "A scene begins with spoken dialogue. At any given point or at a signal from a offstage improviser, one of the characters sings his thoughts as a \"Inner/Mono Song\". None of the onstage characters can hear the song. When the character is done, they step back into the scene and continue with the dialogue.",
       "tags": [
         "monologue",
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -1582,7 +1598,7 @@
       "description": "Several improvisers stand onstage and an actual song title is taken from the audience. An improviser begins to sing that song. They can stop on any word. Once they stop, another improviser has five seconds to begin another actual song that has that word in the title. They can bluff and try to make up a song with that word in it. If they take too long, or the audience doesn't believe the made up song they yell, “Die” and the improviser is eliminated. However, if the song actually exists then another improviser (from the other team, etc.) is eliminated. Best played if the song has to start on the word: Improviser 1“You are my sunshine…….” Improviser 2“….sunshine of my life and I'll always….”",
       "tags": [
         "game",
-        "musical",
+        "music",
         "pop culture",
         "shortform",
         "toss-up"
@@ -1625,7 +1641,7 @@
       "tags": [
         "cultural",
         "game",
-        "musical",
+        "music",
         "shortform"
       ],
       "uid": 124
@@ -1832,12 +1848,24 @@
     },
     {
       "name": "Musical",
-      "description": "As in the style of a musical ala Andrew Lloyd Webber, Rodgers and Hammerstein, Fosse, etc.",
+      "description": "A story (or simple get) from the audience is retold as a Broadway musical.",
+      "notes": "If we are trying to do an \"complete\" musical, each song should be short and expand on the last phrase, emotion, or philosophy established by a character. Players should expand during the song, and use the quick dialog between songs to advance the story.\n\nSimilar to \"Sounds Like a Song\" but without the explicit cue. Look for: \"Can you list all the ways / reasons why...\" \"It's like I always say...\" \"What I _really_ want is...\"\n\nCommon prompts used to get good stories from the audience: \"A time you saved the day\", \"How you first met your spouse/partner\", \"The story behind a scar on your body\"",
+      "variations": [
+        "Final Number: The performers ask for a typical musical plot: A problem that befell a small town or a person, or a reason two people couldn't get married, etc. The improvisers then assume all of these problems have been resolves, and they all sing about what they learned, how things have changed, how they've been foiled, etc."
+      ],
+      "aliases": [
+        "Final Number"
+      ],
+      "related": [
+        "Rock Opera",
+        "Sounds Like a Song"
+      ],
       "tags": [
         "cultural",
-        "musical",
+        "music",
         "scene",
-        "shortform"
+        "shortform",
+        "spectacle"
       ],
       "uid": 139
     },
@@ -2038,7 +2066,7 @@
       "description": "Figaro! Figaro! Figaro!",
       "tags": [
         "cultural",
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -2053,7 +2081,7 @@
       "tags": [
         "cultural",
         "game",
-        "musical",
+        "music",
         "shortform"
       ],
       "uid": 156
@@ -2196,10 +2224,19 @@
     },
     {
       "name": "Piano Bar",
-      "description": "May be performed as a lounge act, or as a bunch of people sitting around the old piano singing old favorites.",
+      "description": "The scene starts with no initial suggestion.\n\nCharacters (usually three) then sing about their problems, either in Blues or in another style chosen by the musician.\n\nSometimes, the third song is sung by the bartender and presents a solution to the problems introduced by the first two.\n\nRegardless, players should be open to a variety of attitudes: for example, the final character can be happy about something, and sing a more upbeat song (e.g. old rock & roll) to end on a high note.",
+      "notes": "At UP, we tend to play this game with a mic downstage center, and by introducing two regulars and a bartender at a bar. Every character goes through the same flow:\n\n1. Endow the character as seeming glum (\"What's got you so down?\")\n\n2. Character approaches the microphone, asking the audience for a suggestion: (\"Why _am_ I so down?\")\n\n3. Character sing a song about that problem\n\n4. Go back to your seat at the bar - shift the focus on the next character\n\nIf there is an especially strong singer, a good shape-of-show instinct is to have them go last.\n\nIf you're calling it the blues, it's a good idea to respect  AA'B lyrical structure: A line, a repeated line (maybe with a slight change, and then a new lines):\n> A: \"I got a problem, got a problem with my phone...\" A: \"I got a no service, no service on my phone...\" B: \"I gotta call T-Mobile... cuz there's a dead zone in my home.\"",
+      "variations": [
+        "Karaoke Bar: same format, but actively challenges the musician(s) to play a variety of musical genres. Optionally ask for a style of music, in addition to the topic, for an extra challenge.",
+        "Themed Bar: establish or get a suggestion of the location or theme of the bar. This can influence the style of music: Tiki bar suggests Polynesian music; a Ballard-based bar could suggest sea shanties."
+      ],
+      "aliases": [
+        "Blues Bar",
+        "Karaoke Bar"
+      ],
       "tags": [
         "game",
-        "musical",
+        "music",
         "shortform"
       ],
       "uid": 168
@@ -2211,7 +2248,7 @@
         "Sing Speak"
       ],
       "tags": [
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -2415,7 +2452,7 @@
       "description": "Players stand in a line as in story story die or storyline. The audience gives each person a radio station style such as “talk radio,” “heavy metal,” “jazz,” “alternative,” “easy listening,” etc. Another player points to them and they must say or sing what is on that station at that time. If it is a talk radio station, then they can talk, if it is a music station they need to sing a song in that style.",
       "tags": [
         "directed",
-        "musical",
+        "music",
         "shortform",
         "styles"
       ],
@@ -2431,7 +2468,7 @@
       "tags": [
         "bell",
         "dance",
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -2546,7 +2583,7 @@
       ],
       "tags": [
         "cultural",
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -2571,7 +2608,7 @@
       ],
       "tags": [
         "directed",
-        "musical",
+        "music",
         "physical",
         "scene",
         "shortform",
@@ -2847,7 +2884,7 @@
       "description": "Improvisers form a circle. One at time, they add a musical sound to the circle. After everyone has joined in, the improvisers mingle with each other making their sounds, finding little \"jam sessions\". At a given signal, they reform the circle in the same starting order. Then one by one, starting with the person who made the first sound, everyone falls silent.",
       "tags": [
         "game",
-        "musical",
+        "music",
         "shortform"
       ],
       "uid": 219
@@ -2886,7 +2923,7 @@
       ],
       "tags": [
         "directed",
-        "musical",
+        "music",
         "scene",
         "shortform"
       ],
@@ -3296,6 +3333,17 @@
       "uid": 258
     },
     {
+      "name": "Topsy-Turvey",
+      "description": "A long-form format in which every scene is the the opposite of the scene that came before in some way.\n\nThe format starts with a location or event where we might find a large group of people. Everyone starts on stage.\n\nThe next scene is the opposite in some way: if the big group scene was a wedding, the next scene might be two people filing for divorce. Perhaps that scene is very still and quiet, so the next scene might be loud with a lot of movement... etc.\n\nToward the end, the improvisers look for an \"opposite\" reason to bring the original full group scene back as an ending.",
+      "notes": "This is a great training form to help performers vary up their scenes.\n\nImprovisers should think outside the box in terms of what they can draw from. Perhaps the improvisers crawled around on a low level in the first scene, and in the next scene, they players stand very tall on blocks. Perhaps there was a lot of conflict in the scene before, so we now play a scene with a lot of agreement.\n\nIt is totally fine if different improvisers have different instincts for what is opposite. Players should still try to pick up on each other's \"opposite\" offers, but having more than one opposite is rarely a bad thing.",
+      "tags": [
+        "free association",
+        "longform"
+      ],
+      "createdBy": "Randy Dixon",
+      "uid": 296
+    },
+    {
       "name": "Torture Your Teammate",
       "description": "All members of team except one block, wimp, waffle, do bad mime, all forms of bad improv. One \"straight\" improviser must justify everything - keeping the storyline strong.",
       "tags": [
@@ -3453,6 +3501,20 @@
         "shortform"
       ],
       "uid": 273
+    },
+    {
+      "name": "We Are The World",
+      "description": "Improvisers ask for a made-up charity cause, and sing a \"We Are the World\"-inspired pop song raising awareness.",
+      "notes": "Works well with a larger amount of singers (6-8). Like We Are the World, each singer takes a verse by themselves or in a pair, showing off their distinctive and famous vocal styles (think Cyndi Lauper, Huey Lewis, etc).",
+      "aliases": [
+        "Charity Pop Anthem"
+      ],
+      "tags": [
+        "music",
+        "shortform"
+      ],
+      "createdBy": "Ron Hippe",
+      "uid": 293
     },
     {
       "name": "What Are You Doing?",
@@ -3628,6 +3690,82 @@
         "toss-up"
       ],
       "uid": 284
+    }
+  ],
+  "glossary": [
+    {
+      "term": "block",
+      "definition": "1. A *block* is an offer that \"blocks\" another improviser's offer, stops the action, or denies the reality presented by another performer.\n2. *Blocking* can also refer to *stage blocking*, which refers to the movement of actors upon a stage.",
+      "aliases": [
+        "blocking",
+        "blocks"
+      ],
+      "related": [
+        {
+          "term": "yes and"
+        }
+      ],
+      "uid": 301
+    },
+    {
+      "term": "long-form",
+      "definition": "*Long-form* usually refers to a format that is half-an-hour or longer, as opposed to *short-form* or the less common *mid-form*.",
+      "aliases": [
+        "longform"
+      ],
+      "uid": 297
+    },
+    {
+      "term": "mid-form",
+      "definition": "A *mid-form* is typically an improvised scene, game or format which is longer than five minutes and less than half-an-hour.",
+      "aliases": [
+        "midform"
+      ],
+      "related": [
+        {
+          "term": "long-form"
+        },
+        {
+          "term": "short-form"
+        }
+      ],
+      "uid": 299
+    },
+    {
+      "term": "open scene",
+      "definition": "A scene without structure or rules. The scene may still be inspired by a suggestion from the audience.",
+      "related": [
+        "Open Scene",
+        "Scene From Nothing",
+        "Scene From Something"
+      ],
+      "uid": 294
+    },
+    {
+      "term": "short-form",
+      "definition": "*Short-form* generally refers to improv games, scenes or formats which are 5 minutes or less. A *short-form* show is typically comprised of a large number of audience suggestions, with a lot of variation in what *types* of scenes or games the audience experiences.",
+      "aliases": [
+        "shortform"
+      ],
+      "uid": 298
+    },
+    {
+      "term": "suggestion",
+      "definition": "A \"get\" from the audience, used to inspire the scene. It might be verbal: an idea, a true fact, a word, or a story. But it can also be visual (a photo from a driver's license) or physical (an audience member poses and a player starts in that pose, for example).",
+      "uid": 295
+    },
+    {
+      "term": "yes and",
+      "definition": "*Yes, and...* is shorthand for two of the most important concepts behind improvisational theatre.\n- We ought to agree with our fellow players\n- We ought to then respond with with an offer that relates to their offer.\n\n**An example of Yes, And...**\n- Player A: Nice hat!\n- Player B: Thanks, I wore it in case there was rain!\n\nPlayer B agrees that they are wearing a hat, and builds off that with a new offer (they are wearing the hat because it might rain).\n\n**Yes Without And...**\n- Player A: Nice hat!\n- Player B: Thanks!\n\nPlayer B agrees they are wearing a hat, but doesn't add anything to it.\n\n**And without Yes...**\n- Player A: Nice hat!\n- Player B: Let's build a robot!\n\nPlayer B responds with their own offer, but doesn't appear to acknowledge Player A's offer.\n\n**Yes, but...**\n- Player A: Nice hat!\n- Player B: Thanks. But anyway, let's build a robot.\n\nPlayer B accepts A's offer, but is apparently unaffected by it and makes an unrelated offer.\n\n**No, but...**\n- Player A: Nice hat!\n- Player B: I'm not wearing a hat. Let's build a robot.\n\nPlayer B blocks Player A's offer and then makes an unrelated offer.\n\n**NOTE: The core of the \"Yes\" is to accept the reality proposed and to make it important. A player can literally say no and still yes-and an offer:**\n\n- Player A: Marry me!\n- Player B: What!?! I wouldn't marry you if you were the last man on Earth.\n\nPlayer B has accepted Player A's offer, made it important, and responded to it with a new offer.",
+      "aliases": [
+        "yes-and"
+      ],
+      "related": [
+        {
+          "term": "block"
+        }
+      ],
+      "uid": 300
     }
   ]
 }
