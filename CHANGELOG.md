@@ -1,3 +1,23 @@
+## Version 2026.0002.0001
+
+**Games Updated**
+- Accepting Game
+  - Notes Updated
+
+**Glossary Terms Added**
+- The Kitchen Rules
+- waffling
+- wimping
+
+**Glossary Terms Updated**
+- blocking
+  - Renamed from 'block' to 'blocking'
+  - Definition Updated
+  - Aliases Updated
+  - Related Updated
+- yes and
+  - Related Updated
+
 ## Version 2026.0002.0000
 
 **Games Added**
