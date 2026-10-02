@@ -112,7 +112,7 @@ Items 1–7 in §16 were editor, export and diff bugs. They go away with Phase 1
 
 These are ordered by value for effort. Each one can be its own small PR, and any of them can be dropped.
 
-1. **Clickable tag chips on cards.** Clicking a tag on a card toggles it in the filter, cycling the same three states (the spec already suggests this in §10).
+1. **Clickable tag chips on cards.** Clicking a tag on a card toggles it in the filter, cycling the same three states (the spec already suggests this in §10). Tony's Review of this: I don't know about this: what happens when I turn off the chip? I think clicking a tag should take us to a filtered view of just that tag, in a new tab.
 2. **Search help.** Add a small "?" next to the search box that opens a popover listing the syntax: `and`/`or`/`not`, parentheses, `"phrases"`, `tag:`, `list:`. Right now the search language is powerful but invisible.
 3. **"Suggest a change" link on each card.** Visitors have no way to propose an edit, now that editing has left this site. The link opens a new GitHub issue pre-filled with the game's name and UID (`…/issues/new?title=…&body=…`). This also matches the footer's existing "file an issue" wording.
 4. **Friendlier shared lists.** When the page is opened from a `?uids=` link, show a banner ("A shared list of 12 games") with a **Save as list** button, instead of making the recipient find "Create List From Current Games".
@@ -171,34 +171,6 @@ Add a `pull_request` workflow, separate from deploy, that:
 2. sanity-checks **both** `src/living_playbook.json` and `src/living_playbook_2001.json`: each parses, UIDs are unique, `nextUid` is greater than the largest UID, and every game has a name and a description. A direct hand-edited PR can still happen (and UPTime's three-way re-import accepts one for the main file), but it shouldn't be able to ship a file that breaks the viewer.
 3. checks that the two editions' UIDs agree: a UID used in both files must mean the same game. The check can't know that "King Game" and "Monarch Game" are the same game, so it reads a small allowlist of known renames. It fails on an unexplained mismatch, so a new duplicate like UID 58 can't slip in.
 4. fails if a PR deletes or renames `src/living_playbook_2001.json` (edits are fine), or changes any archived `src/living_playbook.<year>.<major>.<minor>.json`. Those are frozen release snapshots.
-
-### 5.4 Rework the deploy workflow
-
-`.github/workflows/deploy-file.yml` has four problems:
-- **It deploys after every merged PR**, even one that changes nothing under `src/` (a docs PR, a CI change, this plan).
-- **It never deploys a direct push to `main`.** The history has several, including the commit that added this workflow, and each of those silently didn't reach the site until the next PR merge.
-- **There's no way to redeploy by hand**, for example after a failed rsync or a change on the server.
-- **It trusts whatever host key the server presents on every run** (`ssh-keyscan` inside the job), so a spoofed server would be trusted and would receive the password.
-
-Proposed trigger:
-
-```yaml
-on:
-  push:
-    branches: [main]
-    paths: ['src/**']
-  workflow_dispatch:
-
-concurrency:
-  group: deploy-playbook
-  cancel-in-progress: false
-```
-
-- **`push` to `main` with a `paths: src/**` filter** covers both merged PRs and direct pushes. It skips any push that doesn't touch `src/`. UPTime export PRs always change `src/living_playbook.json`, so they still deploy. The `if: merged == true` condition goes away, because a push to `main` only happens after a merge.
-- **`workflow_dispatch`** adds a "Run workflow" button for manual redeploys.
-- **`concurrency`** queues back-to-back merges, such as two quick export PRs, instead of running two rsyncs against the server at the same time.
-
-The deploy step stays the same: `rsync -avz --delete ./src/` to the same path.
 
 **Security fixes, recommended but separable:**
 - **Pin the server's host key.** Store the known host line as a secret (for example `SFTP_KNOWN_HOSTS`) and write it to `~/.ssh/known_hosts`, instead of running `ssh-keyscan` inside the job.
