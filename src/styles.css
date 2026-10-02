@@ -350,6 +350,12 @@ body {
     margin-block-end: 0px;
 }
 
+/* A blank line in the source separates blocks (paragraphs, lists); show it as space.
+   (:not(:first-child) rather than "* + *" so it outranks the "p" rule above.) */
+.game-row-text > :not(:first-child) {
+    margin-block-start: 0.75em;
+}
+
 /* Put a bullet before the game-row-text-variation */
 .game-row-text-variation:before {
     content: "\2023   ";
