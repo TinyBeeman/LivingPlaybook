@@ -1,3 +1,45 @@
+## Version 2026.0002.0002
+
+**Games Added**
+- Invocation of a Rubber Ducky
+
+**Games Removed**
+- Foley Room
+
+**Games Updated**
+- Blank Family
+  - Description Updated
+- Boris
+  - Description Updated
+  - Notes Added
+- Call From Ray
+  - Notes Updated
+- Chain Murder Endowment
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+- Creation Myth
+  - Notes Added
+- Day in the Life
+  - Notes Added
+  - Related Added
+- Director
+  - Notes Updated
+- Sound Effects
+  - Description Updated
+  - Notes Added
+  - Variations Added
+
+**Glossary Terms Added**
+- endowment
+- prompting
+
+**Tags Merged**
+- 'active' into 'physical'
+
+**Contributors Added**
+- Anasuya Basu
+
 ## Version 2026.0002.0001
 
 **Games Updated**

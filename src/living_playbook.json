@@ -2,10 +2,11 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0001"
+    "minor": "0002"
   },
   "contributors": [
     "Kris Anderson",
+    "Anasuya Basu",
     "Tony Beeman",
     "Chrissy Best",
     "Adam Charles Buckley",
@@ -48,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 308,
+  "nextUid": 311,
   "games": [
     {
       "name": "Accepting Game",
@@ -341,7 +342,7 @@
     },
     {
       "name": "Blank Family",
-      "description": "Improvisers ask for a verb, adjective or emotion and then play a family of characters who are that verb or adjective.",
+      "description": "Improvisers ask for a verb, adjective or emotion and then play a family of characters who embody that verb or adjective, i.e. The Frustrated Family.",
       "notes": "This game benefits from improvisers looking to vary the way they play the blank word. The game quickly becomes boring without variance and change.",
       "tags": [
         "blank challenge",
@@ -460,12 +461,12 @@
     },
     {
       "name": "Boris",
-      "description": "Scene in which an improviser is interrogated. The improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris).\n\nWhenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the Interrogator is a cruel one.\n\nThe players should work together to tell a story through the interrogation, rather than letting the dialog be about the physical action.",
+      "description": "Scene in which one improviser is interrogated, one or more others are the interrogators. At the whim of the interrogator(s), the improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris).\n\nWhenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the interrogator(s) are cruel.\n\nThe players should work together to tell a story through the interrogation, rather than letting the dialog be about the physical action.",
+      "notes": "This is a useful exercise to demonstrate a few things:\n1) The victim is in control. The interrogator may indicate Boris should rough the prisoner up, but the improviser playing the prisoner decides how much.\n2) The important of the story should help improvisers learn not to talk about the action. If the prisoner's improviser does their job, we shouldn't need to know exactly what Boris is doing. In fact, some things are best left to the audience's imagination.\n3) The improviser and the character have very different motivations. Can the improviser do both effectively?",
       "related": [
         "Black Box"
       ],
       "tags": [
-        "active",
         "game",
         "physical",
         "pimping",
@@ -477,7 +478,7 @@
     {
       "name": "Call From Ray",
       "description": "A scene is begun from a suggested location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene.",
-      "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc.",
+      "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc.\n\nThe characters, the stakes or the direction of the scene should be changed in some clear way because of the call from Ray.",
       "tags": [
         "scene",
         "shortform"
@@ -506,9 +507,13 @@
     },
     {
       "name": "Chain Murder Endowment",
-      "description": "The scene is played in Gibberish. One improviser remains on stage; the rest of the team leaves the playing area. The on-stage improviser asks for 1) an occupation, 2) a room in a house or building, 3) an object, not considered dangerous which will be used in the scene as a murder weapon.\n\nThe actors are brought back into the playing area. The improvisers now have three minutes: In gibberish, the first improviser endows off-stage improviser #1 with the three pieces of information. When the endowing improviser is convinced that the endowed improviser knows what the weapon is, they should be killed by it.\n\nImproviser 2 communicates the information to improviser 3 and finally, 3 to 4. The MC then asks the final improviser what the three pieces of information were. Score, if performed in Theatresports, is not effected by correct or incorrect answers.\n\nRemember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser.\n\nThe audience is encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted.",
+      "description": "The scene is played in Gibberish with at least three players (four players works well, so that you get a total of three discrete vignettes). One player (A) remains in the theatre while their teammates leave the space (or plug their ears and hum) so they can’t hear.\n\nPlayer A gathers three random and unconnected elements – a location, occupation, and prop. These suggestions combine to form the features of a crime, with the prop now becoming an unlikely weapon of sorts. \n\nPlayer B returns to the stage, and a scene is played in which Player A must portray the profession and location while endowing the murder weapon, all while both players only use gibberish and body language.\n\nWhen the incoming player believes they know the selected components, they perform the crime in the pertinent location, against their scene partner, and with the peculiar choice of weapon. \n\nPlayer A can not be killed by anything other than the correct weapon! Everything else will have harmless effect and will only surprise or confuse the victim.\n\nWhen Player B finally discovers the correct item, the victim dies dramatically and then exits the stage, as the next potential criminal enters. Player B is now the gibberish clue-giving partner for Player C. The process repeats for each remaining player.",
+      "notes": "The audience can be encouraged to applaud each time the improviser correctly \"identifies\" the piece of information being transmitted, or to Oooooh when they get close.\n\nAt UP, when we \"score\" the scenes in a match, we don't knock points off for incorrect answers: taking big guesses is part of the fun!\n\nRemember that the scene is timed, usually with one minute per off stage improviser. The object is to get all the improvisers through in the allotted time (usually 3 minutes). There is nothing wrong with improvisers REPEATING EXACTLY the actions from the previous improviser.\n\nThis is a useful exercise in both portraying (the location and the profession) and endowing (the murder weapon). The victim ought to justify their actions within the scene. If they are a doctor in a library, and the murder weapon is a fish, they must discover a way to arrive at fish: Perhaps the doctor has brought their goldfish in a bag to look for advice on how to cure the goldfish of an illness.",
       "variations": [
-        "Personality Murder Endowments: Same as Chain Murder, except instead of a location, the team gets a famous personality."
+        {
+          "name": "Personality Murder Endowment",
+          "description": "Same as Chain Murder, except instead of the profession, the team gets a famous personality, who is the victim."
+        }
       ],
       "tags": [
         "endowment",
@@ -621,6 +626,7 @@
     {
       "name": "Creation Myth",
       "description": "A scene explaining the creation or discovery of something in mythological terms.",
+      "notes": "Spiders and Spiderwebs exist because a woman named Arachne beat Athena in a weaving content, and Athena turned Arachne into a spider, so she could weave for all time.\n\nThis game must invent a similar myth for an audience provided concept.\n\nThis is a great chance for performers who know styles such as Greek Plays, Nordic Folk Tales, Sea Chanties, etc.",
       "tags": [
         "scene",
         "shortform"
@@ -669,8 +675,12 @@
     {
       "name": "Day in the Life",
       "description": "Improvisers ask an audience member for an actual day in his life. Improvisers recreate the day as they see fit. Can be an average day, or a first day at work or a rite of passage or a family vacation experience or…",
+      "notes": "This is a great chance to explore theatrical concepts such as heightened emotions, inner monologues, asides, and subtext. And it's a good exercise in *really* listening to an audience member.",
       "aliases": [
         "Experience"
+      ],
+      "related": [
+        "Nightmare"
       ],
       "tags": [
         "scene",
@@ -681,7 +691,7 @@
     {
       "name": "Director",
       "description": "Title is given for the scene. \"Actors\" begin a \"rehearsal\" of the piece. Periodically, they are stopped by the \"director\", who gives new emphasis or emotional focus to the scene.",
-      "notes": "The director can go to the audience as a consultant or producer: When the \"director\" needs an emotion, a physical direction, etc. they consult the audience to fill in the blanks.",
+      "notes": "The director can go to the audience as a consultant or producer: When the \"director\" needs an emotion, a physical direction, etc. they consult the audience to fill in the blanks.\n\nOther common gets: a new genre, recasting a character (with another  improviser or a celebrity actor), a different camera angle, an acting style, a new motivation for one or more characters, etc.",
       "tags": [
         "audience",
         "directed",
@@ -970,22 +980,6 @@
       "uid": 67
     },
     {
-      "name": "Foley Room",
-      "description": "In the Film World, the Foley Room is the room in which the soundtrack is enhanced. To play Foley Room, someone must bring in a collection of noisemakers. One team plays the scene; the other team uses the noisemakers to enhance the scene. Both teams should justify the sounds. A one minute 'familiarization' period with the noisemakers can be helpful.",
-      "variations": [
-        "If you have technical improvisers the offers can come from the sound improviser."
-      ],
-      "tags": [
-        "justification",
-        "props",
-        "scene",
-        "shortform",
-        "sound",
-        "tech"
-      ],
-      "uid": 68
-    },
-    {
       "name": "Foreign Poet",
       "description": "A poem or opera or...is translated by an interpreter for the audience and/or other improvisers.",
       "variations": [
@@ -1157,7 +1151,6 @@
       "name": "Half Life",
       "description": "A thirty-second scene is played. It is then repeated in fifteen seconds. It is then repeated in seven seconds, then three seconds, and finally in one second.",
       "tags": [
-        "active",
         "physical",
         "scene",
         "shortform",
@@ -1296,7 +1289,6 @@
       "name": "Human Prop",
       "description": "One improviser runs around playing all of the props in a scene.",
       "tags": [
-        "active",
         "physical",
         "scene",
         "shortform"
@@ -1437,6 +1429,18 @@
         "shortform"
       ],
       "uid": 107
+    },
+    {
+      "name": "Invocation of a Rubber Ducky",
+      "description": "Improvisers stand in a circle (exercise) or an arc (performance) after getting an object that almost everyone has owned at some point. A backpack, for example.\n\nEach performer thinks of a specific example of that object. The performers then begin endowing the object with…\n\n\n“It is…”\nTbis is the most basic descriptive and literal part. Things that are factual. “It has two straps”, “It has a Jansport patch”, etc.\n\n\nEventually, each performer moves on to…\n\n\n“You are…”\nThese are more personal. “You are my my bag of knowledge”, “You are my hallway friend.”\n\n\nthen…\n\n“Thou art…”\nThese are heightened poetic statements. “Thou art my entire high school life.” “Thou art my future.” “Thou art my burdened teenage years”\n\nUntil finally….\n\n“I am”\nThe improviser now becomes the object. “I am your protector.” “I am your third arm.” “I am the bearer of your unwanted tasks.”",
+      "notes": "With each level, our language and commitment should heighten. By the end, we are that thing deified.\n\nThe performers may go at their own pace, and do not need to change together.\n\nThis is a great warm up for poetic and heightened language.",
+      "tags": [
+        "endowment",
+        "exercise",
+        "group game",
+        "status"
+      ],
+      "uid": 308
     },
     {
       "name": "Jeepers/Peepers",
@@ -2363,7 +2367,7 @@
         "Light Booth"
       ],
       "tags": [
-        "active",
+        "physical",
         "scene",
         "shortform",
         "tech"
@@ -2861,8 +2865,8 @@
         "Standing, Sitting, Kneeling, Lying Down"
       ],
       "tags": [
-        "active",
         "environment",
+        "physical",
         "scene",
         "shortform",
         "stage picture",
@@ -2905,7 +2909,14 @@
     },
     {
       "name": "Sound Effects",
-      "description": "A tape with randomly placed sound effects is played while scene is being played. Improvisers must incorporate and justify the F/X. A sound improviser may be used in place of a tape.",
+      "description": "Sound effects are played by a tech improviser, off-stage performer or audience member while a scene is being played on stage. Improvisers must incorporate and justify the F/X.",
+      "notes": "Like most similar games, this should be a game of give and take. Sometimes the improvisers should make offers that would make sounds to which the sound effects respond, sometimes the sound effects should make the offer and the players should respond.",
+      "variations": [
+        {
+          "name": "Foley Room",
+          "description": "Foley Room is a version of Sound Effects using old-time noisemakers, drums, bells, whistles, clap-boards and other physical instruments to provide the effects."
+        }
+      ],
       "tags": [
         "justification",
         "scene",
@@ -3193,7 +3204,6 @@
       "name": "Stunt Doubles",
       "description": "Improvisers begin a scene. At any point during the scene an on stage actor may call out \"Stunt Double\". That actor is then replaced by his stunt double, who then performs the dangerous or distasteful activities. When the activity is finished the double calls out \"First Team\", and the original improviser returns to the stage.",
       "tags": [
-        "active",
         "physical",
         "pimping",
         "scene",
@@ -3730,6 +3740,22 @@
       "uid": 301
     },
     {
+      "term": "endowment",
+      "definition": "An endowment is the act of attributing a character, emotion, relationship, or physical trait to another player, or giving an object or scene a specific meaning.\n\nEndowment games often involve guessing, where one player must have another character guess something about themselves.\n\nThere is also self-endowment, which in practice, usually means the audience endows the improviser with a suggestion, such as in animal people.",
+      "aliases": [
+        "endow",
+        "endowed",
+        "endows"
+      ],
+      "related": [
+        "Animal People",
+        "List Endowment",
+        "Chain Murder Endowment",
+        "Crime Endowments"
+      ],
+      "uid": 309
+    },
+    {
       "term": "expand",
       "definition": "To *expand* is to stop advancing in a scene in order to provide details, context, explain stakes, explore feelings, or provide backstory to a scene.\n\nSee *advance* for expand's most common counterpart.",
       "aliases": [
@@ -3778,6 +3804,23 @@
         "Scene From Something"
       ],
       "uid": 294
+    },
+    {
+      "term": "prompting",
+      "definition": "Prompting (the now-accepted term for *pimping*) is the act of endowing another improviser into a corner, often at the other improviser's cost.\n\n**Example**: \"Say, I wrote this Shakespearian sonnet for you, why don't you read it?\"",
+      "notes": "Prompting/Pimping often has a negative connotation, as it tends to fly in the face of \"take care of your scene partner,\" but it has its uses among improvisers who trust each other. Prompting a character to do something which you know the other performer is particularly skilled at would be a more positive example of prompting.",
+      "aliases": [
+        "pimp",
+        "pimping",
+        "prompt",
+        "prompts"
+      ],
+      "related": [
+        {
+          "term": "endowment"
+        }
+      ],
+      "uid": 310
     },
     {
       "term": "short-form",
