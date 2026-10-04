@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0002"
+    "minor": "0003"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 311,
+  "nextUid": 314,
   "games": [
     {
       "name": "Accepting Game",
@@ -1178,6 +1178,23 @@
       "uid": 84
     },
     {
+      "name": "Happily Ever After",
+      "description": "The audience suggests a well-known fairy tale. The improvisers then perform a scene exploring what happens to the characters after the most well-known end of the fairy tale.",
+      "notes": "Don't be afraid to have the audience explain the fairy tale: especially a diverse audience. It helps the improvisers AND the audience.",
+      "related": [
+        "Fairy Tale"
+      ],
+      "tags": [
+        "character",
+        "cultural",
+        "game",
+        "narrative",
+        "scene",
+        "shortform"
+      ],
+      "uid": 313
+    },
+    {
       "name": "Hats",
       "description": "Two improvisers from opposing teams put on hats of approximately equal dimensions. Scene ends when one improviser (a) grabs the hat off his opponents head or (b) tries to grab the opponents hat and misses. Play the scene for reality. A Hat grab, the move to grab a hat or defend a hat, needs to be justifiable within the scene. The scene is often played with a 15 second \"window\" at the beginning in which improvisers cannot go for the hats.",
       "tags": [
@@ -1639,14 +1656,17 @@
     {
       "name": "Madrigal",
       "description": "Three singers to begin. Person 1 may ask for a \"Simple phrase from the Bible or Shakespeare.\" Person 2 may get a \"Common Advertising Slogan\". Person 3 gets a \"Fictitious Headline from The Enquirer.\" Person 1 sings their phrase through twice. Then Person 2, then Person 3. After all three lines have been heard, the singers weave words and phrases in and out of each other's lines, creating new lines. Similar to Phone Bank. Singers trade focus, harmonies, tempos, words, etc.",
+      "notes": "This is a verbal restriction game, not a narrative game.",
       "related": [
-        "Oratorio"
+        "Oratorio",
+        "Phone Bank"
       ],
       "tags": [
         "cultural",
         "game",
         "music",
-        "shortform"
+        "shortform",
+        "styles"
       ],
       "uid": 124
     },
@@ -2078,7 +2098,8 @@
     },
     {
       "name": "Oratorio",
-      "description": "Madrigal format, but rather than sing and play off the same few sentences, a singer can advance the story with each line they sing. As each advancing line is sung, the others combine the line with previous lines and sing in the regular madrigal format.",
+      "description": "Similar to a Madrigal, but rather than sing and play off the same few sentences, a singer can advance the story with each line they sing. As each advancing line is sung, the others combine the line with previous lines and sing in the regular madrigal format.",
+      "notes": "Unlike Madrigal, Oratorio is a narrative game",
       "related": [
         "Madrigal"
       ],
@@ -3207,7 +3228,8 @@
         "physical",
         "pimping",
         "scene",
-        "shortform"
+        "shortform",
+        "teamwork"
       ],
       "uid": 246
     },
@@ -3333,7 +3355,8 @@
     },
     {
       "name": "Timed Styles",
-      "description": "A short scene is played. Then the accelerated scene is repeated in different styles as many times as possible within a three-minute time limit.",
+      "description": "A short neutral scene is played. It should have no particular style and no real expansion.\n\nThen the accelerated scene is repeated in different styles as many times as possible within a three-minute time limit. The timer starts with the first styled scene.",
+      "notes": "The neutral scene should be as short and fast as possible: it can be expanded with styles.\n\nThe simpler the scene, the better. A simple three line scene is great:\n\n* \"Welcome Home!\" -> \"I got fired.\" -> \"Get out.\"\n* [Status Quo] -> [Inciting Event] -> [New Status Quo]",
       "tags": [
         "scene",
         "shortform",
@@ -3432,8 +3455,10 @@
     },
     {
       "name": "Two, Too, To",
-      "description": "The following blanks are filled by the audience: Two_________, To _______, Too_______. A scene then is played incorporating the suggestions.",
+      "description": "The audience is prompted for a noun, and adjective, and a verb. These suggestions are plugged into the title format:\n\n**Two** [Noun]s, **Too** [Adjective] **To** [Verb].  \n\nThe improvisers then perform a scene inspired by that phrase.",
+      "notes": "Example: noun = cat, adjective = silly, verb = walk\\\n*Two cats too silly to walk*",
       "tags": [
+        "blank challenge",
         "scene",
         "shortform"
       ],
@@ -3538,18 +3563,20 @@
     },
     {
       "name": "What Comes Next?",
-      "description": "An improviser takes the stage and asks, \"What happens first?\", then does whatever the audience has replied, then they ask “What comes next?”. The goal is to create narrative. This works best if you show the audience that blocking or clever suggestions will get them nowhere. If you train the audience to do this, they will understand it's a skill. If the audience groans at a suggestion, go back and get a different suggestion.",
+      "description": "An improviser takes the stage and asks, \"What happens first?\", then does whatever the audience has replied. When they have done that, expanding on it as much as they like but advancing no further, the improviser asks “What comes next?”.\n\nThis works best if you show the audience that blocking or clever suggestions will get them nowhere. If you train the audience to do this, they will understand it's a skill. If the audience groans at a suggestion, go back and get a different suggestion.",
+      "notes": "At UP, we often use this as an exercise with new improvisers (although it's fun with advanced improvisers as well). We often have the class play a a committee of four or five giving the suggestions.\n\nThe committee will sometimes feel pressured and wimp or waffle. If the audience feels the committee has failed, the committee may be replaced.\n\nThe committee should take their time and try to get into trouble. It can be helpful to ask that that the first eight or nine suggestions be positive and advance the story.",
       "variations": [
-        "Player ask for step by step instructions.",
-        "Player only asks for help when stuck",
-        "This game can also be played with a committee of four or five giving the suggestions. The committee will usually feel pressured and make wimpy choices. If the audience feels the committee has failed, the committee may be replaced. The committee should take their time and try to get into trouble. Demand that the first eight or nine suggestions be positive and advance the story. They want to set a routine and then break it, not delay it."
+        {
+          "name": "Phone A Friend",
+          "description": "The player only asks for help when stuck."
+        }
       ],
       "tags": [
-        "beginner",
         "directed",
         "exercise",
         "scene",
-        "shortform"
+        "shortform",
+        "yes and"
       ],
       "uid": 275
     },
@@ -3772,6 +3799,19 @@
       "uid": 303
     },
     {
+      "term": "genre",
+      "definition": "A named category of art, most often theatrical (\"80s Action\"), musical (\"Country Western\") or literary (\"Murder Mystery\").",
+      "aliases": [
+        "genres"
+      ],
+      "related": [
+        {
+          "term": "style"
+        }
+      ],
+      "uid": 312
+    },
+    {
       "term": "long-form",
       "definition": "*Long-form* usually refers to a format that is half-an-hour or longer, as opposed to *short-form* or the less common *mid-form*.",
       "aliases": [
@@ -3835,6 +3875,14 @@
       "definition": "The *stakes* of a scene are the consequences of success or failure. If we want the audience to care whether your character gets what they want or not, the audience needs to understand what the consequences are if they do or do not get the job.",
       "notes": "If improvisers don't define (or at least imply) the stakes, it will be very difficult for them to engage the audience on an emotional level. If an audience is to care about the outcome, they need to understand why the outcome matters.",
       "uid": 304
+    },
+    {
+      "term": "style",
+      "definition": "The *way* a scene is presented. Often used to refer to cinematic, literary and theatrical genres, playwrights, cinematographers, authors and directors. But almost anything can be a \"style\": a mood, a painting style, a dance style, a \"feel\", etc.",
+      "aliases": [
+        "styles"
+      ],
+      "uid": 311
     },
     {
       "term": "suggestion",
