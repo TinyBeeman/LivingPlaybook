@@ -1,3 +1,35 @@
+## Version 2026.0002.0003
+
+**Games Added**
+- Happily Ever After
+
+**Games Updated**
+- Madrigal
+  - Notes Added
+  - Related Updated
+  - Tags Updated
+- Oratorio
+  - Description Updated
+  - Notes Added
+- Stunt Doubles
+  - Tags Updated
+- Timed Styles
+  - Description Updated
+  - Notes Added
+- Two, Too, To
+  - Description Updated
+  - Notes Added
+  - Tags Updated
+- What Comes Next?
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+  - Tags Updated
+
+**Glossary Terms Added**
+- style
+- genre
+
 ## Version 2026.0002.0002
 
 **Games Added**
