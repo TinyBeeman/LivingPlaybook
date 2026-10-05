@@ -42,4 +42,4 @@ jobs:
         run: |
           sshpass -e rsync -avz --delete \
             ./src/ \
-             ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }}:/home/${{ secrets.SFTP_USERNAME }}/unexpectedproductions.org/playbook/
+             ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }}:${{ secrets.SFTP_PATH }}
