@@ -20,26 +20,37 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    # A normal deploy takes well under a minute; fail fast instead of hanging.
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
 
       # Don't rely on the runner image shipping these: ubuntu-latest moves to
       # new Ubuntu releases over time, and sshpass isn't guaranteed to be on them.
-      - name: Install rsync and sshpass
+      - name: Install lftp
         run: |
           sudo apt-get update
-          sudo apt-get install -y rsync sshpass
+          sudo apt-get install -y lftp
 
       - name: Trust Remote Server Host Key
         run: |
           mkdir -p ~/.ssh
           ssh-keyscan -H ${{ secrets.SFTP_SERVER }} >> ~/.ssh/known_hosts
 
-      - name: Sync Directory via Rsync with Password
+      # Upload over plain SFTP rather than rsync: the hosting account is
+      # SFTP-only (no shell, so no remote rsync to talk to). rsync over such an
+      # account authenticates, then both ends wait silently for each other until
+      # the connection drops ("connection unexpectedly closed (0 bytes received
+      # so far)"). lftp's mirror -R --delete does the same job over SFTP.
+      - name: Sync Directory via SFTP
         env:
-          SSHPASS: ${{ secrets.SFTP_PASSWORD }}
+          LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
         run: |
-          sshpass -e rsync -avz --delete \
-            ./src/ \
-             ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_SERVER }}:${{ secrets.SFTP_PATH }}
+          lftp --env-password -u "${{ secrets.SFTP_USERNAME }}" "sftp://${{ secrets.SFTP_SERVER }}" -e "
+            set net:timeout 30;
+            set net:max-retries 2;
+            set cmd:fail-exit yes;
+            mirror --reverse --delete --verbose ./src/ '${{ secrets.SFTP_PATH }}';
+            bye
+          "

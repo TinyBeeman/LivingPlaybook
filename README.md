@@ -3,7 +3,7 @@
 ## Overview
 The Living Playbook is a database of improvisational theatre games. The web application allows users to filter and view a list of games based on selected tags. The application features a user-friendly interface with three-state checkboxes for tag selection and dynamically updates the displayed games based on user input.
 
-The public site is at [unexpectedproductions.org/playbook](https://unexpectedproductions.org/playbook/). It's a static page (`src/`), deployed automatically whenever a change under `src/` lands on `main`.
+The public site is at [playbook.unexpectedproductions.org](https://playbook.unexpectedproductions.org/). It's a static page (`src/`), deployed automatically whenever a change under `src/` lands on `main`.
 
 ## Contributing
 Please feel free to open an issue for any suggestions or improvements, or submit a pull request.
