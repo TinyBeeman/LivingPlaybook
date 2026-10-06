@@ -1,6 +1,6 @@
 # The Living Playbook — Viewer & Data Specification
 
-This document describes how the public Living Playbook viewer (`src/index.html` + `src/playbook.js`, served at unexpectedproductions.org/playbook) works and the format of its data files.
+This document describes how the public Living Playbook viewer (`src/index.html` + `src/playbook.js`, served at playbook.unexpectedproductions.org) works and the format of its data files.
 
 **Editing no longer happens here.** It moved to UPTime (Documents → Living Playbook): signed-in users propose changes, reviewers accept them, and UPTime exports `living_playbook.json` into this repo through a pull request. UPTime's design is in its `docs/living-playbook-editor.md`, which cites this spec as "spec §N". Sections 11–14 therefore remain as short stubs, so those section numbers stay stable. Planned viewer work is in [`viewer-cleanup-plan.md`](viewer-cleanup-plan.md).
 

@@ -2,7 +2,7 @@
 
 **Status:** Proposed (2026-09-27). Nothing here is built yet.
 
-**Context:** All editing of the Living Playbook now happens in UPTime, a private webapp maintained by Unexpected Productions (Documents → Living Playbook). There, signed-in users propose changes, reviewers accept them, and UPTime exports a canonical `living_playbook.json` that is PR'd into this repo. This repo's web app no longer needs its own editor. From now on it is **only the public viewer** at `unexpectedproductions.org/playbook`. It stays the main way people outside UPTime read the playbook, so every viewer feature stays: search, the tag filter, favorites and named lists, share links, permalinks, related-game links, the 2001 edition, and printing.
+**Context:** All editing of the Living Playbook now happens in UPTime, a private webapp maintained by Unexpected Productions (Documents → Living Playbook). There, signed-in users propose changes, reviewers accept them, and UPTime exports a canonical `living_playbook.json` that is PR'd into this repo. This repo's web app no longer needs its own editor. From now on it is **only the public viewer** at `playbook.unexpectedproductions.org`. It stays the main way people outside UPTime read the playbook, so every viewer feature stays: search, the tag filter, favorites and named lists, share links, permalinks, related-game links, the 2001 edition, and printing.
 
 This plan covers:
 1. removing the editor code
