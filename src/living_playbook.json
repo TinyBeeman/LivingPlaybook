@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0003"
+    "minor": "0004"
   },
   "contributors": [
     "Kris Anderson",
@@ -124,6 +124,7 @@
       ],
       "tags": [
         "exercise",
+        "risky",
         "teamwork"
       ],
       "uid": 5
@@ -144,14 +145,28 @@
     },
     {
       "name": "Alliteration",
-      "description": "Improvisers ask for a letter of the alphabet and incorporate as many words beginning with the sound of that letter into the scene as possible.",
+      "description": "Improvisers ask for a single letter of the alphabet and incorporate as many words beginning with the sound of that letter into the scene as possible.",
       "notes": "Don't overthink it. Some performers find it easier to feel this out by the same of their mouth and the feel of the words.",
       "variations": [
-        "Each improviser asks for their \"own\" letter.",
-        "Every word spoken begins with that letter. Using the letter “T”, “Hello, How are you?” becomes “Tello, Tow Tar Tou?”",
-        "Instead of words the improvisers make sounds beginning with that letter."
+        {
+          "name": "Obliteration",
+          "description": "Improvisers may use all words, but must begin them with that letter. Using the letter “T”, “Hello, How are you?” becomes “Tello, Tow Tar Tou?”"
+        },
+        {
+          "name": "Illiteration",
+          "description": "Each improviser asks for their \"own\" letter."
+        },
+        {
+          "name": "Plosives & Fricatives",
+          "description": "Improvisers must use as many **plosives** and **fricatives** as possible. (Or divide them up so that each perform has just one).\n\n**Plosives** are words that feature hard 'stop' sounds: P, T, K, B, D, G. \"Boom\", \"Tackle\", \"Bad Dog\", \"Kitty Cat\", \"Take Down\".\n\n**Fricatives** are words that feature consonants that leak air: F, V, S, Z, SH, TH, ZH. \"Shush\", \"Fife\", \"Father\", \"Sizzle\", \"Zoot Suit\""
+        },
+        {
+          "name": "Alliterative Onomatopoeia",
+          "description": "Instead of words the improvisers make sounds beginning with that letter."
+        }
       ],
       "tags": [
+        "exercise",
         "scene",
         "shortform",
         "verbal"
@@ -161,11 +176,20 @@
     {
       "name": "Alphabet Game",
       "description": "Improvisers play a scene in which each *sentence* they speak begins with the next sequential letter of the alphabet from A to Z.\n\nPerson A: Anyone home? Best to say so, if you are! Candy for the first kid downstairs!\nPerson B: Daddy! Edmund has been hitting me!\nPerson C: Francis is a tattletale!",
-      "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends.",
+      "notes": "Many improvisers play this as lines rather than sentences, but this often gets in the way of good listening: performers are thinking of their next line rather than listening to hear where the speaking performer ends.\n\nWorth thinking of this as a narrative game, where the purpose of the game is to find a story arc in 26 lines.",
       "variations": [
-        "Audience: Include an audience member: they must speak three lines during the scene.",
-        "Different Letter: The audience chooses a letter to start on. You go until you get back to that letter.",
-        "Loop: You may go through the alphabet as many times as necessary to complete the scene."
+        {
+          "name": "XYZ Game",
+          "description": "The audience chooses a letter to start on. You go until you get back to that letter."
+        },
+        {
+          "name": "Alphabet Loop",
+          "description": "You may go through the alphabet as many times as necessary to complete the scene."
+        },
+        {
+          "name": "Audience Alphabet",
+          "description": "Include an audience member: they must speak three lines during the scene."
+        }
       ],
       "aliases": [
         "ABC Game"
@@ -611,7 +635,8 @@
         "directed",
         "scene",
         "shortform",
-        "switch"
+        "switch",
+        "teamwork"
       ],
       "uid": 37
     },
@@ -1495,6 +1520,7 @@
       "tags": [
         "cultural",
         "directed",
+        "music",
         "scene",
         "shortform"
       ],
