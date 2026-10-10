@@ -243,6 +243,7 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
    - Subtitle on the right: `The Unexpected Productions Improv Game List`.
 2. **Control pane** (hidden when printing):
    - **Search box** (`type="search"`, placeholder "Search games...").
+   - **🎲 Random** button, beside the search box: scrolls to a random card among those currently listed (games, variation entries and glossary terms, after search, tags and Show) and flashes it. It never picks the same card twice in a row unless only one is listed, and it's disabled when nothing is listed. It doesn't change the search or the URL.
    - **"Show:"** toggle buttons: Games, Variations and Glossary (see [§5.6](#56-show-games-variations-glossary)). Variations and Glossary are hidden when the edition has no named variations or no glossary; the whole row is hidden when it has neither.
    - **"Filter By Tags"**: a collapsible section, collapsed by default.
    - **"Lists and Favorites"**: a collapsible section, collapsed by default.

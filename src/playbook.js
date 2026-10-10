@@ -1078,6 +1078,15 @@ class PlaybookPage {
             this.updateUrlFromState();
         });
 
+        const randomButton = document.createElement('button');
+        randomButton.type = 'button';
+        randomButton.id = 'random-button';
+        randomButton.className = 'tag-button random-button';
+        randomButton.textContent = '🎲 Random';
+        randomButton.title = 'Jump to a random entry in the current list';
+        randomButton.addEventListener('click', () => this.showRandomEntry());
+        searchSection.appendChild(randomButton);
+
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
         controlPane.appendChild(this.createShowSection());
@@ -1305,6 +1314,29 @@ class PlaybookPage {
                 term => this.createTermCardDiv(term));
             gamesContainer.appendChild(glossarySection);
         }
+
+        const randomButton = document.getElementById('random-button');
+        if (randomButton)
+            randomButton.disabled = gamesContainer.querySelector('.game-card') === null;
+    }
+
+    // Scroll to a random card among those listed (games, variation entries and glossary terms,
+    // whatever the search, tags and Show settings currently list) and flash it. It won't pick
+    // the same card twice in a row unless it's the only one.
+    showRandomEntry() {
+        const cards = Array.from(document.querySelectorAll('#games-container .game-card'));
+        if (cards.length === 0)
+            return;
+        const candidates = cards.length > 1 ? cards.filter(card => card !== this.lastRandomCard) : cards;
+        const card = candidates[Math.floor(Math.random() * candidates.length)];
+        this.lastRandomCard = card;
+
+        document.querySelectorAll('.game-card.random-pick').forEach(el => el.classList.remove('random-pick'));
+        // Restart the flash even when the same card is picked again.
+        void card.offsetWidth;
+        card.classList.add('random-pick');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
     }
 
     updateUrlFromState() {
