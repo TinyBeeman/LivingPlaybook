@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0004"
+    "minor": "0005"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 314,
+  "nextUid": 316,
   "games": [
     {
       "name": "Accepting Game",
@@ -560,6 +560,18 @@
       "uid": 30
     },
     {
+      "name": "Chapters",
+      "description": "An audience member provides a title for a book which has never been written, and another audience member is asked for the total number of chapters (anything between 8 and 100 works just fine). The MC prompts the players to play chapters in any order. We aren't expected to see every chapter, just enough to flush out the story.",
+      "notes": "This is an excellent game for working on the concept that most scenes don't tell the whole story. Most plays don't tell the whole story. We can start stories in the middle and explore backstory in any scene.\n\nThe MC can call for other elements: the summary on the back of the book, the author's notes, the inscription from the author, the colophon, etc.",
+      "tags": [
+        "directed",
+        "game",
+        "narrative",
+        "shortform"
+      ],
+      "uid": 315
+    },
+    {
       "name": "Characters from the Audience",
       "description": "Audience provides character traits or types for the improvisers to use during the scene.",
       "tags": [
@@ -883,6 +895,21 @@
         "shortform"
       ],
       "uid": 58
+    },
+    {
+      "name": "Eye Tunes",
+      "description": "Two players make intense eye contact when the music plays and avoid contact when it does not. Works with a sound improviser, musician, singing, etc.",
+      "notes": "Some players choose to play no dialog when the music plays, but this isn't a hard rule. This is a useful game in learning the importance of acting with our eyes.",
+      "related": [
+        "Piano Torture"
+      ],
+      "tags": [
+        "game",
+        "silence",
+        "sound",
+        "tech"
+      ],
+      "uid": 314
     },
     {
       "name": "Fairy Tale",
@@ -3353,7 +3380,6 @@
       "name": "Three Scene",
       "description": "Scene is played in three parts. A “neutral” scene is played. It then repeated two times with a new style or piece of information.",
       "variations": [
-        "Chapters: A scene is played in three parts as if from different chapters of a book, usually the first chapter, a middle chapter, and the last chapter.",
         "Ratings Board: The first scene is done with a \"G\" rating. That same scene is recreated again but as though it were rated PG (or PG-13) the next one is rated \"R.\"",
         "Through the Ages: Similar to a Styles scene. Get three periods in history then play the scene as if it took place in those time periods."
       ],
