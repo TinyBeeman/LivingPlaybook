@@ -243,7 +243,8 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
    - Subtitle on the right: `The Unexpected Productions Improv Game List`.
 2. **Control pane** (hidden when printing):
    - **Search box** (`type="search"`, placeholder "Search games...").
-   - **🎲 Random** button, beside the search box: scrolls to a random card among those currently listed (games, variation entries and glossary terms, after search, tags and Show) and flashes it. It never picks the same card twice in a row unless only one is listed, and it's disabled when nothing is listed. It doesn't change the search or the URL.
+   - **🎲 Random** button, beside the search box: puts `random:N` (a new random seed) in the search, replacing any `random` token already there, so the list narrows to one random game from what the rest of the search and the tag filters match (see [§6.1](#61-tokenizing)). Pressing it again picks a different game when there's more than one to pick from. It's disabled when nothing would be left to pick from.
+   - **🎲 ✕** button, shown only while the search has a `random` token: removes it, bringing back the full list.
    - **"Show:"** toggle buttons: Games, Variations and Glossary (see [§5.6](#56-show-games-variations-glossary)). Variations and Glossary are hidden when the edition has no named variations or no glossary; the whole row is hidden when it has neither.
    - **"Filter By Tags"**: a collapsible section, collapsed by default.
    - **"Lists and Favorites"**: a collapsible section, collapsed by default.
@@ -311,6 +312,7 @@ Regex: `/(\(|\)|(?:"([^"]+)"|[^\s()]+))/g`
 | `id:anchor` | Id | `game.anchorName === anchor` exactly. Aliases are **not** checked. |
 | `uid:N` | Uid | `parseInt(game.uid) === parseInt(N)`. |
 | `uids:1,2,3` | Uids | `game.uid` is in the list. |
+| `random:N` | *(none)* | Not a condition on a game, so it's left out of the tree. After the rest of the search and the tag filters run, the matching games narrow to one, picked by seed `N` (the same `N` and matches always pick the same game, so a link with it shows the same game). A bare `random` picks again every time the search runs. With a random token, no glossary terms are listed. Case-insensitive; `"random"` in quotes is ordinary text. |
 | anything else | Term | Case-insensitive substring match on any string field or string-array item, excluding `related` and `uid`. This includes `anchorName`/`anchorAliases` (see [§4](#4-derived--runtime-only-fields)). |
 
 **⚠ Quirk:** Because tokens split on whitespace, `tag:` can't target tags that contain spaces (`tag:blank challenge` becomes `tag:blank` AND the term `challenge`). `tag:"blank challenge"` doesn't work either: the quote regex only matches when the token starts with a quote. Users have to rely on the tag filter buttons for those tags.
@@ -353,6 +355,7 @@ So dangling operators like `foo and` or `or bar` still produce sensible results 
 | `list:Favorites` | Games in the user's Favorites. |
 | `uid:113` | Permalink to one game. |
 | `id:monarchgame` | Legacy anchor lookup, used by related-game links. |
+| `tag:warm-up random:4821` | One game tagged warm-up, picked by seed 4821. |
 
 ---
 
