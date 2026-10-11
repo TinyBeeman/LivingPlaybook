@@ -165,25 +165,6 @@ body {
     opacity: 0.5;
 }
 
-/* The card the Random button just picked */
-.game-card.random-pick .game-card-title,
-.game-card.random-pick .game-card-content {
-    animation: random-pick-flash 2s ease-out;
-}
-
-@keyframes random-pick-flash {
-    0%, 40% { background-color: #fff2a8; }
-    100% { background-color: var(--default-bg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .game-card.random-pick .game-card-title,
-    .game-card.random-pick .game-card-content {
-        animation: none;
-        background-color: #fff2a8;
-    }
-}
-
 .collapsible-header {
     order: 1;
     background-color: white;

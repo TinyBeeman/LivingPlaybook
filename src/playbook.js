@@ -90,6 +90,49 @@ function variationText(variation) {
 
 // The searchable text of any item in an array field: a string, or the string values of an
 // object (a named variation, or a glossary entry's related link).
+// The search's tokens: "(", ")", a "quoted phrase", or a run of anything else.
+const SEARCH_TOKEN_REGEX = /(\(|\)|(?:"([^"]+)"|[^\s()]+))/g;
+const RANDOM_TOKEN_REGEX = /^random(?::(\d+))?$/i;
+
+// Every unquoted `random` / `random:N` token in a search: where it is and its seed (null for a
+// bare `random`, which picks again every time the search runs).
+function findRandomTokens(searchString) {
+    const found = [];
+    if (!searchString)
+        return found;
+    const regex = new RegExp(SEARCH_TOKEN_REGEX.source, 'g');
+    let match;
+    while ((match = regex.exec(searchString)) !== null) {
+        if (match[2] !== undefined)
+            continue;
+        const random = match[1].match(RANDOM_TOKEN_REGEX);
+        if (random)
+            found.push({ start: match.index, end: match.index + match[1].length, seed: random[1] != null ? Number(random[1]) : null });
+    }
+    return found;
+}
+
+function removeRandomTokens(searchString) {
+    let result = searchString || '';
+    findRandomTokens(result).reverse().forEach(token => {
+        result = result.slice(0, token.start) + result.slice(token.end);
+    });
+    return result.replace(/\s+/g, ' ').trim();
+}
+
+// Picks one item from a list: the same item for the same seed and list, a fresh pick when the
+// seed is null.
+function pickRandom(items, seed) {
+    if (items.length === 0)
+        return null;
+    if (seed == null)
+        return items[Math.floor(Math.random() * items.length)];
+    let h = Math.imul(seed ^ 0x9e3779b9, 0x85ebca6b);
+    h = Math.imul(h ^ (h >>> 13), 0xc2b2ae35);
+    h ^= h >>> 16;
+    return items[(h >>> 0) % items.length];
+}
+
 function itemSearchText(item) {
     if (typeof item === 'string')
         return item;
@@ -362,7 +405,7 @@ class SearchNode {
         // Create a list of search nodes from the terms
         let searchNodes = [];
 
-        const regex = /(\(|\)|(?:"([^"]+)"|[^\s()]+))/g;
+        const regex = new RegExp(SEARCH_TOKEN_REGEX.source, 'g');
         let match;
         while ((match = regex.exec(searchString)) !== null) {
             let term = match[1] || match[2];
@@ -376,6 +419,11 @@ class SearchNode {
                 searchNodes.push(new SearchNode(SearchOp.Term, match[2]));
                 continue;
             }
+
+            // `random` / `random:N` isn't a condition on a game. Playbook.searchGames() applies
+            // it after everything else, so it's left out of the tree.
+            if (RANDOM_TOKEN_REGEX.test(term))
+                continue;
 
             switch (term.toLowerCase()) {
                 case 'and':
@@ -633,8 +681,8 @@ class Playbook {
         }
 
         let searchFilter = SearchFilter.fromSearchString(searchString);
-       
-        return this.data.games
+
+        const games = this.data.games
             .filter(game => {
                 if (!searchFilter.matchTerm(game)) {
                     return false;
@@ -652,6 +700,12 @@ class Playbook {
                 return true;
             })
         .sort((a, b) => a.name.localeCompare(b.name));
+
+        // `random:N` narrows whatever else matched down to one game, chosen by N.
+        const random = findRandomTokens(searchString)[0];
+        if (random)
+            return games.length > 0 ? [pickRandom(games, random.seed)] : [];
+        return games;
     }
 
     // Glossary terms matching the search. Tag filters don't apply: terms have no tags.
@@ -659,6 +713,9 @@ class Playbook {
         if (!this.data || !this.data.glossary) {
             return [];
         }
+        // A random search lists one game, so no glossary terms.
+        if (findRandomTokens(searchString).length > 0)
+            return [];
 
         let searchFilter = SearchFilter.fromSearchString(searchString);
         return this.data.glossary
@@ -1083,9 +1140,19 @@ class PlaybookPage {
         randomButton.id = 'random-button';
         randomButton.className = 'tag-button random-button';
         randomButton.textContent = '🎲 Random';
-        randomButton.title = 'Jump to a random entry in the current list';
-        randomButton.addEventListener('click', () => this.showRandomEntry());
+        randomButton.title = 'Show one random game from the current search (adds random to the search)';
+        randomButton.addEventListener('click', () => this.pickNewRandomGame());
         searchSection.appendChild(randomButton);
+
+        const clearRandomButton = document.createElement('button');
+        clearRandomButton.type = 'button';
+        clearRandomButton.id = 'clear-random-button';
+        clearRandomButton.className = 'tag-button random-button checked hidden';
+        clearRandomButton.textContent = '🎲 ✕';
+        clearRandomButton.title = 'Stop picking at random (removes random from the search)';
+        clearRandomButton.setAttribute('aria-label', 'Remove random from the search');
+        clearRandomButton.addEventListener('click', () => this.setSearchAndRefresh(removeRandomTokens(this.searchTerm)));
+        searchSection.appendChild(clearRandomButton);
 
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
@@ -1315,28 +1382,44 @@ class PlaybookPage {
             gamesContainer.appendChild(glossarySection);
         }
 
-        const randomButton = document.getElementById('random-button');
-        if (randomButton)
-            randomButton.disabled = gamesContainer.querySelector('.game-card') === null;
+        this.updateRandomButtons();
     }
 
-    // Scroll to a random card among those listed (games, variation entries and glossary terms,
-    // whatever the search, tags and Show settings currently list) and flash it. It won't pick
-    // the same card twice in a row unless it's the only one.
-    showRandomEntry() {
-        const cards = Array.from(document.querySelectorAll('#games-container .game-card'));
-        if (cards.length === 0)
+    // Random is off when nothing would be left to pick from; the ✕ shows while the search
+    // has a random token in it.
+    updateRandomButtons() {
+        const randomButton = document.getElementById('random-button');
+        const clearRandomButton = document.getElementById('clear-random-button');
+        if (!randomButton || !clearRandomButton)
             return;
-        const candidates = cards.length > 1 ? cards.filter(card => card !== this.lastRandomCard) : cards;
-        const card = candidates[Math.floor(Math.random() * candidates.length)];
-        this.lastRandomCard = card;
+        const pool = this.playbook.searchGames(removeRandomTokens(this.searchTerm), this.filter);
+        randomButton.disabled = pool.length === 0;
+        clearRandomButton.classList.toggle('hidden', findRandomTokens(this.searchTerm).length === 0);
+    }
 
-        document.querySelectorAll('.game-card.random-pick').forEach(el => el.classList.remove('random-pick'));
-        // Restart the flash even when the same card is picked again.
-        void card.offsetWidth;
-        card.classList.add('random-pick');
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    // Puts a new `random:N` in the search, replacing any random token already there, with a seed
+    // that lands on a different game than the one showing (when there's more than one to pick).
+    pickNewRandomGame() {
+        const base = removeRandomTokens(this.searchTerm);
+        const pool = this.playbook.searchGames(base, this.filter);
+        if (pool.length === 0)
+            return;
+        const current = findRandomTokens(this.searchTerm).length > 0 && this.currentGames.length === 1
+            ? this.currentGames[0] : null;
+        let seed;
+        for (let tries = 0; tries < 50; tries++) {
+            seed = Math.floor(Math.random() * 1000000);
+            if (pool.length === 1 || pickRandom(pool, seed) !== current)
+                break;
+        }
+        this.setSearchAndRefresh(base ? `${base} random:${seed}` : `random:${seed}`);
+    }
+
+    setSearchAndRefresh(searchString) {
+        clearTimeout(this.lazyTimer);
+        this.lazyTimer = null;
+        this.updateSearchString(searchString, true);
+        this.updateUrlFromState();
     }
 
     updateUrlFromState() {
