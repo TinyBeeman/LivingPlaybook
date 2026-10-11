@@ -1,3 +1,13 @@
+## Version 2026.0002.0005
+
+**Games Added**
+- Eye Tunes
+- Chapters
+
+**Games Updated**
+- Three Scene
+  - Variations Updated
+
 ## Version 2026.0002.0004
 
 **Games Updated**
