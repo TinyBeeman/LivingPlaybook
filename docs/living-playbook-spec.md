@@ -32,7 +32,7 @@ The data stats below are for version `2026.0001.0003` of `living_playbook.json`.
 
 ## 1. Architecture overview
 
-- **Static, front-end only.** There is no backend. `index.html` loads `styles.css`, `marked.min.js` (a Markdown renderer), and `playbook.js`. On `DOMContentLoaded` it calls `playbookPage.onPageLoad()`.
+- **Static, front-end only.** There is no backend. `index.html` loads `styles.css`, `marked.min.js` (a Markdown renderer), and `playbook.js`, each with `?v=dev`, which the deploy workflow replaces with the commit's short SHA so browsers fetch new copies after every deploy. On `DOMContentLoaded` it calls `playbookPage.onPageLoad()`.
 - **One JSON database per page load.** The page fetches either `living_playbook.json` (the default, "Online" edition) or `living_playbook_2001.json` (the legacy edition, selected with `?dbId=2001`). Fetches use `{ cache: 'no-store' }`.
 - **All user state lives in the URL and in `localStorage`.** Search/tag state goes into the query string. Favorites and user lists go into `localStorage`.
 - **Read-only.** The viewer has no editor. `living_playbook.json` is written by UPTime's exporter, and `living_playbook_2001.json` is maintained by hand (§2).

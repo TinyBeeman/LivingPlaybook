@@ -43,6 +43,12 @@ jobs:
       # account authenticates, then both ends wait silently for each other until
       # the connection drops ("connection unexpectedly closed (0 bytes received
       # so far)"). lftp's mirror -R --delete does the same job over SFTP.
+      # index.html loads styles.css, marked.min.js and playbook.js with ?v=dev.
+      # Stamp the commit into those links so browsers fetch the new copies after
+      # each deploy instead of serving the old ones from cache.
+      - name: Stamp asset versions
+        run: sed -i "s/?v=dev/?v=${GITHUB_SHA::8}/g" src/index.html
+
       - name: Sync Directory via SFTP
         env:
           LFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
