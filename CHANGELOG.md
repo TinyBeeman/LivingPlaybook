@@ -1,3 +1,26 @@
+## Version 2026.0002.0006
+
+**Games Added**
+- Follow the Leaver
+
+**Games Updated**
+- Called Movie
+  - Tags Updated
+- Lyric Speak
+  - Description Updated
+  - Notes Added
+- Scene Tag
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+- Stunt Doubles
+  - Tags Updated
+
+**Glossary Terms Added**
+- one-hit-wonder
+- blind offer
+- free fall
+
 ## Version 2026.0002.0005
 
 **Games Added**

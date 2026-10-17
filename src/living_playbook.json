@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0005"
+    "minor": "0006"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 316,
+  "nextUid": 320,
   "games": [
     {
       "name": "Accepting Game",
@@ -525,6 +525,7 @@
         "physical",
         "scene",
         "shortform",
+        "spectacle",
         "styles"
       ],
       "uid": 28
@@ -1030,6 +1031,20 @@
         "timed"
       ],
       "uid": 67
+    },
+    {
+      "name": "Follow the Leaver",
+      "description": "This game can be played as shortform, longform or mid-form!\n\nImprovisers start a scene from a suggestion. Whenever any actor (the 'leaver') exits, everyone remaining on stage 'disappears.' The focus then follows the leaver into the location they exit to. The leaver can be a person, animal, or even an object (maybe someone is playing a falling leaf that blows off stage).",
+      "notes": "Improvisers who are used to telling connected stories centered on a main storyline will instinctively want to bring old storylines back, but the offer of this game is to allow us to get just a little piece of each storyline. That said, if the leaver is naturally the same person for three scene in a row, that is fine: the goal is simply not to try and control the narrative.\n\nThe \"next location\" should be the actual next location, not a time jump.\n\nIf someone leaves their house to go to a poker game, we don't see them at the poker game, we see them walk down their apartment hallway to the elevator. Perhaps they \"exit\" into the elevator with a neighbor, and then we see the elevator scene and the neighbor gets off first: now we are on the neighbor's storyline.\n\nPerhaps the neighbor is taking her trash out, and when she exits the back door, other performers fill the stage with kids playing basketball. We see the neighbor in the background, but the primary focus is on the kids. One of them launches the ball toward the hoop, and a player portrays the ball rolling off stage...\n\n...onto a sidewalk where two old men arguing about a chess game. One of the kids runs on to grab the ball, and exits and we never learn whether the two old men make up or not...\n\nTips:\n* At UP, we have found it helpful to have everyone else fill the stage so that the leaver is walking into an interesting world.\n* Players must be peripherally aware so they see when someone leaves. \n* Embrace moments when someone forgets the game and leaves, and we follow a character that we would normally not choose to follow.\n* Tech can support the scene by cutting out the lights when someone leaves the scene.\n* This game is an excellent introduction to concepts such as free fall, blind offers, and organic narrative.",
+      "tags": [
+        "character",
+        "free fall",
+        "longform",
+        "mid-form",
+        "narrative",
+        "tech"
+      ],
+      "uid": 316
     },
     {
       "name": "Foreign Poet",
@@ -1681,7 +1696,8 @@
     },
     {
       "name": "Lyric Speak",
-      "description": "All the characters onstage speak in song lyrics from actual songs.",
+      "description": "An improvised scene in which all of the characters must speak in song lyrics from actual songs.",
+      "notes": "This game can be played with famous quotes, lines of poetry, famous movie lines, etc, either as a variant or simply adding them all in: this is especially helpful with mixed groups of performers who may not all have a wide range of knowledge about musical lyrics.",
       "tags": [
         "pop culture",
         "scene",
@@ -2746,9 +2762,13 @@
     },
     {
       "name": "Scene Tag",
-      "description": "Multiple playing areas (usually two) are established. A scene begins in one of the areas. When a player hears a line of dialogue they wish to use, they clap their hands and begin a scene in their area repeating that line as the first line of the scene. Once all the scenes have been established, then the scenes transition from one to another in any order by simply clapping and using the line of dialogue as their next line.",
+      "description": "Players ask for two or more suggestions to inspire two or more scenes. The first scene starts: at any point, a player in another story may clap and repeat the last words spoken, exactly, justifying it in a brand new scene. The players of the first scene go neutral. At any point, players in the first scene, or perhaps players in a third scene, may clap and reincorporate the last words spoken in the second scene.\n\nThe game continues, often snowballing into faster and riskier tags.",
+      "notes": "Players should try and use the exact last words, even if between when they have the instinct to clap, more words are spoken. If we are playing in the spirit of free fall, we ought to embrace these \"happy mistakes\".\n\nThere are no rules about time: we may or may not see a time jump between when a scene stops and when it returns. We might jump all over in time.",
       "variations": [
-        "Rather than clapping, the improvisers simply say the line and allow the original scene to play to a beat before beginning the next scene with that line of dialogue."
+        {
+          "name": "Organic Scene Tag",
+          "description": "Rather than clapping, the improvisers simply repeat the line and allow the original scene to play to a beat before beginning the next scene with that line of dialogue."
+        }
       ],
       "tags": [
         "scene",
@@ -3282,6 +3302,7 @@
         "pimping",
         "scene",
         "shortform",
+        "spectacle",
         "teamwork"
       ],
       "uid": 246
@@ -3801,6 +3822,12 @@
       "uid": 302
     },
     {
+      "term": "blind offer",
+      "definition": "An offer without an idea, agenda or plan beyond the offer itself.\n\n* An improviser walks onto stage and peers into the darkness, looking worried, and then waits for another improviser to respond.\n* An improviser begins a scene with, \"Very well, Caroline, I accept your offer,\" and holds out their hand, waiting for \"Caroline\" to emerge from back stage.\n* As the scene starts, two improvisers lock eyes and speak together at the same time... \"ohhhh myyyyy God!\"...",
+      "notes": "This is a primary example of \"Bring a brick, not a cathedral.\"\n\nA blind offer is an excellent way to start a scene with a specific but non-controlling offer that demonstrates trust in collaborative storytelling.\n\nIn formats like the original (unstructured) Harold, the ability to make a blind offer is invaluable, because an improviser can \"edit a scene\" at the exact right moment with a new scene, without any pressure to have an idea or plan for what comes next.\n\nPlaying with blind offers requires two skills: The willingness to make a specific offer without agenda, and the willingness to build upon it with an active choice, rather than wimping because we believe the other improviser has a plan in their head.\n\nAt UP, our philosophy of improvisation holds that discovery through improvisation is almost always stronger than a manufactured idea. As such, we try to play in a space that assumes every offer may be a blind offer to one-degree or another and that the actual idea will be  story we discover together.\n\nIf you've ever found yourself on stage, performing an activity with no idea of what comes next, and your scene partners wait off-stage, because they assume you have an idea, your group may benefit from normalizing blind offers.",
+      "uid": 318
+    },
+    {
       "term": "blocking",
       "definition": "1. Blocking or \"a block\" refer an offer that *blocks* another improviser's offer, stops the action, or denies the reality presented by another performer.\n2. *Blocking* can also refer to *stage blocking*, which refers to the movement of actors upon a stage.",
       "aliases": [
@@ -3851,6 +3878,18 @@
       "uid": 303
     },
     {
+      "term": "free fall",
+      "definition": "Free falling, in improvisation, means improvising without planning ahead, attempting to control outcomes, and discovering the story collaboratively rather than pre-conceiving it.",
+      "notes": "Free Fall is one of our four core values at Unexpected Productions. In Free Fall, the audience sees the story as it is discovered a brick at a time, while the players embrace the risk of moving forward without control.\n\nAnxious players resist free fall in a number of ways: planning, relying on pre-conceived ideas, stock characters, well-worn tropes, etc.\n\nA player who is not accustomed to free fall will find themselves nervous about entering the stage when they don't have an idea and will find themselves either entering only with large, complicated offers, or when other improvisers have established enough that they are comfortable with what is likely to be expected of them in the scene.",
+      "aliases": [
+        "free falling",
+        "free falls",
+        "free-fall",
+        "free-falls"
+      ],
+      "uid": 319
+    },
+    {
       "term": "genre",
       "definition": "A named category of art, most often theatrical (\"80s Action\"), musical (\"Country Western\") or literary (\"Murder Mystery\").",
       "aliases": [
@@ -3886,6 +3925,16 @@
         }
       ],
       "uid": 299
+    },
+    {
+      "term": "one-hit-wonder",
+      "definition": "Some games are primarily \"one hit wonders,\": scenes which are rarely as interesting to an audience the second time around in the same show... or sometimes ever.\n\nAt UP, we rarely play the same game twice, regardless, but in formats where competing teams perform the same game, it's advisable to avoid these games, or at the very least, to play it in two very different ways.",
+      "aliases": [
+        "one hit wonder",
+        "one hit wonders",
+        "one-hit-wonders"
+      ],
+      "uid": 317
     },
     {
       "term": "open scene",
