@@ -267,6 +267,17 @@ class SearchNode {
         }
     }
 
+    // The free-text words and phrases the search is looking for (lowercased), leaving out
+    // anything under a NOT. Used to put entries whose name matches first.
+    positiveTerms(negated = false) {
+        if (this.operator === SearchOp.Term)
+            return !negated && this.left ? [String(this.left).toLowerCase()] : [];
+        const isNegated = negated || this.operator === SearchOp.Not;
+        return [this.left, this.right]
+            .filter(node => node instanceof SearchNode)
+            .flatMap(node => node.positiveTerms(isNegated));
+    }
+
     getTreeAsString() {
         if (this.isTerminal()) {
             return `(${this.operator}: "${this.left}")`;
@@ -495,6 +506,15 @@ class SearchFilter {
             return this.searchTree.match(game);
         }
         return true;
+    }
+
+    // Whether any of the names (an entry's title and aliases) contains a word or phrase the
+    // search is looking for.
+    namesMatch(names) {
+        const terms = this.searchTree ? this.searchTree.positiveTerms() : [];
+        if (terms.length === 0)
+            return false;
+        return names.some(name => name && terms.some(term => name.toLowerCase().includes(term)));
     }
 
 }
@@ -1313,28 +1333,58 @@ class PlaybookPage {
         });
     }
 
+    // Entries whose name matches the search come first, under "Name matches", then the rest
+    // under "Other matches", each group alphabetical with its own letter dividers. Most
+    // searches are for a game's name, so a game that only mentions the word shouldn't bury it.
+    // Without both kinds of match, it's one plain alphabetical list.
+    appendNameMatchesFirst(container, entries, isNameMatch, titleOf, createCard) {
+        const nameMatches = entries.filter(isNameMatch);
+        const otherMatches = entries.filter(entry => !isNameMatch(entry));
+        if (nameMatches.length === 0 || otherMatches.length === 0) {
+            this.appendLetterDividers(container, entries, titleOf, createCard);
+            return;
+        }
+        const appendGroupLabel = text => {
+            const label = document.createElement('div');
+            label.className = 'search-group-label';
+            label.textContent = text;
+            container.appendChild(label);
+        };
+        appendGroupLabel('Name matches');
+        this.appendLetterDividers(container, nameMatches, titleOf, createCard);
+        appendGroupLabel('Other matches');
+        this.appendLetterDividers(container, otherMatches, titleOf, createCard);
+    }
+
     // Everything the list shows for a search, before any random pick: one entry per game under
     // its own name, plus (with Variations on) one per named variation, and (with Glossary on)
     // the glossary terms.
+    // Each entry and term also gets `nameMatch`: whether its name (or an alias) contains a word
+    // the search is looking for, so populateGameList() can list those first.
     listedEntries(searchString) {
         const games = this.playbook.searchGames(searchString, this.filter);
+        const searchFilter = SearchFilter.fromSearchString(searchString);
         const entries = [];
         if (this.show.games) {
-            games.forEach(game => entries.push({ title: game.name, game }));
+            games.forEach(game => entries.push({ title: game.name, game,
+                nameMatch: searchFilter.namesMatch([game.name, ...(game.aliases || [])]) }));
         }
         if (this.show.variations) {
             games.forEach(game => {
                 (game.variations || []).forEach((variation, index) => {
                     const name = variationName(variation);
                     if (name)
-                        entries.push({ title: name, game, variationIndex: index });
+                        entries.push({ title: name, game, variationIndex: index,
+                            nameMatch: searchFilter.namesMatch([name]) });
                 });
             });
         }
         entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.name.localeCompare(b.game.name));
 
         const terms = this.show.glossary ? this.playbook.searchGlossary(searchString) : [];
-        return { games, entries, terms };
+        const termNameMatches = new Set(terms.filter(term =>
+            searchFilter.namesMatch([term.term, ...(term.aliases || [])])));
+        return { games, entries, terms, termNameMatches };
     }
 
     // What a random token picks from: every listed entry, games and variations in list order,
@@ -1346,7 +1396,7 @@ class PlaybookPage {
     populateGameList() {
         this.hideTermOverlay();
         const listed = this.listedEntries(this.searchTerm);
-        let { games, entries, terms } = listed;
+        let { games, entries, terms, termNameMatches } = listed;
 
         // `random:N` narrows the list to one entry, chosen by N.
         const random = findRandomTokens(this.searchTerm)[0];
@@ -1372,8 +1422,8 @@ class PlaybookPage {
         const gamesContainer = document.getElementById('games-container');
         gamesContainer.innerHTML = '';
 
-        this.appendLetterDividers(gamesContainer, entries, entry => entry.title,
-            entry => this.createGameCardDiv(entry.game, entry.variationIndex));
+        this.appendNameMatchesFirst(gamesContainer, entries, entry => entry.nameMatch,
+            entry => entry.title, entry => this.createGameCardDiv(entry.game, entry.variationIndex));
 
         // A random pick that isn't a glossary term leaves the glossary out.
         if (this.show.glossary && (!random || terms.length > 0)) {
@@ -1394,8 +1444,8 @@ class PlaybookPage {
                     : 'No glossary terms match the search.';
                 glossarySection.appendChild(empty);
             }
-            this.appendLetterDividers(glossarySection, terms, term => term.term,
-                term => this.createTermCardDiv(term));
+            this.appendNameMatchesFirst(glossarySection, terms, term => termNameMatches.has(term),
+                term => term.term, term => this.createTermCardDiv(term));
             gamesContainer.appendChild(glossarySection);
         }
 

@@ -616,6 +616,12 @@ body {
     margin-top: 24pt;
 }
 
+.search-group-label {
+    font-family: var(--font-family-title);
+    font-size: large;
+    margin: 14pt 0 0 0;
+}
+
 .glossary-heading {
     font-family: var(--font-family-title);
     font-weight: 400;
