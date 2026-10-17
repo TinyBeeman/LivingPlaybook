@@ -249,7 +249,7 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
    - **"Filter By Tags"**: a collapsible section, collapsed by default.
    - **"Lists and Favorites"**: a collapsible section, collapsed by default.
 3. **Search description bar**: a horizontal rule with a label describing the current query and result count (see [§5.3](#53-search-description)).
-4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive). With Variations on, entries for named variations are sorted in among them. With Glossary on, a "Glossary" section with its own letter dividers follows the games.
+4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive). With Variations on, entries for named variations are sorted in among them. With Glossary on, a "Glossary" section with its own letter dividers follows the games. When the search has free text and some entries' names match it but others match only elsewhere (a description, notes, tags…), the name matches come first under a "Name matches" label, then the rest under "Other matches", each group alphabetical with its own letter dividers (see [§5.2](#52-live-filtering)).
 5. **Footer**: license and copyright text, links to the GitHub repo, the PDF and `?dbId=2001`, and "Contributors to this database include {contributors joined by ', '} and many friends, company members, teachers and supporters of Unexpected Productions." When there are no contributors, the list and the "and" are left out.
 
 ### 5.2 Live filtering
@@ -258,6 +258,7 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
 - The URL updates **lazily**: at most once per second while typing (a 1-second timer that doesn't reset on each keystroke), and immediately when the box loses focus.
 - Changing a tag updates the list and the URL immediately.
 - The final result is `searchExpression(game) AND tagFilter(game)`, sorted by name.
+- **Name matches first.** An entry is a name match when its name contains one of the search's free-text words or quoted phrases (case-insensitive), not counting any under `not`. For a game entry, its aliases count as names; for a variation entry, only the variation's name; for a glossary term, the term and its aliases. Name matches are listed before the other results, in both the games list and the Glossary section. `tag:`, `uid:` and the other operators don't make anything a name match. The random pool keeps the plain alphabetical order, so a `random:N` link picks the same entry as before.
 
 ### 5.3 Search description
 
