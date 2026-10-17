@@ -420,8 +420,8 @@ class SearchNode {
                 continue;
             }
 
-            // `random` / `random:N` isn't a condition on a game. Playbook.searchGames() applies
-            // it after everything else, so it's left out of the tree.
+            // `random` / `random:N` isn't a condition on a game. populateGameList() applies it
+            // to the finished list, so it's left out of the tree.
             if (RANDOM_TOKEN_REGEX.test(term))
                 continue;
 
@@ -701,10 +701,6 @@ class Playbook {
             })
         .sort((a, b) => a.name.localeCompare(b.name));
 
-        // `random:N` narrows whatever else matched down to one game, chosen by N.
-        const random = findRandomTokens(searchString)[0];
-        if (random)
-            return games.length > 0 ? [pickRandom(games, random.seed)] : [];
         return games;
     }
 
@@ -713,9 +709,6 @@ class Playbook {
         if (!this.data || !this.data.glossary) {
             return [];
         }
-        // A random search lists one game, so no glossary terms.
-        if (findRandomTokens(searchString).length > 0)
-            return [];
 
         let searchFilter = SearchFilter.fromSearchString(searchString);
         return this.data.glossary
@@ -1140,7 +1133,7 @@ class PlaybookPage {
         randomButton.id = 'random-button';
         randomButton.className = 'tag-button random-button';
         randomButton.textContent = '🎲 Random';
-        randomButton.title = 'Show one random game from the current search (adds random to the search)';
+        randomButton.title = 'Show one random entry from the current list (adds random to the search)';
         randomButton.addEventListener('click', () => this.pickNewRandomGame());
         searchSection.appendChild(randomButton);
 
@@ -1320,34 +1313,57 @@ class PlaybookPage {
         });
     }
 
-    populateGameList() {
-        this.hideTermOverlay();
-        this.currentGames = this.playbook.searchGames(this.searchTerm, this.filter);
-
-        // One entry per game under its own name, plus (with Variations on) one per named variation.
+    // Everything the list shows for a search, before any random pick: one entry per game under
+    // its own name, plus (with Variations on) one per named variation, and (with Glossary on)
+    // the glossary terms.
+    listedEntries(searchString) {
+        const games = this.playbook.searchGames(searchString, this.filter);
         const entries = [];
         if (this.show.games) {
-            this.currentGames.forEach(game => entries.push({ title: game.name, game }));
+            games.forEach(game => entries.push({ title: game.name, game }));
         }
-        let variationCount = 0;
         if (this.show.variations) {
-            this.currentGames.forEach(game => {
+            games.forEach(game => {
                 (game.variations || []).forEach((variation, index) => {
                     const name = variationName(variation);
-                    if (name) {
+                    if (name)
                         entries.push({ title: name, game, variationIndex: index });
-                        variationCount++;
-                    }
                 });
             });
         }
         entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.name.localeCompare(b.game.name));
 
-        const terms = this.show.glossary ? this.playbook.searchGlossary(this.searchTerm) : [];
+        const terms = this.show.glossary ? this.playbook.searchGlossary(searchString) : [];
+        return { games, entries, terms };
+    }
+
+    // What a random token picks from: every listed entry, games and variations in list order,
+    // then glossary terms.
+    randomPool(listed) {
+        return [...listed.entries, ...listed.terms.map(term => ({ term }))];
+    }
+
+    populateGameList() {
+        this.hideTermOverlay();
+        const listed = this.listedEntries(this.searchTerm);
+        let { games, entries, terms } = listed;
+
+        // `random:N` narrows the list to one entry, chosen by N.
+        const random = findRandomTokens(this.searchTerm)[0];
+        const pool = this.randomPool(listed);
+        this.randomPick = null;
+        if (random) {
+            const pick = pickRandom(pool, random.seed);
+            this.randomPick = pick;
+            entries = pick && !pick.term ? [pick] : [];
+            terms = pick && pick.term ? [pick.term] : [];
+            games = entries.map(entry => entry.game);
+        }
+        this.currentGames = games;
 
         const searchDescription = this.describeSearch({
-            games: this.show.games ? this.currentGames.length : 0,
-            variations: variationCount,
+            games: entries.filter(entry => entry.variationIndex == null).length,
+            variations: entries.filter(entry => entry.variationIndex != null).length,
             terms: terms.length,
         });
         const searchDescriptionElement = document.getElementById('search-desc');
@@ -1359,7 +1375,8 @@ class PlaybookPage {
         this.appendLetterDividers(gamesContainer, entries, entry => entry.title,
             entry => this.createGameCardDiv(entry.game, entry.variationIndex));
 
-        if (this.show.glossary) {
+        // A random pick that isn't a glossary term leaves the glossary out.
+        if (this.show.glossary && (!random || terms.length > 0)) {
             const glossarySection = document.createElement('div');
             glossarySection.id = 'glossary-section';
             glossarySection.className = 'glossary-section';
@@ -1382,34 +1399,34 @@ class PlaybookPage {
             gamesContainer.appendChild(glossarySection);
         }
 
-        this.updateRandomButtons();
+        this.updateRandomButtons(pool.length, !!random);
     }
 
-    // Random is off when nothing would be left to pick from; the ✕ shows while the search
-    // has a random token in it.
-    updateRandomButtons() {
+    // Random is off when there's nothing to pick from; the ✕ shows while the search has a
+    // random token in it.
+    updateRandomButtons(poolSize, hasRandom) {
         const randomButton = document.getElementById('random-button');
         const clearRandomButton = document.getElementById('clear-random-button');
         if (!randomButton || !clearRandomButton)
             return;
-        const pool = this.playbook.searchGames(removeRandomTokens(this.searchTerm), this.filter);
-        randomButton.disabled = pool.length === 0;
-        clearRandomButton.classList.toggle('hidden', findRandomTokens(this.searchTerm).length === 0);
+        randomButton.disabled = poolSize === 0;
+        clearRandomButton.classList.toggle('hidden', !hasRandom);
     }
 
     // Puts a new `random:N` in the search, replacing any random token already there, with a seed
-    // that lands on a different game than the one showing (when there's more than one to pick).
+    // that lands on a different entry than the one showing (when there's more than one to pick).
     pickNewRandomGame() {
+        const entryKey = entry => entry.term ? `term:${entry.term.anchorName}`
+            : `game:${entry.game.uid}:${entry.variationIndex ?? ''}`;
         const base = removeRandomTokens(this.searchTerm);
-        const pool = this.playbook.searchGames(base, this.filter);
+        const pool = this.randomPool(this.listedEntries(base));
         if (pool.length === 0)
             return;
-        const current = findRandomTokens(this.searchTerm).length > 0 && this.currentGames.length === 1
-            ? this.currentGames[0] : null;
+        const currentKey = this.randomPick ? entryKey(this.randomPick) : null;
         let seed;
         for (let tries = 0; tries < 50; tries++) {
             seed = Math.floor(Math.random() * 1000000);
-            if (pool.length === 1 || pickRandom(pool, seed) !== current)
+            if (pool.length === 1 || entryKey(pickRandom(pool, seed)) !== currentKey)
                 break;
         }
         this.setSearchAndRefresh(base ? `${base} random:${seed}` : `random:${seed}`);
