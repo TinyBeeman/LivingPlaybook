@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0002",
-    "minor": "0006"
+    "minor": "0007"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 320,
+  "nextUid": 323,
   "games": [
     {
       "name": "Accepting Game",
@@ -347,6 +347,22 @@
         "silence"
       ],
       "uid": 16
+    },
+    {
+      "name": "Big Booty",
+      "description": "Group stands in a horseshoe shape. The person at the start of the horseshoe is \"Big Booty\". Every person after that is assigned a number. For example, the person next to Big Booty is 1, the next is 2, and so on so forth, till we arrive at the end of the horseshoe.\n\nEveryone sings the Big Booty chant and Big Booty makes the first call.\n\n**Everyone:**  \n  Big Booty, Big Booty, Big Booty.  \n  Ohhhhh, yeah!  \n  Big Booty, Big Booty, Big Booty.  \n\n**Big Booty:**  \n  Big Booty, number 2 (or any number)\n\nAt that point it becomes a call and response game. If your number is called, you must respond by repeating your number followed by a new number or \"Big Booty\", just not the person who sent it to you.\n\n**Number 2:** Number 2, number 6  \n**Number 6:** Number 6, number 3  \n**Number 3:** Number 3, Big Booty  \n**Big Booty:** Big Booty, number 5\n\nThe Rules: \n1) It may not be sent back to the person who sent it to you.\n2) It must be \"on rhythm\".\n3) It must be pronounced correctly.\n4) When someone messes up, everyone repeats, \"Ohhhh... yeah!\" and the game continues with, \"Big Booty, Big Booty, Big Booty...\" before Big Booty must chime in with, \"Big Booty, Number x!\". The person/people who messed up go to the end of the line, and everyone after them has their number decrease by that many.\n5) The speed should slowly but surely keep increasing.\n6) As it speeds up, it is okay to drop the word number, so it becomes: \"Three... six!\", \"Six... Big Booty!\", \"Big Booty... three!\".",
+      "notes": "This is an exercise in listening and joyfully accepting failure. People should self police, gleefully. It's more fun with a lot of failure.",
+      "variations": [
+        {
+          "name": "The Prince of Wales",
+          "description": "#1: The Prince of Wales has lost his crown and doesn’t know where to find it. Number… *three*  \n#3: Who, sir, me, sir?  \n#1. Yes, sir, you, sir.  \n#3: No, not I, sir!  \n#1: Well, then, who, sir?  \n#3: Number… *eight*  \n#8: Who, sir, me, sir?  \n#3: Yes, sir, you, sir.  \n#8: No, not I, sir!  \n#3: Well, then, who, sir?  \n#8: Number… five!  \n#5: Who, sir, me sir?..."
+        }
+      ],
+      "tags": [
+        "exercise",
+        "group game"
+      ],
+      "uid": 322
     },
     {
       "name": "Black Box",
@@ -662,6 +678,16 @@
       "uid": 38
     },
     {
+      "name": "Count to 20",
+      "description": "A group of people stand in a circle. Any person begins the count by saying \"one\". Some one else may say \"two\" and so on so forth till \"twenty\" is reached. Any time two people speak at the same time, the group starts over at \"one\".",
+      "notes": "This exercise is a good warm-up to establish presence, group connection, and group mind. There should be no \"leaders\" and no \"followers\". \"Clever\" folks may try to find patterns, but this is rarely rewarded as it takes people out of the group mind and into their own intellect.",
+      "tags": [
+        "exercise",
+        "group game"
+      ],
+      "uid": 321
+    },
+    {
       "name": "Creation Myth",
       "description": "A scene explaining the creation or discovery of something in mythological terms.",
       "notes": "Spiders and Spiderwebs exist because a woman named Arachne beat Athena in a weaving content, and Athena turned Arachne into a spider, so she could weave for all time.\n\nThis game must invent a similar myth for an audience provided concept.\n\nThis is a great chance for performers who know styles such as Greek Plays, Nordic Folk Tales, Sea Chanties, etc.",
@@ -842,8 +868,15 @@
     {
       "name": "English/Gibberish",
       "description": "A scene begins in English until a bell is rung and the improvisers continue the scene in gibberish. The bell is sounded again and the improvisers return to English. This back and forth continues until the scene ends.",
+      "notes": "When the bell rings, the improvisers should switch immediately even if they are mid-sentence.",
+      "variations": [
+        {
+          "name": "English/Second Language",
+          "description": "Scene begins in English. When the bell rings, instead of gibberish, all the improvisers switch to a second language that they are familiar with (e.g. Hindi, French, Russian, etc)."
+        }
+      ],
       "tags": [
-        "directed",
+        "bell",
         "gibberish",
         "scene",
         "shortform"
@@ -2023,14 +2056,20 @@
     {
       "name": "Nightmare",
       "description": "Similar to Day In The Life/Experience, except that the person's day or experience is played as a nightmare.",
+      "notes": "Most often, at UP, our improvisers have an audience member share what they did that day, then enact the nightmare they will have tonight.\n\nRemember that nightmares often combine stressful elements and can contain a lot of reincorporation in a way that more traditional storytelling may not. David Lynch is a great director to study for inspiration in recreating dreams and nightmares.",
       "variations": [
-        "The improvisers have an audience member share what they did that day, then enact the nightmare they will have tonight."
+        {
+          "name": "Immersive Nightmare",
+          "description": "The same as Nightmare, but the audience is brought onto the stage and must face upstage, back to the audience, while the actors perform the nightmare."
+        }
       ],
       "related": [
+        "Chance of a Lifetime",
         "Day in the Life"
       ],
       "tags": [
-        "shortform"
+        "shortform",
+        "spectacle"
       ],
       "uid": 144
     },
@@ -3283,6 +3322,27 @@
         "toss-up"
       ],
       "uid": 244
+    },
+    {
+      "name": "String of Pearls",
+      "description": "A group of 3 or more (6 to 10 works great) improvisers stand on a backline. Someone steps forward and delivers a simple line that could be a line from a story, but might be a story alone.\n\n\"Ella danced in the rain.\"\n\nA second performer steps forward and adds a line either before or after the first line. Perhaps:\n\n\"Ella danced in the rain.\"\n\"The next day she caught a cold.\"\n\nA third performer steps forward before the first, between the two, or at the end...\n\n\"Ella danced in the rain.\"  \n\"She was in love, and nothing could stop her.\"  \n\"The next day she caught a cold.\"  \n\nAnother improviser steps in, at either end or anywhere within... each time, we start at the beginning and each \"pearl\" says their line.\n\nBy the end, we might have:\n\n\"When she moved to Seattle, Ella thought she would be alone forever.\"  \n\"She attended a singles dance.\"  \n\"The dance was cancelled due to rain.\"  \n\"Nobody was there.\"  \n\"Ella danced in the rain.\"  \n\"A passerby noticed her, and he joined her in her dance.\"  \n\"She knew she should go home, but she didn't want to.\"  \n\"She was in love, and nothing could stop her.\"  \n\"The next day she caught a cold.\"  \n\"But now she had someone to bring her soup.\"",
+      "notes": "This is a great exercise for playing with narrative, cause-and-effect-storytelling, expansion, and the fact that in theatre, we often start in the middle and discover backstory a the same time we advance forward.\n\nInevitably, performers will introduce two lines that lack a clear cause-and-effect link. Improvisers on the back line should notice the missing link and add a pearl to help the story make sense.",
+      "aliases": [
+        "Beads on a String",
+        "Story String"
+      ],
+      "related": [
+        "Chapters"
+      ],
+      "tags": [
+        "exercise",
+        "justification",
+        "narrative",
+        "storytelling",
+        "timejump",
+        "warm-up"
+      ],
+      "uid": 320
     },
     {
       "name": "Strong Emotions",

@@ -1,3 +1,21 @@
+## Version 2026.0002.0007
+
+**Games Added**
+- String of Pearls
+- Count to 20
+- Big Booty
+
+**Games Updated**
+- English/Gibberish
+  - Notes Added
+  - Variations Added
+  - Tags Updated
+- Nightmare
+  - Notes Added
+  - Variations Updated
+  - Related Updated
+  - Tags Updated
+
 ## Version 2026.0002.0006
 
 **Games Added**
