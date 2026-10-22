@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0003",
-    "minor": "0002"
+    "minor": "0003"
   },
   "contributors": [
     "Kris Anderson",
@@ -98,9 +98,18 @@
       "description": "An improviser tells a monologue or performs a scene. A director calls \"Advance,\" at which point the improviser may advance the story, or \"Expand,\" at which point the improviser stops advancing and explores the current action or moment.\n\nIf a performer is scratching their nose and asked to expand, they should find ways to make that activity more interesting. They can't blow their nose, because that would change the action. They might slow down, speed up, change angles, etc.\n\nIf a monologist is telling a story about their morning, and they are asked to expand as they say, \"I made some coffee,\" they may describe their coffee cup, explain where they got it, talk about why they like coffee, etc. They may not advance in the story.",
       "notes": "Knowing when to expand, and how to make expansion interesting is one of the most important skills for new performers, who may keep advancing hoping to find something interesting, and leave behind all the moments the audience is interested in exploring.",
       "variations": [
-        "Pair Two People: One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored.",
-        "Bell Game: This game can be played with a bell alternating between advance and expand.",
-        "Advance Expand Emotion: Pair Two People: One tells the story of their day, the other asks for expand or advance or emotion. Adding the emotion element teaches the importance of expressing feeling to support the story and make it matter more."
+        {
+          "name": "Two Person Advance / Expand",
+          "description": "One tells the story of their day, the other asks for expand and advance. This can let us know what our audience is interested in hearing more about, and when they become bored."
+        },
+        {
+          "name": "Bell Game Advance and Expand",
+          "description": "This can be played as a game with a bell alternating between advance and expand."
+        },
+        {
+          "name": "Emotional Expansions",
+          "description": "Someone tells the story of their day while the director or a partner asks for expand or advance or emotion. Adding the emotion element teaches the importance of expressing feeling to support the story and make it matter more."
+        }
       ],
       "aliases": [
         "Advancing Game"
@@ -108,6 +117,7 @@
       "tags": [
         "bell",
         "directed",
+        "emotions",
         "exercise",
         "narrated",
         "scene",

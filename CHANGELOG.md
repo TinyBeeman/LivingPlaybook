@@ -1,3 +1,10 @@
+## Version 2026.0003.0003
+
+**Games Updated**
+- Advance and Expand
+  - Variations Updated
+  - Tags Updated
+
 ## Version 2026.0003.0002
 
 **Games Added**
