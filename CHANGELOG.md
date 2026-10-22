@@ -1,3 +1,40 @@
+## Version 2026.0003.0002
+
+**Games Added**
+- Death in a Minute
+- Touch To Talk
+
+**Games Updated**
+- Clashing Environments
+  - Description Updated
+  - Notes Added
+  - Related Added
+  - Tags Updated
+- Continuation
+  - Description Updated
+  - Notes Added
+- Crosstalk
+  - Description Updated
+  - Notes Added
+- First Line, Last Line
+  - Notes Added
+  - Variations Updated
+- Jumping to Conclusions
+  - Description Updated
+  - Notes Added
+  - Related Added
+- Last Letter/First Letter
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+  - Tags Updated
+- Moving Bodies
+  - Notes Added
+  - Variations Updated
+- Parallel Parking
+  - Description Updated
+  - Notes Added
+
 ## Version 2026.0003.0001
 
 **Games Updated**

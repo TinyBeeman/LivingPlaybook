@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0003",
-    "minor": "0001"
+    "minor": "0002"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 323,
+  "nextUid": 325,
   "games": [
     {
       "name": "Accepting Game",
@@ -609,8 +609,8 @@
     },
     {
       "name": "Clashing Environments",
-      "description": "Improvisers ask for two environments (unrelated). Each improviser is assigned to one of the environments. One improviser in on the battlefield of Troy and the other is in Edison's laboratory.\n\nThe improviser perform one scene, but each must act as if they are in their own environment. Perhaps the two characters are relating about the difficulty in raising a child while one must contend with Trojan warriors and the other must delicately place a filament onto two wires. Each perceives the other as doing something which they can justify in their own environment.",
-      "notes": "Ideally, the dialog for the scene would make sense in either world, even if the physical choices might not.\n\nThis is a good game for exercising the use of object work, tasking, and environmental work while not talking about it.\n\nIt CAN be fun to discover what actions in one world might mean in another, but we can't talk too specifically about it without \"breaking\" one of the realities.\n\nPerhaps the inventor sees the fighting Greek warrior as attempting to break open a locked cabinet. But in order to make the dialog make sense, they simply say, \"No need to force it, my friend, I've got what you need right here,\" pulling out a key. The other performer takes the \"key\" envisioning a weapon and begins to fight with it.",
+      "description": "Improvisers ask for two environments (unrelated). Each improviser is assigned to one of the environments. One improviser in on the battlefield of Troy and the other is in Edison's laboratory.\n\n(The example here is kept for historical accuracy, but see Keith's note in the Notes section, suggesting we should ask for more ordinary locations).\n\nThe improviser perform one scene, but each must act as if they are in their own environment. Perhaps the two characters are relating about the difficulty in raising a child while one must contend with Trojan warriors and the other must delicately place a filament onto two wires. Each perceives the other as doing something which they can justify in their own environment.",
+      "notes": "Keith Johnstone said: \"Traditional game. The example given is appalling. Better Example: You're in your living room, and you're on stage with a person at a bus-stop. You want something ordinary.\"\n\nAt UP, we tend to agree with Keith's note, as we think there is more to discover in every day situations than fantastic ones.\n\nIdeally, the dialog for the scene would make sense in either world, even if the physical choices might not.\n\nThis is a good game for exercising the use of object work, tasking, and environmental work while not talking about it.\n\nIt CAN be fun to discover what actions in one world might mean in another, but we can't talk too specifically about it without \"breaking\" one of the realities.\n\nA person in a library may see a prisoner doing hard labor as being a little hard on the books, and might say, \"Hey, take it easy!\" But they might try to avoid saying, \"Take it easy on that book,\" because (1) it's a line that forces an element of their scene into the other and (2) it's not a line you would hear in a theatrical play where we can see the book!",
       "related": [
         "Parallel Universe"
       ],
@@ -660,7 +660,8 @@
     },
     {
       "name": "Continuation",
-      "description": "The opposing team begins a scene. After 30 sec., the MC stops the scene. The offstage team assumes the positions and characters of the onstage team, playing the rest of the scene.",
+      "description": "The opposing team begins a scene. After 30 sec, the MC stops the scene. The offstage team assumes the positions and characters of the onstage team, playing the rest of the scene.",
+      "notes": "The Gradual Continuation is variant is in alignment with Keith's recommendation: \"Just let the other team tap when they're ready rather than timing the scene or freezing it.\"",
       "variations": [
         "Continuation Circle: Play a scene in the center of a circle. Improvisers tag in, while maintaining the same initial characters and story throughout the scene.",
         "Gradual Continuation: Instead of replacing onstage team en masse, off stage improvisers substitute one at a time."
@@ -716,7 +717,8 @@
     },
     {
       "name": "Crosstalk",
-      "description": "Improvisers A, B and C start a scene, A speaks (dubs) for B, B for C and C for A.",
+      "description": "Improvisers A, B and C start a scene, A speaks (dubs) for B, B for C and C for A. Performers' lips should move while they \"speak\".",
+      "notes": "Played well, this is a great game of give-and-take. A performer should be aware enough to see when the performer they are voicing opens their mouth, rather than it always being driven by the speaker.\n\nPro-Tip: Not every player has to start on stage: you can still dub for another character from off stage, which can give newer performers an \"easier\" beginning.",
       "aliases": [
         "Three-Way Dub, Cross Dubbing"
       ],
@@ -756,6 +758,23 @@
         "shortform"
       ],
       "uid": 44
+    },
+    {
+      "name": "Death in a Minute",
+      "description": "Team has 60 seconds to have a death in a scene. It does not matter how quickly or slowly the death happens, as long as the scene is a minute. Death does not end the scene. This can be a toss-up challenge.",
+      "notes": "Keith Johnstone said: Start by loving each other. Start as non-murderers. The death should be at the beginning.",
+      "aliases": [
+        "Death in 60 Seconds"
+      ],
+      "tags": [
+        "game",
+        "quick",
+        "scene",
+        "shortform",
+        "timed",
+        "toss-up"
+      ],
+      "uid": 323
     },
     {
       "name": "Director",
@@ -1037,9 +1056,10 @@
     {
       "name": "First Line, Last Line",
       "description": "Improvisers are given a first line and an unrelated last line of dialogue. Scene begins and ends with these lines.",
+      "notes": "We sometimes ask for \"the last longer-than-two-words that someone received via text message.",
       "variations": [
-        "Each improviser can get a first line and a last line that they must use in the scene.",
-        "Have the teams bid on how many lines it will take them to connect the first and the last lines."
+        "Each improviser can ask for their own first line and last line.",
+        "Have two teams perform the same first to last lines, bidding on how many lines it will take them to connect the first and the last lines."
       ],
       "tags": [
         "scene",
@@ -1575,7 +1595,11 @@
     },
     {
       "name": "Jumping to Conclusions",
-      "description": "Improvisers play a scene in which all of their sentences are completed by a fellow improviser.",
+      "description": "Improvisers play a scene in which all of their sentences...  \n...are completed by a fellow improviser!",
+      "notes": "Not just a game! This is a great way to present two characters who have the intimacy of having known each other for a long time.\n\nThis can be played with increasing risk, moving away from controlling or safe offers such as, \"Happy Birthday, I got you a...\" to blind offers, \"If I'm honest...\" or \"You need...\"",
+      "related": [
+        "Speaking In One Voice"
+      ],
       "tags": [
         "scene",
         "shortform",
@@ -1637,12 +1661,17 @@
     },
     {
       "name": "Last Letter/First Letter",
-      "description": "Last letter of Improviser 1's dialogue becomes first letter of Improviser 2's dialogue. Improviser 1: \"Love those pants.\" Improviser 2: \"Stop, you're just saying that. Improviser 1: \"Trust me, those pants are YOU.\" Improviser 2: Unfortunately, they have a big hole in the knee.\" As always, the idea is to challenge your partner. The audience appreciates a good struggle. They sit there wondering, \"What word would I use that starts with the letter U.\"",
+      "description": "Last letter of Improviser 1's dialogue becomes first letter of Improviser 2's dialogue.  \n\nImproviser 1: \"Love those pants.\"  \nImproviser 2: \"Stop, you're just saying that.  \nImproviser 1: \"Trust me, those pants are YOU.\"  \nImproviser 2: Unfortunately, they have a big hole in the knee.\"",
+      "notes": "This is a great exercise for performers who find themselves thinking ahead rather than listening to their scene partner's whole offer.\n\nChallenge your partners! The audience appreciates a good struggle. \"What word would I use that starts with the letter U.\"\n\nThere's no rule that it has to be two players. Anyone can give the next line.",
       "variations": [
-        "Play as Last Word/First Word",
-        "Play second to last letter, second letter."
+        {
+          "name": "Last Word/First Word",
+          "description": "With words rather than letters."
+        },
+        "This game has been played as second-to-last letter, second letter."
       ],
       "tags": [
+        "language",
         "scene",
         "shortform",
         "verbal"
@@ -1948,10 +1977,20 @@
     {
       "name": "Moving Bodies",
       "description": "Audience members or teammates provide the locomotion for the improvisers on stage. Improvisers may not move any part of their own bodies (except to provide dialogue by moving their mouths). Movers should put the \"puppets\" in challenging positions and puppets should challenge the puppeteers with their verbal endowments.",
+      "notes": "Keith Johnstone recommends no suggestion for this game.",
       "variations": [
-        "Moving Boxes: The stage chairs, which are often black boxes, become the \"floor\" and a player moves the floor as the improviser walks on it. The mover's ultimate job is to take care of the improviser above and keep them from falling.",
-        "Mutual Moving Bodies: Like regular Moving Bodies with one notable exception, all the movers are in the scene. Improviser A moves Improviser B, Improviser B moves Improviser C, Improviser C moves Improviser A. When a character onstage has to move another character, they simply break their position, move the other character, then resume their position to be moved.",
-        "Puppets a la Ruse: Moving Bodies with a twist, when the \"puppets\" are moved, they continue to move with their momentum until sent into another direction, or stopped. If the mover taps the puppets arm, that arm begins to move in slow motion. If the arm is not stopped, or tapped in another direction, the movement would begin to affect the whole body. For instance, if tapped outward, the arm would eventually begin pulling the whole body outward in that direction. The whole scene generally takes on a \"weightless\" quality, with puppets floating through the air."
+        {
+          "name": "Moving Boxes",
+          "description": "The stage chairs, which are often black boxes, become the \"floor\" and a player moves the floor as the improviser walks on it. The mover's ultimate job is to take care of the improviser above and keep them from falling."
+        },
+        {
+          "name": "Mutual Moving Bodies",
+          "description": "Like regular Moving Bodies with one notable exception, all the movers are in the scene. Improviser A moves Improviser B, Improviser B moves Improviser C, Improviser C moves Improviser A. When a character onstage has to move another character, they simply break their position, move the other character, then resume their position to be moved."
+        },
+        {
+          "name": "Puppets a la Ruse",
+          "description": "Moving Bodies with a twist, when the \"puppets\" are moved, they continue to move with their momentum until sent into another direction, or stopped. If the mover taps the puppets arm, that arm begins to move in slow motion. If the arm is not stopped, or tapped in another direction, the movement would begin to affect the whole body. For instance, if tapped outward, the arm would eventually begin pulling the whole body outward in that direction. The whole scene generally takes on a \"weightless\" quality, with puppets floating through the air."
+        }
       ],
       "related": [
         "The Moon"
@@ -3524,6 +3563,26 @@
         "shortform"
       ],
       "uid": 259
+    },
+    {
+      "name": "Touch To Talk",
+      "description": "Players may not speak unless they are physically touching each other and speech must immediately cease when they are not.",
+      "notes": "This is originally a Viola Spolin game, with one extra rule, explained in variants...",
+      "variations": [
+        {
+          "name": "Contact",
+          "description": "Viola Spolin's original version: The same with an additional rule: Each new speech turn or fresh thought requires a new or changed type of physical contact (e.g., hand on shoulder, touching elbows, shaking hands)"
+        }
+      ],
+      "aliases": [
+        "Speak Only When In Physical Contact"
+      ],
+      "tags": [
+        "justification",
+        "physical",
+        "verbal"
+      ],
+      "uid": 324
     },
     {
       "name": "Town Meeting",
