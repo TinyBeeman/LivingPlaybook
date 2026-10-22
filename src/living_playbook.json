@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0003",
-    "minor": "0000"
+    "minor": "0001"
   },
   "contributors": [
     "Kris Anderson",
@@ -609,9 +609,14 @@
     },
     {
       "name": "Clashing Environments",
-      "description": "Improvisers ask for two environments (unrelated). Environments merge during the scene (e.g. Invent the lightbulb during the fall of Troy).",
+      "description": "Improvisers ask for two environments (unrelated). Each improviser is assigned to one of the environments. One improviser in on the battlefield of Troy and the other is in Edison's laboratory.\n\nThe improviser perform one scene, but each must act as if they are in their own environment. Perhaps the two characters are relating about the difficulty in raising a child while one must contend with Trojan warriors and the other must delicately place a filament onto two wires. Each perceives the other as doing something which they can justify in their own environment.",
+      "notes": "Ideally, the dialog for the scene would make sense in either world, even if the physical choices might not.\n\nThis is a good game for exercising the use of object work, tasking, and environmental work while not talking about it.\n\nIt CAN be fun to discover what actions in one world might mean in another, but we can't talk too specifically about it without \"breaking\" one of the realities.\n\nPerhaps the inventor sees the fighting Greek warrior as attempting to break open a locked cabinet. But in order to make the dialog make sense, they simply say, \"No need to force it, my friend, I've got what you need right here,\" pulling out a key. The other performer takes the \"key\" envisioning a weapon and begins to fight with it.",
+      "related": [
+        "Parallel Universe"
+      ],
       "tags": [
         "environment",
+        "game",
         "justification",
         "scene",
         "shortform"
@@ -2270,7 +2275,8 @@
     },
     {
       "name": "Parallel Parking",
-      "description": "Two or more improvisers stand center next to one another and begin walking away from the center till an audience member stops them. They then play a scene in which they must always justify being in the same relationship and distance to each other.",
+      "description": "Two or more improvisers stand center next to one another and begin walking away from the center till an audience member stops them. They then play a scene in which they must always justify being the same distance from each other.",
+      "notes": "A good game to work on give-and-take, and the use of planes and stage picture.",
       "tags": [
         "justification",
         "scene",
