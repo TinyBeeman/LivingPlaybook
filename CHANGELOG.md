@@ -1,3 +1,30 @@
+## Version 2026.0004.0001
+
+**Games Added**
+- Step Word Scene
+
+**Games Updated**
+- Beyond Words
+  - Tags Updated
+- Boris
+  - Notes Updated
+- Day in the Life
+  - Tags Updated
+- I Love You
+  - Tags Updated
+- Questions Only
+  - Renamed from 'With Only Questions' to 'Questions Only'
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+  - Aliases Updated
+  - Tags Updated
+- Word-at-a-Time Story
+  - Notes Added
+  - Variations Updated
+  - Aliases Updated
+  - Related Updated
+
 ## Version 2026.0004.0000
 
 **Viewer Changes**

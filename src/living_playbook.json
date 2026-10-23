@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0004",
-    "minor": "0000"
+    "minor": "0001"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 328,
+  "nextUid": 329,
   "games": [
     {
       "name": "Accepting Game",
@@ -355,7 +355,8 @@
       "tags": [
         "scene",
         "shortform",
-        "silence"
+        "silence",
+        "subtext"
       ],
       "uid": 16
     },
@@ -513,7 +514,7 @@
     {
       "name": "Boris",
       "description": "Scene in which one improviser is interrogated, one or more others are the interrogators. At the whim of the interrogator(s), the improviser being interrogated is worked over by an invisible thug of gigantic proportions (named Boris).\n\nWhenever the interrogator does not get a satisfactory answer, Boris thrashes the prisoner. The person interrogated is responsible for physically carrying out the orders to Boris. Remember - the prisoner does not want to be thrashed, but the interrogator(s) are cruel.\n\nThe players should work together to tell a story through the interrogation, rather than letting the dialog be about the physical action.",
-      "notes": "This is a useful exercise to demonstrate a few things:\n1) The victim is in control. The interrogator may indicate Boris should rough the prisoner up, but the improviser playing the prisoner decides how much.\n2) The important of the story should help improvisers learn not to talk about the action. If the prisoner's improviser does their job, we shouldn't need to know exactly what Boris is doing. In fact, some things are best left to the audience's imagination.\n3) The improviser and the character have very different motivations. Can the improviser do both effectively?",
+      "notes": "This is a useful exercise to demonstrate a few things:\n\n1) The victim is in control. The interrogator may indicate Boris should rough the prisoner up, but the improviser playing the prisoner decides how much. Keith Johnstone made a major point of reminding players that the interrogator must not control Boris.\n\n2) The importance of the story should help improvisers learn not to talk about the action. If the prisoner's improviser does their job, we shouldn't need to know exactly what Boris is doing. Some things are best left to the audience's imagination.\n\n3) The improviser and the character have very different motivations. Can the improviser do both effectively?",
       "related": [
         "Black Box"
       ],
@@ -766,7 +767,8 @@
       ],
       "tags": [
         "scene",
-        "shortform"
+        "shortform",
+        "subtext"
       ],
       "uid": 44
     },
@@ -1453,7 +1455,8 @@
       "description": "The words \"I love you\" are played as either the subtext for the entire scene, without ever being stated, or in some cases, as the final words of the scene.",
       "tags": [
         "scene",
-        "shortform"
+        "shortform",
+        "subtext"
       ],
       "uid": 96
     },
@@ -2624,6 +2627,30 @@
       "uid": 181
     },
     {
+      "name": "Questions Only",
+      "description": "Do you understand this challenge?  \nSo you understand that no statements are allowed?  \nCould we have explained it anymore clearly?",
+      "notes": "Played poorly, players may ignore each other while they end up in their head thinking of questions.\n\nA great tip is to answer the question your scene partner asks you, silently in your head, and ask the question that answer *leads* you to.\n\n**Example**:  \nQuestion: \"How do you like your new job?\"  \nThought: \"It's not what I hoped it would be...\"  \nResponse: \"Does anything ever turn out as well as we want?\"\n\nPlaying this way creates subtext and ensures we are listening to each other.",
+      "variations": [
+        {
+          "name": "Without Questions",
+          "description": "No questions allowed."
+        }
+      ],
+      "aliases": [
+        "Questions",
+        "With Only Questions"
+      ],
+      "tags": [
+        "game",
+        "scene",
+        "shortform",
+        "subtext",
+        "toss-up",
+        "verbal"
+      ],
+      "uid": 277
+    },
+    {
       "name": "Radio Play",
       "description": "This scene works best with working microphones. Voices and all sound effects are provided by the actors, like an old radio play. May be played with the lights off, but it's more interesting if the audience can see the actors working.",
       "tags": [
@@ -3340,6 +3367,26 @@
       "uid": 239
     },
     {
+      "name": "Step Word Scene",
+      "description": "Scene begins with a 1 word sentence. Next sentence has two words. Then three. Proceeds up to a 10 word sentence, then to a 9 word sentence. Back to a final 1 word sentence.",
+      "notes": "Note that it is sentences, not lines. A character might begin the scene:\n\n\"Hello! I'm Theo!\"",
+      "related": [
+        "Number of Words",
+        "Word-at-a-Time Story"
+      ],
+      "tags": [
+        "game",
+        "justification",
+        "numbers",
+        "scene",
+        "shortform",
+        "teamwork",
+        "verbal"
+      ],
+      "createdBy": "Keith Johnstone",
+      "uid": 328
+    },
+    {
       "name": "Step-Word",
       "description": "A scene or story that has a sequence of words. For instance you can all say one word sentences, then two word sentences, then three word sentences, then two word sentences, then one word sentences.",
       "tags": [
@@ -3824,25 +3871,6 @@
       "uid": 276
     },
     {
-      "name": "With Only Questions",
-      "description": "Do you understand this challenge? Can you tell that no statements are allowed? Can this be explained anymore clearly?",
-      "variations": [
-        "Opposite challenge.",
-        "Without Questions"
-      ],
-      "aliases": [
-        "Questions Only"
-      ],
-      "tags": [
-        "game",
-        "scene",
-        "shortform",
-        "toss-up",
-        "verbal"
-      ],
-      "uid": 277
-    },
-    {
       "name": "Word Ball",
       "description": "Improvisers stand in a circle. One improviser \"tosses\" any word they want to anybody else in the circle, that person in turn \"tosses\" another free associated word to another person in the circle. This warm up should be played at a fast pace and the improvisers should not think ahead, simply free associate on the word they're tossed.",
       "variations": [
@@ -3884,22 +3912,33 @@
     {
       "name": "Word-at-a-Time Story",
       "description": "Improvisers stand in a circle. They begin to tell a story a word at a time around the circle.",
+      "notes": "Keith far preferred Word-at-a-Time-Scene\n\nLook out for wimping.\n* Verbs like \"is\", \"said\", \"thought\".\n* Adding conjunctions rather than starting new sentences.\n* Going to the store. Characters only go to the store when improvisers are afraid to have them get right to the action.",
       "variations": [
-        "Have the mutant narrate a story that is acted out by other improvisers.",
-        "Mutants: Two improvisers tell a story, alternating one word at a time, acting out the action of the story as it is told. Story should be kept in the present tense so that action is accomplished rather than talked about.",
-        "Offstage player calls out numbers at random and that's how many words each improviser uses.",
-        "Step-Word Scene: A verbal restriction scene. Scene begins with a 1 word sentence. Next sentence has two words. Then three. Proceeds up to a 10 word sentence, then to a 9 word sentence. Back to a final 1 word sentence.",
-        "Step-Word Story: A combination of Word-at-a-Time Story, and Step-Word Scene. Improvisers tell a story around a circle. The first time around the circle each improviser is allowed one word. The second time around, they are allowed two words, then three, etc. up to five. Then descend from five to one word circles. When the circle finishes the cycle the story should end. Again that pattern is 1-2-3-4-5-4-3-2-1-end",
-        "Word-at-a-Time Scene: Like Mutants, except each improviser plays a separate character. If one character speaks, the dialogue is provided by all the improvisers onstage - one word at a time. It is vital in this scene to have strong character voices for each person in the scene, since all the actors onstage are providing dialogue, the voices serve to distinguish the characters from one another."
+        {
+          "name": "Mutants",
+          "description": "Two improvisers tell a story, alternating one word at a time, acting out the action of the story as it is told. Story should be kept in the present tense so that action is accomplished rather than talked about."
+        },
+        {
+          "name": "Mutant Story",
+          "description": "Have the mutant narrate a story that is acted out by other improvisers."
+        },
+        {
+          "name": "Word-at-a-Time Scene",
+          "description": "Like Mutants, except each improviser plays a separate character. If one character speaks, the dialogue is provided by all the improvisers onstage - one word at a time. It is vital in this scene to have strong character voices for each person in the scene, since all the actors onstage are providing dialogue, the voices serve to distinguish the characters from one another."
+        },
+        {
+          "name": "Step-Word Story",
+          "description": "A combination of Word-at-a-Time Story, and Step-Word Scene. Improvisers tell a story around a circle. The first time around the circle each improviser is allowed one word. The second time around, they are allowed two words, then three, etc. up to five. Then descend from five to one word circles. When the circle finishes the cycle the story should end. Again that pattern is 1-2-3-4-5-4-3-2-1-end"
+        }
       ],
       "aliases": [
         "Mutants",
         "One Word Story",
         "Step-Word Scene",
-        "Step-Word Story",
         "Word-at-a-Time Scene"
       ],
       "related": [
+        "Step Word Scene",
         "Word Ball",
         "Word-at-a-Time Expert"
       ],
