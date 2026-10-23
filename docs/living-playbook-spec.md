@@ -245,11 +245,12 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
    - **Search box** (`type="search"`, placeholder "Search games...").
    - **🎲 Random** button, beside the search box: puts `random:N` (a new random seed) in the search, replacing any `random` token already there, so the list narrows to one random entry from what it would otherwise list (see [§6.1](#61-tokenizing)). Pressing it again picks a different entry when there's more than one to pick from. It's disabled when the list would be empty.
    - **🎲 ✕** button, shown only while the search has a `random` token: removes it, bringing back the full list.
-   - **"Show:"** toggle buttons: Games, Variations and Glossary (see [§5.6](#56-show-games-variations-glossary)). Variations and Glossary are hidden when the edition has no named variations or no glossary; the whole row is hidden when it has neither.
+   - **"Show:"** toggle buttons: Games and Glossary, both on by default (see [§5.6](#56-show-other-names-and-index-view)). The row is hidden when the edition has no glossary.
+   - Two more toggle buttons on their own row: **List Games Under Their Alternative and Variant Names** (off by default; hidden when no game has an alias or a named variation) and **Index View** (off by default).
    - **"Filter By Tags"**: a collapsible section, collapsed by default.
    - **"Lists and Favorites"**: a collapsible section, collapsed by default.
 3. **Search description bar**: a horizontal rule with a label describing the current query and result count (see [§5.3](#53-search-description)).
-4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive). With Variations on, entries for named variations are sorted in among them. With Glossary on, a "Glossary" section with its own letter dividers follows the games. When the search has free text and some entries' names match it but others match only elsewhere (a description, notes, tags…), the name matches come first under a "Name matches" label, then the rest under "Other matches", each group alphabetical with its own letter dividers (see [§5.2](#52-live-filtering)).
+4. **Game list**: game cards sorted by name (`localeCompare`), with a letter divider (`A`, `B`, …) before the first game of each new first letter (case-insensitive). With alternative names on, entries for aliases and named variations are sorted in among them. With Glossary on, a "Glossary" section with its own letter dividers follows the games. When the search has free text and some entries' names match it but others match only elsewhere (a description, notes, tags…), the name matches come first under a "Name matches" label, then the rest under "Other matches", each group alphabetical with its own letter dividers (see [§5.2](#52-live-filtering)).
 5. **Footer**: license and copyright text, links to the GitHub repo, the PDF and `?dbId=2001`, and "Contributors to this database include {contributors joined by ', '} and many friends, company members, teachers and supporters of Unexpected Productions." When there are no contributors, the list and the "and" are left out.
 
 ### 5.2 Live filtering
@@ -258,7 +259,7 @@ When the database loads, `Playbook.loadFromURL()` adds these to every game in me
 - The URL updates **lazily**: at most once per second while typing (a 1-second timer that doesn't reset on each keystroke), and immediately when the box loses focus.
 - Changing a tag updates the list and the URL immediately.
 - The final result is `searchExpression(game) AND tagFilter(game)`, sorted by name.
-- **Name matches first.** An entry is a name match when its name contains one of the search's free-text words or quoted phrases (case-insensitive), not counting any under `not`. For a game entry, its aliases count as names; for a variation entry, only the variation's name; for a glossary term, the term and its aliases. Name matches are listed before the other results, in both the games list and the Glossary section. `tag:`, `uid:` and the other operators don't make anything a name match. The random pool keeps the plain alphabetical order, so a `random:N` link picks the same entry as before.
+- **Name matches first.** An entry is a name match when its name contains one of the search's free-text words or quoted phrases (case-insensitive), not counting any under `not`. For a game entry, its aliases count as names; for an alias or variation entry, only that name; for a glossary term, the term and its aliases. Name matches are listed before the other results, in both the games list and the Glossary section. `tag:`, `uid:` and the other operators don't make anything a name match. The random pool keeps the plain alphabetical order, so a `random:N` link picks the same entry as before.
 
 ### 5.3 Search description
 
@@ -268,7 +269,7 @@ The description is built from three parts, joined with `"| "`:
 - `Tags: {yesTags joined by '; '}` when any tags are included.
 - `Excluded tags: {noTags joined by '; '}` when any tags are excluded.
 
-When all three are empty, it shows `All Games, Exercises and Formats` (or `The Glossary`, or both, depending on what's shown). It ends with a count of each kind that's shown, e.g. ` (284 games, 68 variations, 12 glossary terms)`.
+When all three are empty, it shows `All Games, Exercises and Formats` (or `The Glossary`, or both, depending on what's shown). It ends with a count of each kind that's shown, e.g. ` (284 games, 68 other names, 12 glossary terms)` (other names: alias and variation entries, counted only with alternative names on). An edition without a glossary never lists or counts it.
 
 ### 5.4 Collapsible sections
 
@@ -278,13 +279,12 @@ Clicking a section header toggles an `active` class and shows or hides the next 
 
 `@media print` hides the control pane, the card buttons and any open glossary overlay, drops the glossary underline, and keeps each card on one page, so a filtered list prints as a clean game list. With Show set to Glossary only, the page prints just the glossary.
 
-### 5.6 Show: Games, Variations, Glossary
+### 5.6 Show, other names and the Index view
 
-- **Games** lists each matching game under its own name (the default).
-- **Variations** also lists each matching game once more under the name of each of its **named** variations. That entry is the full game card, titled with the variation name, with an "A variation of *Game*" link, and with that variation highlighted. It has no DOM `id`, so ids stay unique. Unnamed variations never get their own entry.
-- **Glossary** adds the glossary section. The search box filters it too (by term, alias, definition or notes); tag filters don't, since terms have no tags.
-
-The buttons are independent: turning Games off while Variations is on lists games only under their variations' names.
+- **Games** lists each matching game under its own name. On by default.
+- **Glossary** adds the glossary section. The search box filters it too (by term, alias, definition or notes); tag filters don't, since terms have no tags. On by default, but an edition without a glossary (the 2001 one) leaves it out.
+- **List Games Under Their Alternative and Variant Names** (`altNames=1`, off by default) also lists each matching game once more under each of its aliases and the name of each of its **named** variations. That entry is the full game card, titled with that name, with an "Another name for *Game*" or "A variation of *Game*" link (and that variation highlighted). It has no DOM `id`, so ids stay unique. Unnamed variations never get their own entry. It applies only while Games is on. On a tie in names, the game's own entry comes first, then aliases, then variations.
+- **Index View** (`index=1`, off by default) replaces the cards with one line per entry, alphabetical under letter dividers, in columns on wide screens, with glossary terms among the games (marked "glossary") rather than in their own section. A game or term is a link to its card. An alias or variation entry isn't a link: it reads "*Name* — *See:* *Game*", and only the game's name links. Search, tags and Show still decide what's listed. Index links open the card without `index` or `altNames`. Following one first saves the scroll position on the index's history entry (`history.state.indexScrollY`), and when Back reloads the index it scrolls there once the list is drawn.
 
 ### 5.7 Glossary terms in text
 
@@ -356,7 +356,7 @@ So dangling operators like `foo and` or `or bar` still produce sensible results 
 | `list:Favorites` | Games in the user's Favorites. |
 | `uid:113` | Permalink to one game. |
 | `id:monarchgame` | Legacy anchor lookup, used by related-game links. |
-| `tag:warm-up random:4821` | One game tagged warm-up, picked by seed 4821 (with Variations or Glossary on, possibly a variation entry or a glossary term). |
+| `tag:warm-up random:4821` | One game tagged warm-up, picked by seed 4821 (possibly a glossary term, or with alternative names on, an alias or variation entry). |
 
 ---
 
@@ -428,7 +428,9 @@ This opens a small popup menu positioned at the button:
 | `uids` | yes | **never removed** | A shared list (bitmask-encoded, see below). On load it becomes the search `uids:1,2,3,…`. |
 | `yesTags` | yes | yes | Included tags, joined with `;`. |
 | `noTags` | yes | yes | Excluded tags, joined with `;`. |
-| `show` | yes | yes | What's listed: any of `games`, `variations`, `glossary`, joined with `;` (see [§5.6](#56-show-games-variations-glossary)). Omitted means `games` only, and is left out of the URL in that case. Links in the glossary add what their target needs, e.g. a link to a term adds `glossary`. |
+| `show` | yes | yes | What's listed: `games` and/or `glossary`, joined with `;` (see [§5.6](#56-show-other-names-and-index-view)). Omitted means both, and is left out of the URL in that case. An older link's `variations` turns on `altNames`. Links in the glossary add what their target needs, e.g. a link to a term adds `glossary`. |
+| `altNames` | yes | yes | `1` lists each game under its aliases and named variations' names too. Omitted means off. A glossary link to a game's variation adds it. |
+| `index` | yes | yes | `1` is the Index view. Omitted means cards. Links that open a card remove it. |
 | `edit` | no | removed | Leftover from the old editor. Deleted on write, never set. |
 | `list` | no | removed | Leftover. Deleted on write, never set. |
 

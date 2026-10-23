@@ -1,3 +1,10 @@
+## Version 2026.0004.0000
+
+**Viewer Changes**
+- Show now lists games and the glossary by default.
+- New "List Games Under Their Alternative and Variant Names" toggle (replaces the Variations button): lists each game again under its aliases and named variations.
+- New Index View: every game and glossary term as a link under its letter, with other names reading "See: Game".
+
 ## Version 2026.0003.0004
 
 **Games Added**

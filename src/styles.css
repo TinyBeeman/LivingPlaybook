@@ -595,7 +595,45 @@ body {
     margin-right: 5px;
 }
 
-/* A game listed again under one of its variation's names */
+/* Index view: each letter's entries as one-line links, in columns on wider screens */
+.index-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 var(--game-row-indent);
+    columns: 3 16em;
+    column-gap: 2em;
+    font-size: small;
+}
+
+.index-list li {
+    break-inside: avoid;
+    padding: 2px 0;
+}
+
+.index-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--color-game-related-link-border);
+}
+
+.index-link:hover {
+    background-color: var(--color-game-related-link-hover-bg);
+}
+
+.index-other-name {
+    color: #333333;
+}
+
+.index-list em {
+    color: #555555;
+}
+
+.index-kind {
+    font-size: x-small;
+    color: #777777;
+}
+
+/* A game listed again under one of its variation's names or an alias */
 .game-row-variation-of {
     font-size: x-small;
     color: #555555;
