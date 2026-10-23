@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0004",
-    "minor": "0001"
+    "minor": "0002"
   },
   "contributors": [
     "Kris Anderson",
@@ -2459,14 +2459,20 @@
     },
     {
       "name": "Pivot",
-      "description": "Imagine that the stage is a large disk, balanced on a single point. As an improviser moves around on the stage, the balance of the stage is effected. Improvisers must compensate for each other's movements, making sure that the stage is always balanced.",
+      "description": "Imagine that the stage is a large disk, balanced on a single point.\n\nAs an improviser moves around on the stage, the balance of the stage is effected. Improvisers must compensate for each other's movements, making sure that the stage is always balanced.",
+      "notes": "Rather than played for technical perfection, the theatrical approach would be to let one player move to a mark, and then let other players adjust as a response. This leads to oscillating imbalance and balance, which can be visually pleasing and interesting.",
       "variations": [
-        "Hero/Chorus: Improvisers stand in a circle (the disc). One of the improvisers steps onto the disc. They are now the HERO. They move about the disc not speaking but playing their status. When they stops, someone else steps onto the disc to become the new HERO. The old HERO is now the CHORUS. When the New HERO stops, the CHORUS rushes to balance the disc opposite the HERO. At some point, the CHORUS decides not to move. When the CHORUS refuses to move, another HERO steps onto the disc, and the former HEROES join the CHORUS, moving to balance the HERO. Remember, the HERO and CHORUS cannot move at the same time, the chorus must wait for the HERO to stop. The CHORUS will decide not to move without consultation. They simply will not move. If one member of the CHORUS moves, then all must move. The CHORUS, when even in number can spilt into different combinations to balance the stage. For instance, a CHORUS of 6 could split into two groups 3, three groups of 2, six individuals, or remain as 6 person CHORUS. If the CHORUS is an odd number, they must stay whole. It is important to remember that the entire CHORUS is equal to one HERO. The game is about status being given, not taken. You can't be the HERO, if the CHORUS won't let you, and you can't be in the CHORUS till you've been the HERO."
+        {
+          "name": "Hero / Chorus",
+          "description": "Improvisers stand in a circle (the disc).  \n\nOne of the improvisers steps onto the disc. They are now the HERO. They move about the disc not speaking but playing their status.\n\nWhen they stop, someone else steps onto the disc to become the new HERO.   The old HERO is now in the CHORUS. When the New HERO stops, the CHORUS rushes to balance the disc opposite the HERO.\n\nAt some point, the CHORUS decides not to move. When the CHORUS refuses to move, another HERO steps onto the disc, and the former HEROES join the CHORUS, moving to balance the HERO. \n\nRemember, the HERO and CHORUS cannot move at the same time, the CHORUS must wait for the HERO to stop.\n\nThe CHORUS will decide not to move without consultation. They simply will not move. If one member of the CHORUS moves, then all must move.\n\nThe CHORUS, when even in number can spilt into different combinations to balance the stage. For instance, a CHORUS of 6 could split into two groups 3, three groups of 2, six individuals, or remain as 6 person CHORUS. If the CHORUS is an odd number, they must stay whole.\n\nIt is important to remember that the entire CHORUS is equal to one HERO. The game is about status being given, not taken. You can't be the HERO, if the CHORUS won't let you, and you can't be in the CHORUS till you've been the HERO."
+        }
       ],
       "tags": [
+        "blocking",
         "physical",
         "scene",
         "shortform",
+        "stage picture",
         "status"
       ],
       "uid": 170
@@ -3385,17 +3391,6 @@
       ],
       "createdBy": "Keith Johnstone",
       "uid": 328
-    },
-    {
-      "name": "Step-Word",
-      "description": "A scene or story that has a sequence of words. For instance you can all say one word sentences, then two word sentences, then three word sentences, then two word sentences, then one word sentences.",
-      "tags": [
-        "numbers",
-        "scene",
-        "shortform",
-        "verbal"
-      ],
-      "uid": 240
     },
     {
       "name": "Stimulus Response",
