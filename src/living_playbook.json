@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0003",
-    "minor": "0003"
+    "minor": "0004"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 325,
+  "nextUid": 328,
   "games": [
     {
       "name": "Accepting Game",
@@ -210,6 +210,7 @@
         "shortform",
         "verbal"
       ],
+      "createdBy": "Neva Boyd, Viola Spolin",
       "uid": 8
     },
     {
@@ -1672,7 +1673,7 @@
     {
       "name": "Last Letter/First Letter",
       "description": "Last letter of Improviser 1's dialogue becomes first letter of Improviser 2's dialogue.  \n\nImproviser 1: \"Love those pants.\"  \nImproviser 2: \"Stop, you're just saying that.  \nImproviser 1: \"Trust me, those pants are YOU.\"  \nImproviser 2: Unfortunately, they have a big hole in the knee.\"",
-      "notes": "This is a great exercise for performers who find themselves thinking ahead rather than listening to their scene partner's whole offer.\n\nChallenge your partners! The audience appreciates a good struggle. \"What word would I use that starts with the letter U.\"\n\nThere's no rule that it has to be two players. Anyone can give the next line.",
+      "notes": "This is a great exercise for performers who find themselves thinking ahead rather than listening to their scene partner's whole offer.\n\nChallenge your partners! The audience appreciates a good struggle. Conversely, challenge yourself to just pronounce the last letter and see what comes out!\n\nThere's no rule that it has to be two players. Anyone can give the next line.\n\nDon't forget tasking and object work! Giving yourself something to do can help keep you out of your head... AND it gives you something to do while you \"ssssss...\" your way into the next word!",
       "variations": [
         {
           "name": "Last Word/First Word",
@@ -3046,6 +3047,27 @@
       "uid": 216
     },
     {
+      "name": "Soap Boxing",
+      "description": "This is a great exercise for developing movement that feels \"blocked\" (in the theatrical sense referring to staging).\n\nMark the floor with spike tape in a 3 x 3 grid as follows:  \n\n* The corners should be marked with an L indicating the corner, but with a third line of tape at a 45 degree angle toward the center.  \n* Between the corners, on the edges, a single line of tape should run along the outside of the grid.\n* In the center, an X, with lines radiating outward toward the corners.\n\nThis is the Soap Block, and the lines indicate the allowed movement. Around the outside of the grid, or diagonally from the corners through the center, but never from upstage to downstage in the center, or horizontally at mid-stage.\n\nActors must always land on a mark, and they may only move according to the above rules. An actor may join someone on their mark, but they must literally be on the mark, or as the creator, Jo McGinley says, \"You must be up in each other's kitchens.\"\n\nUseful exercises with this layout include:\n* Moving to achieve an objective (I want you to say you love me.)\n* Movement based on a mantra or point-of-view. (\"I need to be comforted...\" \"Other people are dangerous...\" etc)",
+      "notes": "A director or teacher should point out to people when they shift off a mark or meander or fail to truly join another improviser on their mark.\n\nCredit to this goes to Jo McGinley at Impro in LA, where they do marvelous theatrical improvised plays. It's useful for creating the feel of both theatre and certain types of television and cinema: especially early film, where camera focus required precise blocking and economic movement.",
+      "aliases": [
+        "Soap Blocking"
+      ],
+      "related": [
+        "Pivot"
+      ],
+      "tags": [
+        "blocking",
+        "directed",
+        "exercise",
+        "physical",
+        "scene",
+        "silence"
+      ],
+      "createdBy": "Jo McGinley",
+      "uid": 327
+    },
+    {
       "name": "Soap Opera",
       "description": "Three improvisers must perform a scene in which one is leaning against something, one is staring at someone, and one is looking out at the audience.",
       "notes": "This can be a good exercise to remind people that stage picture is important, and to act with their eyes/gaze.\n\nIf performed for an audience, it can be a good idea to ask the audience to make \"ooh ooh ooh\" noises when the improvisers are failing to embody each of the three requirements.\n\nAdd risk by joining other performers in what they are doing, and try to justify the movement. Be surprised by what the physical offers tell you about yourself.",
@@ -4062,6 +4084,20 @@
       "uid": 299
     },
     {
+      "term": "object work",
+      "definition": "Object work refers to the craft of pantomiming the invisible objects and interacting with the invisible environment.",
+      "notes": "Spolin used the phrase space-object work, to distinguish it from 'mime', which in traditional theatre settings, referred to body expression and silent storytelling.\n\nWhile masterful object work may cause delight, a skillful improviser should be able to use object work in a way that helps the audience see and believe the world the improviser lives in without calling attention to itself.\n\nNever forget that in the real world, objects and things have both physical and emotional weight, and that we are always in-relation to them in one way or another. The way you hold your favorite coffee cup on cold morning is very different than the way you hold your throw-away coffee cup during a busy day at work.",
+      "aliases": [
+        "space-object work"
+      ],
+      "related": [
+        {
+          "term": "tasking"
+        }
+      ],
+      "uid": 326
+    },
+    {
       "term": "one-hit-wonder",
       "definition": "Some games are primarily \"one hit wonders,\": scenes which are rarely as interesting to an audience the second time around in the same show... or sometimes ever.\n\nAt UP, we rarely play the same game twice, regardless, but in formats where competing teams perform the same game, it's advisable to avoid these games, or at the very least, to play it in two very different ways.",
       "aliases": [
@@ -4124,6 +4160,12 @@
       "term": "suggestion",
       "definition": "A \"get\" from the audience, used to inspire the scene. It might be verbal: an idea, a true fact, a word, or a story. But it can also be visual (a photo from a driver's license) or physical (an audience member poses and a player starts in that pose, for example).",
       "uid": 295
+    },
+    {
+      "term": "tasking",
+      "definition": "Tasking is giving yourself something to do in a scene. Prepare a meal, clean the counter, fix your scene partner's collar.",
+      "notes": "Tasking helps the audience believe in your world, it creates dynamic stage picture, it gives you a non-verbal way channel emotions, let's you discover new story, and sometimes provides surprising offers.\n\nDon't neglect tasking that involves your scene partner. Help them with the dishes! Pick lint off their coat. Hand them their half of the mail. Tasking is a great way to show us the level of intimacy and familiarity between two characters.",
+      "uid": 325
     },
     {
       "term": "The Kitchen Rules",
