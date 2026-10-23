@@ -786,8 +786,13 @@ class PlaybookPage {
         this.lazyTimer = null;
         this.favoriteList = GameList.fromLocalStorage("Favorites");
         this.currentGames = [];
-        // What the list shows (the show= URL parameter). Games only by default.
-        this.show = { games: true, variations: false, glossary: false };
+        // What the list shows (the show= URL parameter). Games and the glossary by default.
+        this.show = { games: true, glossary: true };
+        // altNames=1: also list each game under its aliases and named variations' names.
+        this.altNames = false;
+        // index=1: the Index view, every entry as one link under its letter.
+        this.indexView = false;
+        this.hasGlossary = false;
         this.termOverlay = null;
     }
 
@@ -827,22 +832,41 @@ class PlaybookPage {
 
         tagsContainer.style.display = 'block'; // Ensure tags are visible on load
 
-        // Only offer Variations and Glossary when this edition has something to show for them
-        // (the 2001 edition has neither), unless a shared link already turned them on.
-        const hasNamedVariations = this.playbook.data.games.some(game =>
-            (game.variations || []).some(variation => variationName(variation)));
-        const hasGlossary = this.playbook.data.glossary.length > 0;
+        // Only offer the alternative-names toggle and the Glossary when this edition has
+        // something to show for them, unless a shared link already turned them on. An edition
+        // without a glossary (the 2001 one) leaves the glossary out even though it's on by default.
+        const hasAltNames = this.playbook.data.games.some(game =>
+            (game.aliases || []).length > 0 || (game.variations || []).some(variation => variationName(variation)));
+        this.hasGlossary = this.playbook.data.glossary.length > 0;
         document.querySelectorAll('.show-button').forEach(button => {
-            const available = button.dataset.key === 'variations' ? hasNamedVariations
-                : button.dataset.key === 'glossary' ? hasGlossary : true;
-            button.classList.toggle('hidden', !available && !this.show[button.dataset.key]);
+            const available = button.dataset.key === 'glossary' ? this.hasGlossary : true;
+            button.classList.toggle('hidden', !available);
         });
-        if (!hasNamedVariations && !hasGlossary && this.show.games)
+        if (!this.hasGlossary && this.show.games)
             document.getElementById('show-section').classList.add('hidden');
+        document.getElementById('alt-names-button').classList.toggle('hidden', !hasAltNames && !this.altNames);
 
         this.initializeGlossaryOverlay();
         this.populateGameList();
+        this.restoreIndexScroll();
         this.populateFooter();
+    }
+
+    // Whether the glossary is listed: it's turned on, and this edition has one.
+    showsGlossary() {
+        return this.show.glossary && this.hasGlossary;
+    }
+
+    // Back from a game opened from the index reloads the index; return to where it was scrolled.
+    // The position is saved on the index's history entry when one of its links is followed.
+    restoreIndexScroll() {
+        const y = window.history.state?.indexScrollY;
+        if (this.indexView && typeof y === 'number')
+            window.scrollTo(0, y);
+    }
+
+    rememberIndexScroll() {
+        window.history.replaceState({ ...(window.history.state || {}), indexScrollY: window.scrollY }, '');
     }
 
     // A link can name a tag that no longer exists (renamed or merged since, or from the other
@@ -905,10 +929,15 @@ class PlaybookPage {
             const parts = show.split(';').map(part => part.trim().toLowerCase());
             this.show = {
                 games: parts.includes('games'),
-                variations: parts.includes('variations'),
                 glossary: parts.includes('glossary'),
             };
+            // Older links listed variations with show=…;variations.
+            if (parts.includes('variations'))
+                this.altNames = true;
         }
+        if (urlParams.get('altNames') === '1')
+            this.altNames = true;
+        this.indexView = urlParams.get('index') === '1';
         this.uid = urlParams.get('uid');
         // An empty uids= (e.g. a link to an empty list) is treated as no list at all.
         const uidsParam = urlParams.get('uids');
@@ -1170,12 +1199,12 @@ class PlaybookPage {
         // Add all elements to control pane
         controlPane.appendChild(searchSection);
         controlPane.appendChild(this.createShowSection());
+        controlPane.appendChild(this.createViewSection());
         controlPane.appendChild(this.createTagFilterSection());
         controlPane.appendChild(this.createListSection());
     }
 
-    // "Show: Games / Variations / Glossary". Variations lists each game again under the name of
-    // each of its named variations; Glossary adds the glossary section after the games.
+    // "Show: Games / Glossary". Glossary adds the glossary section after the games.
     createShowSection() {
         const showSection = document.createElement('div');
         showSection.id = 'show-section';
@@ -1187,8 +1216,7 @@ class PlaybookPage {
         showSection.appendChild(label);
 
         const options = [
-            { key: 'games', label: 'Games', title: 'List games under their names' },
-            { key: 'variations', label: 'Variations', title: 'Also list each game under the names of its variations' },
+            { key: 'games', label: 'Games', title: 'List the games' },
             { key: 'glossary', label: 'Glossary', title: 'Show the glossary of terms' },
         ];
         options.forEach(option => {
@@ -1212,12 +1240,47 @@ class PlaybookPage {
         return showSection;
     }
 
+    // Two toggles of their own, separate from Show: "List Games Under Their Alternative and
+    // Variant Names" (each game again under each alias and named variation's name) and
+    // "Index View" (every entry as one link under its letter).
+    createViewSection() {
+        const viewSection = document.createElement('div');
+        viewSection.id = 'view-section';
+        viewSection.className = 'show-section';
+
+        const options = [
+            { id: 'alt-names-button', key: 'altNames', label: 'List Games Under Their Alternative and Variant Names',
+                title: 'Also list each game under its aliases and the names of its named variations' },
+            { id: 'index-button', key: 'indexView', label: 'Index View',
+                title: 'List every entry as a link, grouped by letter' },
+        ];
+        options.forEach(option => {
+            const button = document.createElement('button');
+            button.type = 'button';
+            button.id = option.id;
+            button.className = 'tag-button show-toggle-button';
+            button.textContent = option.label;
+            button.title = option.title;
+            button.setAttribute('aria-pressed', String(this[option.key]));
+            button.classList.toggle('checked', this[option.key]);
+            button.addEventListener('click', () => {
+                this[option.key] = !this[option.key];
+                button.classList.toggle('checked', this[option.key]);
+                button.setAttribute('aria-pressed', String(this[option.key]));
+                this.updateUrlFromState();
+                this.populateGameList();
+            });
+            viewSection.appendChild(button);
+        });
+        return viewSection;
+    }
+
     isDefaultShow() {
-        return this.show.games && !this.show.variations && !this.show.glossary;
+        return this.show.games && this.show.glossary;
     }
 
     showParam() {
-        return ['games', 'variations', 'glossary'].filter(key => this.show[key]).join(';');
+        return ['games', 'glossary'].filter(key => this.show[key]).join(';');
     }
 
 
@@ -1297,10 +1360,11 @@ class PlaybookPage {
         }
 
         if (searchDescription === '') {
-            const listsGames = this.show.games || this.show.variations;
-            searchDescription = listsGames && this.show.glossary ? 'All Games, Exercises, Formats and Glossary Terms'
+            const listsGames = this.show.games;
+            const listsGlossary = this.showsGlossary();
+            searchDescription = listsGames && listsGlossary ? 'All Games, Exercises, Formats and Glossary Terms'
                 : listsGames ? 'All Games, Exercises and Formats'
-                : this.show.glossary ? 'The Glossary'
+                : listsGlossary ? 'The Glossary'
                 : 'Nothing selected to show';
         }
 
@@ -1308,9 +1372,9 @@ class PlaybookPage {
         const parts = [];
         if (this.show.games)
             parts.push(plural(counts.games, 'game', 'games'));
-        if (this.show.variations)
-            parts.push(plural(counts.variations, 'variation', 'variations'));
-        if (this.show.glossary)
+        if (this.show.games && this.altNames)
+            parts.push(plural(counts.altNames, 'other name', 'other names'));
+        if (this.showsGlossary())
             parts.push(plural(counts.terms, 'glossary term', 'glossary terms'));
         if (parts.length > 0)
             searchDescription += ` (${parts.join(', ')})`;
@@ -1357,8 +1421,8 @@ class PlaybookPage {
     }
 
     // Everything the list shows for a search, before any random pick: one entry per game under
-    // its own name, plus (with Variations on) one per named variation, and (with Glossary on)
-    // the glossary terms.
+    // its own name, plus (with alternative names on) one per alias and one per named variation,
+    // and (with Glossary on) the glossary terms.
     // Each entry and term also gets `nameMatch`: whether its name (or an alias) contains a word
     // the search is looking for, so populateGameList() can list those first.
     listedEntries(searchString) {
@@ -1369,8 +1433,13 @@ class PlaybookPage {
             games.forEach(game => entries.push({ title: game.name, game,
                 nameMatch: searchFilter.namesMatch([game.name, ...(game.aliases || [])]) }));
         }
-        if (this.show.variations) {
+        if (this.show.games && this.altNames) {
             games.forEach(game => {
+                (game.aliases || []).forEach((alias, index) => {
+                    if (alias.trim())
+                        entries.push({ title: alias, game, aliasIndex: index,
+                            nameMatch: searchFilter.namesMatch([alias]) });
+                });
                 (game.variations || []).forEach((variation, index) => {
                     const name = variationName(variation);
                     if (name)
@@ -1379,9 +1448,12 @@ class PlaybookPage {
                 });
             });
         }
-        entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.name.localeCompare(b.game.name));
+        // On a tie, a game's own entry comes first, then its aliases, then its variations.
+        const order = entry => entry.variationIndex != null ? 2 : entry.aliasIndex != null ? 1 : 0;
+        entries.sort((a, b) => a.title.localeCompare(b.title) || a.game.name.localeCompare(b.game.name)
+            || order(a) - order(b));
 
-        const terms = this.show.glossary ? this.playbook.searchGlossary(searchString) : [];
+        const terms = this.showsGlossary() ? this.playbook.searchGlossary(searchString) : [];
         const termNameMatches = new Set(terms.filter(term =>
             searchFilter.namesMatch([term.term, ...(term.aliases || [])])));
         return { games, entries, terms, termNameMatches };
@@ -1411,9 +1483,10 @@ class PlaybookPage {
         }
         this.currentGames = games;
 
+        const isOtherName = entry => entry.variationIndex != null || entry.aliasIndex != null;
         const searchDescription = this.describeSearch({
-            games: entries.filter(entry => entry.variationIndex == null).length,
-            variations: entries.filter(entry => entry.variationIndex != null).length,
+            games: entries.filter(entry => !isOtherName(entry)).length,
+            altNames: entries.filter(isOtherName).length,
             terms: terms.length,
         });
         const searchDescriptionElement = document.getElementById('search-desc');
@@ -1422,11 +1495,17 @@ class PlaybookPage {
         const gamesContainer = document.getElementById('games-container');
         gamesContainer.innerHTML = '';
 
+        if (this.indexView) {
+            this.appendIndex(gamesContainer, entries, terms);
+            this.updateRandomButtons(pool.length, !!random);
+            return;
+        }
+
         this.appendNameMatchesFirst(gamesContainer, entries, entry => entry.nameMatch,
-            entry => entry.title, entry => this.createGameCardDiv(entry.game, entry.variationIndex));
+            entry => entry.title, entry => this.createGameCardDiv(entry.game, entry.variationIndex, entry.aliasIndex));
 
         // A random pick that isn't a glossary term leaves the glossary out.
-        if (this.show.glossary && (!random || terms.length > 0)) {
+        if (this.showsGlossary() && (!random || terms.length > 0)) {
             const glossarySection = document.createElement('div');
             glossarySection.id = 'glossary-section';
             glossarySection.className = 'glossary-section';
@@ -1452,6 +1531,67 @@ class PlaybookPage {
         this.updateRandomButtons(pool.length, !!random);
     }
 
+    // The Index view: every entry as one line under its letter, alphabetical, with glossary terms
+    // among the games. A game or term links to its card. An alias or a variation isn't a link:
+    // it's followed by "See: <the game's name>", and only the game's name links.
+    appendIndex(container, entries, terms) {
+        const items = [...entries, ...terms.map(term => ({ title: term.term, term }))];
+        items.sort((a, b) => a.title.localeCompare(b.title) || (a.term ? 1 : 0) - (b.term ? 1 : 0));
+        if (items.length === 0) {
+            const empty = document.createElement('div');
+            empty.className = 'glossary-empty';
+            empty.textContent = this.show.games || this.showsGlossary() ? 'Nothing matches the search.' : '';
+            container.appendChild(empty);
+            return;
+        }
+
+        // Opens just the game or term, without its other-name entries.
+        const indexLink = (searchTerm, text, show) => {
+            const link = this.createSearchLink(searchTerm, text, show);
+            const url = new URL(link.href);
+            url.searchParams.delete('altNames');
+            link.href = url;
+            link.className = 'index-link';
+            link.addEventListener('click', () => this.rememberIndexScroll());
+            return link;
+        };
+        const gameLink = game => indexLink(`id:${game.anchorName}`, game.name, this.showParamWith('games'));
+
+        let list = null;
+        let lastLetter = null;
+        items.forEach(item => {
+            const letter = (item.title[0] || '').toLowerCase();
+            if (letter !== lastLetter) {
+                lastLetter = letter;
+                const divLetter = document.createElement('div');
+                divLetter.classList.add('game-letter-rule-line');
+                divLetter.textContent = letter.toUpperCase();
+                container.appendChild(divLetter);
+                list = document.createElement('ul');
+                list.className = 'index-list';
+                container.appendChild(list);
+            }
+            const li = document.createElement('li');
+            if (item.term) {
+                li.appendChild(indexLink(`id:${item.term.anchorName}`, item.term.term, this.showParamWith('glossary')));
+                const kind = document.createElement('span');
+                kind.className = 'index-kind';
+                kind.textContent = 'glossary';
+                li.append(' ', kind);
+            } else if (item.aliasIndex != null || item.variationIndex != null) {
+                const name = document.createElement('span');
+                name.className = 'index-other-name';
+                name.textContent = item.title;
+                const see = document.createElement('em');
+                see.textContent = 'See:';
+                li.append(name, ' — ', see, ' ', gameLink(item.game));
+            } else {
+                li.appendChild(gameLink(item.game));
+            }
+            list.appendChild(li);
+        });
+    }
+
     // Random is off when there's nothing to pick from; the ✕ shows while the search has a
     // random token in it.
     updateRandomButtons(poolSize, hasRandom) {
@@ -1467,7 +1607,7 @@ class PlaybookPage {
     // that lands on a different entry than the one showing (when there's more than one to pick).
     pickNewRandomGame() {
         const entryKey = entry => entry.term ? `term:${entry.term.anchorName}`
-            : `game:${entry.game.uid}:${entry.variationIndex ?? ''}`;
+            : `game:${entry.game.uid}:${entry.variationIndex ?? ''}:${entry.aliasIndex ?? ''}`;
         const base = removeRandomTokens(this.searchTerm);
         const pool = this.randomPool(this.listedEntries(base));
         if (pool.length === 0)
@@ -1520,6 +1660,16 @@ class PlaybookPage {
             url.searchParams.delete('show');
         else
             url.searchParams.set('show', this.showParam());
+
+        if (this.altNames)
+            url.searchParams.set('altNames', '1');
+        else
+            url.searchParams.delete('altNames');
+
+        if (this.indexView)
+            url.searchParams.set('index', '1');
+        else
+            url.searchParams.delete('index');
 
         window.history.pushState({}, '', url);
     }
@@ -1714,14 +1864,23 @@ class PlaybookPage {
 
     // A link that reloads the page searching for one game or term (the pattern related-game
     // links have always used). `show` overrides the show= parameter; omit it to keep the current one.
-    createSearchLink(searchTerm, text, show = null) {
+    // `altNames` true turns alternative names on, so a link to a variation shows its entry.
+    // The target is shown as a card, so the link leaves the Index view.
+    createSearchLink(searchTerm, text, show = null, altNames = false) {
         const link = document.createElement('a');
         const url = new URL(window.location);
         url.searchParams.set('search', searchTerm);
         url.searchParams.delete('uid');
         url.searchParams.delete('uids');
-        if (show != null)
-            url.searchParams.set('show', show);
+        url.searchParams.delete('index');
+        if (show != null) {
+            if (show === 'games;glossary')
+                url.searchParams.delete('show');
+            else
+                url.searchParams.set('show', show);
+        }
+        if (altNames)
+            url.searchParams.set('altNames', '1');
         link.href = url;
         link.classList.add('game-related-link');
         link.textContent = text;
@@ -1733,7 +1892,7 @@ class PlaybookPage {
     showParamWith(...keys) {
         const show = { ...this.show };
         keys.forEach(key => { show[key] = true; });
-        return ['games', 'variations', 'glossary'].filter(key => show[key]).join(';');
+        return ['games', 'glossary'].filter(key => show[key]).join(';');
     }
 
     // A glossary entry's related link: a game name, { game, variation }, or { term }.
@@ -1749,13 +1908,16 @@ class PlaybookPage {
         if (related && related.game) {
             const text = related.variation ? `${related.game} › ${related.variation}` : related.game;
             return this.createSearchLink(`id:${this.playbook.getAnchorName(related.game)}`, text,
-                this.showParamWith('games', ...(related.variation ? ['variations'] : [])));
+                this.showParamWith('games'), !!related.variation);
         }
         return null;
     }
 
-    createGameCardDiv(gameDetails, listedVariationIndex = null) {
+    // listedVariationIndex / listedAliasIndex: the card is listed under that variation's name or
+    // that alias (with alternative names on) rather than the game's own name.
+    createGameCardDiv(gameDetails, listedVariationIndex = null, listedAliasIndex = null) {
         const listedVariation = listedVariationIndex != null ? gameDetails.variations[listedVariationIndex] : null;
+        const listedAlias = listedAliasIndex != null ? gameDetails.aliases[listedAliasIndex] : null;
 
         function createGameRowContainer(class_name) {
             const divRowContainer = document.createElement('div');
@@ -1793,15 +1955,16 @@ class PlaybookPage {
     
         const divGameCard = document.createElement('div');
         divGameCard.classList.add("game-card");
-        // A game listed again under a variation's name gets no id, so ids stay unique.
-        if (listedVariation == null)
+        // A game listed again under a variation's name or an alias gets no id, so ids stay unique.
+        if (listedVariation == null && listedAlias == null)
             divGameCard.id = `${gameDetails.anchorName}`;
         else
             divGameCard.classList.add('game-card-variation-entry');
 
         const divTitle = document.createElement('div');
         divTitle.classList.add('game-card-title');
-        divTitle.textContent = listedVariation != null ? variationName(listedVariation) : gameDetails.name;
+        divTitle.textContent = listedVariation != null ? variationName(listedVariation)
+            : listedAlias != null ? listedAlias : gameDetails.name;
 
         divTitle.appendChild(this.createFavoriteButton(gameDetails));
         divTitle.appendChild(this.createAddToListButton(gameDetails));
@@ -1812,10 +1975,10 @@ class PlaybookPage {
         divGameCard.appendChild(divTitle);
         divGameCard.appendChild(divCardContent);
 
-        if (listedVariation != null) {
+        if (listedVariation != null || listedAlias != null) {
             const divVariationOf = document.createElement('div');
             divVariationOf.classList.add('game-row', 'game-row-variation-of');
-            divVariationOf.appendChild(document.createTextNode('A variation of '));
+            divVariationOf.appendChild(document.createTextNode(listedVariation != null ? 'A variation of ' : 'Another name for '));
             divVariationOf.appendChild(this.createSearchLink(`id:${gameDetails.anchorName}`, gameDetails.name));
             divCardContent.appendChild(divVariationOf);
         }
