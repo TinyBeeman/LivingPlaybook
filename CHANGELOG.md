@@ -1,3 +1,15 @@
+## Version 2026.0004.0002
+
+**Games Removed**
+- Step-Word
+
+**Games Updated**
+- Pivot
+  - Description Updated
+  - Notes Added
+  - Variations Updated
+  - Tags Updated
+
 ## Version 2026.0004.0001
 
 **Games Added**
