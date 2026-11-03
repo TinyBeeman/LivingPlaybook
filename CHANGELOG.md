@@ -1,4 +1,4 @@
-## Version 2026.0004.0003
+## Version 2026.0004.0004
 
 **Games Added**
 - I am a Tree
@@ -63,6 +63,18 @@
 - Group Mirror
   - Tags Updated
 - Growing and Shrinking Machine
+  - Tags Updated
+
+## Version 2026.0004.0003
+
+**Games Removed**
+- Step-Word
+
+**Games Updated**
+- Pivot
+  - Description Updated
+  - Notes Added
+  - Variations Updated
   - Tags Updated
 
 ## Version 2026.0004.0002
