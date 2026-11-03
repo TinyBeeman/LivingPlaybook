@@ -1,3 +1,70 @@
+## Version 2026.0004.0004
+
+**Games Added**
+- I am a Tree
+
+**Games Removed**
+- One Hit Wonders
+
+**Games Updated**
+- Advance and Expand
+  - Tags Updated
+- Alliances
+  - Tags Updated
+- Alliteration
+  - Tags Updated
+- Animal People
+  - Tags Updated
+- Arms
+  - Tags Updated
+- Asides
+  - Tags Updated
+- Attitude Scene
+  - Tags Updated
+- Before or After
+  - Variations Updated
+  - Tags Updated
+- Beyond Words
+  - Tags Updated
+- Blank Family
+  - Tags Updated
+- Body Reversal
+  - Tags Updated
+- Call From Ray
+  - Tags Updated
+- Called Movie
+  - Tags Updated
+- Chance of a Lifetime
+  - Tags Updated
+- Consciences
+  - Tags Updated
+- Continuation
+  - Tags Updated
+- Crosstalk
+  - Tags Updated
+- Day in the Life
+  - Tags Updated
+- Dubbing
+  - Tags Updated
+- Ending in "Blank"
+  - Tags Updated
+- English/Gibberish
+  - Tags Updated
+- Fairy Tale
+  - Tags Updated
+- Family Dinner
+  - Tags Updated
+- Famous Last Words
+  - Tags Updated
+- Fill In The Blank
+  - Tags Updated
+- First Line, Last Line
+  - Tags Updated
+- Group Mirror
+  - Tags Updated
+- Growing and Shrinking Machine
+  - Tags Updated
+
 ## Version 2026.0004.0002
 
 **Games Removed**
