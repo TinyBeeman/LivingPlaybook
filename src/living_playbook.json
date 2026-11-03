@@ -2,7 +2,7 @@
   "version": {
     "year": "2026",
     "major": "0004",
-    "minor": "0003"
+    "minor": "0004"
   },
   "contributors": [
     "Kris Anderson",
@@ -49,7 +49,7 @@
   ],
   "notes": "This is the Online Living Playbook, with ongoing updates.",
   "license": "The Online Living Playbook © 2026, maintained by [Tony Beeman](https://tinybeeman.com/), is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1). The original Living Playbook is Copyright 1995, 2001 by Unexpected Productions. All rights reserved. We fully encourage FREE distribution of this collection but this notice must be left intact. Any distribution, in any form (including, but not limited to, print, CD-ROM, morse code and smoke signals), where profit is being realized without the express written consent of Unexpected Productions is prohibited. Duplication expenses (disks, paper, photocopying) are exempt from this restriction. We want this collection distributed, but only to the advantage of the recipients.",
-  "nextUid": 329,
+  "nextUid": 330,
   "games": [
     {
       "name": "Accepting Game",
@@ -119,6 +119,7 @@
         "directed",
         "emotions",
         "exercise",
+        "monologue",
         "narrated",
         "scene",
         "shortform"
@@ -149,6 +150,7 @@
       "tags": [
         "exercise",
         "scene",
+        "shortform",
         "timed"
       ],
       "uid": 6
@@ -177,6 +179,7 @@
       ],
       "tags": [
         "exercise",
+        "game",
         "scene",
         "shortform",
         "verbal"
@@ -230,6 +233,7 @@
       "tags": [
         "animals",
         "character",
+        "game",
         "scene",
         "shortform",
         "toss-up"
@@ -252,6 +256,7 @@
         "Experts"
       ],
       "tags": [
+        "game",
         "justification",
         "physical",
         "scene",
@@ -272,6 +277,7 @@
         "Oscar Winning Moment"
       ],
       "tags": [
+        "game",
         "monologue",
         "narrative",
         "scene",
@@ -305,6 +311,7 @@
       ],
       "tags": [
         "endowment",
+        "game",
         "scene",
         "shortform"
       ],
@@ -333,10 +340,14 @@
       "name": "Before or After",
       "description": "A short scene is played. The improvisers then ask the audience if they want to see the scene that came before the scene they saw, or after. The improvisers then play that scene. Once again, the audience is asked and the third scene is played. If the audience choice leads to the improviser repeating a scene, they can add something or inform the scene with something from the earlier scene.",
       "variations": [
-        "Play this as a long form."
+        {
+          "name": "Before or After (Long Form)",
+          "description": "This can be played as a mid form or long form. You can branch off and follow other characters or threads forward or backwards in time."
+        }
       ],
       "tags": [
         "directed",
+        "game",
         "longform",
         "narrative",
         "scene",
@@ -353,6 +364,7 @@
         "One Line: One line of dialog may be spoken, which immediately ends the scene."
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "silence",
@@ -399,6 +411,7 @@
       "tags": [
         "blank challenge",
         "endowment",
+        "game",
         "scene",
         "shortform"
       ],
@@ -504,6 +517,7 @@
       "description": "Improvisers play the scene as though the back of their body is the front. The scene is played without mention of this, of course, as if all is normal.",
       "notes": "Players can add risk by interacting with each other: hugging, handing things to each other, performing shared activities, etc.",
       "tags": [
+        "game",
         "justification",
         "physical",
         "scene",
@@ -532,6 +546,7 @@
       "description": "A scene is begun from a suggested location. At some point during the scene an onstage improviser receives a \"Call from Ray\", which then must be incorporated into the scene.",
       "notes": "The call can come in any format. Phone call, letter, and off-stage voice, morse-code, an voice the audience can't hear, a letter, etc.\n\nThe characters, the stakes or the direction of the scene should be changed in some clear way because of the call from Ray.",
       "tags": [
+        "game",
         "scene",
         "shortform"
       ],
@@ -549,6 +564,7 @@
       ],
       "tags": [
         "directed",
+        "game",
         "group game",
         "physical",
         "scene",
@@ -583,6 +599,7 @@
       "description": "A person is picked from the audience and questioned about something they have always wanted to do. They are then brought on-stage where they gets to live that Chance of A Lifetime.",
       "tags": [
         "audience",
+        "game",
         "scene",
         "shortform"
       ],
@@ -664,6 +681,7 @@
         "True Feelings"
       ],
       "tags": [
+        "game",
         "monologue",
         "scene",
         "shortform"
@@ -680,6 +698,7 @@
       ],
       "tags": [
         "directed",
+        "game",
         "scene",
         "shortform",
         "switch",
@@ -735,6 +754,7 @@
         "Three-Way Dub, Cross Dubbing"
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "verbal"
@@ -766,6 +786,7 @@
         "Nightmare"
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "subtext"
@@ -874,6 +895,7 @@
         "Crosstalk"
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "verbal"
@@ -897,6 +919,7 @@
       "name": "Ending in \"Blank\"",
       "description": "Scene must end with a specific event or phrase.",
       "tags": [
+        "game",
         "scene",
         "shortform"
       ],
@@ -914,6 +937,7 @@
       ],
       "tags": [
         "bell",
+        "game",
         "gibberish",
         "scene",
         "shortform"
@@ -989,6 +1013,7 @@
         "narrative",
         "scene",
         "shortform",
+        "styles",
         "timed"
       ],
       "uid": 59
@@ -1000,6 +1025,7 @@
         "audience",
         "bell",
         "directed",
+        "game",
         "justification",
         "scene",
         "shortform"
@@ -1010,6 +1036,7 @@
       "name": "Famous Last Words",
       "description": "Famous last words are given, either real or imagined. The scene is played accounting for those words.",
       "tags": [
+        "game",
         "scene",
         "shortform"
       ],
@@ -1038,6 +1065,7 @@
       ],
       "tags": [
         "blank challenge",
+        "game",
         "scene",
         "shortform",
         "suggestion"
@@ -1075,6 +1103,7 @@
         "Have two teams perform the same first to last lines, bidding on how many lines it will take them to connect the first and the last lines."
       ],
       "tags": [
+        "game",
         "scene",
         "shortform",
         "verbal"
@@ -1262,8 +1291,7 @@
         "Mirror Faces"
       ],
       "tags": [
-        "exercise",
-        "game"
+        "exercise"
       ],
       "uid": 80
     },
@@ -1279,6 +1307,7 @@
         "Freeze Tag"
       ],
       "tags": [
+        "game",
         "justification",
         "scene",
         "shortform"
@@ -1449,6 +1478,21 @@
         "shortform"
       ],
       "uid": 95
+    },
+    {
+      "name": "I am a Tree",
+      "description": "Players form a circle. One player steps forward and says, \"I am a tree,\" forming a physical tree.\nA second player steps forward and adds to it with a physical pose. \"I am a blackbird.\"\nA third players steps forward and adds to both: \"I am the bird's nest.\"\nThe first player chooses one to take with them: \"I'll take the bird's nest.\" and both the tree and the nest step away.  \nThe remaining improviser repeats: \"I am a blackbird.\"  \nA second player adds to this new picture: \"I am a birdbath.\"\n\nThe cycle continues indefinitely.",
+      "notes": "This warm-up exercise is a good game to encourage physical stage pictures, visualizing the scene from outside, yes-and-ing and justifying existing offers, and \"listening\" with our eyes.\n\nWhen teaching it, look for students who ignore the second offer:\n\"I am a Tree\", \"I am a lumberjack\", \"I am a bird\" <-- this third improviser was probably excited and neglected to allow the second improviser's offer to land.",
+      "related": [
+        "Statues"
+      ],
+      "tags": [
+        "exercise",
+        "free association",
+        "physical",
+        "warm-up"
+      ],
+      "uid": 329
     },
     {
       "name": "I Love You",
@@ -2212,21 +2256,6 @@
         "wtf"
       ],
       "uid": 151
-    },
-    {
-      "name": "One Hit Wonders",
-      "description": "Many games are primarily \"one hit wonders,\" gag scenes which are rarely as interesting the second time around in the same show or sometimes ever. The team performing second is usually at a disadvantage as the scene's novelty has worn off. Might try taking three of these wonders (eg: Boris, Arms, Sideways Scene, etc) writing them on a slip of paper and picking one from a hat.",
-      "related": [
-        "Arms",
-        "Boris",
-        "Sideways Scene"
-      ],
-      "tags": [
-        "props",
-        "scene",
-        "shortform"
-      ],
-      "uid": 152
     },
     {
       "name": "One On One",
